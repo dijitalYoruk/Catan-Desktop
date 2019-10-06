@@ -17,12 +17,12 @@ Road desturction feature as development card
 Ability to change victory points through settings
 Threshold for longest road card and strongest army card
 Option in settings to go to default settings
-Ability to add metropol or medeniyet as construction options
+Ability to add metropole or civilization as construction options
 Merchant with similiar mechanics of thief that provides more source cards to neighbouring villages/cities
 Instructions section
 Ability to change the number of hexagons on map with development cards
 
-#### Excludes
+##### Excludes
 Having to hide cards
 
 
