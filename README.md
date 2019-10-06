@@ -13,12 +13,12 @@ The Settlers of the Catan is a strategy game played by 3-4 people where everyone
 ##### Includes
 * Music option
 * New theme option to make the game more fun.
-* Road desturction feature as development card.
+* Road destruction feature as development card.
 * Ability to change victory points through settings.
 * Threshold for longest road card and strongest army card.
 * Option in settings to go to default settings.
 * Ability to add metropole or civilization as construction options.
-* Merchant with similiar mechanics of thief that provides more source cards to neighbouring villages/cities.
+* Merchant with similar mechanics of thief that provides more source cards to neighbouring villages/cities.
 * Instructions section that explains the game dynamics.
 * Ability to change the number of hexagons on map with development cards.
 
