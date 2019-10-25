@@ -20,7 +20,7 @@ The Settlers of the Catan is a strategy game played by 3-4 people where everyone
 * Ability to add metropole or civilization as construction options.
 * Merchant with similar mechanics of thief that provides more source cards to neighbouring villages/cities.
 * Instructions section that explains the game dynamics.
-* Ability to change the number of hexagons on map with development cards.
+* Ability to change the number on hexagons on map with development cards.
 
 ##### Excludes
 * Having to hide cards
@@ -28,4 +28,4 @@ The Settlers of the Catan is a strategy game played by 3-4 people where everyone
 
 ##### Deliverables
 * Project Description: https://drive.google.com/open?id=1qDBKLSJQgEYklPiQPgzlJN_VtzzZ7RhyDif06Y4Ko18
-
+* Project Analysis Report: https://drive.google.com/file/d/1W4oLa6yVZgze6qfU53mXjDrdikMQunuV/view?usp=sharing
