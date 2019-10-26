@@ -1,0 +1,31 @@
+#program-pane {
+    -fx-background-image: url("../assets/background.jpg");
+    -fx-background-size: cover;
+    -fx-pref-width: 1500;
+    -fx-pref-height: 800;
+}
+
+#game-pane {
+    -fx-pref-width: 1500;
+    -fx-pref-height: 800;
+}
+
+#terrain-hex {
+    -fx-padding: 10 20 10 20;
+    -fx-color: orange;
+}
+
+.program-button {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-pref-width: 250;
+    -fx-pref-height: 75;
+    -fx-font-size: 20;
+    -fx-font-style: Bold;
+}
+
+.btnVertex {
+    -fx-background-color: orange;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="program-pane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerProgram">
+   <children>
+      <VBox layoutX="34.0" layoutY="34.0" prefHeight="300.0" prefWidth="250.0">
+         <children>
+            <JFXButton id="btnPlayGame" onAction="#gotoPlayGame" styleClass="program-button" text="PLAY GAME" />
+            <JFXButton id="btnInstructions" styleClass="program-button" text="INSTRUCTIONS">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton id="btnSettings" styleClass="program-button" text="SETTINGS">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton id="btnExit" cache="true" styleClass="program-button" text="EXIT">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

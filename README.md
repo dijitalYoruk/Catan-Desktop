@@ -22,10 +22,6 @@ The Settlers of the Catan is a strategy game played by 3-4 people where everyone
 * Instructions section that explains the game dynamics.
 * Ability to change the number on hexagons on map with development cards.
 
-##### Excludes
-* Having to hide cards
-
-
 ##### Deliverables
 * Project Description: https://drive.google.com/open?id=1qDBKLSJQgEYklPiQPgzlJN_VtzzZ7RhyDif06Y4Ko18
 * Project Analysis Report: https://drive.google.com/file/d/1W4oLa6yVZgze6qfU53mXjDrdikMQunuV/view?usp=sharing
