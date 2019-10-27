@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Polygon?>
@@ -162,6 +167,44 @@
             <Rectangle fx:id="imgCivilisation" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
          </children>
       </HBox>
+      <Rectangle fx:id="imgPriceCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="208.0" layoutX="46.0" layoutY="41.0" stroke="BLACK" strokeType="INSIDE" width="341.0" />
+      <VBox layoutX="428.0" layoutY="56.0" prefHeight="170.0" prefWidth="250.0">
+         <children>
+            <JFXButton onAction="#playDevelopmentCard" styleClass="game-button" text="Play Development Card" />
+            <JFXButton onAction="#buyDevelopmentCard" styleClass="game-button" text="Buy Development Card">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton onAction="#trade" styleClass="trade-button" text="Trade">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </JFXButton>
+         </children>
+      </VBox>
+      <Label fx:id="labelTurn" alignment="CENTER" layoutX="47.0" layoutY="282.0" prefWidth="285.0" styleClass="turn-label" text="Player1's turn" />
+      <HBox layoutX="46.0" layoutY="683.0" prefHeight="70.0" prefWidth="230.0">
+         <children>
+            <JFXButton id="die-button" text="Roll" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" width="70.0">
+               <HBox.margin>
+                  <Insets left="10.0" top="1.0" />
+               </HBox.margin>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" width="70.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Rectangle>
+         </children>
+      </HBox>
+      <Label fx:id="labelPlayer" alignment="TOP_LEFT" layoutX="47.0" layoutY="359.0" prefHeight="94.0" prefWidth="340.0" text="Label Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \n " wrapText="true" />
+      <Label fx:id="labelLogs" alignment="TOP_LEFT" layoutX="47.0" layoutY="487.0" prefHeight="116.0" prefWidth="340.0" text="Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs " wrapText="true" />
+      <Line endX="158.0" layoutX="226.0" layoutY="466.0" startX="-178.0" />
 
 
    </children>
