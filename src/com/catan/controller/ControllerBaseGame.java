@@ -1,8 +1,11 @@
 package com.catan.controller;
 
+import com.catan.modal.Construction;
 import com.catan.modal.Road;
+import com.catan.modal.Settlement;
 import com.catan.modal.Vertex;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -317,18 +320,40 @@ public class ControllerBaseGame {
     protected Rectangle imgCity;
     @FXML
     protected Rectangle imgCivilisation;
+    @FXML
+    protected Rectangle imgPriceCard;
+    @FXML
+    private Label labelTurn;
+    @FXML
+    private Rectangle imgDie1;
+    @FXML
+    private Rectangle imgDie2;
+    @FXML
+    private Label labelPlayer;
+    @FXML
+    private Label labelLogs;
 
     // Properties
     private ArrayList<Polygon> terrainHexes;
     private ArrayList<Vertex> vertices;
     private ArrayList<Road> roads;
+    private ArrayList<Settlement> settlements;
 
     @FXML
     public void initialize() {
+        terrainHexes = new ArrayList<>();
+        vertices = new ArrayList<>();
+        roads = new ArrayList<>();
+        settlements = new ArrayList<>();
+
         constructHexesArray();
         constructVerticesAndRoads();
         initializeBoard();
         initializeConstructionBox();
+
+        Image img = new Image("./com/catan/assets/price_card.png");
+        imgPriceCard.setFill(new ImagePattern(img));
+        imgPriceCard.setStrokeWidth(0);
     }
 
     private void initializeConstructionBox() {
@@ -354,7 +379,6 @@ public class ControllerBaseGame {
     }
 
     private void constructVerticesAndRoads() {
-        vertices = new ArrayList<>();
         Vertex v1 = new Vertex(vertex1);
         Vertex v2 = new Vertex(vertex2);
         Vertex v3 = new Vertex(vertex3);
@@ -409,6 +433,212 @@ public class ControllerBaseGame {
         Vertex v52 = new Vertex(vertex52);
         Vertex v53 = new Vertex(vertex53);
         Vertex v54 = new Vertex(vertex54);
+
+        v1.addNeighbor(v9);
+        v1.addNeighbor(v2);
+
+        v2.addNeighbor(v1);
+        v2.addNeighbor(v3);
+
+        v3.addNeighbor(v2);
+        v3.addNeighbor(v4);
+        v3.addNeighbor(v11);
+
+        v4.addNeighbor(v3);
+        v4.addNeighbor(v5);
+
+        v5.addNeighbor(v4);
+        v5.addNeighbor(v6);
+        v5.addNeighbor(v13);
+
+        v6.addNeighbor(v5);
+        v6.addNeighbor(v7);
+
+        v7.addNeighbor(v6);
+        v7.addNeighbor(v15);
+
+        v8.addNeighbor(v9);
+        v8.addNeighbor(v18);
+
+        v9.addNeighbor(v1);
+        v9.addNeighbor(v8);
+        v9.addNeighbor(v10);
+
+        v10.addNeighbor(v9);
+        v10.addNeighbor(v11);
+        v10.addNeighbor(v20);
+
+        v11.addNeighbor(v3);
+        v11.addNeighbor(v10);
+        v11.addNeighbor(v12);
+
+        v12.addNeighbor(v11);
+        v12.addNeighbor(v13);
+        v12.addNeighbor(v22);
+
+        v13.addNeighbor(v5);
+        v13.addNeighbor(v12);
+        v13.addNeighbor(v14);
+
+        v14.addNeighbor(v13);
+        v14.addNeighbor(v15);
+        v14.addNeighbor(v24);
+
+        v15.addNeighbor(v7);
+        v15.addNeighbor(v14);
+        v15.addNeighbor(v16);
+
+        v16.addNeighbor(v15);
+        v16.addNeighbor(v26);
+
+        v17.addNeighbor(v18);
+        v17.addNeighbor(v28);
+
+        v18.addNeighbor(v8);
+        v18.addNeighbor(v17);
+        v18.addNeighbor(v19);
+
+        v19.addNeighbor(v18);
+        v19.addNeighbor(v20);
+        v19.addNeighbor(v30);
+
+        v20.addNeighbor(v10);
+        v20.addNeighbor(v19);
+        v20.addNeighbor(v21);
+
+        v21.addNeighbor(v20);
+        v21.addNeighbor(v22);
+        v21.addNeighbor(v32);
+
+        v22.addNeighbor(v12);
+        v22.addNeighbor(v21);
+        v22.addNeighbor(v23);
+
+        v23.addNeighbor(v22);
+        v23.addNeighbor(v24);
+
+        v23.addNeighbor(v22);
+        v23.addNeighbor(v24);
+        v23.addNeighbor(v34);
+
+        v24.addNeighbor(v14);
+        v24.addNeighbor(v23);
+        v24.addNeighbor(v25);
+
+        v25.addNeighbor(v24);
+        v25.addNeighbor(v26);
+        v25.addNeighbor(v36);
+
+        v26.addNeighbor(v16);
+        v26.addNeighbor(v25);
+        v26.addNeighbor(v27);
+
+        v27.addNeighbor(v26);
+        v27.addNeighbor(v38);
+
+
+        v28.addNeighbor(v17);
+        v28.addNeighbor(v29);
+
+
+        v29.addNeighbor(v28);
+        v29.addNeighbor(v30);
+        v29.addNeighbor(v39);
+
+
+        v30.addNeighbor(v29);
+        v30.addNeighbor(v31);
+        v30.addNeighbor(v19);
+
+        v31.addNeighbor(v30);
+        v31.addNeighbor(v32);
+        v31.addNeighbor(v41);
+
+
+        v32.addNeighbor(v31);
+        v32.addNeighbor(v33);
+        v32.addNeighbor(v21);
+
+        v33.addNeighbor(v32);
+        v33.addNeighbor(v34);
+        v33.addNeighbor(v43);
+
+        v34.addNeighbor(v33);
+        v34.addNeighbor(v35);
+        v34.addNeighbor(v23);
+
+        v35.addNeighbor(v34);
+        v35.addNeighbor(v36);
+        v35.addNeighbor(v45);
+
+
+        v36.addNeighbor(v35);
+        v36.addNeighbor(v37);
+        v36.addNeighbor(v25);
+
+        v37.addNeighbor(v36);
+        v37.addNeighbor(v38);
+        v37.addNeighbor(v47);
+
+        v38.addNeighbor(v37);
+        v38.addNeighbor(v27);
+
+        v39.addNeighbor(v29);
+        v39.addNeighbor(v40);
+
+        v40.addNeighbor(v39);
+        v40.addNeighbor(v41);
+        v40.addNeighbor(v48);
+
+        v41.addNeighbor(v40);
+        v41.addNeighbor(v42);
+        v41.addNeighbor(v31);
+
+        v42.addNeighbor(v41);
+        v42.addNeighbor(v43);
+        v42.addNeighbor(v50);
+
+        v43.addNeighbor(v33);
+        v43.addNeighbor(v42);
+        v43.addNeighbor(v44);
+
+        v44.addNeighbor(v43);
+        v44.addNeighbor(v45);
+        v44.addNeighbor(v52);
+
+        v45.addNeighbor(v44);
+        v45.addNeighbor(v46);
+        v45.addNeighbor(v35);
+
+        v46.addNeighbor(v45);
+        v46.addNeighbor(v47);
+        v46.addNeighbor(v54);
+
+        v47.addNeighbor(v37);
+        v47.addNeighbor(v46);
+
+        v48.addNeighbor(v40);
+        v48.addNeighbor(v49);
+
+        v49.addNeighbor(v48);
+        v49.addNeighbor(v50);
+
+        v50.addNeighbor(v49);
+        v50.addNeighbor(v51);
+        v50.addNeighbor(v42);
+
+        v51.addNeighbor(v50);
+        v51.addNeighbor(v52);
+
+        v52.addNeighbor(v44);
+        v52.addNeighbor(v51);
+        v52.addNeighbor(v53);
+
+        v53.addNeighbor(v52);
+        v53.addNeighbor(v54);
+
+        v54.addNeighbor(v53);
+        v54.addNeighbor(v46);
 
         vertices.add(v1);
         vertices.add(v2);
@@ -465,7 +695,6 @@ public class ControllerBaseGame {
         vertices.add(v53);
         vertices.add(v54);
 
-        roads = new ArrayList<>();
         Road r1 = new Road(road1, v1, v2);
         Road r2 = new Road(road2, v2, v3);
         Road r3 = new Road(road3, v3, v4);
@@ -680,7 +909,6 @@ public class ControllerBaseGame {
     }
 
     private void constructHexesArray() {
-        terrainHexes = new ArrayList<>();
         terrainHexes.add(terrainHex1);
         terrainHexes.add(terrainHex2);
         terrainHexes.add(terrainHex3);
@@ -716,5 +944,53 @@ public class ControllerBaseGame {
 
     public void setRoads(ArrayList<Road> roads) {
         this.roads = roads;
+    }
+
+    public ArrayList<Settlement> getSettlements() {
+        return settlements;
+    }
+
+    public void setSettlements(ArrayList<Settlement> settlements) {
+        this.settlements = settlements;
+    }
+
+    public Label getLabelTurn() {
+        return labelTurn;
+    }
+
+    public void setLabelTurn(Label labelTurn) {
+        this.labelTurn = labelTurn;
+    }
+
+    public Rectangle getImgDie1() {
+        return imgDie1;
+    }
+
+    public void setImgDie1(Rectangle imgDie1) {
+        this.imgDie1 = imgDie1;
+    }
+
+    public Rectangle getImgDie2() {
+        return imgDie2;
+    }
+
+    public void setImgDie2(Rectangle imgDie2) {
+        this.imgDie2 = imgDie2;
+    }
+
+    public Label getLabelPlayer() {
+        return labelPlayer;
+    }
+
+    public void setLabelPlayer(Label labelPlayer) {
+        this.labelPlayer = labelPlayer;
+    }
+
+    public Label getLabelLogs() {
+        return labelLogs;
+    }
+
+    public void setLabelLogs(Label labelLogs) {
+        this.labelLogs = labelLogs;
     }
 }

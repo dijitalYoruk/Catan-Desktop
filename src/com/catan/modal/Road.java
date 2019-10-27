@@ -37,5 +37,8 @@ public class Road extends Construction {
         return vertices.contains(vertex1) && vertices.contains(vertex2);
     }
 
+    public boolean containsVertex(Vertex vertex) {
+        return vertices.contains(vertex);
+    }
 
 }

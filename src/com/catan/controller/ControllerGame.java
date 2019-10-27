@@ -1,14 +1,17 @@
 package com.catan.controller;
 
-import com.catan.modal.Road;
-import com.catan.modal.Vertex;
+import com.catan.modal.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+
+import java.util.ArrayList;
 
 public class ControllerGame extends ControllerBaseGame{
 
@@ -104,28 +107,55 @@ public class ControllerGame extends ControllerBaseGame{
     }
 
     @FXML
+    void trade(ActionEvent event) {
+        // TODO trade will be implemented
+    }
+
+    @FXML
+    void playDevelopmentCard(ActionEvent event) {
+        // TODO playDevelopmentCard will be implemented
+    }
+
+    @FXML
+    void rollDie(ActionEvent event) {
+        // TODO rollDie will be implemented
+    }
+
+    @FXML
+    void buyDevelopmentCard(ActionEvent event) {
+        // TODO buyDevelopmentCard will be implemented
+    }
+
+    @FXML
     public void makeConstruction(MouseEvent mouseEvent) {
         Circle circle = (Circle) mouseEvent.getSource();
 
         if (selectedConstruction.equals(CITY) || selectedConstruction.equals(VILLAGE) || selectedConstruction.equals(CIVILISATION)) {
-            circle.setRadius(CONSTRUCTION_RADIUS);
-            Image img;
+            Vertex vertex = getCorrespondingVertex(circle);
 
-            switch (selectedConstruction) {
-                case CITY:
-                    img = new Image(PATH_CITY_RED);
-                    break;
-                case VILLAGE:
-                    img = new Image(PATH_VILLAGE_GREEN);
-                    break;
-                default:
-                    img = new Image(PATH_CIVILISATION_PURPLE);
-                    break;
+            if (vertex != null && isVertexSuitableForConstruction(vertex)) {
+                Settlement settlement;
+                switch (selectedConstruction) {
+                    case CITY:
+                        settlement = new City(PATH_CITY_RED, vertex);
+                        break;
+                    case VILLAGE:
+                        settlement = new Village(PATH_VILLAGE_GREEN, vertex);
+                        break;
+                    default:
+                        settlement = new Civilisation(PATH_CIVILISATION_PURPLE, vertex);
+                        break;
+                }
+
+                Image img = new Image(settlement.getImagePath());
+                vertex.getShape().setFill(new ImagePattern(img));
+                vertex.getShape().setRadius(CONSTRUCTION_RADIUS);
+                getSettlements().add(settlement);
+                selectedConstruction = "";
+                constructionUnselect = true;
+            } else {
+                outputNotPossible();
             }
-
-            circle.setFill(new ImagePattern(img));
-            selectedConstruction = "";
-            constructionUnselect = true;
         }
         else if (selectedConstruction.equals(ROAD)) {
             if (roadVertex1 == null) {
@@ -143,12 +173,28 @@ public class ControllerGame extends ControllerBaseGame{
         }
     }
 
+    private void outputNotPossible() {
+        System.out.println("Not Possible");
+    }
+
+    private boolean isVertexSuitableForConstruction(Vertex vertex) {
+        ArrayList<Vertex> neighbors = vertex.getNeighbors();
+        for (Settlement construction: getSettlements()) {
+            for (Vertex v: neighbors) {
+                if (construction.isOnVertex(v)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     private void constructRoad() {
         Road road = getCorrespondingRoad();
-        if (road != null) {
+        if (road != null && !road.getRoad().isVisible()) {
             road.getRoad().setVisible(true);
         } else {
-            System.out.println("Not Possible");
+            outputNotPossible();
         }
 
         refreshRoadSelectionVertices();

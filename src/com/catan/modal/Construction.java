@@ -15,4 +15,5 @@ public class Construction {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
 }
