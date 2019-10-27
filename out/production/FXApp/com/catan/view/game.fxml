@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane id="game-pane" fx:id="root" onMouseClicked="#unselectConstructions" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerGame">
+   <children>
+      <Line fx:id="road8" endX="1043.0" endY="-373.0" layoutX="28.0" layoutY="454.0" startX="1044.0" startY="-304.0" strokeWidth="7.0" />
+      <Line fx:id="road12" endX="512.0" endY="-275.0" layoutX="428.0" layoutY="425.0" startX="578.0" startY="-243.0" strokeWidth="7.0" />
+      <Line fx:id="road13" endX="930.0" endY="-291.0" layoutX="142.0" layoutY="441.0" startX="864.0" startY="-259.0" strokeWidth="7.0" />
+      <Line fx:id="road22" endX="1343.0" endY="-231.0" layoutX="-75.0" layoutY="483.0" startX="1343.0" startY="-301.0" strokeWidth="7.0" />
+      <Line fx:id="road17" endX="1398.0" endY="-343.0" layoutX="-65.0" layoutY="493.0" startX="1333.0" startY="-311.0" strokeWidth="7.0" />
+      <Line fx:id="road16" endX="1333.0" endY="-311.0" layoutX="-65.0" layoutY="493.0" startX="1266.0" startY="-343.0" strokeWidth="7.0" />
+      <Line fx:id="road9" endX="1266.0" endY="-412.0" layoutX="-65.0" layoutY="493.0" startX="1266.0" startY="-343.0" strokeWidth="7.0" />
+      <Line fx:id="road15" endX="1266.0" endY="-343.0" layoutX="-65.0" layoutY="493.0" startX="1201.0" startY="-310.0" strokeWidth="7.0" />
+      <Line fx:id="road14" endX="1173.0" endY="-337.0" layoutX="-37.0" layoutY="520.0" startX="1109.0" startY="-370.0" strokeWidth="7.0" />
+      <Line fx:id="road38" endX="1343.0" endY="-231.0" layoutX="-10.0" layoutY="587.0" startX="1343.0" startY="-301.0" strokeWidth="7.0" />
+      <Line fx:id="road37" endX="1344.0" endY="-228.0" layoutX="-142.0" layoutY="587.0" startX="1344.0" startY="-302.0" strokeWidth="7.0" />
+      <Line fx:id="road21" endX="1950.0" endY="-335.0" layoutX="-813.0" layoutY="587.0" startX="1949.0" startY="-404.0" strokeWidth="7.0" />
+      <Line fx:id="road28" endX="2183.0" endY="-275.0" layoutX="-1046.0" layoutY="527.0" startX="2117.0" startY="-242.0" strokeWidth="7.0" />
+      <Line fx:id="road27" endX="2107.0" endY="-252.0" layoutX="-1036.0" layoutY="537.0" startX="2042.0" startY="-285.0" strokeWidth="7.0" />
+      <Line fx:id="road25" endX="1912.0" endY="-285.0" layoutX="-1036.0" layoutY="537.0" startX="1976.0" startY="-252.0" strokeWidth="7.0" />
+      <Line fx:id="road26" endX="1976.0" endY="-252.0" layoutX="-1036.0" layoutY="537.0" startX="2042.0" startY="-285.0" strokeWidth="7.0" />
+      <Line fx:id="road20" endX="2042.0" endY="-355.0" layoutX="-1036.0" layoutY="537.0" startX="2042.0" startY="-285.0" strokeWidth="7.0" />
+      <Line fx:id="road31" endX="3027.0" endY="-318.0" layoutX="-1759.0" layoutY="570.0" startX="3092.0" startY="-285.0" strokeWidth="7.0" />
+      <Line fx:id="road30" endX="2951.0" endY="-295.0" layoutX="-1749.0" layoutY="580.0" startX="3017.0" startY="-328.0" strokeWidth="7.0" />
+      <Line fx:id="road29" endX="2886.0" endY="-328.0" layoutX="-1749.0" layoutY="580.0" startX="2951.0" startY="-295.0" strokeWidth="7.0" />
+      <Line fx:id="road42" endX="3593.0" endY="-281.0" layoutX="-2587.0" layoutY="669.0" startX="3527.0" startY="-310.0" strokeWidth="7.0" />
+      <Line fx:id="road45" endX="3779.0" endY="-320.0" layoutX="-2577.0" layoutY="679.0" startX="3714.0" startY="-291.0" strokeWidth="7.0" />
+      <Line fx:id="road44" endX="3714.0" endY="-291.0" layoutX="-2577.0" layoutY="679.0" startX="3648.0" startY="-320.0" strokeWidth="7.0" />
+      <Line fx:id="road43" endX="3648.0" endY="-320.0" layoutX="-2577.0" layoutY="679.0" startX="3583.0" startY="-291.0" strokeWidth="7.0" />
+      <Line fx:id="road36" endX="3648.0" endY="-320.0" layoutX="-2577.0" layoutY="679.0" startX="3648.0" startY="-394.0" strokeWidth="7.0" />
+      <Line fx:id="road41" endX="3517.0" endY="-320.0" layoutX="-2577.0" layoutY="679.0" startX="3453.0" startY="-291.0" strokeWidth="7.0" />
+      <Line fx:id="road35" endX="3517.0" endY="-320.0" layoutX="-2577.0" layoutY="679.0" startX="3517.0" startY="-394.0" strokeWidth="7.0" />
+      <Line fx:id="road32" endX="3974.0" endY="-427.0" layoutX="-2577.0" layoutY="679.0" startX="3913.5" startY="-396.5" strokeWidth="7.0" />
+      <Line fx:id="road52" endX="4316.0" endY="-222.0" layoutX="-3179.0" layoutY="610.0" startX="4316.0" startY="-147.0" strokeWidth="7.0" />
+      <Line fx:id="road58" endX="4241.0" endY="-127.0" layoutX="-3169.0" layoutY="620.0" startX="4306.0" startY="-157.0" strokeWidth="7.0" />
+      <Line fx:id="road57" endX="4175.0" endY="-157.0" layoutX="-3169.0" layoutY="620.0" startX="4241.0" startY="-127.0" strokeWidth="7.0" />
+      <Line fx:id="road56" endX="4175.0" endY="-157.0" layoutX="-3169.0" layoutY="620.0" startX="4113.0" startY="-127.0" strokeWidth="7.0" />
+      <Line fx:id="road51" endX="4175.0" endY="-232.0" layoutX="-3169.0" layoutY="620.0" startX="4175.0" startY="-157.0" strokeWidth="7.0" />
+      <Line fx:id="road48" endX="4502.0" endY="-261.0" layoutX="-3169.0" layoutY="620.0" startX="4566.0" startY="-232.0" strokeWidth="7.0" />
+      <Line fx:id="road47" endX="4437.0" endY="-232.0" layoutX="-3169.0" layoutY="620.0" startX="4502.0" startY="-261.0" strokeWidth="7.0" />
+      <Line fx:id="road46" endX="4371.0" endY="-261.0" layoutX="-3169.0" layoutY="620.0" startX="4437.0" startY="-232.0" strokeWidth="7.0" />
+      <Line fx:id="road65" endX="4964.0" endY="73.0" layoutX="-3762.0" layoutY="420.0" startX="4963.0" startY="143.0" strokeWidth="7.0" />
+      <Line fx:id="road64" endX="4824.0" endY="63.0" layoutX="-3752.0" layoutY="430.0" startX="4823.0" startY="133.0" strokeWidth="7.0" />
+      <Line fx:id="road61" endX="5010.0" endY="23.0" layoutX="-3742.0" layoutY="440.0" startX="5075.0" startY="56.0" strokeWidth="7.0" />
+      <Line fx:id="road53" endX="5000.0" endY="-62.0" layoutX="-3732.0" layoutY="450.0" startX="5000.0" startY="13.0" strokeWidth="7.0" />
+      <Line fx:id="road60" endX="4924.0" endY="33.0" layoutX="-3722.0" layoutY="460.0" startX="4990.0" startY="3.0" strokeWidth="7.0" />
+      <Line fx:id="road59" endX="4849.0" endY="-7.0" layoutX="-3712.0" layoutY="470.0" startX="4914.0" startY="23.0" strokeWidth="7.0" />
+      <Line fx:id="road66" endX="4537.0" endY="51.0" layoutX="-3204.0" layoutY="512.0" startX="4537.0" startY="-16.0" strokeWidth="7.0" />
+      <Line fx:id="road72" endX="4462.0" endY="75.0" layoutX="-3194.0" layoutY="522.0" startX="4527.0" startY="41.0" strokeWidth="7.0" />
+      <Line fx:id="road71" endX="4385.0" endY="31.0" layoutX="-3184.0" layoutY="532.0" startX="4452.0" startY="65.0" strokeWidth="7.0" />
+      <Line fx:id="road70" endX="4310.0" endY="55.0" layoutX="-3174.0" layoutY="542.0" startX="4375.0" startY="21.0" strokeWidth="7.0" />
+      <Line fx:id="road69" endX="4235.0" endY="11.0" layoutX="-3164.0" layoutY="552.0" startX="4300.0" startY="45.0" strokeWidth="7.0" />
+      <Line fx:id="road68" endX="4160.0" endY="35.0" layoutX="-3154.0" layoutY="562.0" startX="4225.0" startY="1.0" strokeWidth="7.0" />
+      <Line fx:id="road67" endX="4088.0" endY="-9.0" layoutX="-3144.0" layoutY="572.0" startX="4150.0" startY="25.0" strokeWidth="7.0" />
+      <Line fx:id="road63" endX="4219.0" endY="-115.0" layoutX="-3275.0" layoutY="608.0" startX="4219.0" startY="-45.0" strokeWidth="7.0" />
+      <Line fx:id="road55" endX="4223.0" endY="-194.0" layoutX="-3347.0" layoutY="657.0" startX="4291.0" startY="-164.0" strokeWidth="7.0" />
+      <Line fx:id="road50" endX="3990.0" endY="-214.0" layoutX="-3114.0" layoutY="602.0" startX="3990.0" startY="-139.0" strokeWidth="7.0" />
+      <Line fx:id="road40" endX="3916.0" endY="-258.0" layoutX="-3104.0" layoutY="612.0" startX="3980.0" startY="-224.0" strokeWidth="7.0" />
+      <Line fx:id="road34" endX="3906.0" endY="-337.0" layoutX="-3094.0" layoutY="622.0" startX="3906.0" startY="-268.0" strokeWidth="7.0" />
+      <Line fx:id="road24" endX="3960.0" endY="-380.0" layoutX="-3084.0" layoutY="632.0" startX="3896.0" startY="-347.0" strokeWidth="7.0" />
+      <Line fx:id="road19" endX="4679.0" endY="-78.0" layoutX="-3803.0" layoutY="261.0" startX="4679.0" startY="-9.0" strokeWidth="7.0" />
+      <Line fx:id="road5" endX="5061.0" endY="-223.0" layoutX="-3793.0" layoutY="271.0" startX="4995.0" startY="-190.0" strokeWidth="7.0" />
+      <Line fx:id="road6" endX="5051.0" endY="-233.0" layoutX="-3783.0" layoutY="281.0" startX="5116.0" startY="-200.0" strokeWidth="7.0" />
+      <Line fx:id="road18" endX="5106.0" endY="-141.0" layoutX="-3773.0" layoutY="291.0" startX="5170.0" startY="-108.0" strokeWidth="7.0" />
+      <Line fx:id="road10" endX="5096.0" endY="-220.0" layoutX="-3763.0" layoutY="301.0" startX="5096.0" startY="-151.0" strokeWidth="7.0" />
+      <Line fx:id="road23" endX="5150.0" endY="-126.0" layoutX="-3753.0" layoutY="311.0" startX="5150.0" startY="-59.0" strokeWidth="7.0" />
+      <Line fx:id="road33" endX="5140.0" endY="-69.0" layoutX="-3743.0" layoutY="321.0" startX="5205.0" startY="-34.0" strokeWidth="7.0" />
+      <Line fx:id="road39" endX="5195.0" endY="-43.0" layoutX="-3733.0" layoutY="331.0" startX="5195.0" startY="23.0" strokeWidth="7.0" />
+      <Line fx:id="road49" endX="5185.0" endY="13.0" layoutX="-3723.0" layoutY="341.0" startX="5120.0" startY="47.0" strokeWidth="7.0" />
+      <Line fx:id="road54" endX="5084.0" endY="-36.0" layoutX="-3687.0" layoutY="424.0" startX="5084.0" startY="39.0" strokeWidth="7.0" />
+      <Line fx:id="road62" endX="5100.0" endY="102.0" layoutX="-3703.0" layoutY="361.0" startX="5036.0" startY="135.0" strokeWidth="7.0" />
+      <Line fx:id="road11" endX="5241.0" endY="-107.0" layoutX="-4365.0" layoutY="290.0" startX="5305.0" startY="-140.0" strokeWidth="7.0" />
+      <Line fx:id="road4" endX="5956.0" endY="-251.0" layoutX="-4754.0" layoutY="332.0" startX="5891.0" startY="-284.0" strokeWidth="7.0" />
+      <Line fx:id="road3" endX="5881.0" endY="-294.0" layoutX="-4744.0" layoutY="342.0" startX="5815.0" startY="-261.0" strokeWidth="7.0" />
+      <Line fx:id="road2" endX="5805.0" endY="-271.0" layoutX="-4734.0" layoutY="352.0" startX="5740.0" startY="-304.0" strokeWidth="7.0" />
+      <Line fx:id="road1" endX="5730.0" endY="-314.0" layoutX="-4724.0" layoutY="362.0" startX="5665.0" startY="-281.0" strokeWidth="7.0" />
+      <Line fx:id="road7" endX="5655.0" endY="-291.0" layoutX="-4714.0" layoutY="372.0" startX="5654.0" startY="-222.0" strokeWidth="7.0" />
+      <Polygon id="terrainHex1" fx:id="terrainHex1" fill="DODGERBLUE" layoutX="1014.0" layoutY="183.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex2" fill="DODGERBLUE" layoutX="1144.0" layoutY="183.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex5" fill="DODGERBLUE" layoutX="1080.0" layoutY="286.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex3" fill="DODGERBLUE" layoutX="1274.0" layoutY="183.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex4" fill="DODGERBLUE" layoutX="948.0" layoutY="286.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex6" fill="DODGERBLUE" layoutX="1209.0" layoutY="286.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex7" fill="DODGERBLUE" layoutX="1341.0" layoutY="286.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex8" fill="DODGERBLUE" layoutX="884.0" layoutY="389.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex12" fill="DODGERBLUE" layoutX="1405.0" layoutY="389.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex9" fill="DODGERBLUE" layoutX="1014.0" layoutY="389.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex10" fill="DODGERBLUE" layoutX="1144.0" layoutY="389.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex11" fill="DODGERBLUE" layoutX="1274.0" layoutY="389.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex14" fill="DODGERBLUE" layoutX="1080.0" layoutY="494.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex13" fill="DODGERBLUE" layoutX="948.0" layoutY="494.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex15" fill="DODGERBLUE" layoutX="1209.0" layoutY="494.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex16" fill="DODGERBLUE" layoutX="1341.0" layoutY="494.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex17" fill="DODGERBLUE" layoutX="1014.0" layoutY="598.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex18" fill="DODGERBLUE" layoutX="1144.0" layoutY="598.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="terrainHex19" fill="DODGERBLUE" layoutX="1274.0" layoutY="598.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex40" fill="#ffde2173" layoutX="944.0" layoutY="493.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex11" fill="#ffde2173" layoutX="1072.0" layoutY="150.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex12" fill="#ffde2173" layoutX="1136.0" layoutY="183.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex13" fill="#ffde2173" layoutX="1201.0" layoutY="150.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex14" fill="#ffde2173" layoutX="1268.0" layoutY="182.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex20" fill="#ffde2173" layoutX="1006.0" layoutY="252.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex21" fill="#ffde2173" layoutX="1071.0" layoutY="285.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex22" fill="#ffde2173" layoutX="1137.0" layoutY="252.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex23" fill="#ffde2173" layoutX="1202.0" layoutY="285.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex24" fill="#ffde2173" layoutX="1268.0" layoutY="252.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex25" fill="#ffde2173" layoutX="1333.0" layoutY="285.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex19" fill="#ffde2173" layoutX="940.0" layoutY="285.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex30" fill="#ffde2173" layoutX="940.0" layoutY="359.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex31" fill="#ffde2173" layoutX="1006.0" layoutY="388.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex32" fill="#ffde2173" layoutX="1071.0" layoutY="359.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex33" fill="#ffde2173" layoutX="1137.0" layoutY="388.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex34" fill="#ffde2173" layoutX="1202.0" layoutY="359.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex35" fill="#ffde2173" layoutX="1268.0" layoutY="388.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex36" fill="#ffde2173" layoutX="1333.0" layoutY="359.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex41" fill="#ffde2173" layoutX="1006.0" layoutY="463.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex42" fill="#ffde2173" layoutX="1072.0" layoutY="493.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex43" fill="#ffde2173" layoutX="1137.0" layoutY="463.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex44" fill="#ffde2173" layoutX="1202.0" layoutY="493.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex45" fill="#ffde2173" layoutX="1268.0" layoutY="463.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex46" fill="#ffde2173" layoutX="1333.0" layoutY="496.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex37" fill="#ffde2173" layoutX="1397.0" layoutY="388.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex5" fill="#ffde2173" layoutX="1202.0" layoutY="81.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex26" fill="#ffde2173" layoutX="1397.0" layoutY="252.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex15" fill="#ffde2173" layoutX="1333.0" layoutY="150.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex10" fill="#ffde2173" layoutX="1006.0" layoutY="182.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex29" fill="#ffde2173" layoutX="876.0" layoutY="388.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex9" fill="#ffde2173" layoutX="940.0" layoutY="150.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex3" fill="#ffde2173" layoutX="1071.0" layoutY="81.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex18" fill="#ffde2173" layoutX="876.0" layoutY="252.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex50" fill="#ffde2173" layoutX="1071.0" layoutY="563.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex52" fill="#ffde2173" layoutX="1201.0" layoutY="563.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex1" fill="#ffde2173" layoutX="941.0" layoutY="81.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex2" fill="#ffde2173" layoutX="1006.0" layoutY="48.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex4" fill="#ffde2173" layoutX="1137.0" layoutY="48.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex6" fill="#ffde2173" layoutX="1268.0" layoutY="48.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex7" fill="#ffde2173" layoutX="1333.0" layoutY="81.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex16" fill="#ffde2173" layoutX="1397.0" layoutY="183.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex27" fill="#ffde2173" layoutX="1462.0" layoutY="287.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex38" fill="#ffde2173" layoutX="1462.0" layoutY="354.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex47" fill="#ffde2173" layoutX="1397.0" layoutY="463.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex54" fill="#ffde2173" layoutX="1333.0" layoutY="563.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex53" fill="#ffde2173" layoutX="1268.0" layoutY="597.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex51" fill="#ffde2173" layoutX="1136.0" layoutY="597.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex49" fill="#ffde2173" layoutX="1006.0" layoutY="597.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex48" fill="#ffde2173" layoutX="944.0" layoutY="563.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex39" fill="#ffde2173" layoutX="876.0" layoutY="463.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex28" fill="#ffde2173" layoutX="812.0" layoutY="354.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex17" fill="#ffde2173" layoutX="812.0" layoutY="285.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="vertex8" fill="#ffde2173" layoutX="876.0" layoutY="183.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <HBox layoutX="933.0" layoutY="653.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Rectangle fx:id="imgRoad" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
+            <Rectangle fx:id="imgVillage" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
+            <Rectangle fx:id="imgCity" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
+            <Rectangle fx:id="imgCivilisation" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
+         </children>
+      </HBox>
+      <Rectangle fx:id="imgPriceCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="208.0" layoutX="46.0" layoutY="41.0" stroke="BLACK" strokeType="INSIDE" width="341.0" />
+      <VBox layoutX="428.0" layoutY="56.0" prefHeight="170.0" prefWidth="250.0">
+         <children>
+            <JFXButton onAction="#playDevelopmentCard" styleClass="game-button" text="Play Development Card" />
+            <JFXButton onAction="#buyDevelopmentCard" styleClass="game-button" text="Buy Development Card">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton onAction="#trade" styleClass="trade-button" text="Trade">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </JFXButton>
+         </children>
+      </VBox>
+      <Label fx:id="labelTurn" alignment="CENTER" layoutX="47.0" layoutY="282.0" prefWidth="285.0" styleClass="turn-label" text="Player1's turn" />
+      <HBox layoutX="46.0" layoutY="683.0" prefHeight="70.0" prefWidth="230.0">
+         <children>
+            <JFXButton id="die-button" text="Roll" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" width="70.0">
+               <HBox.margin>
+                  <Insets left="10.0" top="1.0" />
+               </HBox.margin>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" width="70.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Rectangle>
+         </children>
+      </HBox>
+      <Label fx:id="labelPlayer" alignment="TOP_LEFT" layoutX="47.0" layoutY="359.0" prefHeight="94.0" prefWidth="340.0" text="Label Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \n " wrapText="true" />
+      <Label fx:id="labelLogs" alignment="TOP_LEFT" layoutX="47.0" layoutY="487.0" prefHeight="116.0" prefWidth="340.0" text="Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs " wrapText="true" />
+      <Line endX="158.0" layoutX="226.0" layoutY="466.0" startX="-178.0" />
+
+
+   </children>
+</AnchorPane>
