@@ -133,6 +133,7 @@ public class ControllerGame extends ControllerBaseGame{
         if (selectedConstruction.equals(CITY) || selectedConstruction.equals(VILLAGE) || selectedConstruction.equals(CIVILISATION)) {
             Vertex vertex = getCorrespondingVertex(circle);
 
+
             if (vertex != null && isVertexSuitableForConstruction(vertex)) {
                 Settlement settlement;
                 switch (selectedConstruction) {
