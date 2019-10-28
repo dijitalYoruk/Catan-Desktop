@@ -1,9 +1,6 @@
 package com.catan.controller;
 
-import com.catan.modal.Construction;
-import com.catan.modal.Road;
-import com.catan.modal.Settlement;
-import com.catan.modal.Vertex;
+import com.catan.modal.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -334,7 +331,7 @@ public class ControllerBaseGame {
     private Label labelLogs;
 
     // Properties
-    private ArrayList<Polygon> terrainHexes;
+    private ArrayList<TerrainHex> terrainHexes;
     private ArrayList<Vertex> vertices;
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
@@ -856,7 +853,8 @@ public class ControllerBaseGame {
         int placedFields = 0;
 
         while (placedFields != 19) {
-            Polygon hex = terrainHexes.get(placedFields);
+            TerrainHex hex = terrainHexes.get(placedFields);
+
             int tmp = (int)(Math.random() * 6) + 1;
             Image img = null;
             Color color = null;
@@ -901,33 +899,33 @@ public class ControllerBaseGame {
 
             if (img != null) {
                 placedFields++;
-                hex.setFill(new ImagePattern(img));
-                hex.setStroke(color);
-                hex.setStrokeWidth(1);
+                hex.getShape().setFill(new ImagePattern(img));
+                hex.getShape().setStroke(color);
+                hex.getShape().setStrokeWidth(1);
             }
         }
     }
 
     private void constructHexesArray() {
-        terrainHexes.add(terrainHex1);
-        terrainHexes.add(terrainHex2);
-        terrainHexes.add(terrainHex3);
-        terrainHexes.add(terrainHex4);
-        terrainHexes.add(terrainHex5);
-        terrainHexes.add(terrainHex6);
-        terrainHexes.add(terrainHex7);
-        terrainHexes.add(terrainHex8);
-        terrainHexes.add(terrainHex9);
-        terrainHexes.add(terrainHex10);
-        terrainHexes.add(terrainHex11);
-        terrainHexes.add(terrainHex12);
-        terrainHexes.add(terrainHex13);
-        terrainHexes.add(terrainHex14);
-        terrainHexes.add(terrainHex15);
-        terrainHexes.add(terrainHex16);
-        terrainHexes.add(terrainHex17);
-        terrainHexes.add(terrainHex18);
-        terrainHexes.add(terrainHex19);
+        terrainHexes.add(new TerrainHex(terrainHex1,"hex1"));
+        terrainHexes.add(new TerrainHex(terrainHex2,"hex2"));
+        terrainHexes.add(new TerrainHex(terrainHex3,"hex3"));
+        terrainHexes.add(new TerrainHex(terrainHex4,"hex4"));
+        terrainHexes.add(new TerrainHex(terrainHex5,"hex5"));
+        terrainHexes.add(new TerrainHex(terrainHex6,"hex6"));
+        terrainHexes.add(new TerrainHex(terrainHex7,"hex7"));
+        terrainHexes.add(new TerrainHex(terrainHex8,"hex8"));
+        terrainHexes.add(new TerrainHex(terrainHex9,"hex9"));
+        terrainHexes.add(new TerrainHex(terrainHex10,"hex10"));
+        terrainHexes.add(new TerrainHex(terrainHex11,"hex11"));
+        terrainHexes.add(new TerrainHex(terrainHex12,"hex12"));
+        terrainHexes.add(new TerrainHex(terrainHex13,"hex13"));
+        terrainHexes.add(new TerrainHex(terrainHex14,"hex14"));
+        terrainHexes.add(new TerrainHex(terrainHex15,"hex15"));
+        terrainHexes.add(new TerrainHex(terrainHex16,"hex16"));
+        terrainHexes.add(new TerrainHex(terrainHex17,"hex17"));
+        terrainHexes.add(new TerrainHex(terrainHex18,"hex18"));
+        terrainHexes.add(new TerrainHex(terrainHex19,"hex19"));
     }
 
     public ArrayList<Vertex> getVertices() {
