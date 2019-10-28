@@ -899,9 +899,9 @@ public class ControllerBaseGame {
 
             if (img != null) {
                 placedFields++;
-                hex.shape.setFill(new ImagePattern(img));
-                hex.shape.setStroke(color);
-                hex.shape.setStrokeWidth(1);
+                hex.getShape().setFill(new ImagePattern(img));
+                hex.getShape().setStroke(color);
+                hex.getShape().setStrokeWidth(1);
             }
         }
     }
