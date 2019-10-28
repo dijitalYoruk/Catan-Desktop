@@ -10,7 +10,7 @@
       <VBox layoutX="34.0" layoutY="34.0" prefHeight="300.0" prefWidth="250.0">
          <children>
             <JFXButton id="btnPlayGame" onAction="#gotoPlayGame" styleClass="program-button" text="PLAY GAME" />
-            <JFXButton id="btnInstructions" styleClass="program-button" text="INSTRUCTIONS">
+            <JFXButton id="btnInstructions" onAction="#gotoInstructions" styleClass="program-button" text="INSTRUCTIONS">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

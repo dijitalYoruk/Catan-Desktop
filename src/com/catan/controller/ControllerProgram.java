@@ -26,4 +26,34 @@ public class ControllerProgram {
 
 
     }
+
+    @FXML
+    public void gotoInstructions(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../view/instructions.fxml"));
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(new Scene(root, 1500, 800));
+            System.out.println(window);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @FXML
+    public void gotoMainMenu(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(new Scene(root, 1500, 800));
+            System.out.println(window);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }
