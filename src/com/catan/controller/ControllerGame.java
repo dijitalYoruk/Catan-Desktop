@@ -3,6 +3,10 @@ package com.catan.controller;
 import com.catan.modal.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -10,7 +14,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ControllerGame extends ControllerBaseGame{
@@ -228,6 +234,18 @@ public class ControllerGame extends ControllerBaseGame{
             }
         }
         return null;
+    }
+
+    @FXML
+    public void returnToProgram(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(new Scene(root, 1500, 800));
+            System.out.println(window);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
