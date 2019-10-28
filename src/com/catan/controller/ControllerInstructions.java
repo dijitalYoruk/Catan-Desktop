@@ -27,7 +27,7 @@ public class ControllerInstructions {
             File file = new File("./src/com/catan/persistent_data/instructions.txt");
             Scanner sc = new Scanner(file);
             while (sc.hasNextLine()) {
-                instructionsStr += sc.nextLine() + "\n";
+                instructionsStr += " • " + sc.nextLine() + "\n";
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,7 +45,5 @@ public class ControllerInstructions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }
