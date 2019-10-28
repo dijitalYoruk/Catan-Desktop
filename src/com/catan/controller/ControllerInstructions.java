@@ -17,11 +17,10 @@ public class ControllerInstructions {
 
     @FXML
     private JFXTextArea instructions;
-    String instructionsStr;
+    private String instructionsStr;
 
     @FXML
     public void initialize() {
-        System.out.println("Entered instructions");
         instructionsStr = "";
         try {
             File file = new File("./src/com/catan/persistent_data/instructions.txt");

@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FXApp/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FXApp/com/catan/view/game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/back-button.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/persistent_data/instructions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/persistent_data/instructions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -232,6 +233,8 @@
       <workItem from="1572130230605" duration="351000" />
       <workItem from="1572131578329" duration="13075000" />
       <workItem from="1572256966634" duration="1247000" />
+      <workItem from="1572273786893" duration="33000" />
+      <workItem from="1572282877909" duration="1130000" />
     </task>
     <servers />
   </component>
