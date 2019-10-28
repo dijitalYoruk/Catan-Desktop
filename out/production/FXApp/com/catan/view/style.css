@@ -68,3 +68,8 @@
 .btnVertex {
     -fx-background-color: orange;
 }
+
+.back-button {
+    -fx-background-image: url("../assets/back-button.jpg");
+    -fx-background-size: 50px;
+}
