@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="program-pane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerProgram">
+<AnchorPane id="program-pane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerInstructions">
    <children>
-      <Button layoutX="53.0" layoutY="643.0" mnemonicParsing="false" onAction="#gotoMainMenu" text="BACK" />
+      <Button layoutX="53.0" layoutY="643.0" mnemonicParsing="false" onAction="#returnToProgram" text="BACK" />
+      <JFXTextArea fx:id="instructions" editable="false" focusColor="#285eff" layoutX="454.0" layoutY="34.0" prefHeight="732.0" prefWidth="593.0" style="-fx-background-color: white; -fx-opacity: 0.9;" text="ASDASDASD&#10;" unFocusColor="BLACK" />
    </children>
 </AnchorPane>
