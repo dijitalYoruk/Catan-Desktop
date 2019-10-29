@@ -126,7 +126,6 @@ public class ControllerGame extends ControllerBaseGame{
     @FXML
     void rollDie(ActionEvent event) {
 
-        Die die = new Die();
         die.rollDie();
         System.out.println(die.getDice1());
         Image img = new Image("./com/catan/assets/die"+die.getDice1()+".png");

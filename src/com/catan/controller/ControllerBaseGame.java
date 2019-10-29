@@ -336,14 +336,15 @@ public class ControllerBaseGame {
     private ArrayList<Vertex> vertices;
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
-
+//    private Settings settings;
+    protected Die die;
     @FXML
     public void initialize() {
         terrainHexes = new ArrayList<>();
         vertices = new ArrayList<>();
         roads = new ArrayList<>();
         settlements = new ArrayList<>();
-
+        die = new Die();
         constructHexesArray();
         constructVerticesAndRoads();
         initializeBoard();
