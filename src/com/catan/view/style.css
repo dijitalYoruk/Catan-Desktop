@@ -38,7 +38,8 @@
     -fx-font-size: 20;
 }
 .thresholds_numbers{
-    -fx-background-color: green;
+    -fx-text-alignment: center;
+    -fx-background-color: yellow;
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-background-radius: 30;

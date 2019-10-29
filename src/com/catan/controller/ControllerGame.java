@@ -129,13 +129,13 @@ public class ControllerGame extends ControllerBaseGame{
         die.rollDie();
         System.out.println(die.getDice1());
         Image img = new Image("./com/catan/assets/die"+die.getDice1()+".png");
-        imgDie1.setFill(new ImagePattern(img));
-        imgDie1.setStroke(Color.color(0.4,0.4,0.4));
-        imgDie1.setStrokeWidth(1);
+        getImgDie1().setFill(new ImagePattern(img));
+        getImgDie1().setStroke(Color.color(0.4,0.4,0.4));
+        getImgDie1().setStrokeWidth(1);
         Image img2 = new Image("./com/catan/assets/die"+die.getDice2()+".png");
-        imgDie2.setFill(new ImagePattern(img2));
-        imgDie2.setStroke(Color.color(0.4,0.4,0.4));
-        imgDie2.setStrokeWidth(1);
+        getImgDie2().setFill(new ImagePattern(img2));
+        getImgDie2().setStroke(Color.color(0.4,0.4,0.4));
+        getImgDie2().setStrokeWidth(1);
     }
 
     @FXML

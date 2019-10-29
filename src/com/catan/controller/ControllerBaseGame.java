@@ -323,9 +323,9 @@ public class ControllerBaseGame {
     @FXML
     private Label labelTurn;
     @FXML
-    protected Rectangle imgDie1;
+    private Rectangle imgDie1;
     @FXML
-    protected Rectangle imgDie2;
+    private Rectangle imgDie2;
     @FXML
     private Label labelPlayer;
     @FXML
@@ -336,7 +336,7 @@ public class ControllerBaseGame {
     private ArrayList<Vertex> vertices;
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
-//    private Settings settings;
+    private Settings settings;
     protected Die die;
     @FXML
     public void initialize() {
@@ -345,11 +345,20 @@ public class ControllerBaseGame {
         roads = new ArrayList<>();
         settlements = new ArrayList<>();
         die = new Die();
+        settings = new Settings();
         constructHexesArray();
         constructVerticesAndRoads();
         initializeBoard();
         initializeConstructionBox();
 
+        Image imgForDice1 = new Image("./com/catan/assets/die6.png");
+        imgDie1.setFill(new ImagePattern(imgForDice1));
+        imgDie1.setStroke(Color.color(0.4,0.4,0.4));
+        imgDie1.setStrokeWidth(1);
+        Image img2ForDice2 = new Image("./com/catan/assets/die6.png");
+        imgDie2.setFill(new ImagePattern(img2ForDice2));
+        imgDie2.setStroke(Color.color(0.4,0.4,0.4));
+        imgDie2.setStrokeWidth(1);
         Image img = new Image("./com/catan/assets/price_card.png");
         imgPriceCard.setFill(new ImagePattern(img));
         imgPriceCard.setStrokeWidth(0);
