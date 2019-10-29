@@ -1,4 +1,4 @@
-Default
-10
-8
-13
+Kurtlar Vadisi
+12
+12
+14

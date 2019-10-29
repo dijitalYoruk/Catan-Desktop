@@ -1,8 +1,9 @@
 package com.catan.controller;
 
 import com.catan.modal.Settings;
-import com.jfoenix.controls.JFXTextArea;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.shape.Rectangle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,14 +14,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class ControllerSettings implements Initializable {
@@ -42,7 +40,8 @@ public class ControllerSettings implements Initializable {
     private Rectangle left2;
     @FXML
     private Rectangle left3;
-
+    @FXML
+    private MenuButton themes;
 
     private Settings settingTemp;
     @FXML
@@ -57,23 +56,12 @@ public class ControllerSettings implements Initializable {
         }
     }
 
+
     @FXML
-    public void submitSettings(ActionEvent actionEvent)  {
-        try {
-            FileOutputStream writer = new FileOutputStream(Paths.get(".").toAbsolutePath().normalize().toString() + "/src/com/catan/persistent_data/settings.txt");
-            writer.write(("").getBytes());
-//            writer.close();
-//            FileWriter writer = new FileWriter(Paths.get(".").toAbsolutePath().normalize().toString() + "/src/com/catan/persistent_data/settings.txt", true);
-            writer.write((victoryPointTh.getText() + "\n").getBytes());
-            writer.write((largestArmyTh.getText() + "\n").getBytes());
-            writer.write(longestRoadTh.getText().getBytes() );
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public void changeTheme(ActionEvent actionEvent){
+        settingTemp.setCurrentTheme(((MenuItem)actionEvent.getTarget()).getText());
+        themes.setText(settingTemp.getCurrentTheme());
     }
-
     @FXML
     public void changeTh(MouseEvent mouseEvent){
         String id = (((Rectangle)mouseEvent.getSource()).getId()).toString();
@@ -142,5 +130,6 @@ public class ControllerSettings implements Initializable {
         largestArmyTh.setText(settingTemp.getArmyThreshold()+"");
         victoryPointTh.setText(settingTemp.getVictoryThreshold()+"");
         longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
+        themes.setText(settingTemp.getCurrentTheme());
     }
 }
