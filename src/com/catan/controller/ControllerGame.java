@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ControllerGame extends ControllerBaseGame{
@@ -124,7 +125,18 @@ public class ControllerGame extends ControllerBaseGame{
 
     @FXML
     void rollDie(ActionEvent event) {
-        // TODO rollDie will be implemented
+
+        Die die = new Die();
+        die.rollDie();
+        System.out.println(die.getDice1());
+        Image img = new Image("./com/catan/assets/die"+die.getDice1()+".png");
+        imgDie1.setFill(new ImagePattern(img));
+        imgDie1.setStroke(Color.color(0.4,0.4,0.4));
+        imgDie1.setStrokeWidth(1);
+        Image img2 = new Image("./com/catan/assets/die"+die.getDice2()+".png");
+        imgDie2.setFill(new ImagePattern(img2));
+        imgDie2.setStroke(Color.color(0.4,0.4,0.4));
+        imgDie2.setStrokeWidth(1);
     }
 
     @FXML
@@ -238,7 +250,7 @@ public class ControllerGame extends ControllerBaseGame{
 
     @FXML
     public void returnToProgram(ActionEvent actionEvent) {
-        try {
+        try{
             Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(new Scene(root, 1500, 800));

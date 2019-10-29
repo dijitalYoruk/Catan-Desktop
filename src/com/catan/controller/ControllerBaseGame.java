@@ -4,6 +4,7 @@ import com.catan.modal.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -322,9 +323,9 @@ public class ControllerBaseGame {
     @FXML
     private Label labelTurn;
     @FXML
-    private Rectangle imgDie1;
+    protected Rectangle imgDie1;
     @FXML
-    private Rectangle imgDie2;
+    protected Rectangle imgDie2;
     @FXML
     private Label labelPlayer;
     @FXML

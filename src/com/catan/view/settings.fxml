@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="settings-pane" prefHeight="860.0" prefWidth="1583.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerSettings">
    <children>
@@ -14,20 +16,26 @@
             <Image url="@../assets/returnIcon.png" />
          </image>
       </ImageView>
-      <VBox layoutX="588.0" layoutY="75.0" prefHeight="300.0" prefWidth="324.0">
-         <children>
-            <JFXButton onAction="#goToThresholds" prefHeight="67.0" prefWidth="292.0" styleClass="settings-button" text="Change Game Thresholds" />
-            <JFXButton onAction="#goToThemes" styleClass="settings-button" text="Change Theme">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </JFXButton>
-            <JFXButton onAction="#goToMusic" styleClass="settings-button" text="Change Music">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </JFXButton>
-         </children>
-      </VBox>
+      <JFXTextArea fx:id="victoryPointTh" layoutX="778.0" layoutY="31.0" prefHeight="12.0" prefWidth="25.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+      <Label layoutX="402.0" layoutY="35.0" styleClass="thresholds" stylesheets="@style.css" text=" Victory Points" />
+      <Label layoutX="402.0" layoutY="91.0" styleClass="thresholds" stylesheets="@style.css" text=" Largest Army" />
+      <Label layoutX="402.0" layoutY="145.0" styleClass="thresholds" stylesheets="@style.css" text=" Longest Road" />
+      <JFXTextArea fx:id="largestArmyTh" layoutX="778.0" layoutY="87.0" prefHeight="12.0" prefWidth="25.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="3" />
+      <JFXTextArea fx:id="longestRoadTh" layoutX="778.0" layoutY="145.0" prefHeight="12.0" prefWidth="25.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="5" />
+      <JFXButton layoutX="1043.0" layoutY="693.0" onAction="#submitSettings" styleClass="program-button" stylesheets="@style.css" text="Submit" />
+      <Label layoutX="402.0" layoutY="223.0" styleClass="thresholds" stylesheets="@style.css" text="     Select Theme" />
+      <MenuButton layoutX="739.0" layoutY="233.0" mnemonicParsing="false" text="MenuButton">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Kurtlar Vadisi" />
+            <MenuItem mnemonicParsing="false" text="Bilkent University" />
+         </items>
+      </MenuButton>
+      <Label layoutX="402.0" layoutY="288.0" styleClass="thresholds" stylesheets="@style.css" text="     Select Music" />
+      <MenuButton layoutX="739.0" layoutY="298.0" mnemonicParsing="false" text="MenuButton">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Klasik 1" />
+            <MenuItem mnemonicParsing="false" text="Klasik 2" />
+         </items>
+      </MenuButton>
    </children>
 </AnchorPane>
