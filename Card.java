@@ -3,11 +3,9 @@ package com.catan.modal;
 public class Card {
     
     private String name;
-    private String instruction;
 
-    public Card(String name, String instruction) {
+    public Card(String name) {
         this.name = name;
-        this.instruction = instruction;
     }
 
     public String getName() {
@@ -16,14 +14,6 @@ public class Card {
 
     public void setName(String newName) {
         name = newName;
-    }
-
-    public String getInstruction() {
-        return instruction;
-    }
-
-    public void setInstruction0(String newInstruction) {
-        instruction = newInstruction;
     }
 
 }

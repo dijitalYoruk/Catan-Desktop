@@ -4,8 +4,8 @@ public class SourceCard extends Card {
 
     private String hexType;
 
-    public SourceCard(String name, String instruction, String type) {
-        super(name, instruction);
+    public SourceCard(String name,String type) {
+        super(name);
         hexType = type;
     }
 

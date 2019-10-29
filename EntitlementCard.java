@@ -5,8 +5,8 @@ public class EntitlementCard extends Card {
     private int numOfVictoryPoints;
     private int threshold;
 
-    public EntitlementCard(String name, String instruction, int points, int threshold) {
-        super(name, instruction);
+    public EntitlementCard(String name, int points, int threshold) {
+        super(name);
         numOfVictoryPoints = points;
         this.threshold = threshold;
     }
