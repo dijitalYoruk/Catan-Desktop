@@ -28,7 +28,6 @@ public class Settings {
     }
     private void writeToLocal(){
         FileOutputStream writer = null;
-        System.out.println(Paths.get(".").toAbsolutePath().normalize().toString() + "/src/com/catan/persistent_data/settings.txt");
         try {
             writer = new FileOutputStream(Paths.get(".").toAbsolutePath().normalize().toString() + "/src/com/catan/persistent_data/settings.txt");
         } catch (FileNotFoundException e) {

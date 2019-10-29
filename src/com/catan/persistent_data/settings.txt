@@ -1,4 +1,4 @@
-Kurtlar Vadisi
+CatanDefault
 12
 12
-14
+16

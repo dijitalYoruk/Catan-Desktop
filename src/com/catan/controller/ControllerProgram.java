@@ -20,7 +20,6 @@ public class ControllerProgram {
             Parent root = FXMLLoader.load(getClass().getResource("../view/game.fxml"));
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,7 +34,6 @@ public class ControllerProgram {
             Parent root = FXMLLoader.load(getClass().getResource("../view/settings.fxml"));
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
 
         } catch (IOException e) {
             e.printStackTrace();
