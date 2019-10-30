@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="settings" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerSettings">
+   <children>
+      <Label layoutX="389.0" layoutY="162.0" styleClass="thresholds" stylesheets="@style.css" text="     Select Theme" />
+      <MenuButton layoutX="645.0" layoutY="172.0" mnemonicParsing="false" text="MenuButton">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Kurtlar Vadisi" />
+          <MenuItem mnemonicParsing="false" text="Bilkent University" />
+        </items>
+      </MenuButton>
+      <ImageView fitHeight="85.0" fitWidth="107.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#returnToSettings" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/returnIcon.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="414.0" layoutY="244.0" onAction="#submitTheme" styleClass="program-button" stylesheets="@style.css" text="Submit" />
+   </children>
+</AnchorPane>
