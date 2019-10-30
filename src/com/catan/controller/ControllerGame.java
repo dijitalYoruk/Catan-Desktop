@@ -19,6 +19,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeInitialConstruction {
@@ -144,6 +145,17 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeI
         if (isStepActual) {
             // TODO rollDie will be implemented
         }
+
+        die.rollDie();
+        System.out.println(die.getDice1());
+        Image img = new Image("./com/catan/assets/die"+die.getDice1()+".png");
+        getImgDie1().setFill(new ImagePattern(img));
+        getImgDie1().setStroke(Color.color(0.4,0.4,0.4));
+        getImgDie1().setStrokeWidth(1);
+        Image img2 = new Image("./com/catan/assets/die"+die.getDice2()+".png");
+        getImgDie2().setFill(new ImagePattern(img2));
+        getImgDie2().setStroke(Color.color(0.4,0.4,0.4));
+        getImgDie2().setStrokeWidth(1);
     }
 
     @FXML
@@ -284,7 +296,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeI
 
     @FXML
     public void returnToProgram(ActionEvent actionEvent) {
-        try {
+        try{
             Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(new Scene(root, 1500, 800));

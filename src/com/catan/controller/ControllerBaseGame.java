@@ -5,6 +5,7 @@ import com.catan.modal.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -431,26 +432,37 @@ public class ControllerBaseGame {
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
-
+    private Settings settings;
+    protected Die die;
+    
     @FXML
     public void initialize() {
         terrainHexes = new ArrayList<>();
         vertices = new ArrayList<>();
         roads = new ArrayList<>();
         settlements = new ArrayList<>();
-
         players = new ArrayList<>();
         players.add(new PlayerActual(Constants.COLOR_RED));
         players.add(new PlayerAI(Constants.COLOR_BLUE));
         players.add(new PlayerAI(Constants.COLOR_PURPLE));
         players.add(new PlayerAI(Constants.COLOR_GREEN));
+        die = new Die();
 
+        settings = new Settings();
         constructHexesArray();
         constructVerticesAndRoads();
         initializeBoard();
         assignNumbersToHexes();
         initializeConstructionBox();
 
+        Image imgForDice1 = new Image("./com/catan/assets/die6.png");
+        imgDie1.setFill(new ImagePattern(imgForDice1));
+        imgDie1.setStroke(Color.color(0.4,0.4,0.4));
+        imgDie1.setStrokeWidth(1);
+        Image img2ForDice2 = new Image("./com/catan/assets/die6.png");
+        imgDie2.setFill(new ImagePattern(img2ForDice2));
+        imgDie2.setStroke(Color.color(0.4,0.4,0.4));
+        imgDie2.setStrokeWidth(1);
         Image img = new Image("./com/catan/assets/price_card.png");
         imgPriceCard.setFill(new ImagePattern(img));
         imgPriceCard.setStrokeWidth(0);

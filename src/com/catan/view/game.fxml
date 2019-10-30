@@ -190,13 +190,13 @@
       <Label fx:id="labelTurn" alignment="CENTER" layoutX="46.0" layoutY="297.0" prefWidth="285.0" styleClass="turn-label" text="Player1's turn" />
       <HBox layoutX="46.0" layoutY="683.0" prefHeight="70.0" prefWidth="230.0">
          <children>
-            <JFXButton id="die-button" text="Roll" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" width="70.0">
+            <JFXButton id="die-button" onAction="#rollDie" text="Roll" />
+            <Rectangle fx:id="imgDie1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" width="70.0">
                <HBox.margin>
                   <Insets left="10.0" top="1.0" />
                </HBox.margin>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" width="70.0">
+            <Rectangle fx:id="imgDie2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" width="70.0">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
@@ -322,6 +322,7 @@
          </font>
       </Label>
       <JFXButton id="end-button" layoutX="325.0" layoutY="684.0" onAction="#endTurn" text="End Turn" />
+      <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
 
 
 
