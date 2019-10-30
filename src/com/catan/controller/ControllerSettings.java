@@ -1,114 +1,135 @@
 package com.catan.controller;
 
-import com.jfoenix.controls.JFXTextArea;
+import com.catan.modal.Settings;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.shape.Rectangle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Paths;
+import java.io.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ControllerSettings {
+public class ControllerSettings implements Initializable {
     @FXML
-    JFXTextArea largestArmyTh;
+    private Label largestArmyTh;
     @FXML
-    JFXTextArea longestRoadTh;
+    private Label longestRoadTh;
     @FXML
-    JFXTextArea victoryPointTh;
+    private Label victoryPointTh;
+    @FXML
+    private Rectangle right1;
+    @FXML
+    private Rectangle right2;
+    @FXML
+    private Rectangle right3;
+    @FXML
+    private Rectangle left1;
+    @FXML
+    private Rectangle left2;
+    @FXML
+    private Rectangle left3;
+    @FXML
+    private MenuButton themes;
+
+    private Settings settingTemp;
     @FXML
     public void returnToProgram(MouseEvent actionEvent){
 
-        try {
+        try{
             Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+
     @FXML
-    public void returnToSettings(MouseEvent actionEvent){
+    public void changeTheme(ActionEvent actionEvent){
+        settingTemp.setCurrentTheme(((MenuItem)actionEvent.getTarget()).getText());
+        themes.setText(settingTemp.getCurrentTheme());
+    }
+    @FXML
+    public void changeTh(MouseEvent mouseEvent){
+        String id = (((Rectangle)mouseEvent.getSource()).getId()).toString();
 
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("../view/settings.fxml"));
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
+        if(id.substring(0, 1).equals("r"))
+        {
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            if(id.substring(5, 6).equals("1")){
+
+                settingTemp.setVictoryThreshold(settingTemp.getVictoryThreshold()+1);
+            }
+            if(id.substring(5, 6).equals("2")){
+                settingTemp.setArmyThreshold(settingTemp.getArmyThreshold()+1);
+            }
+            if(id.substring(5, 6).equals("3")){
+                settingTemp.setRoadThreshold(settingTemp.getRoadThreshold()+1);
+            }
+        }else{
+            if(id.substring(4, 5).equals("1")){
+                if(settingTemp.getVictoryThreshold() > 0)
+                    settingTemp.setVictoryThreshold(settingTemp.getVictoryThreshold()-1);
+            }
+            if(id.substring(4, 5).equals("2")){
+                if (settingTemp.getArmyThreshold() > 0)
+                    settingTemp.setArmyThreshold(settingTemp.getArmyThreshold()-1);
+            }
+            if(id.substring(4, 5).equals("3")){
+                if (settingTemp.getRoadThreshold() > 0)
+                    settingTemp.setRoadThreshold(settingTemp.getRoadThreshold()-1);
+            }
         }
-    }
-    @FXML
-    public void goToThresholds(ActionEvent actionEvent){
-        System.out.println("c1");
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("../view/thresholds.fxml"));
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        largestArmyTh.setText(settingTemp.getArmyThreshold()+"");
+        victoryPointTh.setText(settingTemp.getVictoryThreshold()+"");
+        longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
     }
 
-    @FXML
-    public void goToThemes(ActionEvent actionEvent){
-        System.out.println("c1");
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("../view/themes.fxml"));
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    public void goToMusic(ActionEvent actionEvent){
-        System.out.println("c1");
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("../view/changeMusic.fxml"));
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Image right = new Image("./com/catan/assets/right-arrow.png");
+        Image left = new Image("./com/catan/assets/left-arrow.png");
+        right1.setFill(new ImagePattern(right));
+        right1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        right1.setStrokeWidth(1);
 
-    @FXML
-    public void submitTheme(ActionEvent actionEvent){
+        right2.setFill(new ImagePattern(right));
+        right2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        right2.setStrokeWidth(1);
 
-    }
-    @FXML
-    public void submitMusic(ActionEvent actionEvent){
+        right3.setFill(new ImagePattern(right));
+        right3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        right3.setStrokeWidth(1);
 
-    }
-    @FXML
-    public void submitSettings(ActionEvent actionEvent)  {
-        try {
+        left1.setFill(new ImagePattern(left));
+        left1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        left1.setStrokeWidth(1);
 
-            FileWriter writer = new FileWriter(Paths.get(".").toAbsolutePath().normalize().toString() + "/src/com/catan/persistent_data/settings.txt", true);
-            writer.write(victoryPointTh.getText() + "\n");
-            writer.write(largestArmyTh.getText() + "\n");
-            writer.write(longestRoadTh.getText() );
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        left2.setFill(new ImagePattern(left));
+        left2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        left2.setStrokeWidth(1);
 
+        left3.setFill(new ImagePattern(left));
+        left3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        left3.setStrokeWidth(1);
+
+        settingTemp = new Settings();
+        largestArmyTh.setText(settingTemp.getArmyThreshold()+"");
+        victoryPointTh.setText(settingTemp.getVictoryThreshold()+"");
+        longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
+        themes.setText(settingTemp.getCurrentTheme());
     }
 }

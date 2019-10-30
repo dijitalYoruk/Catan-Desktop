@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="settings-pane" prefHeight="860.0" prefWidth="1583.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerSettings">
    <children>
@@ -14,20 +16,28 @@
             <Image url="@../assets/returnIcon.png" />
          </image>
       </ImageView>
-      <VBox layoutX="588.0" layoutY="75.0" prefHeight="300.0" prefWidth="324.0">
-         <children>
-            <JFXButton onAction="#goToThresholds" prefHeight="67.0" prefWidth="292.0" styleClass="settings-button" text="Change Game Thresholds" />
-            <JFXButton onAction="#goToThemes" styleClass="program-button" text="Change Theme">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </JFXButton>
-            <JFXButton onAction="#goToMusic" styleClass="program-button" text="Change Music">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </JFXButton>
-         </children>
-      </VBox>
+      <Label alignment="CENTER" layoutX="402.0" layoutY="35.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text=" Victory Points" />
+      <Label alignment="CENTER" layoutX="402.0" layoutY="91.0" styleClass="thresholds" stylesheets="@style.css" text=" Largest Army" />
+      <Label alignment="CENTER" layoutX="402.0" layoutY="145.0" styleClass="thresholds" stylesheets="@style.css" text=" Longest Road" />
+      <Label alignment="CENTER" layoutX="402.0" layoutY="223.0" styleClass="thresholds" stylesheets="@style.css" text="     Select Theme" />
+      <MenuButton fx:id="themes" layoutX="739.0" layoutY="233.0" mnemonicParsing="false" text="Default">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Kurtlar Vadisi" />
+            <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Bilkent University" />
+            <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="CatanDefault" />
+         </items>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </MenuButton>
+      <Rectangle fx:id="right1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="847.0" layoutY="45.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="left1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="720.0" layoutY="45.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="left2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="720.0" layoutY="101.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="right2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="847.0" layoutY="101.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="left3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="720.0" layoutY="155.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Rectangle fx:id="right3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="847.0" layoutY="159.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+      <Label fx:id="victoryPointTh" alignment="CENTER" layoutX="767.0" layoutY="47.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+      <Label fx:id="largestArmyTh" alignment="CENTER" layoutX="767.0" layoutY="103.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+      <Label fx:id="longestRoadTh" alignment="CENTER" layoutX="767.0" layoutY="157.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
    </children>
 </AnchorPane>
