@@ -11,6 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="game-pane" fx:id="root" onMouseClicked="#unselectConstructions" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerGame">
    <children>
@@ -206,6 +207,121 @@
       <Label fx:id="labelLogs" alignment="TOP_LEFT" layoutX="47.0" layoutY="487.0" prefHeight="116.0" prefWidth="340.0" text="Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs " wrapText="true" />
       <Line endX="158.0" layoutX="226.0" layoutY="472.0" startX="-178.0" />
       <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
+      <Circle fx:id="circleNumberOnHex1" fill="WHITE" layoutX="1006.0" layoutY="116.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex2" fill="WHITE" layoutX="1137.0" layoutY="115.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex3" fill="WHITE" layoutX="1268.0" layoutY="115.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex4" fill="WHITE" layoutX="939.0" layoutY="217.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex5" fill="WHITE" layoutX="1071.0" layoutY="217.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex6" fill="WHITE" layoutX="1201.0" layoutY="217.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex7" fill="WHITE" layoutX="1333.0" layoutY="217.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex8" fill="WHITE" layoutX="876.0" layoutY="322.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex9" fill="WHITE" layoutX="1006.0" layoutY="322.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex10" fill="WHITE" layoutX="1137.0" layoutY="320.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex11" fill="WHITE" layoutX="1266.0" layoutY="321.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex12" fill="WHITE" layoutX="1397.0" layoutY="322.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex13" fill="WHITE" layoutX="940.0" layoutY="426.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex14" fill="WHITE" layoutX="1071.0" layoutY="426.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex15" fill="WHITE" layoutX="1202.0" layoutY="426.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex16" fill="WHITE" layoutX="1333.0" layoutY="426.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex17" fill="WHITE" layoutX="1006.0" layoutY="530.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex18" fill="WHITE" layoutX="1137.0" layoutY="528.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circleNumberOnHex19" fill="WHITE" layoutX="1268.0" layoutY="528.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="labelHexNum1" layoutX="1001.0" layoutY="103.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum2" layoutX="1132.0" layoutY="102.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum3" layoutX="1263.0" layoutY="103.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum4" layoutX="934.0" layoutY="204.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum5" layoutX="1066.0" layoutY="204.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum6" layoutX="1196.0" layoutY="204.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum7" layoutX="1328.0" layoutY="204.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum8" layoutX="871.0" layoutY="308.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum9" layoutX="1001.0" layoutY="309.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum10" layoutX="1131.0" layoutY="306.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum11" layoutX="1261.0" layoutY="308.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum12" layoutX="1392.0" layoutY="308.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum13" layoutX="935.0" layoutY="413.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum14" layoutX="1066.0" layoutY="413.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum15" layoutX="1197.0" layoutY="413.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum16" layoutX="1328.0" layoutY="412.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum17" layoutX="1001.0" layoutY="517.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum18" layoutX="1132.0" layoutY="515.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHexNum19" layoutX="1263.0" layoutY="515.0" text="0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton id="end-button" layoutX="325.0" layoutY="684.0" onAction="#endTurn" text="End Turn" />
 
 
 

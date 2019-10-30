@@ -8,10 +8,12 @@ public class Vertex {
 
     private Circle shape;
     private ArrayList<Vertex> neighbors;
+    private boolean isActive;
 
     public Vertex(Circle shape) {
         neighbors = new ArrayList<>();
         this.shape = shape;
+        this.isActive = false;
     }
 
     public ArrayList<Vertex> getNeighbors() {
@@ -34,4 +36,11 @@ public class Vertex {
         neighbors.add(vertex);
     }
 
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 }

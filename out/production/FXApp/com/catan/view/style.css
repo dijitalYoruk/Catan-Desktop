@@ -73,3 +73,13 @@
     -fx-background-image: url("../assets/icon_back.jpg");
     -fx-background-size: 50px;
 }
+
+#end-button {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 5;
+    -fx-pref-width: 120;
+    -fx-pref-height: 70;
+    -fx-font-size: 20;
+}

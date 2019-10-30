@@ -1,5 +1,7 @@
 package com.catan.controller;
 
+import com.catan.Util.Constants;
+import com.catan.interfaces.InterfaceMakeInitialConstruction;
 import com.catan.modal.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,35 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ControllerGame extends ControllerBaseGame{
-
-    // constants
-    private final String ROAD = "road";
-    private final String VILLAGE = "village";
-    private final String CITY = "city";
-    private final String CIVILISATION = "civilisation";
-    private final int CONSTRUCTION_RADIUS = 22;
-
-    private final Color COLOR_CONSTRUCTION_UNSELECTED = Color.color(0.4,0.4,0.4);
-    private final Color COLOR_CONSTRUCTION_SELECTED = Color.color(1,0,0);
-    private final Color COLOR_BLUR_VERTEX = Color.valueOf("#ffde2173");
-    private final Color COLOR_BLEND_VERTEX = Color.valueOf("#ffdd21");
-    private final Color COLOR_ROAD_SELECTION_VERTEX = Color.valueOf("#FF9800");
-
-    private final String PATH_CITY_RED    = "./com/catan/assets/city_red.png";
-    private final String PATH_CITY_BLUE   = "./com/catan/assets/city_blue.png";
-    private final String PATH_CITY_PURPLE = "./com/catan/assets/city_purple.png";
-    private final String PATH_CITY_GREEN  = "./com/catan/assets/city_green.png";
-
-    private final String PATH_VILLAGE_RED    = "./com/catan/assets/village_red.png";
-    private final String PATH_VILLAGE_BLUE   = "./com/catan/assets/village_blue.png";
-    private final String PATH_VILLAGE_PURPLE = "./com/catan/assets/village_purple.png";
-    private final String PATH_VILLAGE_GREEN   = "./com/catan/assets/village_green.png";
-
-    private final String PATH_CIVILISATION_RED    = "./com/catan/assets/civilisation_red.png";
-    private final String PATH_CIVILISATION_BLUE   = "./com/catan/assets/civilisation_blue.png";
-    private final String PATH_CIVILISATION_PURPLE = "./com/catan/assets/civilisation_purple.png";
-    private final String PATH_CIVILISATION_GREEN  = "./com/catan/assets/civilisation_green.png";
+public class ControllerGame extends ControllerBaseGame implements InterfaceMakeInitialConstruction {
 
     // properties
     private boolean constructionUnselect = true;
@@ -55,28 +29,65 @@ public class ControllerGame extends ControllerBaseGame{
     private Vertex roadVertex1 = null;
     private Vertex roadVertex2 = null;
 
+    private boolean isStepInitial = true;
+    private boolean isStepActual = false;
+    private boolean isConstructionBuild = false;
+    private boolean isRoadBuild = false;
+    private int initialStepCount = 0;
+    private Player currentPlayer;
+    private int playerTurn = 0;
+
+    @Override
+    public void initialize() {
+        super.initialize();
+        selectConstruction(imgRoad);
+        currentPlayer = getPlayers().get(0);
+        activateAllVertices();
+
+    }
+
     @FXML
     public void selectConstruction(MouseEvent mouseEvent) {
-        // setting all of the pane as unselected
-        imgRoad.setStroke(COLOR_CONSTRUCTION_UNSELECTED);
-        imgCity.setStroke(COLOR_CONSTRUCTION_UNSELECTED);
-        imgVillage.setStroke(COLOR_CONSTRUCTION_UNSELECTED);
-        imgCivilisation.setStroke(COLOR_CONSTRUCTION_UNSELECTED);
-
-        // setting the color of selected construction.
         Rectangle rectangle = (Rectangle) mouseEvent.getSource();
-        rectangle.setStroke(COLOR_CONSTRUCTION_SELECTED);
+        selectConstruction(rectangle);
+    }
+
+    public void selectConstruction(Rectangle rectangle) {
+        // setting all of the pane as unselected
+        imgRoad.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCity.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgVillage.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCivilisation.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
 
         // setting selected construction
         if (rectangle == imgRoad) {
-            selectedConstruction = ROAD;
+            selectedConstruction = Constants.ROAD;
         } else if (rectangle == imgCity) {
-            selectedConstruction = CITY;
+            selectedConstruction = Constants.CITY;
         } else if (rectangle == imgVillage) {
-            selectedConstruction = VILLAGE;
+            selectedConstruction = Constants.VILLAGE;
         } else if (rectangle == imgCivilisation) {
-            selectedConstruction = CIVILISATION;
+            selectedConstruction = Constants.CIVILISATION;
         }
+
+        if (currentPlayer instanceof PlayerActual) {
+            if (isStepInitial && !isRoadBuild) {
+                selectedConstruction = Constants.ROAD;
+                rectangle = imgRoad;
+            }
+
+            else if (isStepInitial && !isConstructionBuild) {
+                selectedConstruction = Constants.VILLAGE;
+                rectangle = imgVillage;
+            }
+
+            else if (isStepInitial) {
+                return;
+            }
+        }
+
+        // setting the color of selected construction.
+        rectangle.setStroke(Constants.COLOR_CONSTRUCTION_SELECTED);
 
         // disabling road selection
         refreshRoadSelectionVertices();
@@ -85,12 +96,14 @@ public class ControllerGame extends ControllerBaseGame{
 
     @FXML
     public void unselectConstructions(MouseEvent mouseEvent) {
-        if (constructionUnselect) {
-            imgRoad.setStroke(COLOR_CONSTRUCTION_UNSELECTED);
-            imgCity.setStroke(COLOR_CONSTRUCTION_UNSELECTED);
-            imgVillage.setStroke(COLOR_CONSTRUCTION_UNSELECTED);
-            imgCivilisation.setStroke(COLOR_CONSTRUCTION_UNSELECTED);
+        if (isStepActual && constructionUnselect) {
+            imgRoad.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+            imgCity.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+            imgVillage.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+            imgCivilisation.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
             selectedConstruction = "";
+        }
+        if (constructionUnselect) {
             refreshRoadSelectionVertices();
         }
         constructionUnselect = true;
@@ -99,76 +112,101 @@ public class ControllerGame extends ControllerBaseGame{
     @FXML
     public void blurVertex(MouseEvent mouseEvent) {
         Circle circle = (Circle) mouseEvent.getSource();
-        if (circle.getRadius() != CONSTRUCTION_RADIUS && circle.getFill() != COLOR_ROAD_SELECTION_VERTEX) {
-            circle.setFill(COLOR_BLUR_VERTEX);
+        if (circle.getRadius() != Constants.CONSTRUCTION_RADIUS && circle.getFill() != Constants.COLOR_ROAD_SELECTION_VERTEX) {
+            circle.setFill(Constants.COLOR_BLUR_VERTEX);
         }
     }
 
     @FXML
     public void blendVertex(MouseEvent mouseEvent) {
         Circle circle = (Circle) mouseEvent.getSource();
-        if (circle.getRadius() != CONSTRUCTION_RADIUS) {
-            circle.setFill(COLOR_BLEND_VERTEX);
+        if (circle.getRadius() != Constants.CONSTRUCTION_RADIUS) {
+            circle.setFill(Constants.COLOR_BLEND_VERTEX);
         }
     }
 
     @FXML
     void trade(ActionEvent event) {
-        // TODO trade will be implemented
+        if (isStepActual) {
+            // TODO trade will be implemented
+        }
     }
 
     @FXML
     void playDevelopmentCard(ActionEvent event) {
-        // TODO playDevelopmentCard will be implemented
+        if (isStepActual) {
+            // TODO playDevelopmentCard will be implemented
+        }
     }
 
     @FXML
     void rollDie(ActionEvent event) {
-        // TODO rollDie will be implemented
+        if (isStepActual) {
+            // TODO rollDie will be implemented
+        }
     }
 
     @FXML
     void buyDevelopmentCard(ActionEvent event) {
-        // TODO buyDevelopmentCard will be implemented
+        if (isStepActual) {
+            // TODO buyDevelopmentCard will be implemented
+        }
     }
 
     @FXML
     public void makeConstruction(MouseEvent mouseEvent) {
         Circle circle = (Circle) mouseEvent.getSource();
+        makeConstruction(circle);
+    }
 
-        if (selectedConstruction.equals(CITY) || selectedConstruction.equals(VILLAGE) || selectedConstruction.equals(CIVILISATION)) {
+    public void makeConstruction(Circle circle) {
+        if (selectedConstruction.equals(Constants.CITY) || selectedConstruction.equals(Constants.VILLAGE) || selectedConstruction.equals(Constants.CIVILISATION)) {
+            if (currentPlayer instanceof PlayerActual && isStepInitial && isRoadBuild && !isConstructionBuild) {
+                selectConstruction(imgVillage);
+                isConstructionBuild = true;
+                selectConstruction((Rectangle) null);
+            }
+
             Vertex vertex = getCorrespondingVertex(circle);
 
             if (vertex != null && isVertexSuitableForConstruction(vertex)) {
                 Settlement settlement;
+                String imagePath = "";
                 switch (selectedConstruction) {
-                    case CITY:
-                        settlement = new City(PATH_CITY_RED, vertex);
+                    case Constants.CITY:
+                        imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
+                        settlement = new City(imagePath, vertex);
                         break;
-                    case VILLAGE:
-                        settlement = new Village(PATH_VILLAGE_GREEN, vertex);
+                    case Constants.VILLAGE:
+                        imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
+                        settlement = new Village(imagePath, vertex);
                         break;
                     default:
-                        settlement = new Civilisation(PATH_CIVILISATION_PURPLE, vertex);
+                        imagePath = currentPlayer.getSettlementImagePath(Constants.CIVILISATION);
+                        settlement = new Civilisation(imagePath, vertex);
                         break;
                 }
 
                 Image img = new Image(settlement.getImagePath());
                 vertex.getShape().setFill(new ImagePattern(img));
-                vertex.getShape().setRadius(CONSTRUCTION_RADIUS);
+                vertex.getShape().setRadius(Constants.CONSTRUCTION_RADIUS);
                 getSettlements().add(settlement);
-                selectedConstruction = "";
-                constructionUnselect = true;
+                currentPlayer.getSettlements().add(settlement);
+                unselectConstructions(null);
             } else {
                 outputNotPossible();
             }
         }
-        else if (selectedConstruction.equals(ROAD)) {
+        else if (selectedConstruction.equals(Constants.ROAD)) {
             if (roadVertex1 == null) {
+                if (currentPlayer instanceof PlayerActual && isStepInitial && !isRoadBuild) {
+                    selectConstruction(imgRoad);
+                }
+
                 constructionUnselect = false;
                 roadVertex1 = getCorrespondingVertex(circle);
-                if (circle.getRadius() != CONSTRUCTION_RADIUS) {
-                    circle.setFill(COLOR_ROAD_SELECTION_VERTEX);
+                if (circle.getRadius() != Constants.CONSTRUCTION_RADIUS) {
+                    circle.setFill(Constants.COLOR_ROAD_SELECTION_VERTEX);
                 }
             }
             else {
@@ -198,21 +236,29 @@ public class ControllerGame extends ControllerBaseGame{
     private void constructRoad() {
         Road road = getCorrespondingRoad();
         if (road != null && !road.getRoad().isVisible()) {
+            Color color = currentPlayer.getRoadColor();
+            road.getRoad().setStroke(color);
             road.getRoad().setVisible(true);
+            currentPlayer.getRoads().add(road);
+
+            if (currentPlayer instanceof PlayerActual && (isStepInitial && !isRoadBuild)) {
+                isRoadBuild =true;
+                selectConstruction(imgVillage);
+                activatePlayerVertices();
+            }
+
         } else {
             outputNotPossible();
         }
-
-        refreshRoadSelectionVertices();
-        selectedConstruction = "";
+        unselectConstructions(null);
     }
 
     private void refreshRoadSelectionVertices() {
-        if (roadVertex1 != null && roadVertex1.getShape().getRadius() != CONSTRUCTION_RADIUS) {
-            roadVertex1.getShape().setFill(COLOR_BLUR_VERTEX);
+        if (roadVertex1 != null && roadVertex1.getShape().getRadius() != Constants.CONSTRUCTION_RADIUS) {
+            roadVertex1.getShape().setFill(Constants.COLOR_BLUR_VERTEX);
         }
-        if (roadVertex2 != null && roadVertex2.getShape().getRadius() != CONSTRUCTION_RADIUS) {
-            roadVertex2.getShape().setFill(COLOR_BLUR_VERTEX);
+        if (roadVertex2 != null && roadVertex2.getShape().getRadius() != Constants.CONSTRUCTION_RADIUS) {
+            roadVertex2.getShape().setFill(Constants.COLOR_BLUR_VERTEX);
         }
         roadVertex1 = null;
         roadVertex2 = null;
@@ -248,4 +294,106 @@ public class ControllerGame extends ControllerBaseGame{
         }
     }
 
+    @FXML
+    public void endTurn(ActionEvent actionEvent) {
+        boolean flag = false;
+
+        for (int i = playerTurn; i < 5; i++) {
+            i = i % 4;
+            playerTurn = i;
+            Player player = getPlayers().get(i);
+            currentPlayer = player;
+
+            if (isStepInitial) {
+                activateAllVertices();
+            }
+
+            if (player instanceof PlayerAI) {
+                if (isStepInitial) {
+                    ((PlayerAI) player).makeInitialConstruction(this);
+                }
+
+                if (isStepActual) {
+                    System.out.println("passes as actual ai");
+                }
+            }
+
+            else if (player instanceof  PlayerActual) {
+                System.out.println(isStepInitial);
+
+                if ((isStepInitial && isRoadBuild && isConstructionBuild)) {
+                    isRoadBuild = false;
+                    isConstructionBuild = false;
+                    System.out.println("turn ended initial");
+                } else if (isStepActual && flag) {
+                    return;
+                } else if (isStepActual) {
+                    System.out.println("turn ended");
+                } else {
+                    outputNotPossible();
+                    if (isStepInitial) {
+                        System.out.println("select construction");
+                        selectConstruction(imgRoad);
+                    }
+
+                    return;
+                }
+            }
+
+            flag = true;
+
+            if (isStepInitial) {
+                initialStepCount++;
+                System.out.println(initialStepCount);
+            }
+
+            if (initialStepCount == 8) {
+                isStepActual = true;
+                isStepInitial = false;
+                System.out.println("actual oldu");
+            }
+        }
+
+        currentPlayer = getPlayers().get(0);
+    }
+
+    public void activateAllVertices() {
+        for (Vertex vertex: getVertices()) {
+            vertex.setActive(true);
+        }
+    }
+
+    public void deActivateAllVertices() {
+        for (Vertex vertex: getVertices()) {
+            vertex.setActive(false);
+        }
+    }
+
+    public ArrayList<Vertex> getActivatedVertices() {
+        ArrayList<Vertex> activated = new ArrayList<>();
+        for(Vertex vertex: getVertices()) {
+            if (vertex.isActive()) {
+                activated.add(vertex);
+            }
+        }
+        return activated;
+    }
+
+    public void activatePlayerVertices() {
+        deActivateAllVertices();
+        ArrayList<Road> roads = currentPlayer.getRoads();
+
+        for (Road road: roads) {
+            for(Vertex vertex: road.getVertices()) {
+                if (vertex.getShape().getRadius() != Constants.CONSTRUCTION_RADIUS && isVertexSuitableForConstruction(vertex)) {
+                    vertex.setActive(true);
+                }
+            }
+        }
+    }
+
+
+    public void setSelectedConstruction(String selectedConstruction) {
+        this.selectedConstruction = selectedConstruction;
+    }
 }
