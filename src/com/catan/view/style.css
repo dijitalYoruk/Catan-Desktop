@@ -69,14 +69,13 @@
     -fx-background-color: orange;
 }
 
-.back-button {
+.game-back-button {
     -fx-background-image: url("../assets/icon_back.jpg");
     -fx-background-size: 50px;
 }
 
 .instructions-back-button {
     -fx-background-color: orange;
-    -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-background-radius: 30;
     -fx-background-repeat: no-repeat;
