@@ -8,7 +8,7 @@
 
 <AnchorPane id="program-pane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerInstructions">
    <children>
-      <Button layoutX="42.0" layoutY="663.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
+      <Button layoutX="69.0" layoutY="663.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
       <JFXTextArea fx:id="instructions" editable="false" focusColor="#285eff" layoutX="454.0" layoutY="81.0" prefHeight="683.0" prefWidth="593.0" style="-fx-background-color: orange; -fx-opacity: 0.9; -fx-text-fill: white;" text="ASDASDASD&#10;" unFocusColor="BLACK">
          <font>
             <Font name="System Bold" size="18.0" />
