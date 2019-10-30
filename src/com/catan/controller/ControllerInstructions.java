@@ -1,5 +1,6 @@
 package com.catan.controller;
 
+import com.catan.modal.Instruction;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,28 +10,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class ControllerInstructions {
 
     @FXML
     private JFXTextArea instructions;
     private String instructionsStr;
+    Instruction instruction;
 
     @FXML
     public void initialize() {
-        instructionsStr = "";
-        try {
-            File file = new File("./src/com/catan/persistent_data/instructions.txt");
-            Scanner sc = new Scanner(file);
-            while (sc.hasNextLine()) {
-                instructionsStr += " • " + sc.nextLine() + "\n";
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        instruction = new Instruction();
+        instructionsStr = instruction.getGeneralInst();
         instructions.setText(instructionsStr);
     }
 
