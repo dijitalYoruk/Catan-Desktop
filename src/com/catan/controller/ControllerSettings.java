@@ -21,7 +21,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerSettings implements Initializable {
+public class ControllerSettings extends ControllerBase {
     @FXML
     private Label largestArmyTh;
     @FXML
@@ -43,19 +43,43 @@ public class ControllerSettings implements Initializable {
     @FXML
     private MenuButton themes;
 
+    // properties
     private Settings settingTemp;
+
     @FXML
-    public void returnToProgram(MouseEvent actionEvent){
+    public void initialize() {
+        Image right = new Image("./com/catan/assets/right-arrow.png");
+        Image left = new Image("./com/catan/assets/left-arrow.png");
+        right1.setFill(new ImagePattern(right));
+        right1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        right1.setStrokeWidth(1);
 
-        try{
-            Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        right2.setFill(new ImagePattern(right));
+        right2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        right2.setStrokeWidth(1);
+
+        right3.setFill(new ImagePattern(right));
+        right3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        right3.setStrokeWidth(1);
+
+        left1.setFill(new ImagePattern(left));
+        left1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        left1.setStrokeWidth(1);
+
+        left2.setFill(new ImagePattern(left));
+        left2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        left2.setStrokeWidth(1);
+
+        left3.setFill(new ImagePattern(left));
+        left3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
+        left3.setStrokeWidth(1);
+
+        settingTemp = new Settings();
+        largestArmyTh.setText(settingTemp.getArmyThreshold()+"");
+        victoryPointTh.setText(settingTemp.getVictoryThreshold()+"");
+        longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
+        themes.setText(settingTemp.getCurrentTheme());
     }
-
 
     @FXML
     public void changeTheme(ActionEvent actionEvent){
@@ -98,38 +122,5 @@ public class ControllerSettings implements Initializable {
         longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        Image right = new Image("./com/catan/assets/right-arrow.png");
-        Image left = new Image("./com/catan/assets/left-arrow.png");
-        right1.setFill(new ImagePattern(right));
-        right1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        right1.setStrokeWidth(1);
 
-        right2.setFill(new ImagePattern(right));
-        right2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        right2.setStrokeWidth(1);
-
-        right3.setFill(new ImagePattern(right));
-        right3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        right3.setStrokeWidth(1);
-
-        left1.setFill(new ImagePattern(left));
-        left1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        left1.setStrokeWidth(1);
-
-        left2.setFill(new ImagePattern(left));
-        left2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        left2.setStrokeWidth(1);
-
-        left3.setFill(new ImagePattern(left));
-        left3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        left3.setStrokeWidth(1);
-
-        settingTemp = new Settings();
-        largestArmyTh.setText(settingTemp.getArmyThreshold()+"");
-        victoryPointTh.setText(settingTemp.getVictoryThreshold()+"");
-        longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
-        themes.setText(settingTemp.getCurrentTheme());
-    }
 }

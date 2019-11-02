@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="settings-pane" prefHeight="860.0" prefWidth="1583.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerSettings">
    <children>
-      <ImageView fitHeight="85.0" fitWidth="107.0" onMouseClicked="#returnToProgram" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/returnIcon.png" />
-         </image>
-      </ImageView>
       <Label alignment="CENTER" layoutX="402.0" layoutY="35.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text=" Victory Points" />
       <Label alignment="CENTER" layoutX="402.0" layoutY="91.0" styleClass="thresholds" stylesheets="@style.css" text=" Largest Army" />
       <Label alignment="CENTER" layoutX="402.0" layoutY="145.0" styleClass="thresholds" stylesheets="@style.css" text=" Longest Road" />
@@ -39,5 +33,6 @@
       <Label fx:id="victoryPointTh" alignment="CENTER" layoutX="767.0" layoutY="47.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
       <Label fx:id="largestArmyTh" alignment="CENTER" layoutX="767.0" layoutY="103.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
       <Label fx:id="longestRoadTh" alignment="CENTER" layoutX="767.0" layoutY="157.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+      <Button layoutX="79.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
    </children>
 </AnchorPane>

@@ -4,10 +4,12 @@ public class Settlement extends Construction {
 
     private Vertex vertex;
     private int sourceCardProfit;
+    private Player player;
 
-    public Settlement(String imagePath, Vertex vertex,int sourceCardProfit) {
+    public Settlement(String imagePath, Vertex vertex, int sourceCardProfit, Player player) {
         super(imagePath);
         this.vertex = vertex;
+        this.player = player;
         this.sourceCardProfit = sourceCardProfit;
     }
 
@@ -31,4 +33,11 @@ public class Settlement extends Construction {
         return this.vertex == vertex;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 }

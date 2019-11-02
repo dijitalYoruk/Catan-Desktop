@@ -16,7 +16,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
-public class ControllerBaseGame {
+public class ControllerBaseGame extends ControllerBase {
 
     // FXML Properties
     @FXML
