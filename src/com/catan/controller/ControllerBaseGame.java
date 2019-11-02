@@ -1,5 +1,6 @@
 package com.catan.controller;
 
+import com.catan.Util.Constants;
 import com.catan.modal.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,7 +16,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
-public class ControllerBaseGame {
+public class ControllerBaseGame extends ControllerBase {
 
     // FXML Properties
     @FXML
@@ -330,25 +331,128 @@ public class ControllerBaseGame {
     private Label labelPlayer;
     @FXML
     private Label labelLogs;
+    @FXML
+    private Circle circleNumberOnHex1;
+
+    @FXML
+    private Circle circleNumberOnHex2;
+
+    @FXML
+    private Circle circleNumberOnHex3;
+
+    @FXML
+    private Circle circleNumberOnHex4;
+
+    @FXML
+    private Circle circleNumberOnHex5;
+
+    @FXML
+    private Circle circleNumberOnHex6;
+
+    @FXML
+    private Circle circleNumberOnHex7;
+
+    @FXML
+    private Circle circleNumberOnHex8;
+
+    @FXML
+    private Circle circleNumberOnHex9;
+
+    @FXML
+    private Circle circleNumberOnHex10;
+
+    @FXML
+    private Circle circleNumberOnHex11;
+
+    @FXML
+    private Circle circleNumberOnHex12;
+
+    @FXML
+    private Circle circleNumberOnHex13;
+
+    @FXML
+    private Circle circleNumberOnHex14;
+
+    @FXML
+    private Circle circleNumberOnHex15;
+
+    @FXML
+    private Circle circleNumberOnHex16;
+
+    @FXML
+    private Circle circleNumberOnHex17;
+
+    @FXML
+    private Circle circleNumberOnHex18;
+
+    @FXML
+    private Circle circleNumberOnHex19;
+    @FXML
+    private Label labelHexNum1;
+    @FXML
+    private Label labelHexNum2;
+    @FXML
+    private Label labelHexNum3;
+    @FXML
+    private Label labelHexNum4;
+    @FXML
+    private Label labelHexNum5;
+    @FXML
+    private Label labelHexNum6;
+    @FXML
+    private Label labelHexNum7;
+    @FXML
+    private Label labelHexNum8;
+    @FXML
+    private Label labelHexNum9;
+    @FXML
+    private Label labelHexNum10;
+    @FXML
+    private Label labelHexNum11;
+    @FXML
+    private Label labelHexNum12;
+    @FXML
+    private Label labelHexNum13;
+    @FXML
+    private Label labelHexNum14;
+    @FXML
+    private Label labelHexNum15;
+    @FXML
+    private Label labelHexNum16;
+    @FXML
+    private Label labelHexNum17;
+    @FXML
+    private Label labelHexNum18;
+    @FXML
+    private Label labelHexNum19;
 
     // Properties
     private ArrayList<TerrainHex> terrainHexes;
     private ArrayList<Vertex> vertices;
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
+    private ArrayList<Player> players;
     private Settings settings;
     protected Die die;
+    
     @FXML
     public void initialize() {
         terrainHexes = new ArrayList<>();
         vertices = new ArrayList<>();
         roads = new ArrayList<>();
         settlements = new ArrayList<>();
+        players = new ArrayList<>();
+        players.add(new PlayerActual(Constants.COLOR_RED));
+        players.add(new PlayerAI(Constants.COLOR_BLUE));
+        players.add(new PlayerAI(Constants.COLOR_PURPLE));
+        players.add(new PlayerAI(Constants.COLOR_GREEN));
         die = new Die();
+
         settings = new Settings();
         constructHexesArray();
         constructVerticesAndRoads();
         initializeBoard();
+        assignNumbersToHexes();
         initializeConstructionBox();
 
         Image imgForDice1 = new Image("./com/catan/assets/die6.png");
@@ -362,6 +466,32 @@ public class ControllerBaseGame {
         Image img = new Image("./com/catan/assets/price_card.png");
         imgPriceCard.setFill(new ImagePattern(img));
         imgPriceCard.setStrokeWidth(0);
+    }
+
+    private void assignNumbersToHexes() {
+        int i = 0;
+        int[] numbers = {
+                2, 3, 3, 4, 4, 5,
+                5, 6, 6, 8, 8, 9,
+                9, 10, 10, 11, 11, 12
+        };
+
+        while (i < 18) {
+            int index = (int) (Math.random() * terrainHexes.size());
+            TerrainHex hex = terrainHexes.get(index);
+
+            if (hex != null) {
+                if (hex.getNumberOnHex() == 0 && !hex.getSourceCardName().equals("")) {
+                    hex.setNumberOnHex(numbers[i]);
+
+                    if (numbers[i] > 9) {
+                        double newX = hex.getLabelOnHex().getLayoutX() - 6;
+                        hex.getLabelOnHex().setLayoutX(newX);
+                    }
+                    i++;
+                }
+            }
+        }
     }
 
     private void initializeConstructionBox() {
@@ -858,9 +988,9 @@ public class ControllerBaseGame {
         int countOfPasture = 4;
         int countOfForest = 4;
         int countOfDesert = 1;
-        int countOfGrain = 3;
+        int countOfFields = 3;
         int countOfHill = 4;
-        int countOfOwe = 3;
+        int countOfMountain = 3;
         int placedFields = 0;
 
         while (placedFields != 19) {
@@ -876,38 +1006,44 @@ public class ControllerBaseGame {
                 String ASSET_PATH_PASTURE = "./com/catan/assets/pasture.png";
                 img = new Image(ASSET_PATH_PASTURE);
                 color = Color.color(0.2,1,0.2);
+                hex.setSourceCardName("wool");
             }
             else if (tmp == 2 && countOfForest > 0) {
                 countOfForest--;
                 String ASSET_PATH_FOREST = "./com/catan/assets/forest.png";
                 img = new Image(ASSET_PATH_FOREST);
                 color = Color.color(0.3,1,0.2);
+                hex.setSourceCardName("lumber");
             }
             else if (tmp == 3 && countOfDesert > 0) {
                 countOfDesert--;
                 String ASSET_PATH_DESERT = "./com/catan/assets/desert.png";
                 img = new Image(ASSET_PATH_DESERT);
                 color = Color.color(0.4,0.3,0.2);
+                Image imgThief = new Image("./com/catan/assets/icon_thief.gif");
+                hex.getCircleNumberOnHex().setFill(new ImagePattern(imgThief));
             }
-            else if (tmp == 4 && countOfOwe > 0) {
-                countOfOwe--;
-                String ASSET_PATH_OWE = "./com/catan/assets/owe.png";
+            else if (tmp == 4 && countOfMountain > 0) {
+                countOfMountain--;
+                String ASSET_PATH_OWE = "com/catan/assets/mountains.png";
                 img = new Image(ASSET_PATH_OWE);
                 color = Color.color(0.4,0.4,0.4);
+                hex.setSourceCardName("ore");
             }
-            else if (tmp == 5 && countOfGrain > 0) {
-                countOfGrain--;
-                String ASSET_PATH_GRAIN = "./com/catan/assets/grain.png";
+            else if (tmp == 5 && countOfFields > 0) {
+                countOfFields--;
+                String ASSET_PATH_GRAIN = "com/catan/assets/fields.png";
                 img = new Image(ASSET_PATH_GRAIN);
                 color = Color.color(1,0.5,0);
+                hex.setSourceCardName("grain");
             }
             else if (tmp == 6 && countOfHill > 0) {
                 countOfHill--;
                 String ASSET_PATH_HILL = "./com/catan/assets/hill.png";
                 img = new Image(ASSET_PATH_HILL);
                 color = Color.color(1,0,0);
+                hex.setSourceCardName("brick");
             }
-
             if (img != null) {
                 placedFields++;
                 hex.getShape().setFill(new ImagePattern(img));
@@ -918,25 +1054,26 @@ public class ControllerBaseGame {
     }
 
     private void constructHexesArray() {
-        terrainHexes.add(new TerrainHex(terrainHex1,"hex1"));
-        terrainHexes.add(new TerrainHex(terrainHex2,"hex2"));
-        terrainHexes.add(new TerrainHex(terrainHex3,"hex3"));
-        terrainHexes.add(new TerrainHex(terrainHex4,"hex4"));
-        terrainHexes.add(new TerrainHex(terrainHex5,"hex5"));
-        terrainHexes.add(new TerrainHex(terrainHex6,"hex6"));
-        terrainHexes.add(new TerrainHex(terrainHex7,"hex7"));
-        terrainHexes.add(new TerrainHex(terrainHex8,"hex8"));
-        terrainHexes.add(new TerrainHex(terrainHex9,"hex9"));
-        terrainHexes.add(new TerrainHex(terrainHex10,"hex10"));
-        terrainHexes.add(new TerrainHex(terrainHex11,"hex11"));
-        terrainHexes.add(new TerrainHex(terrainHex12,"hex12"));
-        terrainHexes.add(new TerrainHex(terrainHex13,"hex13"));
-        terrainHexes.add(new TerrainHex(terrainHex14,"hex14"));
-        terrainHexes.add(new TerrainHex(terrainHex15,"hex15"));
-        terrainHexes.add(new TerrainHex(terrainHex16,"hex16"));
-        terrainHexes.add(new TerrainHex(terrainHex17,"hex17"));
-        terrainHexes.add(new TerrainHex(terrainHex18,"hex18"));
-        terrainHexes.add(new TerrainHex(terrainHex19,"hex19"));
+
+        terrainHexes.add(new TerrainHex(terrainHex1,"hex1", circleNumberOnHex1, labelHexNum1));
+        terrainHexes.add(new TerrainHex(terrainHex2,"hex2", circleNumberOnHex2, labelHexNum2));
+        terrainHexes.add(new TerrainHex(terrainHex3,"hex3", circleNumberOnHex3, labelHexNum3));
+        terrainHexes.add(new TerrainHex(terrainHex4,"hex4", circleNumberOnHex4, labelHexNum4));
+        terrainHexes.add(new TerrainHex(terrainHex5,"hex5", circleNumberOnHex5, labelHexNum5));
+        terrainHexes.add(new TerrainHex(terrainHex6,"hex6", circleNumberOnHex6, labelHexNum6));
+        terrainHexes.add(new TerrainHex(terrainHex7,"hex7", circleNumberOnHex7, labelHexNum7));
+        terrainHexes.add(new TerrainHex(terrainHex8,"hex8", circleNumberOnHex8, labelHexNum8));
+        terrainHexes.add(new TerrainHex(terrainHex9,"hex9", circleNumberOnHex9, labelHexNum9));
+        terrainHexes.add(new TerrainHex(terrainHex10,"hex10", circleNumberOnHex10, labelHexNum10));
+        terrainHexes.add(new TerrainHex(terrainHex11,"hex11", circleNumberOnHex11, labelHexNum11));
+        terrainHexes.add(new TerrainHex(terrainHex12,"hex12", circleNumberOnHex12, labelHexNum12));
+        terrainHexes.add(new TerrainHex(terrainHex13,"hex13", circleNumberOnHex13, labelHexNum13));
+        terrainHexes.add(new TerrainHex(terrainHex14,"hex14", circleNumberOnHex14, labelHexNum14));
+        terrainHexes.add(new TerrainHex(terrainHex15,"hex15", circleNumberOnHex15, labelHexNum15));
+        terrainHexes.add(new TerrainHex(terrainHex16,"hex16", circleNumberOnHex16, labelHexNum16));
+        terrainHexes.add(new TerrainHex(terrainHex17,"hex17", circleNumberOnHex17, labelHexNum17));
+        terrainHexes.add(new TerrainHex(terrainHex18,"hex18", circleNumberOnHex18, labelHexNum18));
+        terrainHexes.add(new TerrainHex(terrainHex19,"hex19", circleNumberOnHex19, labelHexNum19));
     }
 
     public ArrayList<Vertex> getVertices() {
@@ -1002,4 +1139,13 @@ public class ControllerBaseGame {
     public void setLabelLogs(Label labelLogs) {
         this.labelLogs = labelLogs;
     }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
 }

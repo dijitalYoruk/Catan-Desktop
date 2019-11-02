@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FXApp.iml" filepath="$PROJECT_DIR$/FXApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CS319_Group3B_Catan.iml" filepath="$PROJECT_DIR$/.idea/CS319_Group3B_Catan.iml" />
     </modules>
   </component>
 </project>
