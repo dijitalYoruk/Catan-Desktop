@@ -5,21 +5,33 @@ import javafx.scene.paint.Color;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Player {
 
     // properties
-    private ArrayList<Settlement> settlements;
-    private ArrayList<SourceCard> sourceCards;
-    private ArrayList<Road> roads;
+    protected ArrayList<Settlement> settlements;
+    protected HashMap<String, ArrayList<SourceCard>> sourceCards;
+    protected ArrayList<Road> roads;
     private String color;
+    private String name;
+    protected PriceCard priceCard;
 
     // constructor
-    public Player(String color) {
+    public Player(String color, String name) {
         settlements = new ArrayList<>();
-        sourceCards = new ArrayList<>();
         roads = new ArrayList<>();
+        priceCard = new PriceCard("price_card");
         this.color = color;
+        this.name = name;
+        sourceCards = new HashMap<>();
+        sourceCards.put(Constants.CARD_BRICK,  new ArrayList<>());
+        sourceCards.put(Constants.CARD_GRAIN,  new ArrayList<>());
+        sourceCards.put(Constants.CARD_LUMBER, new ArrayList<>());
+        sourceCards.put(Constants.CARD_ORE,    new ArrayList<>());
+        sourceCards.put(Constants.CARD_WOOL,   new ArrayList<>());
     }
 
     // methods
@@ -31,11 +43,11 @@ public class Player {
         this.settlements = settlements;
     }
 
-    public ArrayList<SourceCard> getSourceCards() {
+    public HashMap<String, ArrayList<SourceCard>> getSourceCards() {
         return sourceCards;
     }
 
-    public void setSourceCards(ArrayList<SourceCard> sourceCards) {
+    public void setSourceCards(HashMap<String, ArrayList<SourceCard>> sourceCards) {
         this.sourceCards = sourceCards;
     }
 
@@ -107,6 +119,79 @@ public class Player {
             default:
                 return Constants.COLOR_RGB_BLUE;
         }
-    };
+    }
 
+    public void getTurnProfit(int dieNumber) {
+        for (Settlement settlement: settlements) {
+            HashMap<String, Integer> profit = settlement.getTurnProfit(dieNumber);
+            Set<String> keys = profit.keySet();
+            for (String key: keys) {
+//                sourceCards.get(key).add(new SourceCard(key, key));
+                for (int i = 0; i < profit.get(key); i++) {
+                    sourceCards.get(key).add(new SourceCard(key, key));
+                }
+            }
+        }
+    }
+
+    public void showSourceCards() {
+        System.out.println(">>>>>>>" + name + "<<<<<<<");
+        Set<String> keys = sourceCards.keySet();
+        for (String key: keys) {
+            System.out.println(key + ": " + sourceCards.get(key).size());
+        }
+    }
+
+    public boolean hasEnoughResources(String selectedConstruction) {
+        Map<String, Integer> price = getPrice(selectedConstruction);;
+        Set<String> keys = price.keySet();
+        for (String key: keys) {
+            if (sourceCards.get(key).size() < price.get(key)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void subtractPriceOfConstruction(String selectedConstruction) {
+        Map<String, Integer> price = getPrice(selectedConstruction);
+        Set<String> keys = price.keySet();
+        System.out.println(keys);
+        for (String key: keys) {
+            int priceOfCard = price.get(key);
+            ArrayList<SourceCard> cards = sourceCards.get(key);
+            if (priceOfCard > 0) {
+                cards.subList(0, priceOfCard).clear();
+            }
+        }
+    }
+
+    private Map<String, Integer> getPrice(String selectedConstruction) {
+        Map<String, Integer> price;
+        switch (selectedConstruction) {
+            case Constants.CITY:
+                price = priceCard.getCityPrice();
+                break;
+            case Constants.VILLAGE:
+                price = priceCard.getVillagePrice();
+                break;
+            case Constants.CIVILISATION:
+                price = priceCard.getCivilizationPrice();
+                break;
+            default:
+                price = priceCard.getRoadPrice();
+                break;
+        }
+        return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "settlements=" + settlements +
+                ", sourceCards=" + sourceCards +
+                ", roads=" + roads +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

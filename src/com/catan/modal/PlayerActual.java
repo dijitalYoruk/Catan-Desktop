@@ -5,8 +5,8 @@ public class PlayerActual extends Player {
     private boolean isConstructionBuild = false;
     private boolean isRoadBuild = false;
 
-    public PlayerActual(String color) {
-        super(color);
+    public PlayerActual(String color, String name) {
+        super(color, name);
         isConstructionBuild = false;
         isRoadBuild = false;
     }
