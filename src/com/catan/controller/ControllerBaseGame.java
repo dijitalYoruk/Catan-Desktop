@@ -442,10 +442,10 @@ public class ControllerBaseGame extends ControllerBase {
         roads = new ArrayList<>();
         settlements = new ArrayList<>();
         players = new ArrayList<>();
-        players.add(new PlayerActual(Constants.COLOR_RED));
-        players.add(new PlayerAI(Constants.COLOR_BLUE));
-        players.add(new PlayerAI(Constants.COLOR_PURPLE));
-        players.add(new PlayerAI(Constants.COLOR_GREEN));
+        players.add(new PlayerActual(Constants.COLOR_RED, "PlayerActual"));
+        players.add(new PlayerAI(Constants.COLOR_BLUE, "PlayerArtificial1"));
+        players.add(new PlayerAI(Constants.COLOR_PURPLE, "PlayerArtificial2"));
+        players.add(new PlayerAI(Constants.COLOR_GREEN, "PlayerArtificial3"));
         die = new Die();
 
         settings = new Settings();
@@ -463,7 +463,7 @@ public class ControllerBaseGame extends ControllerBase {
         imgDie2.setFill(new ImagePattern(img2ForDice2));
         imgDie2.setStroke(Color.color(0.4,0.4,0.4));
         imgDie2.setStrokeWidth(1);
-        Image img = new Image("./com/catan/assets/price_card.png");
+        Image img = new Image(Constants.PATH_CARD_PRICE);
         imgPriceCard.setFill(new ImagePattern(img));
         imgPriceCard.setStrokeWidth(0);
     }
@@ -495,22 +495,22 @@ public class ControllerBaseGame extends ControllerBase {
     }
 
     private void initializeConstructionBox() {
-        Image img = new Image("./com/catan/assets/road.png");
+        Image img = new Image(Constants.PATH_ROAD);
         imgRoad.setFill(new ImagePattern(img));
         imgRoad.setStroke(Color.color(0.4,0.4,0.4));
         imgRoad.setStrokeWidth(1);
 
-        Image img2 = new Image("./com/catan/assets/village.jpg");
+        Image img2 = new Image(Constants.PATH_VILLAGE);
         imgVillage.setFill(new ImagePattern(img2));
         imgVillage.setStroke(Color.color(0.4,0.4,0.4));
         imgVillage.setStrokeWidth(1);
 
-        Image img3 = new Image("./com/catan/assets/city.png");
+        Image img3 = new Image(Constants.PATH_CITY);
         imgCity.setFill(new ImagePattern(img3));
         imgCity.setStroke(Color.color(0.4,0.4,0.4));
         imgCity.setStrokeWidth(1);
 
-        Image img4 = new Image("./com/catan/assets/civilisation.jpg");
+        Image img4 = new Image(Constants.PATH_CIVILISATION);
         imgCivilisation.setFill(new ImagePattern(img4));
         imgCivilisation.setStroke(Color.color(0.4,0.4,0.4));
         imgCivilisation.setStrokeWidth(1);
@@ -574,209 +574,315 @@ public class ControllerBaseGame extends ControllerBase {
 
         v1.addNeighbor(v9);
         v1.addNeighbor(v2);
+        v1.addHex(terrainHexes.get(0));
 
         v2.addNeighbor(v1);
         v2.addNeighbor(v3);
+        v1.addHex(terrainHexes.get(0));
 
         v3.addNeighbor(v2);
         v3.addNeighbor(v4);
         v3.addNeighbor(v11);
+        v3.addHex(terrainHexes.get(0));
+        v3.addHex(terrainHexes.get(1));
 
         v4.addNeighbor(v3);
         v4.addNeighbor(v5);
+        v4.addHex(terrainHexes.get(1));
 
         v5.addNeighbor(v4);
         v5.addNeighbor(v6);
         v5.addNeighbor(v13);
+        v5.addHex(terrainHexes.get(1));
+        v5.addHex(terrainHexes.get(2));
 
         v6.addNeighbor(v5);
         v6.addNeighbor(v7);
+        v6.addHex(terrainHexes.get(2));
 
         v7.addNeighbor(v6);
         v7.addNeighbor(v15);
+        v7.addHex(terrainHexes.get(2));
 
         v8.addNeighbor(v9);
         v8.addNeighbor(v18);
+        v8.addHex(terrainHexes.get(3));
 
         v9.addNeighbor(v1);
         v9.addNeighbor(v8);
         v9.addNeighbor(v10);
+        v9.addHex(terrainHexes.get(0));
+        v9.addHex(terrainHexes.get(3));
 
         v10.addNeighbor(v9);
         v10.addNeighbor(v11);
         v10.addNeighbor(v20);
+        v10.addHex(terrainHexes.get(0));
+        v10.addHex(terrainHexes.get(3));
+        v10.addHex(terrainHexes.get(4));
 
         v11.addNeighbor(v3);
         v11.addNeighbor(v10);
         v11.addNeighbor(v12);
+        v11.addHex(terrainHexes.get(0));
+        v11.addHex(terrainHexes.get(1));
+        v11.addHex(terrainHexes.get(4));
 
         v12.addNeighbor(v11);
         v12.addNeighbor(v13);
         v12.addNeighbor(v22);
+        v12.addHex(terrainHexes.get(1));
+        v12.addHex(terrainHexes.get(4));
+        v12.addHex(terrainHexes.get(5));
 
         v13.addNeighbor(v5);
         v13.addNeighbor(v12);
         v13.addNeighbor(v14);
+        v13.addHex(terrainHexes.get(1));
+        v13.addHex(terrainHexes.get(2));
+        v13.addHex(terrainHexes.get(5));
 
         v14.addNeighbor(v13);
         v14.addNeighbor(v15);
         v14.addNeighbor(v24);
+        v14.addHex(terrainHexes.get(2));
+        v14.addHex(terrainHexes.get(5));
+        v14.addHex(terrainHexes.get(6));
 
         v15.addNeighbor(v7);
         v15.addNeighbor(v14);
         v15.addNeighbor(v16);
+        v15.addHex(terrainHexes.get(2));
+        v15.addHex(terrainHexes.get(6));
 
         v16.addNeighbor(v15);
         v16.addNeighbor(v26);
+        v16.addHex(terrainHexes.get(6));
 
         v17.addNeighbor(v18);
         v17.addNeighbor(v28);
+        v17.addHex(terrainHexes.get(7));
 
         v18.addNeighbor(v8);
         v18.addNeighbor(v17);
         v18.addNeighbor(v19);
+        v18.addHex(terrainHexes.get(3));
+        v18.addHex(terrainHexes.get(7));
 
         v19.addNeighbor(v18);
         v19.addNeighbor(v20);
         v19.addNeighbor(v30);
+        v19.addHex(terrainHexes.get(3));
+        v19.addHex(terrainHexes.get(7));
+        v19.addHex(terrainHexes.get(8));
 
         v20.addNeighbor(v10);
         v20.addNeighbor(v19);
         v20.addNeighbor(v21);
+        v20.addHex(terrainHexes.get(3));
+        v20.addHex(terrainHexes.get(4));
+        v20.addHex(terrainHexes.get(8));
 
         v21.addNeighbor(v20);
         v21.addNeighbor(v22);
         v21.addNeighbor(v32);
+        v21.addHex(terrainHexes.get(4));
+        v21.addHex(terrainHexes.get(8));
+        v21.addHex(terrainHexes.get(9));
 
         v22.addNeighbor(v12);
         v22.addNeighbor(v21);
         v22.addNeighbor(v23);
-
-        v23.addNeighbor(v22);
-        v23.addNeighbor(v24);
+        v22.addHex(terrainHexes.get(4));
+        v22.addHex(terrainHexes.get(5));
+        v22.addHex(terrainHexes.get(9));
 
         v23.addNeighbor(v22);
         v23.addNeighbor(v24);
         v23.addNeighbor(v34);
+        v23.addHex(terrainHexes.get(5));
+        v23.addHex(terrainHexes.get(9));
+        v23.addHex(terrainHexes.get(10));
 
         v24.addNeighbor(v14);
         v24.addNeighbor(v23);
         v24.addNeighbor(v25);
+        v24.addHex(terrainHexes.get(5));
+        v24.addHex(terrainHexes.get(6));
+        v24.addHex(terrainHexes.get(10));
 
         v25.addNeighbor(v24);
         v25.addNeighbor(v26);
         v25.addNeighbor(v36);
+        v25.addHex(terrainHexes.get(6));
+        v25.addHex(terrainHexes.get(10));
+        v25.addHex(terrainHexes.get(11));
 
         v26.addNeighbor(v16);
         v26.addNeighbor(v25);
         v26.addNeighbor(v27);
+        v26.addHex(terrainHexes.get(6));
+        v26.addHex(terrainHexes.get(11));
 
         v27.addNeighbor(v26);
         v27.addNeighbor(v38);
-
+        v27.addHex(terrainHexes.get(11));
 
         v28.addNeighbor(v17);
         v28.addNeighbor(v29);
-
+        v28.addHex(terrainHexes.get(7));
 
         v29.addNeighbor(v28);
         v29.addNeighbor(v30);
         v29.addNeighbor(v39);
-
+        v29.addHex(terrainHexes.get(7));
+        v29.addHex(terrainHexes.get(12));
 
         v30.addNeighbor(v29);
         v30.addNeighbor(v31);
         v30.addNeighbor(v19);
+        v30.addHex(terrainHexes.get(7));
+        v30.addHex(terrainHexes.get(8));
+        v30.addHex(terrainHexes.get(12));
 
         v31.addNeighbor(v30);
         v31.addNeighbor(v32);
         v31.addNeighbor(v41);
-
+        v31.addHex(terrainHexes.get(8));
+        v31.addHex(terrainHexes.get(12));
+        v31.addHex(terrainHexes.get(13));
 
         v32.addNeighbor(v31);
         v32.addNeighbor(v33);
         v32.addNeighbor(v21);
+        v32.addHex(terrainHexes.get(8));
+        v32.addHex(terrainHexes.get(9));
+        v32.addHex(terrainHexes.get(13));
 
         v33.addNeighbor(v32);
         v33.addNeighbor(v34);
         v33.addNeighbor(v43);
+        v33.addHex(terrainHexes.get(9));
+        v33.addHex(terrainHexes.get(13));
+        v33.addHex(terrainHexes.get(14));
 
         v34.addNeighbor(v33);
         v34.addNeighbor(v35);
         v34.addNeighbor(v23);
+        v34.addHex(terrainHexes.get(9));
+        v34.addHex(terrainHexes.get(10));
+        v34.addHex(terrainHexes.get(14));
 
         v35.addNeighbor(v34);
         v35.addNeighbor(v36);
         v35.addNeighbor(v45);
-
+        v35.addHex(terrainHexes.get(10));
+        v35.addHex(terrainHexes.get(14));
+        v35.addHex(terrainHexes.get(15));
 
         v36.addNeighbor(v35);
         v36.addNeighbor(v37);
         v36.addNeighbor(v25);
+        v36.addHex(terrainHexes.get(10));
+        v36.addHex(terrainHexes.get(11));
+        v36.addHex(terrainHexes.get(15));
 
         v37.addNeighbor(v36);
         v37.addNeighbor(v38);
         v37.addNeighbor(v47);
+        v37.addHex(terrainHexes.get(11));
+        v37.addHex(terrainHexes.get(15));
 
         v38.addNeighbor(v37);
         v38.addNeighbor(v27);
+        v38.addHex(terrainHexes.get(11));
 
         v39.addNeighbor(v29);
         v39.addNeighbor(v40);
+        v39.addHex(terrainHexes.get(12));
 
         v40.addNeighbor(v39);
         v40.addNeighbor(v41);
         v40.addNeighbor(v48);
+        v40.addHex(terrainHexes.get(12));
+        v40.addHex(terrainHexes.get(16));
 
         v41.addNeighbor(v40);
         v41.addNeighbor(v42);
         v41.addNeighbor(v31);
+        v41.addHex(terrainHexes.get(12));
+        v41.addHex(terrainHexes.get(13));
+        v41.addHex(terrainHexes.get(16));
 
         v42.addNeighbor(v41);
         v42.addNeighbor(v43);
         v42.addNeighbor(v50);
+        v42.addHex(terrainHexes.get(13));
+        v42.addHex(terrainHexes.get(16));
+        v42.addHex(terrainHexes.get(17));
 
         v43.addNeighbor(v33);
         v43.addNeighbor(v42);
         v43.addNeighbor(v44);
+        v43.addHex(terrainHexes.get(13));
+        v43.addHex(terrainHexes.get(14));
+        v43.addHex(terrainHexes.get(17));
 
         v44.addNeighbor(v43);
         v44.addNeighbor(v45);
         v44.addNeighbor(v52);
+        v44.addHex(terrainHexes.get(14));
+        v44.addHex(terrainHexes.get(17));
+        v44.addHex(terrainHexes.get(18));
 
         v45.addNeighbor(v44);
         v45.addNeighbor(v46);
         v45.addNeighbor(v35);
+        v45.addHex(terrainHexes.get(14));
+        v45.addHex(terrainHexes.get(15));
+        v45.addHex(terrainHexes.get(18));
 
         v46.addNeighbor(v45);
         v46.addNeighbor(v47);
         v46.addNeighbor(v54);
+        v46.addHex(terrainHexes.get(15));
+        v46.addHex(terrainHexes.get(18));
 
         v47.addNeighbor(v37);
         v47.addNeighbor(v46);
+        v47.addHex(terrainHexes.get(15));
 
         v48.addNeighbor(v40);
         v48.addNeighbor(v49);
+        v48.addHex(terrainHexes.get(16));
 
         v49.addNeighbor(v48);
         v49.addNeighbor(v50);
+        v49.addHex(terrainHexes.get(16));
 
         v50.addNeighbor(v49);
         v50.addNeighbor(v51);
         v50.addNeighbor(v42);
+        v50.addHex(terrainHexes.get(16));
+        v50.addHex(terrainHexes.get(17));
 
         v51.addNeighbor(v50);
         v51.addNeighbor(v52);
+        v51.addHex(terrainHexes.get(17));
 
         v52.addNeighbor(v44);
         v52.addNeighbor(v51);
         v52.addNeighbor(v53);
+        v52.addHex(terrainHexes.get(17));
+        v52.addHex(terrainHexes.get(18));
 
         v53.addNeighbor(v52);
         v53.addNeighbor(v54);
+        v53.addHex(terrainHexes.get(18));
 
         v54.addNeighbor(v53);
         v54.addNeighbor(v46);
+        v54.addHex(terrainHexes.get(18));
 
         vertices.add(v1);
         vertices.add(v2);
@@ -1002,47 +1108,40 @@ public class ControllerBaseGame extends ControllerBase {
 
             if (tmp == 1 && countOfPasture > 0) {
                 countOfPasture--;
-                // constants
-                String ASSET_PATH_PASTURE = "./com/catan/assets/pasture.png";
-                img = new Image(ASSET_PATH_PASTURE);
+                img = new Image(Constants.PATH_HEX_PASTURE);
                 color = Color.color(0.2,1,0.2);
-                hex.setSourceCardName("wool");
+                hex.setSourceCardName(Constants.CARD_WOOL);
             }
             else if (tmp == 2 && countOfForest > 0) {
                 countOfForest--;
-                String ASSET_PATH_FOREST = "./com/catan/assets/forest.png";
-                img = new Image(ASSET_PATH_FOREST);
+                img = new Image(Constants.PATH_HEX_FOREST);
                 color = Color.color(0.3,1,0.2);
-                hex.setSourceCardName("lumber");
+                hex.setSourceCardName(Constants.CARD_LUMBER);
             }
             else if (tmp == 3 && countOfDesert > 0) {
                 countOfDesert--;
-                String ASSET_PATH_DESERT = "./com/catan/assets/desert.png";
-                img = new Image(ASSET_PATH_DESERT);
+                img = new Image(Constants.PATH_HEX_DESERT);
                 color = Color.color(0.4,0.3,0.2);
-                Image imgThief = new Image("./com/catan/assets/icon_thief.gif");
+                Image imgThief = new Image(Constants.ICON_THIEF);
                 hex.getCircleNumberOnHex().setFill(new ImagePattern(imgThief));
             }
             else if (tmp == 4 && countOfMountain > 0) {
                 countOfMountain--;
-                String ASSET_PATH_OWE = "com/catan/assets/mountains.png";
-                img = new Image(ASSET_PATH_OWE);
+                img = new Image(Constants.PATH_HEX_MOUNTAINS);
                 color = Color.color(0.4,0.4,0.4);
-                hex.setSourceCardName("ore");
+                hex.setSourceCardName(Constants.CARD_ORE);
             }
             else if (tmp == 5 && countOfFields > 0) {
                 countOfFields--;
-                String ASSET_PATH_GRAIN = "com/catan/assets/fields.png";
-                img = new Image(ASSET_PATH_GRAIN);
+                img = new Image(Constants.PATH_HEX_FIELDS);
                 color = Color.color(1,0.5,0);
-                hex.setSourceCardName("grain");
+                hex.setSourceCardName(Constants.CARD_GRAIN);
             }
             else if (tmp == 6 && countOfHill > 0) {
                 countOfHill--;
-                String ASSET_PATH_HILL = "./com/catan/assets/hill.png";
-                img = new Image(ASSET_PATH_HILL);
+                img = new Image(Constants.PATH_HEX_HILL);
                 color = Color.color(1,0,0);
-                hex.setSourceCardName("brick");
+                hex.setSourceCardName(Constants.CARD_BRICK);
             }
             if (img != null) {
                 placedFields++;

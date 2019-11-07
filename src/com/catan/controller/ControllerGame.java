@@ -1,6 +1,7 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.modal.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,10 +11,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 
-public class ControllerGame extends ControllerBaseGame {
+public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction {
 
     // properties
     private boolean constructionUnselect = true;
@@ -75,7 +77,6 @@ public class ControllerGame extends ControllerBaseGame {
     public void blendVertex(MouseEvent mouseEvent) {
         Circle circle = (Circle) mouseEvent.getSource();
         Vertex vertex = getCorrespondingVertex(circle);
-        System.out.println(vertex.isActive());
         if (circle.getRadius() != Constants.CONSTRUCTION_RADIUS && vertex.isActive()) {
             circle.setFill(Constants.COLOR_BLEND_VERTEX);
         }
@@ -102,9 +103,7 @@ public class ControllerGame extends ControllerBaseGame {
         }
     }
 
-
-    @FXML
-    void rollDie(ActionEvent event) {
+    void rollDie() {
         if (isStepActual) {
             die.rollDie();
             Image img = new Image("./com/catan/assets/die"+die.getDice1()+".png");
@@ -118,14 +117,13 @@ public class ControllerGame extends ControllerBaseGame {
         }
     }
 
-
     @FXML
     public void makeConstruction(MouseEvent mouseEvent) {
         Circle circle = (Circle) mouseEvent.getSource();
         if (isStepInitial) {
             makeConstructionInitial(circle);
         } else if (isStepActual) {
-            makeConstruction(circle);
+            makeConstructionActual(circle);
         }
     }
 
@@ -164,8 +162,11 @@ public class ControllerGame extends ControllerBaseGame {
             activatePlayerVertices();
             isRoadBuild = true;
 
+            if (isStepActual) {
+                currentPlayer.subtractPriceOfConstruction(selectedConstruction);
+            }
             if (isStepInitial && currentPlayer instanceof PlayerActual) {
-                selectConstructionActual(imgVillage);
+                selectConstructionInitial(imgVillage);
             }
             if (isStepInitial && currentPlayer instanceof PlayerAI) {
                 tempRoad = road;
@@ -237,16 +238,26 @@ public class ControllerGame extends ControllerBaseGame {
         ArrayList<Road> roads = currentPlayer.getRoads();
         for (Road road: roads) {
             for(Vertex vertex: road.getVertices()) {
-                if (selectedConstruction.equals(Constants.ROAD)) {
-                    vertex.setActive(true);
-                    activateNeighbours(vertex);
-                }
-                else if (isSelectedSettlement()) {
-                    System.out.println("selected settlement");
-                    if (!vertex.hasConstruction() && isVertexSuitableForConstruction(vertex)) {
+                switch (selectedConstruction) {
+                    case Constants.ROAD:
                         vertex.setActive(true);
-                        System.out.println("entered settlement");
-                    }
+                        activateNeighbours(vertex);
+                        break;
+                    case Constants.VILLAGE:
+                        if (!vertex.hasConstruction() && isVertexSuitableForConstruction(vertex)) {
+                            vertex.setActive(true);
+                        }
+                        break;
+                    case Constants.CITY:
+                        if (vertex.hasConstruction() && vertex.getSettlement() instanceof Village) {
+                            vertex.setActive(true);
+                        }
+                        break;
+                    case Constants.CIVILISATION:
+                        if (vertex.hasConstruction() && vertex.getSettlement() instanceof City) {
+                            vertex.setActive(true);
+                        }
+                        break;
                 }
             }
         }
@@ -277,10 +288,48 @@ public class ControllerGame extends ControllerBaseGame {
     // ------------ ACTUAL STEP METHODS ---------------- //
 
     private void actualTurn() {
-        // TODO the actual step will be implemented in the future.
+        deActivateAllVertices();
+        while (true) {
+            playerTurn = playerTurn % 4;
+            Player player = getPlayers().get(playerTurn);
+            currentPlayer = player;
+            playerTurn++;
+            rollDie();
+            getTurnProfit();
+            // AI player
+            if (player instanceof PlayerAI) {
+                playAIActualTurn();
+            }
+            // Actual Player
+            else if (player instanceof  PlayerActual) {
+                deActivateAllVertices();
+                refreshRoadSelectionVertices();
+                constructionUnselect = true;
+                unselectConstructions(null);
+                break;
+            }
+        }
     }
 
-    public void makeConstruction(Circle circle) {
+    private void getTurnProfit() {
+        System.out.println("----------------------------------------------------------------------");
+        for (Player player: getPlayers()) {
+            player.getTurnProfit(die.getDieSum());
+            player.showSourceCards();
+        }
+        System.out.println("----------------------------------------------------------------------");
+    }
+
+    private void playAIActualTurn() {
+        ((PlayerAI) currentPlayer).getActualAIDecision(this);
+    }
+
+    @Override
+    public void makeConstructionActual(Circle circle) {
+        if (!currentPlayer.hasEnoughResources(selectedConstruction)) {
+            return;
+        }
+
         if (isSelectedSettlement()) {
             Vertex vertex = getCorrespondingVertex(circle);
 
@@ -308,6 +357,9 @@ public class ControllerGame extends ControllerBaseGame {
                 vertex.getShape().setRadius(Constants.CONSTRUCTION_RADIUS);
                 getSettlements().add(settlement);
                 currentPlayer.getSettlements().add(settlement);
+                vertex.setSettlement(settlement);
+                currentPlayer.subtractPriceOfConstruction(selectedConstruction);
+                currentPlayer.showSourceCards();
                 unselectConstructions(null);
                 deActivateAllVertices();
             } else {
@@ -319,7 +371,6 @@ public class ControllerGame extends ControllerBaseGame {
                 if (currentPlayer instanceof PlayerActual && isStepInitial && !isRoadBuild) {
                     selectConstructionActual(imgRoad);
                 }
-
                 constructionUnselect = false;
                 roadVertex1 = getCorrespondingVertex(circle);
                 if (circle.getRadius() != Constants.CONSTRUCTION_RADIUS) {
@@ -331,6 +382,64 @@ public class ControllerGame extends ControllerBaseGame {
                 roadVertex2 = getCorrespondingVertex(circle);
                 constructRoad();
             }
+        }
+    }
+
+    @Override
+    public void makeRoadActualForAI() {
+        boolean isRoadConstructed = false;
+        while (!isRoadConstructed) {
+            ArrayList<Road> roads = currentPlayer.getRoads();
+            ArrayList<Vertex> vertices = new ArrayList<>();
+            for (Road road: roads) {
+                for (Vertex vertex: road.getVertices()) {
+                    if (!vertices.contains(vertex)) {
+                        vertices.add(vertex);
+                    }
+                }
+            }
+
+            // setting first vertex of road;
+            int index = (int) (Math.random() * vertices.size());
+            Vertex vertex1 = vertices.get(index);
+            // setting second vertex of road;
+            index = (int) (Math.random() * vertex1.getNeighbors().size());
+            Vertex vertex2 = vertex1.getNeighbors().get(index);
+            Road road = getCorrespondingRoad(vertex1, vertex2);
+
+            if (road != null && !road.getRoad().isVisible()) {
+                makeConstructionActual(vertex1.getShape());
+                makeConstructionActual(vertex2.getShape());
+                isRoadConstructed = true;
+            }
+        }
+    }
+
+    @Override
+    public void makeVillageActualForAI() {
+        ArrayList<Vertex> vertices = getActivatedVertices();
+        if (vertices.size() > 0) {
+            int index = (int) (Math.random() * vertices.size());
+            Circle circle = vertices.get(index).getShape();
+            makeConstructionActual(circle);
+        }
+    }
+
+    @Override
+    public void selectActualConstructionForAI(String type) {
+        switch (type) {
+            case Constants.VILLAGE:
+                selectConstructionActual(imgVillage);
+                break;
+            case Constants.CITY:
+                selectConstructionActual(imgCity);
+                break;
+            case Constants.CIVILISATION:
+                selectConstructionActual(imgCivilisation);
+                break;
+            case Constants.ROAD:
+                selectConstructionActual(imgRoad);
+                break;
         }
     }
 
@@ -350,6 +459,11 @@ public class ControllerGame extends ControllerBaseGame {
             selectedConstruction = Constants.VILLAGE;
         } else if (rectangle == imgCivilisation) {
             selectedConstruction = Constants.CIVILISATION;
+        }
+
+        if (!currentPlayer.hasEnoughResources(selectedConstruction)) {
+            selectedConstruction = "";
+            return;
         }
 
         activatePlayerVertices();
@@ -395,8 +509,7 @@ public class ControllerGame extends ControllerBaseGame {
             if (initialStepCount == 8) {
                 isStepActual = true;
                 isStepInitial = false;
-                currentPlayer = getPlayers().get(0);
-                deActivateAllVertices();
+                actualTurn();
                 return;
             }
         }
@@ -469,6 +582,7 @@ public class ControllerGame extends ControllerBaseGame {
                 // adding settlement
                 getSettlements().add(settlement);
                 currentPlayer.getSettlements().add(settlement);
+                vertex.setSettlement(settlement);
                 unselectConstructions(null);
                 activatePlayerVertices();
                 tempSettlement = settlement;
@@ -532,7 +646,6 @@ public class ControllerGame extends ControllerBaseGame {
             selectedConstruction = "";
             return;
         }
-        //}
 
         // setting the color of selected construction.
         rectangle.setStroke(Constants.COLOR_CONSTRUCTION_SELECTED);

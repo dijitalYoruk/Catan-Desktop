@@ -1,5 +1,8 @@
 package com.catan.modal;
 
+import com.catan.Util.Constants;
+
+import java.util.HashMap;
 import java.util.Map;
 
 public class PriceCard extends Card {
@@ -13,45 +16,50 @@ public class PriceCard extends Card {
 
         public PriceCard(String name) {
             super(name);
+            priceOfDevelopmentCard = new HashMap<>();
+            priceOfCivilization = new HashMap<>();
+            priceOfVillage = new HashMap<>();
+            priceOfCity = new HashMap<>();
+            priceOfRoad = new HashMap<>();
 
             // road price
-            priceOfRoad.put("Brick", 1 );
-            priceOfRoad.put("Wool", 0);
-            priceOfRoad.put("Ore",0);
-            priceOfRoad.put("Grain",0);
-            priceOfRoad.put("Lumber",1);
+            priceOfRoad.put(Constants.CARD_BRICK, 1 );
+            priceOfRoad.put(Constants.CARD_WOOL, 0);
+            priceOfRoad.put(Constants.CARD_ORE, 0);
+            priceOfRoad.put(Constants.CARD_GRAIN, 0);
+            priceOfRoad.put(Constants.CARD_LUMBER, 1);
 
             // village price
-            priceOfVillage.put("Brick", 1 );
-            priceOfVillage.put("Wool", 1);
-            priceOfVillage.put("Ore",0);
-            priceOfVillage.put("Grain",1);
-            priceOfVillage.put("Lumber",1);
+            priceOfVillage.put(Constants.CARD_BRICK, 1 );
+            priceOfVillage.put(Constants.CARD_WOOL, 1);
+            priceOfVillage.put(Constants.CARD_ORE, 0);
+            priceOfVillage.put(Constants.CARD_GRAIN, 1);
+            priceOfVillage.put(Constants.CARD_LUMBER, 1);
 
             // city price
-            priceOfCity.put("Brick", 0 );
-            priceOfCity.put("Wool", 0);
-            priceOfCity.put("Ore",3);
-            priceOfCity.put("Grain",2);
-            priceOfCity.put("Lumber",0);
+            priceOfCity.put(Constants.CARD_BRICK, 0 );
+            priceOfCity.put(Constants.CARD_WOOL, 0);
+            priceOfCity.put(Constants.CARD_ORE, 3);
+            priceOfCity.put(Constants.CARD_GRAIN, 2);
+            priceOfCity.put(Constants.CARD_LUMBER, 0);
 
             // civilization price
-            priceOfCivilization.put("Brick", 1 );
-            priceOfCivilization.put("Wool", 0);
-            priceOfCivilization.put("Ore",3);
-            priceOfCivilization.put("Grain",2);
-            priceOfCivilization.put("Lumber",1);
+            priceOfCivilization.put(Constants.CARD_BRICK, 1 );
+            priceOfCivilization.put(Constants.CARD_WOOL, 0);
+            priceOfCivilization.put(Constants.CARD_ORE, 3);
+            priceOfCivilization.put(Constants.CARD_GRAIN, 2);
+            priceOfCivilization.put(Constants.CARD_LUMBER, 1);
 
             // development card price
-            priceOfDevelopmentCard.put("Brick", 0 );
-            priceOfDevelopmentCard.put("Wool", 1);
-            priceOfDevelopmentCard.put("Ore",1);
-            priceOfDevelopmentCard.put("Grain",1);
-            priceOfDevelopmentCard.put("Lumber",0);
+            priceOfDevelopmentCard.put(Constants.CARD_BRICK, 0 );
+            priceOfDevelopmentCard.put(Constants.CARD_WOOL, 1);
+            priceOfDevelopmentCard.put(Constants.CARD_ORE, 1);
+            priceOfDevelopmentCard.put(Constants.CARD_GRAIN, 1);
+            priceOfDevelopmentCard.put(Constants.CARD_LUMBER, 0);
         }
 
         public Map<String, Integer> getVillagePrice() {
-            return priceOfRoad;
+            return priceOfVillage ;
         }
 
         public void setVillagePrice(Map<String, Integer> villagePrice) {
@@ -90,5 +98,3 @@ public class PriceCard extends Card {
             priceOfDevelopmentCard = cardPrice;
         }
 }
-
-

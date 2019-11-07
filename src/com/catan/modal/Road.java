@@ -1,5 +1,6 @@
 package com.catan.modal;
 
+import com.catan.Util.Constants;
 import javafx.scene.shape.Line;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class Road extends Construction {
     private Line road;
 
     public Road(Line road, Vertex vertex1, Vertex vertex2) {
-        super("");
+        super(Constants.ROAD, "");
         vertices = new ArrayList<>();
         vertices.add(vertex1);
         vertices.add(vertex2);

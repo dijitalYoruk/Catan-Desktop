@@ -16,4 +16,11 @@ public class SourceCard extends Card {
     public void setHexType(String newHexType) {
         hexType = newHexType;
     }
+
+    @Override
+    public String toString() {
+        return "SourceCard{" +
+                "hexType='" + hexType + '\'' +
+                '}';
+    }
 }

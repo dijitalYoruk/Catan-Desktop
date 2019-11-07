@@ -4,6 +4,7 @@ import com.catan.Util.Constants;
 import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Vertex {
 
@@ -11,12 +12,22 @@ public class Vertex {
     private ArrayList<Vertex> neighbors;
     private boolean isActive;
     private Settlement settlement;
+    private ArrayList<TerrainHex> terrainHexes;
 
     public Vertex(Circle shape) {
-        neighbors = new ArrayList<>();
+        this.terrainHexes = new ArrayList<>();
+        this.neighbors = new ArrayList<>();
         this.shape = shape;
         this.isActive = false;
         this.settlement = null;
+    }
+
+    public ArrayList<TerrainHex> getFields() {
+        return terrainHexes;
+    }
+
+    public void setFields(ArrayList<TerrainHex> terrainHexes) {
+        this.terrainHexes = terrainHexes;
     }
 
     public ArrayList<Vertex> getNeighbors() {
@@ -58,5 +69,27 @@ public class Vertex {
     public void setSettlement(Settlement settlement) {
         this.settlement = settlement;
     }
+
+    public HashMap<String, Integer> getTurnProfit(int dieNumber) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put(Constants.CARD_BRICK, 0);
+        map.put(Constants.CARD_GRAIN, 0);
+        map.put(Constants.CARD_LUMBER, 0);
+        map.put(Constants.CARD_ORE, 0);
+        map.put(Constants.CARD_WOOL, 0);
+
+        for (TerrainHex hex: terrainHexes) {
+            String sourceCardName = hex.getSourceCardName();
+            if (!hex.getSourceCardName().equals("") && hex.getNumberOnHex() == dieNumber) {
+                map.put(sourceCardName, map.get(sourceCardName) + 1);
+            }
+        }
+        return map;
+    }
+
+    public void addHex(TerrainHex terrainHex) {
+        terrainHexes.add(terrainHex);
+    }
+
 
 }
