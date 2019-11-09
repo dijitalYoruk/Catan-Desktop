@@ -5,14 +5,22 @@ import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.modal.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction {
@@ -295,6 +303,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             currentPlayer = player;
             playerTurn++;
             rollDie();
+            if((die.getDice1() + die.getDice2() ) < 15){ // to be changed to ( == 7)
+                playThieft(currentPlayer);
+            }
             getTurnProfit();
             // AI player
             if (player instanceof PlayerAI) {
@@ -302,6 +313,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             }
             // Actual Player
             else if (player instanceof  PlayerActual) {
+
                 deActivateAllVertices();
                 refreshRoadSelectionVertices();
                 constructionUnselect = true;
@@ -309,6 +321,45 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 break;
             }
         }
+    }
+    private void playThieft(Player currentPlayer){
+        thiefDefaultLoca.setVisible(false);
+        movingThief.setLayoutX(thiefDefaultLoca.getLayoutX());
+        movingThief.setLayoutY(thiefDefaultLoca.getLayoutY());
+        movingThief.setVisible(true);
+        if (currentPlayer instanceof PlayerAI) {
+                int randomHex = 15;
+
+        }
+        // Actual Player
+        else if (currentPlayer instanceof  PlayerActual) {
+            Stage window = (Stage) root.getScene().getWindow();
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(window);
+            VBox dialogVbox = new VBox(20);
+            dialogVbox.getChildren().add(new Text("You must move the thief"));
+            Scene dialogScene = new Scene(dialogVbox, 300, 200);
+            dialog.setScene(dialogScene);
+            dialog.show();
+        }
+    }
+
+    @FXML
+    public void moveThief(MouseEvent mouseEvent){
+        thiefHexLoca.setThiefHere(false);
+        movingThief.setLayoutX(mouseEvent.getSceneX());
+        movingThief.setLayoutY(mouseEvent.getSceneY());
+    }
+
+    @FXML
+    public void thiefMoved(MouseEvent mouseEvent){
+        thiefHexLoca.setThiefHere(false);
+        TerrainHex thiefsNewLocation = getHexWithCoordinates(movingThief);
+        thiefHexLoca = thiefsNewLocation;
+        movingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
+        movingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
+        thiefsNewLocation.setThiefHere(true);
     }
 
     private void getTurnProfit() {

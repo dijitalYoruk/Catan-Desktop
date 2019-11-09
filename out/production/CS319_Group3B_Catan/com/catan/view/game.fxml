@@ -230,6 +230,7 @@
       <Circle fx:id="circleNumberOnHex17" fill="WHITE" layoutX="1006.0" layoutY="530.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="circleNumberOnHex18" fill="WHITE" layoutX="1137.0" layoutY="528.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="circleNumberOnHex19" fill="WHITE" layoutX="1268.0" layoutY="528.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="movingThief" fill="DODGERBLUE" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <Label fx:id="labelHexNum1" layoutX="1001.0" layoutY="103.0" text="0">
          <font>
             <Font name="System Bold" size="18.0" />

@@ -20,7 +20,7 @@ public class ControllerBaseGame extends ControllerBase {
 
     // FXML Properties
     @FXML
-    private AnchorPane root;
+    protected AnchorPane root;
     @FXML
     private Line road8;
     @FXML
@@ -312,6 +312,8 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Circle vertex8;
     @FXML
+    protected Circle movingThief;
+    @FXML
     protected Rectangle imgRoad;
     @FXML
     protected Rectangle imgVillage;
@@ -433,6 +435,8 @@ public class ControllerBaseGame extends ControllerBase {
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
     private Settings settings;
+    protected Circle thiefDefaultLoca;
+    protected TerrainHex thiefHexLoca;
     protected Die die;
     
     @FXML
@@ -1124,6 +1128,10 @@ public class ControllerBaseGame extends ControllerBase {
                 color = Color.color(0.4,0.3,0.2);
                 Image imgThief = new Image(Constants.ICON_THIEF);
                 hex.getCircleNumberOnHex().setFill(new ImagePattern(imgThief));
+                hex.setThiefHere(true);
+                thiefHexLoca = hex;
+                movingThief.setFill(new ImagePattern(imgThief));
+                thiefDefaultLoca = hex.getCircleNumberOnHex();
             }
             else if (tmp == 4 && countOfMountain > 0) {
                 countOfMountain--;
@@ -1245,6 +1253,15 @@ public class ControllerBaseGame extends ControllerBase {
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
+    }
+
+    public TerrainHex getHexWithCoordinates(Circle check){
+        for(int i = 0; i < terrainHexes.size(); i++){
+            if(terrainHexes.get(i).isInside(check)){
+                return terrainHexes.get(i);
+            }
+        }
+        return null;
     }
 
 }
