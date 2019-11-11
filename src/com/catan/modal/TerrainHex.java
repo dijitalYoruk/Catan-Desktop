@@ -23,7 +23,6 @@ public class TerrainHex extends Field{
     public TerrainHex (Polygon shape, String name, Circle circleNumberOnHex, Label labelNumberOnHex) {
         super(name,shape);
         this.shape = shape;
-
         this.sourceCardName = "";
         this.circleNumberOnHex = circleNumberOnHex;
         this.labelNumberOnHex = labelNumberOnHex;
@@ -47,8 +46,6 @@ public class TerrainHex extends Field{
             javafx.scene.image.Image imgThief = new Image(Constants.ICON_THIEF);
             circleNumberOnHex.setFill(new ImagePattern(imgThief));
         }else{
-            System.out.println(getLabelOnHex()+"thief is not here anymore");
-//            javafx.scene.image.Image imgEmpty = new Image(Constants.PATH_CIVILISATION_BLUE);
             circleNumberOnHex.setFill(Color.WHITE);
         }
     }

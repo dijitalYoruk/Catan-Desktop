@@ -17,6 +17,7 @@ public class Player {
     protected ArrayList<Road> roads;
     private String color;
     private String name;
+    private int totalCards;
     protected PriceCard priceCard;
 
     // constructor
@@ -24,6 +25,7 @@ public class Player {
         settlements = new ArrayList<>();
         roads = new ArrayList<>();
         priceCard = new PriceCard("price_card");
+        totalCards = 0;
         this.color = color;
         this.name = name;
         sourceCards = new HashMap<>();
@@ -126,12 +128,41 @@ public class Player {
             HashMap<String, Integer> profit = settlement.getTurnProfit(dieNumber);
             Set<String> keys = profit.keySet();
             for (String key: keys) {
-//                sourceCards.get(key).add(new SourceCard(key, key));
+                sourceCards.get(key).add(new SourceCard(key, key)); // for checking some functionalities
                 for (int i = 0; i < profit.get(key); i++) {
                     sourceCards.get(key).add(new SourceCard(key, key));
+                    totalCards += 1;
                 }
             }
         }
+    }
+    public void punishWool(int punish){
+        for(int i = 0; i < punish; i++ ) {
+            sourceCards.get(Constants.CARD_WOOL).remove(sourceCards.get(Constants.CARD_WOOL).get(0));
+        }
+    }
+    public void punishLumber(int punish){
+        for(int i = 0; i < punish; i++ ) {
+            sourceCards.get(Constants.CARD_LUMBER).remove(sourceCards.get(Constants.CARD_LUMBER).get(0));
+        }
+    }
+    public void punishOre(int punish){
+        for(int i = 0; i < punish; i++ ) {
+            sourceCards.get(Constants.CARD_ORE).remove(sourceCards.get(Constants.CARD_ORE).get(0));
+        }
+    }
+    public void punishGrain(int punish){
+        for(int i = 0; i < punish; i++ ) {
+            sourceCards.get(Constants.CARD_GRAIN).remove(sourceCards.get(Constants.CARD_GRAIN).get(0));
+        }
+    }
+    public void punishBrick(int punish){
+        for(int i = 0; i < punish; i++ ) {
+            sourceCards.get(Constants.CARD_BRICK).remove(sourceCards.get(Constants.CARD_BRICK).get(0));
+        }
+    }
+    public int getTotalCards(){
+        return totalCards;
     }
 
     public void showSourceCards() {

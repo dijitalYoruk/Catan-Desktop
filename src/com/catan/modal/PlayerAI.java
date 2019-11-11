@@ -77,4 +77,32 @@ public class PlayerAI extends Player {
             makeConstruction.makeConstructionActual(vertex.getShape());
         }
     }
+
+    public void punish(){
+        int punish = getTotalCards()/2;
+        for(int i = 0; i < punish; i++){
+            int randomRes = (int) Math.random()*4 + 1;
+            punishHelper(randomRes);
+            // 1 = wool; 2 = grain; 3 = ore; 4 = lumber; 5 = brick.
+        }
+    }
+    private void punishHelper(int i){
+        String res = "";
+        if(i == 1)
+            res = Constants.CARD_WOOL;
+        else if ( i == 2)
+            res = Constants.CARD_GRAIN;
+        else if ( i == 3)
+            res = Constants.CARD_ORE;
+        else if ( i == 4)
+            res = Constants.CARD_LUMBER;
+        else
+            res = Constants.CARD_BRICK;
+
+        if(getSourceCards().get(res).size() == 0){
+            int another = (i == 1) ? 4 : (i-1);
+            punishHelper(another);
+        }else
+            sourceCards.get(res).remove(sourceCards.get(res).get(0));
+    }
 }

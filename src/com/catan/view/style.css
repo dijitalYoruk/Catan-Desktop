@@ -94,6 +94,16 @@
     -fx-font-size: 20;
 }
 
+.card-punishment-screen-resources{
+    -fx-alignment: center;
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 20;
+    -fx-pref-width: 40;
+    -fx-pref-height: 30;
+    -fx-font-size: 20;
+}
 #die-button {
     -fx-background-color: orange;
     -fx-margin:50px;

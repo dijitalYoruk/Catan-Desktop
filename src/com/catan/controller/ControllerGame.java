@@ -5,7 +5,9 @@ import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.modal.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +22,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.naming.ldap.Control;
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 
@@ -37,7 +41,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int initialStepCount = 0;
     private Player currentPlayer;
     private int playerTurn = 0;
-
+    private boolean thiefCanMove = false;
     @Override
     public void initialize() {
         super.initialize();
@@ -136,7 +140,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @FXML
-    public void endTurn(ActionEvent actionEvent) {
+    public void endTurn(ActionEvent actionEvent) throws IOException {
         if(isStepInitial) {
             initialTurn();
         } else if (isStepActual) {
@@ -295,7 +299,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ ACTUAL STEP METHODS ---------------- //
 
-    private void actualTurn() {
+    private void actualTurn() throws IOException {
         deActivateAllVertices();
         while (true) {
             playerTurn = playerTurn % 4;
@@ -303,8 +307,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             currentPlayer = player;
             playerTurn++;
             rollDie();
-            if((die.getDice1() + die.getDice2() ) < 15){ // to be changed to ( == 7)
+            if(die.getDieSum() == 7){
+                thiefCanMove = true;
                 playThieft(currentPlayer);
+                thiefResourceCardPunishAI();
+                thiefResourceCardPunish(); // this is temporarily here just for the implementation sake.
             }
             getTurnProfit();
             // AI player
@@ -319,6 +326,32 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 constructionUnselect = true;
                 unselectConstructions(null);
                 break;
+            }
+        }
+    }
+    private void thiefResourceCardPunish() throws IOException {
+        Stage window = (Stage) root.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/thiefCardPunishment.fxml"));
+
+        Parent root = loader.load();
+        ControllerThiefPunishment controller = loader.getController();
+        if(controller == null)
+            System.out.println("controller null");
+        else
+            controller.setPlayer(currentPlayer);
+        final Stage pop = new Stage();
+        pop.initModality(Modality.APPLICATION_MODAL);
+        pop.initOwner(window);
+        pop.setTitle("Thief will steal something");
+        pop.setScene(new Scene(root, 375, 480));
+        pop.show();
+    }
+
+    private void thiefResourceCardPunishAI(){
+        for(int i = 0; i  < getPlayers().size(); i++){
+            Player temp = getPlayers().get(0);
+            if ( temp instanceof PlayerAI && temp.getTotalCards() >= 7){
+                ((PlayerAI)temp).punish();
             }
         }
     }
@@ -347,19 +380,26 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     @FXML
     public void moveThief(MouseEvent mouseEvent){
-        thiefHexLoca.setThiefHere(false);
-        movingThief.setLayoutX(mouseEvent.getSceneX());
-        movingThief.setLayoutY(mouseEvent.getSceneY());
+        if(thiefCanMove){
+            thiefHexLoca.setThiefHere(false);
+            movingThief.setLayoutX(mouseEvent.getSceneX());
+            movingThief.setLayoutY(mouseEvent.getSceneY());
+        }
     }
 
     @FXML
     public void thiefMoved(MouseEvent mouseEvent){
-        thiefHexLoca.setThiefHere(false);
-        TerrainHex thiefsNewLocation = getHexWithCoordinates(movingThief);
-        thiefHexLoca = thiefsNewLocation;
-        movingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
-        movingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
-        thiefsNewLocation.setThiefHere(true);
+        if(thiefCanMove) {
+            thiefHexLoca.setThiefHere(false);
+            TerrainHex thiefsNewLocation = getHexWithCoordinates(movingThief);
+            if (thiefsNewLocation != null) {
+                thiefHexLoca = thiefsNewLocation;
+                movingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
+                movingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
+                thiefsNewLocation.setThiefHere(true);
+            }
+        }
+        thiefCanMove = false;
     }
 
     private void getTurnProfit() {
@@ -529,7 +569,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ INITIAL STEP METHODS ---------------- //
 
-    private void initialTurn() {
+    private void initialTurn() throws IOException {
         while (true) {
             playerTurn = playerTurn % 4;
             Player player = getPlayers().get(playerTurn);
