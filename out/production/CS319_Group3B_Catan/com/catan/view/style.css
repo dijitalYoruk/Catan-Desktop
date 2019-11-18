@@ -1,0 +1,134 @@
+#program-pane {
+    -fx-background-image: url("../assets/background.jpg");
+    -fx-background-size: cover;
+    -fx-pref-width: 1500;
+    -fx-pref-height: 800;
+}
+#settings-pane {
+    -fx-background-image: url("../assets/background.jpg");
+    -fx-background-size: cover;
+    -fx-pref-width: 1500;
+    -fx-pref-height: 800;
+}
+
+
+#game-pane {
+    -fx-pref-width: 1500;
+    -fx-pref-height: 800;
+}
+
+#terrain-hex {
+    -fx-padding: 10 20 10 20;
+    -fx-color: orange;
+}
+
+.settings{
+    -fx-background-image: url("../assets/background.jpg");
+    -fx-background-size: cover;
+    -fx-pref-width: 1500;
+    -fx-pref-height: 800;
+}
+.thresholds{
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-pref-width: 200;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+.thresholds_numbers{
+    -fx-text-alignment: center;
+    -fx-background-color: yellow;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-font-size: 20;
+}
+.settings-button {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-pref-width: 300;
+    -fx-pref-height: 75;
+    -fx-font-size: 20;
+}
+.program-button {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-pref-width: 250;
+    -fx-pref-height: 75;
+    -fx-font-size: 20;
+}
+
+.game-button {
+    -fx-background-color: #CD853F;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 250;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+
+.trade-button {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 250;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+
+.turn-label {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 340;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+
+#die-button {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 5;
+    -fx-pref-width: 70;
+    -fx-pref-height: 70;
+    -fx-font-size: 20;
+}
+
+.btnVertex {
+    -fx-background-color: orange;
+}
+
+.game-back-button {
+    -fx-background-image: url("../assets/icon_back.jpg");
+    -fx-background-size: 50px;
+}
+
+#end-button {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 5;
+    -fx-pref-width: 120;
+    -fx-pref-height: 70;
+    -fx-font-size: 20;
+}
+.instructions-back-button {
+    -fx-background-color: orange;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-image: url("../assets/icon_back.jpg");
+    -fx-background-size: 50px;
+}
+
