@@ -5,15 +5,21 @@ import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.modal.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction {
 
@@ -29,6 +35,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int initialStepCount = 0;
     private Player currentPlayer;
     private int playerTurn = 0;
+    @FXML
+    private AnchorPane root;
 
     @Override
     public void initialize() {
@@ -83,10 +91,23 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @FXML
-    void trade(ActionEvent event) {
-        if (isStepActual) {
+    void trade(ActionEvent event) throws IOException {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(root.getScene().getWindow());
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+
+        fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/trade.fxml"));
+
+        dialog.setTitle("Trade");
+        dialog.getDialogPane().setContent(fxmlLoader.load());
+
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> inputOfUser = dialog.showAndWait();
+        //if (isStepActual) {
             // TODO trade will be implemented
-        }
+        //}
     }
 
     @FXML
