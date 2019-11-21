@@ -162,10 +162,10 @@
       <Circle fx:id="vertex8" fill="#ffde2173" layoutX="876.0" layoutY="183.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <HBox layoutX="933.0" layoutY="653.0" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Rectangle fx:id="imgRoad" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
-            <Rectangle fx:id="imgVillage" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
-            <Rectangle fx:id="imgCity" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
-            <Rectangle fx:id="imgCivilisation" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
+            <Rectangle fx:id="imgRoad" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
+            <Rectangle fx:id="imgVillage" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
+            <Rectangle fx:id="imgCity" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
+            <Rectangle fx:id="imgCivilisation" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
          </children>
       </HBox>
       <Rectangle fx:id="imgPriceCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="208.0" layoutX="75.0" layoutY="41.0" stroke="BLACK" strokeType="INSIDE" width="341.0" />

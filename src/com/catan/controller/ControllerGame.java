@@ -465,8 +465,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 // if there is nobody around here, it will do nothing
                 if(size != 0){
                     int randomPlayer = (int)Math.random()*size;
-                    Player playerToBePunished = players.get(randomPlayer);
-                    currentPlayer.addResourceFromThief(playerToBePunished.getPunishedByThief());
+                    //Player playerToBePunished = players.get(randomPlayer);
+                    //currentPlayer.addResourceFromThief(playerToBePunished.getPunishedByThief());
                 }
             }
         }
@@ -634,6 +634,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
         if (!currentPlayer.hasEnoughResources(selectedConstruction)) {
             selectedConstruction = "";
+            outputNotPossible("Construction");
             return;
         }
 
@@ -829,4 +830,5 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         refreshRoadSelectionVertices();
         constructionUnselect = false;
     }
+
 }

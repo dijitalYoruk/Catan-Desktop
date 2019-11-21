@@ -49,4 +49,8 @@ public class ControllerProgram {
             e.printStackTrace();
         }
     }
+    @FXML
+    public void exitGame(){
+        System.exit(0);
+    }
 }
