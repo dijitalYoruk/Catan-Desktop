@@ -1,16 +1,13 @@
 package com.catan.controller;
 
+import com.catan.Util.Constants;
 import com.catan.modal.Player;
-import com.catan.modal.Trade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 
-import java.util.Set;
-
-public class ControllerTrade<trade> {
+public class ControllerTrade {
 
     @FXML
     private Label givenBrick;
@@ -49,19 +46,20 @@ public class ControllerTrade<trade> {
     private Button clearTradeButton;
 
     @FXML
-    private Label playersBrick;
+    private Label labelActualPlayerBrick;
 
     @FXML
-    private Label playersWheat;
+    private Label labelActualPlayerGrain;
 
     @FXML
-    private Label playersOre;
+    private Label labelActualPlayerOre;
 
     @FXML
-    private Label playersWool;
+    private Label labelActualPlayerWool;
 
     @FXML
-    private Label playersLumber;
+    private Label labelActualPlayerLumber;
+
 
     @FXML
     private Label componentsBrick;
@@ -78,20 +76,20 @@ public class ControllerTrade<trade> {
     @FXML
     private Label componentsLumber;
 
-    public int givenLumberNo = 0;
-    public int givenWoolNo = 0;
-    public int givenOreNo = 0;
-    public int givenWheatNo = 0;
-    public int givenBrickNo = 0;
-    public int requestedLumberNo = 0;
-    public int requestedWoolNo = 0;
-    public int requestedOreNo = 0;
-    public int requestedWheatNo = 0;
-    public int requestedBrickNo = 0;
+    private int givenLumberNo = 0;
+    private int givenWoolNo = 0;
+    private int givenOreNo = 0;
+    private int givenWheatNo = 0;
+    private int givenBrickNo = 0;
+    private int requestedLumberNo = 0;
+    private int requestedWoolNo = 0;
+    private int requestedOreNo = 0;
+    private int requestedWheatNo = 0;
+    private int requestedBrickNo = 0;
+    private Player actualPlayer;
 
     @FXML
-    void initalizeTrade(Player player){
-
+    void initialize(){
         givenLumberNo = 0;
         givenWoolNo = 0;
         givenOreNo = 0;
@@ -120,13 +118,6 @@ public class ControllerTrade<trade> {
         requestedOre.setText(requestedOreNo+"");
         requestedWheat.setText(requestedWheatNo+"");
         requestedBrick.setText(requestedBrickNo+"");
-
-        playersLumber.setText(player.getSourceCards().get("lumber").size()+"");
-        playersWool.setText(player.getSourceCards().get("wool").size()+"");
-        playersOre.setText(player.getSourceCards().get("ore").size()+"");
-        playersWheat.setText(player.getSourceCards().get("wheat").size()+"");
-        playersBrick.setText(player.getSourceCards().get("brick").size()+"");
-
     }
 
     @FXML
@@ -177,6 +168,15 @@ public class ControllerTrade<trade> {
     @FXML
     void changeTradeWith(ActionEvent event) {
 
+    }
+
+    public void setActualPlayerAndLabels(Player actualPlayer) {
+        this.actualPlayer = actualPlayer;
+        labelActualPlayerBrick.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_LUMBER).size());
+        labelActualPlayerWool.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_WOOL).size());
+        labelActualPlayerOre.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_ORE).size());
+        labelActualPlayerGrain.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_GRAIN).size());
+        labelActualPlayerLumber.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_LUMBER).size());
     }
 
 }

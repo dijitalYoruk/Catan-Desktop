@@ -103,8 +103,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         dialog.getDialogPane().setContent(fxmlLoader.load());
 
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        ControllerTrade tradeController = fxmlLoader.getController();
+        tradeController.setActualPlayerAndLabels(getPlayers().get(0)); // actual player
 
         Optional<ButtonType> inputOfUser = dialog.showAndWait();
+
+
         //if (isStepActual) {
             // TODO trade will be implemented
         //}
