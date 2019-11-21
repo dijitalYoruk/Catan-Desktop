@@ -3,12 +3,16 @@ package com.catan.controller;
 import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.modal.*;
+import com.sun.deploy.security.SelectableSecurityManager;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +25,7 @@ import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import javax.naming.ldap.Control;
 import java.io.IOException;
@@ -42,6 +47,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private Player currentPlayer;
     private int playerTurn = 0;
     private boolean thiefCanMove = false;
+    private boolean initialThief = true;
     @Override
     public void initialize() {
         super.initialize();
@@ -144,12 +150,30 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if(isStepInitial) {
             initialTurn();
         } else if (isStepActual) {
-            actualTurn();
+            //actualTurn();
+            preTurnThenActualTurn();
         }
     }
 
-    private void outputNotPossible() {
-        System.out.println("Not Possible");
+    private void outputNotPossible(String warningType) {
+        Label warning = getWarningLabel();
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2.0), warning);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        //fadeTransition.setCycleCount(Animation.INDEFINITE);
+
+        if(warningType.equals("Not possible")) {
+            warning.setText("Not Possible");
+            warning.setOpacity(1);
+        }
+        else if(warningType.equals("Thief")){
+            warning.setText("You must move the thief");
+            warning.setOpacity(1);
+        }else{
+            warning.setText("Not enough resource for this type construction");
+            warning.setOpacity(1);
+        }
+        fadeTransition.play();
     }
 
     private boolean isVertexSuitableForConstruction(Vertex vertex) {
@@ -184,7 +208,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 tempRoad = road;
             }
         } else {
-            outputNotPossible();
+            Player player = getPlayers().get(playerTurn);
+            currentPlayer = player;
+            if(currentPlayer instanceof PlayerActual)
+                outputNotPossible("Construction");
         }
         unselectConstructions(null);
     }
@@ -299,52 +326,70 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ ACTUAL STEP METHODS ---------------- //
 
+    private void preTurnThenActualTurn() throws IOException {
+        boolean gameContinuoin = true;
+        rollDie();
+        System.out.println("Roll die result: " + die.getDieSum());
+        if(die.getDieSum() == 7){
+            thiefResourceCardPunishAI();
+            thiefResourceCardPunish();
+            gameContinuoin = false;
+        }
+        // game will not contiuno if the player has to choose cards first.
+        if(gameContinuoin)
+            actualTurn();
+    }
     private void actualTurn() throws IOException {
+        System.out.println("Actual turn is called");
         deActivateAllVertices();
-        while (true) {
-            playerTurn = playerTurn % 4;
-            Player player = getPlayers().get(playerTurn);
-            currentPlayer = player;
-            playerTurn++;
-            rollDie();
-            if(die.getDieSum() == 7){
-                thiefCanMove = true;
-                playThieft(currentPlayer);
-                thiefResourceCardPunishAI();
-                thiefResourceCardPunish(); // this is temporarily here just for the implementation sake.
-            }
-            getTurnProfit();
-            // AI player
-            if (player instanceof PlayerAI) {
-                playAIActualTurn();
-            }
-            // Actual Player
-            else if (player instanceof  PlayerActual) {
-
-                deActivateAllVertices();
-                refreshRoadSelectionVertices();
-                constructionUnselect = true;
-                unselectConstructions(null);
-                break;
-            }
+        System.out.println("while loop");
+        playerTurn = playerTurn % 4;
+        Player player = getPlayers().get(playerTurn);
+        currentPlayer = player;
+        playerTurn++;
+        if(die.getDieSum() == 7){
+            System.out.println("thief moved");
+            playThieft(currentPlayer);
+        }
+        getTurnProfit();
+        // AI player
+        if (player instanceof PlayerAI) {
+            System.out.println("fake  player's turn");
+            playAIActualTurn();
+            preTurnThenActualTurn();
+        }
+        // Actual Player
+        else if (player instanceof  PlayerActual) {
+            System.out.println("real player's turn");
+            deActivateAllVertices();
+            refreshRoadSelectionVertices();
+            constructionUnselect = true;
+            unselectConstructions(null);
         }
     }
     private void thiefResourceCardPunish() throws IOException {
-        Stage window = (Stage) root.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/thiefCardPunishment.fxml"));
-
-        Parent root = loader.load();
-        ControllerThiefPunishment controller = loader.getController();
-        if(controller == null)
-            System.out.println("controller null");
-        else
-            controller.setPlayer(currentPlayer);
-        final Stage pop = new Stage();
-        pop.initModality(Modality.APPLICATION_MODAL);
-        pop.initOwner(window);
-        pop.setTitle("Thief will steal something");
-        pop.setScene(new Scene(root, 375, 480));
-        pop.show();
+        Player realPlayer = null;
+        for(Player player: getPlayers()){
+            if(player instanceof PlayerActual)
+            {
+                realPlayer = player;
+            }
+        }
+        if(realPlayer.getTotalCards() > 7){
+            Stage window = (Stage) root.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/thiefCardPunishment.fxml"));
+            Parent root = loader.load();
+            ControllerThiefPunishment controller = loader.getController();
+            controller.setPlayer(currentPlayer, this);
+            final Stage pop = new Stage();
+            pop.initModality(Modality.APPLICATION_MODAL);
+            pop.initOwner(window);
+            pop.setTitle("Thief will steal something");
+            pop.setScene(new Scene(root, 375, 480));
+            pop.show();
+        }else{
+            updateGame();
+        }
     }
 
     private void thiefResourceCardPunishAI(){
@@ -355,26 +400,44 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             }
         }
     }
-    private void playThieft(Player currentPlayer){
-        thiefDefaultLoca.setVisible(false);
-        movingThief.setLayoutX(thiefDefaultLoca.getLayoutX());
-        movingThief.setLayoutY(thiefDefaultLoca.getLayoutY());
-        movingThief.setVisible(true);
-        if (currentPlayer instanceof PlayerAI) {
-                int randomHex = 15;
 
+    // i created this function to stop game, game contionous when use finishes selecting card by updateGame function
+
+    private void playThieft(Player currentPlayer){
+        thiefCanMove = true;
+        if(initialThief){
+            System.out.println("initial thief will be moved");
+            thiefDefaultLoca.setVisible(false);
+            movingThief.setLayoutX(thiefDefaultLoca.getLayoutX());
+            movingThief.setLayoutY(thiefDefaultLoca.getLayoutY());
+            movingThief.setVisible(true);
+            initialThief = false;
+        }
+        if (currentPlayer instanceof PlayerAI) {
+                System.out.println("bot is moving thief");
+                int randomHex = (int)Math.random()*18 + 1;
+                System.out.println(randomHex + "'s hexagon is thief moved");
+                thiefHexLoca.setThiefHere(false);
+                System.out.println();
+                TerrainHex thiefsNewLocation = getHexWithIndex(randomHex);
+                thiefHexLoca = thiefsNewLocation;
+                movingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
+                movingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
+                thiefsNewLocation.setThiefHere(true);
+                thiefCanMove = false;
         }
         // Actual Player
         else if (currentPlayer instanceof  PlayerActual) {
-            Stage window = (Stage) root.getScene().getWindow();
-            final Stage dialog = new Stage();
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.initOwner(window);
-            VBox dialogVbox = new VBox(20);
-            dialogVbox.getChildren().add(new Text("You must move the thief"));
-            Scene dialogScene = new Scene(dialogVbox, 300, 200);
-            dialog.setScene(dialogScene);
-            dialog.show();
+//            Stage window = (Stage) root.getScene().getWindow();
+//            final Stage dialog = new Stage();
+//            dialog.initModality(Modality.APPLICATION_MODAL);
+//            dialog.initOwner(window);
+//            VBox dialogVbox = new VBox(20);
+//            dialogVbox.getChildren().add(new Text("You must move the thief"));
+//            Scene dialogScene = new Scene(dialogVbox, 100, 100);
+//            dialog.setScene(dialogScene);
+//            dialog.show();
+            outputNotPossible("Thief");
         }
     }
 
@@ -397,11 +460,25 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 movingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
                 movingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
                 thiefsNewLocation.setThiefHere(true);
+                ArrayList<Player> players = thiefHexLoca.getPlayersAroundHere();
+                int size = players.size();
+                // if there is nobody around here, it will do nothing
+                if(size != 0){
+                    int randomPlayer = (int)Math.random()*size;
+                    Player playerToBePunished = players.get(randomPlayer);
+                    currentPlayer.addResourceFromThief(playerToBePunished.getPunishedByThief());
+                }
             }
         }
         thiefCanMove = false;
     }
 
+    public void updateGame() throws IOException{
+        //here the resources of player will be updated, this part has dependency of talha's work. so this will wait
+        System.out.println("Process for selecting cards is over now turn starts");
+        actualTurn();
+        System.out.println("actual turn is over");
+    }
     private void getTurnProfit() {
         System.out.println("----------------------------------------------------------------------");
         for (Player player: getPlayers()) {
@@ -418,6 +495,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     @Override
     public void makeConstructionActual(Circle circle) {
         if (!currentPlayer.hasEnoughResources(selectedConstruction)) {
+            if(currentPlayer instanceof PlayerActual)
+                outputNotPossible("Construction");
             return;
         }
 
@@ -454,7 +533,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 unselectConstructions(null);
                 deActivateAllVertices();
             } else {
-                outputNotPossible();
+                if(currentPlayer instanceof PlayerActual)
+                    outputNotPossible("Not possible");
             }
         }
         else if (selectedConstruction.equals(Constants.ROAD)) {
@@ -588,7 +668,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     isRoadBuild = false;
                     isConstructionBuild = false;
                 } else {
-                    outputNotPossible();
+                    if(currentPlayer instanceof PlayerActual)
+                        outputNotPossible("Not possible");
                     selectConstructionInitial(imgRoad);
                     return;
                 }
@@ -600,7 +681,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             if (initialStepCount == 8) {
                 isStepActual = true;
                 isStepInitial = false;
-                actualTurn();
+                //actualTurn();
+                preTurnThenActualTurn();
                 return;
             }
         }
@@ -679,7 +761,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 tempSettlement = settlement;
 
             } else {
-                outputNotPossible();
+                if(currentPlayer instanceof PlayerActual)
+                    outputNotPossible("Not possible");
             }
         }
         else if (selectedConstruction.equals(Constants.ROAD)) {
@@ -704,7 +787,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     constructRoad();
                 } else {
                     refreshRoadSelectionVertices();
-                    outputNotPossible();
+                    if(currentPlayer instanceof PlayerActual)
+                        outputNotPossible("Not possible");
                 }
             }
         }

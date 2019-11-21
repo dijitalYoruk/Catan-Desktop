@@ -327,6 +327,7 @@
          </font>
       </Label>
       <JFXButton layoutX="14.0" layoutY="35.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
+      <Label fx:id="warningLabel" alignment="CENTER" layoutX="481.0" layoutY="658.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
 
 
 

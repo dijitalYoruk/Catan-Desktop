@@ -18,6 +18,7 @@ public class TerrainHex extends Field{
     private Circle circleNumberOnHex;
     private Label labelNumberOnHex;
     private boolean isThiefHere;
+    private ArrayList<Vertex> verticesNear;
 
     private Polygon shape;
     public TerrainHex (Polygon shape, String name, Circle circleNumberOnHex, Label labelNumberOnHex) {
@@ -27,8 +28,28 @@ public class TerrainHex extends Field{
         this.circleNumberOnHex = circleNumberOnHex;
         this.labelNumberOnHex = labelNumberOnHex;
         this.isThiefHere = false;
+        verticesNear = new ArrayList<>();
     }
 
+    public boolean isThiefHere(){
+        return isThiefHere;
+    }
+
+    public void addVertex(Vertex vertex){
+        verticesNear.add(vertex);
+    }
+
+    public ArrayList<Player> getPlayersAroundHere(){
+        ArrayList<Player> playersAround = new ArrayList<>();
+        for(Vertex vertex: verticesNear){
+            Settlement settlementOfVertex = vertex.getSettlement();
+            if(settlementOfVertex != null){
+                Player playerOfVertex = settlementOfVertex.getPlayer();
+                playersAround.add(playerOfVertex);
+            }
+        }
+        return playersAround;
+    }
     public boolean isInside(Shape check){
         if(shape.getBoundsInParent().intersects(check.getBoundsInParent())){
             return true;

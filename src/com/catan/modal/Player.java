@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class Player {
 
@@ -128,13 +129,53 @@ public class Player {
             HashMap<String, Integer> profit = settlement.getTurnProfit(dieNumber);
             Set<String> keys = profit.keySet();
             for (String key: keys) {
-                sourceCards.get(key).add(new SourceCard(key, key)); // for checking some functionalities
+                //sourceCards.get(key).add(new SourceCard(key, key)); // for checking some functionalities
+                //totalCards += 1; // for checking some functionalities
                 for (int i = 0; i < profit.get(key); i++) {
                     sourceCards.get(key).add(new SourceCard(key, key));
                     totalCards += 1;
                 }
             }
         }
+    }
+
+
+    // this function add the source cards-that comes from thief- to this player
+    public void addResourceFromThief(ArrayList<SourceCard> thiefSources){
+        for(SourceCard card: thiefSources){
+            sourceCards.get(card.getName()).add(card);
+        }
+    }
+    // this function chooses random 2 source card to give the thief
+    public ArrayList<SourceCard> getPunishedByThief(){
+        ArrayList<SourceCard> punishment = new ArrayList<>();
+        boolean firstNotOver = true;
+        String[] cards = {Constants.CARD_BRICK, Constants.CARD_GRAIN,
+                            Constants.CARD_ORE, Constants.CARD_WOOL, Constants.CARD_LUMBER};
+        while(firstNotOver){
+            int randomCard1 = (int)Math.random()*4; // 0-4
+            String sourceName = cards[randomCard1];
+            ArrayList<SourceCard> sourcesThisType = sourceCards.get(sourceName);
+            if (sourcesThisType.size() != 0){
+                SourceCard tribute = sourcesThisType.get(0);
+                sourcesThisType.remove(tribute);
+                punishment.add(tribute);
+                firstNotOver = false;
+            }
+        }
+        boolean secondNotOver = true;
+        while(secondNotOver){
+            int randomCard2 = (int)Math.random()*4; // 0-4
+            String sourceName = cards[randomCard2];
+            ArrayList<SourceCard> sourcesThisType = sourceCards.get(sourceName);
+            if (sourcesThisType.size() != 0){
+                SourceCard tribute = sourcesThisType.get(0);
+                sourcesThisType.remove(tribute);
+                punishment.add(tribute);
+                secondNotOver = false;
+            }
+        }
+        return punishment;
     }
     public void punishWool(int punish){
         for(int i = 0; i < punish; i++ ) {

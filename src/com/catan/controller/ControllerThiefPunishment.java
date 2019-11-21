@@ -2,17 +2,25 @@ package com.catan.controller;
 
 import com.catan.Util.Constants;
 import com.catan.modal.Player;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import javax.xml.transform.Source;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ControllerThiefPunishment {
+    @FXML
+    AnchorPane thiefAnchorPane;
     @FXML
     Label information;
     @FXML
@@ -38,8 +46,10 @@ public class ControllerThiefPunishment {
     private int brickP, brickMax;
     private int lumberP, lumberMax;
     Player player;
-    public void setPlayer(Player current){
+    ControllerGame gameController;
+    public void setPlayer(Player current, ControllerGame game){
         player = current;
+        gameController = game;
         totalP = 0;
         hBoxes = new ArrayList<>();
         hBoxes.add(thief_hbox_1);
@@ -129,11 +139,23 @@ public class ControllerThiefPunishment {
         }
     }
     @FXML
-    public void confirmPunish(){
-        player.punishLumber(lumberP);
-        player.punishWool(woolP);
-        player.punishGrain(grainP);
-        player.punishOre(oreP);
-        player.punishBrick(brickP);
+    public void confirmPunish() throws IOException {
+        if (totalP == requiredP) {
+            player.punishLumber(lumberP);
+            player.punishWool(woolP);
+            player.punishGrain(grainP);
+            player.punishOre(oreP);
+            player.punishBrick(brickP);
+            gameController.updateGame();
+            Stage stage = (Stage) thiefAnchorPane.getScene().getWindow();
+            stage.close();
+        }else{
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), information);
+            fadeTransition.setFromValue(1.0);
+            fadeTransition.setToValue(0.0);
+            fadeTransition.setCycleCount(Animation.INDEFINITE);
+            fadeTransition.play();
+            System.out.println("You have to choose" + requiredP);
+        }
     }
 }

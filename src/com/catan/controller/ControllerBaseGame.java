@@ -334,6 +334,8 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Label labelLogs;
     @FXML
+    private Label warningLabel;
+    @FXML
     private Circle circleNumberOnHex1;
 
     @FXML
@@ -1182,7 +1184,9 @@ public class ControllerBaseGame extends ControllerBase {
         terrainHexes.add(new TerrainHex(terrainHex18,"hex18", circleNumberOnHex18, labelHexNum18));
         terrainHexes.add(new TerrainHex(terrainHex19,"hex19", circleNumberOnHex19, labelHexNum19));
     }
-
+    public Label getWarningLabel(){
+        return warningLabel;
+    }
     public ArrayList<Vertex> getVertices() {
         return vertices;
     }
@@ -1262,6 +1266,10 @@ public class ControllerBaseGame extends ControllerBase {
             }
         }
         return null;
+    }
+
+    public TerrainHex getHexWithIndex(int i){
+        return terrainHexes.get(i-1);
     }
 
 }
