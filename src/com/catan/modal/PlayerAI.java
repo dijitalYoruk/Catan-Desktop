@@ -80,8 +80,9 @@ public class PlayerAI extends Player {
 
     public void punish(){
         int punish = getTotalCards()/2;
+        System.out.println("punish amount: " + punish);
         for(int i = 0; i < punish; i++){
-            int randomRes = (int) Math.random()*4 + 1;
+            int randomRes = (int) Math.random()*5 + 1;
             punishHelper(randomRes);
             // 1 = wool; 2 = grain; 3 = ore; 4 = lumber; 5 = brick.
         }
@@ -98,11 +99,12 @@ public class PlayerAI extends Player {
             res = Constants.CARD_LUMBER;
         else
             res = Constants.CARD_BRICK;
-
         if(getSourceCards().get(res).size() == 0){
-            int another = (i == 1) ? 4 : (i-1);
+            int another = (i == 1) ? 5 : (i-1);
             punishHelper(another);
-        }else
+        }else {
             sourceCards.get(res).remove(sourceCards.get(res).get(0));
+            totalCards--;
+        }
     }
 }

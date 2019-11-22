@@ -328,6 +328,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     private void preTurnThenActualTurn() throws IOException {
         boolean gameContinuoin = true;
+        playerTurn = playerTurn % 4;
+        Player player = getPlayers().get(playerTurn);
+        System.out.println(player.getName() + "'s turn" + " and color: " + player.getColor());
         rollDie();
         System.out.println("Roll die result: " + die.getDieSum());
         if(die.getDieSum() == 7){
@@ -340,27 +343,23 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             actualTurn();
     }
     private void actualTurn() throws IOException {
-        System.out.println("Actual turn is called");
         deActivateAllVertices();
-        System.out.println("while loop");
         playerTurn = playerTurn % 4;
         Player player = getPlayers().get(playerTurn);
         currentPlayer = player;
         playerTurn++;
         if(die.getDieSum() == 7){
-            System.out.println("thief moved");
             playThieft(currentPlayer);
         }
         getTurnProfit();
         // AI player
         if (player instanceof PlayerAI) {
-            System.out.println("fake  player's turn");
             playAIActualTurn();
             preTurnThenActualTurn();
         }
         // Actual Player
         else if (player instanceof  PlayerActual) {
-            System.out.println("real player's turn");
+
             deActivateAllVertices();
             refreshRoadSelectionVertices();
             constructionUnselect = true;
@@ -380,7 +379,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/thiefCardPunishment.fxml"));
             Parent root = loader.load();
             ControllerThiefPunishment controller = loader.getController();
-            controller.setPlayer(currentPlayer, this);
+            controller.setPlayer(realPlayer, this);
             final Stage pop = new Stage();
             pop.initModality(Modality.APPLICATION_MODAL);
             pop.initOwner(window);
@@ -394,7 +393,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     private void thiefResourceCardPunishAI(){
         for(int i = 0; i  < getPlayers().size(); i++){
-            Player temp = getPlayers().get(0);
+            Player temp = getPlayers().get(i);
+            System.out.println("fake player total card: " + temp.getTotalCards());
             if ( temp instanceof PlayerAI && temp.getTotalCards() >= 7){
                 ((PlayerAI)temp).punish();
             }
@@ -406,7 +406,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void playThieft(Player currentPlayer){
         thiefCanMove = true;
         if(initialThief){
-            System.out.println("initial thief will be moved");
             thiefDefaultLoca.setVisible(false);
             movingThief.setLayoutX(thiefDefaultLoca.getLayoutX());
             movingThief.setLayoutY(thiefDefaultLoca.getLayoutY());
@@ -414,17 +413,16 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             initialThief = false;
         }
         if (currentPlayer instanceof PlayerAI) {
-                System.out.println("bot is moving thief");
-                int randomHex = (int)Math.random()*18 + 1;
-                System.out.println(randomHex + "'s hexagon is thief moved");
+                int randomHex = (int)(Math.random()*18) + 1;
                 thiefHexLoca.setThiefHere(false);
-                System.out.println();
+                System.out.println(" bot played thief to: " + randomHex);
                 TerrainHex thiefsNewLocation = getHexWithIndex(randomHex);
                 thiefHexLoca = thiefsNewLocation;
                 movingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
                 movingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
                 thiefsNewLocation.setThiefHere(true);
                 thiefCanMove = false;
+                thiefPunish();
         }
         // Actual Player
         else if (currentPlayer instanceof  PlayerActual) {
@@ -456,28 +454,64 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             thiefHexLoca.setThiefHere(false);
             TerrainHex thiefsNewLocation = getHexWithCoordinates(movingThief);
             if (thiefsNewLocation != null) {
+                thiefCanMove = false;
                 thiefHexLoca = thiefsNewLocation;
                 movingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
                 movingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
                 thiefsNewLocation.setThiefHere(true);
-                ArrayList<Player> players = thiefHexLoca.getPlayersAroundHere();
-                int size = players.size();
-                // if there is nobody around here, it will do nothing
-                if(size != 0){
-                    int randomPlayer = (int)Math.random()*size;
-                    //Player playerToBePunished = players.get(randomPlayer);
-                    //currentPlayer.addResourceFromThief(playerToBePunished.getPunishedByThief());
+                thiefPunish();
+            }
+        }
+    }
+    private void thiefPunish(){
+        ArrayList<Player> players = thiefHexLoca.getPlayersAroundHere();
+        int size = players.size();
+        if(size == 0){
+            System.out.println("there is nobody around thief");
+            return;
+        }
+        if(size == 1 && players.get(0) == currentPlayer){
+            System.out.println("there is only one person and it is him");
+            return;
+        }
+        // if there is nobody around here, it will do nothing
+        //if(size != 0 && !(size == 1 && players.get(0) == currentPlayer)){
+        int randomPlayer = (int)Math.random()*size;
+
+        Player playerToBePunished = null;
+        boolean choosingPlayerToPunishIsNotOver = true;
+        boolean noVictim = false;
+        int count = 0;
+        while(choosingPlayerToPunishIsNotOver)
+        {
+            playerToBePunished = players.get(randomPlayer);
+            if(playerToBePunished != currentPlayer && playerToBePunished.getTotalCards() != 0){
+                choosingPlayerToPunishIsNotOver = false;
+            }else{
+                randomPlayer = (randomPlayer == 0) ? (size - 1) : (randomPlayer -1);
+                count++;
+                if(count == size) {
+                    noVictim = true;
+                    System.out.println("nobody has any source"); // so playerToBePunished will be null afterwads.
+                    choosingPlayerToPunishIsNotOver = false;
                 }
             }
         }
-        thiefCanMove = false;
+        if(noVictim)// it means there is no appropriate player to steal from.
+        {
+            playerToBePunished = null;
+        }
+        if(playerToBePunished != null){ // it maybe null in the case that nobody has any source
+            System.out.println("thief steals from : " + playerToBePunished.getName() + " and color: " + playerToBePunished.getColor());
+            SourceCard punish = playerToBePunished.getPunishedByThief();
+            System.out.println("punish name: " + punish.getName());
+            currentPlayer.addResourceFromThief(punish);
+        }
+        //}
     }
-
     public void updateGame() throws IOException{
         //here the resources of player will be updated, this part has dependency of talha's work. so this will wait
-        System.out.println("Process for selecting cards is over now turn starts");
         actualTurn();
-        System.out.println("actual turn is over");
     }
     private void getTurnProfit() {
         System.out.println("----------------------------------------------------------------------");

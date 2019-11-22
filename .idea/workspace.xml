@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="some bugs found in thief functions, need more care.">
+    <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/program.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/program.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/program.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/program.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +150,9 @@
       <workItem from="1574326555912" duration="218000" />
       <workItem from="1574327044898" duration="5784000" />
       <workItem from="1574348040811" duration="1546000" />
-      <workItem from="1574362993814" duration="1680000" />
+      <workItem from="1574362993814" duration="2389000" />
+      <workItem from="1574367336201" duration="945000" />
+      <workItem from="1574423929833" duration="8444000" />
     </task>
     <task id="LOCAL-00001" summary="Thief became functional but card logic is not implemented">
       <created>1573322726673</created>
@@ -171,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574365685645</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="some bugs found in thief functions, need more care.">
+      <created>1574366631020</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574366631020</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

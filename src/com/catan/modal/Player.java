@@ -18,7 +18,7 @@ public class Player {
     protected ArrayList<Road> roads;
     private String color;
     private String name;
-    private int totalCards;
+    protected int totalCards;
     protected PriceCard priceCard;
 
     // constructor
@@ -107,7 +107,6 @@ public class Player {
                     return Constants.PATH_CIVILISATION_BLUE;
             }
         }
-
         return Constants.PATH_CIVILISATION_BLUE;
     }
 
@@ -140,66 +139,68 @@ public class Player {
     }
 
 
-    // this function add the source cards-that comes from thief- to this player
-    public void addResourceFromThief(ArrayList<SourceCard> thiefSources){
-        for(SourceCard card: thiefSources){
-            sourceCards.get(card.getName()).add(card);
-        }
+    // this function add the source card-that comes from thief- to this player
+    public void addResourceFromThief(SourceCard thiefSource){
+        sourceCards.get(thiefSource.getName()).add(thiefSource);
+        totalCards++;
     }
-    // this function chooses random 2 source card to give the thief
-    public ArrayList<SourceCard> getPunishedByThief(){
-        ArrayList<SourceCard> punishment = new ArrayList<>();
-        boolean firstNotOver = true;
+    // this function chooses random 1 source card to give the thief
+    public SourceCard getPunishedByThief(){
+        SourceCard punishment = null;
+        boolean choosingCardNotOver = true;
         String[] cards = {Constants.CARD_BRICK, Constants.CARD_GRAIN,
                             Constants.CARD_ORE, Constants.CARD_WOOL, Constants.CARD_LUMBER};
-        while(firstNotOver){
-            int randomCard1 = (int)Math.random()*4; // 0-4
-            String sourceName = cards[randomCard1];
+        int randomCard = (int)Math.random()*5; // generates number in range 0-4
+        //System.out.println("this guy has: " + getTotalCards() + "cards");
+        int count = 0;
+        while(choosingCardNotOver){
+            //System.out.println("first is getting chosen");
+            String sourceName = cards[randomCard];
+            //System.out.println(randomCard +" : " + sourceName);
             ArrayList<SourceCard> sourcesThisType = sourceCards.get(sourceName);
+            //System.out.println("this guys has " + sourcesThisType.size() + sourceName);
             if (sourcesThisType.size() != 0){
                 SourceCard tribute = sourcesThisType.get(0);
                 sourcesThisType.remove(tribute);
-                punishment.add(tribute);
-                firstNotOver = false;
+                totalCards--;
+                punishment = tribute;
+                choosingCardNotOver = false;
             }
-        }
-        boolean secondNotOver = true;
-        while(secondNotOver){
-            int randomCard2 = (int)Math.random()*4; // 0-4
-            String sourceName = cards[randomCard2];
-            ArrayList<SourceCard> sourcesThisType = sourceCards.get(sourceName);
-            if (sourcesThisType.size() != 0){
-                SourceCard tribute = sourcesThisType.get(0);
-                sourcesThisType.remove(tribute);
-                punishment.add(tribute);
-                secondNotOver = false;
-            }
+            randomCard = (randomCard == 0) ? 4 : (randomCard-1);
+            count++;
+            if(count == 6)
+                break;
         }
         return punishment;
     }
     public void punishWool(int punish){
         for(int i = 0; i < punish; i++ ) {
             sourceCards.get(Constants.CARD_WOOL).remove(sourceCards.get(Constants.CARD_WOOL).get(0));
+            totalCards--;
         }
     }
     public void punishLumber(int punish){
         for(int i = 0; i < punish; i++ ) {
             sourceCards.get(Constants.CARD_LUMBER).remove(sourceCards.get(Constants.CARD_LUMBER).get(0));
+            totalCards--;
         }
     }
     public void punishOre(int punish){
         for(int i = 0; i < punish; i++ ) {
             sourceCards.get(Constants.CARD_ORE).remove(sourceCards.get(Constants.CARD_ORE).get(0));
+            totalCards--;
         }
     }
     public void punishGrain(int punish){
         for(int i = 0; i < punish; i++ ) {
             sourceCards.get(Constants.CARD_GRAIN).remove(sourceCards.get(Constants.CARD_GRAIN).get(0));
+            totalCards--;
         }
     }
     public void punishBrick(int punish){
         for(int i = 0; i < punish; i++ ) {
             sourceCards.get(Constants.CARD_BRICK).remove(sourceCards.get(Constants.CARD_BRICK).get(0));
+            totalCards--;
         }
     }
     public int getTotalCards(){
@@ -212,6 +213,10 @@ public class Player {
         for (String key: keys) {
             System.out.println(key + ": " + sourceCards.get(key).size());
         }
+    }
+
+    public String getName(){
+        return name;
     }
 
     public boolean hasEnoughResources(String selectedConstruction) {

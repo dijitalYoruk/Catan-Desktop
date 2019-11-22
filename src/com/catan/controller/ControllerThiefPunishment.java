@@ -48,6 +48,7 @@ public class ControllerThiefPunishment {
     Player player;
     ControllerGame gameController;
     public void setPlayer(Player current, ControllerGame game){
+        System.out.println("set player is called!! again");
         player = current;
         gameController = game;
         totalP = 0;
@@ -107,7 +108,7 @@ public class ControllerThiefPunishment {
 
     private void addResouceToView(String resource){
         ImageView temp = new ImageView();
-        temp.setId(Constants.CARD_BRICK + (totalP % 4));
+        temp.setId(resource);
         temp.setFitWidth(40);
         temp.setFitHeight(50);
         temp.setImage(new Image(".\\com\\catan\\assets\\resource_"+resource+".jpg"));
@@ -121,21 +122,27 @@ public class ControllerThiefPunishment {
     }
     @FXML
     public void decResource(MouseEvent event){
+        System.out.println("decrement is called!!");
         if (((ImageView)event.getSource()).getId().equals(Constants.CARD_BRICK)){
             brickP--;
             removeResourceFromView((ImageView)event.getSource());
+            brickCurrent.setText("x" + (brickMax - brickP));
         }else if (((ImageView)event.getSource()).getId().equals(Constants.CARD_ORE)){
             oreP--;
             removeResourceFromView((ImageView)event.getSource());
+            oreCurrent.setText("x" + (oreMax-oreP));
         }else if (((ImageView)event.getSource()).getId().equals(Constants.CARD_GRAIN)){
             grainP--;
             removeResourceFromView((ImageView)event.getSource());
-        }else if (((ImageView)event.getSource()).getId().equals(Constants.CARD_WOOL)){
+            grainCurrent.setText("x" + (grainMax - grainP));
+        }else if (((ImageView)event.getSource()).getId().equals("sheep")){
             woolP--;
             removeResourceFromView((ImageView)event.getSource());
+            woolCurrent.setText("x" + (woolMax - woolP));
         }else {
             lumberP--;
             removeResourceFromView((ImageView)event.getSource());
+            lumberCurrent.setText("x" + (lumberMax - lumberP));
         }
     }
     @FXML
