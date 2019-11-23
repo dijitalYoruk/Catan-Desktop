@@ -4,6 +4,7 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.*;
+import com.jfoenix.controls.JFXTextArea;
 import com.sun.deploy.security.SelectableSecurityManager;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
@@ -32,6 +33,7 @@ import javax.naming.ldap.Control;
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceUpdateGameAfterPopUp {
 
@@ -49,6 +51,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int playerTurn = 0;
     private boolean thiefCanMove = false;
     private boolean initialThief = true;
+    private List<String> gameLog = new ArrayList<>();
+
+    @FXML
+    private JFXTextArea gameLogsTextArea;
+
     @Override
     public void initialize() {
         super.initialize();
@@ -154,6 +161,16 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             //actualTurn();
             preActualTurn();
         }
+        gameLog.add("Round X has ended.");
+        updateGameLogsInView();
+    }
+
+    private void updateGameLogsInView() {
+        String log = "";
+        for (int i = gameLog.size() - 1; i >= 0; i--) {
+            log += gameLog.get(i) + "\n";
+        }
+        gameLogsTextArea.setText(log);
     }
 
     private void outputNotPossible(String warningType) {
@@ -338,6 +355,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             thiefResourceCardPunishAI();
             thiefResourceCardPunish();
             gameWillContinue = false;
+            gameLog.add("Player " + playerTurn + ": has rolled 7.");
         }
         // game will not contiuno if the player has to choose cards first.
         if (gameWillContinue) {
@@ -517,7 +535,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     private void playAIActualTurn() {
-        ((PlayerAI) currentPlayer).getActualAIDecision(this);
+        ((PlayerAI) currentPlayer).getActualAIDecision(this, playerTurn, gameLog);
     }
 
     @Override
@@ -737,13 +755,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             vertex = vertex.getNeighbors().get(index);
             makeConstructionInitial(vertex.getShape());
 
+            gameLog.add("Player " + playerTurn + ": has built road.");
 
             setSelectedConstruction(Constants.VILLAGE);
             if (tempRoad != null) {
                 ArrayList<Vertex> twoVertex = new ArrayList<>();
                 twoVertex.add(tempRoad.getVertices().get(0));
                 twoVertex.add(tempRoad.getVertices().get(1));
-
+                gameLog.add("Player " + playerTurn + ": has built village.");
                 if (isVertexSuitableForConstruction(twoVertex.get(0))) {
                     makeConstructionInitial(twoVertex.get(0).getShape());
                 }
@@ -783,6 +802,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 unselectConstructions(null);
                 activatePlayerVertices();
                 tempSettlement = settlement;
+
 
             } else {
                 if(currentPlayer instanceof PlayerActual)

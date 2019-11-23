@@ -4,6 +4,7 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceMakeConstruction;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerAI extends Player {
     public PlayerAI(String color, String name) {
@@ -20,7 +21,7 @@ public class PlayerAI extends Player {
         return settlements;
     }
 
-    public void getActualAIDecision(InterfaceMakeConstruction makeConstruction) {
+    public void getActualAIDecision(InterfaceMakeConstruction makeConstruction, int playerTurn, List<String> gameLog) {
         // Civilisation
         if (hasEnoughResources(Constants.CIVILISATION)) {
             if (Math.random() > 0.1) {
@@ -28,6 +29,7 @@ public class PlayerAI extends Player {
                 if (cities.size() > 0) {
                     makeConstruction.selectActualConstructionForAI(Constants.CIVILISATION);
                     makeSettlement(cities, makeConstruction);
+                    gameLog.add("Player " + playerTurn + ": has built civilization.");
                 }
             }
         }
@@ -39,6 +41,7 @@ public class PlayerAI extends Player {
                 if (villages.size() > 0) {
                     makeConstruction.selectActualConstructionForAI(Constants.CITY);
                     makeSettlement(villages, makeConstruction);
+                    gameLog.add("Player " + playerTurn + ": has built city.");
                 }
             }
         }
@@ -54,7 +57,9 @@ public class PlayerAI extends Player {
                 (villageCount == 4 && Math.random() > 0.99)) {
                 makeConstruction.selectActualConstructionForAI(Constants.VILLAGE);
                 makeConstruction.makeVillageActualForAI();
+                gameLog.add("Player " + playerTurn + ": has built village.");
             }
+
         }
         // Road
         if (hasEnoughResources(Constants.ROAD)) {
@@ -64,6 +69,7 @@ public class PlayerAI extends Player {
                 (roads.size() >= 7 && Math.random() > 0.8)) {
                 makeConstruction.selectActualConstructionForAI(Constants.ROAD);
                 makeConstruction.makeRoadActualForAI();
+                gameLog.add("Player " + playerTurn + ": has built road.");
             }
         }
     }
