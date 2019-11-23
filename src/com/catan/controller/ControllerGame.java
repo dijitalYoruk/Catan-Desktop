@@ -53,7 +53,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private boolean initialThief = true;
     private List<String> gameLog = new ArrayList<>();
     private int noOfRound = 1;
-
+    
     @FXML
     private JFXTextArea gameLogsTextArea;
 
@@ -163,6 +163,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             preActualTurn();
         }
         gameLog.add("Round "  + noOfRound + " has ended.");
+        // FIXME: should increment round counter somewhere else, incremented when error is shown.
         noOfRound++;
         updateGameLogsInView();
     }
