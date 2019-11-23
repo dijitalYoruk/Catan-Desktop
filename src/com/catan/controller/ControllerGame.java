@@ -52,6 +52,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private boolean thiefCanMove = false;
     private boolean initialThief = true;
     private List<String> gameLog = new ArrayList<>();
+    private int noOfRound = 1;
 
     @FXML
     private JFXTextArea gameLogsTextArea;
@@ -161,7 +162,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             //actualTurn();
             preActualTurn();
         }
-        gameLog.add("Round X has ended.");
+        gameLog.add("Round "  + noOfRound + " has ended.");
+        noOfRound++;
         updateGameLogsInView();
     }
 
