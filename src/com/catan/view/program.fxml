@@ -20,7 +20,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton id="btnExit" cache="true" styleClass="program-button" text="EXIT">
+            <JFXButton id="btnExit" cache="true" onAction="#exitGame" styleClass="program-button" text="EXIT">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

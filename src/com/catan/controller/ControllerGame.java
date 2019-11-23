@@ -2,20 +2,38 @@ package com.catan.controller;
 
 import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceMakeConstruction;
+import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.*;
+import com.sun.deploy.security.SelectableSecurityManager;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import javax.naming.ldap.Control;
+import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
-public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction {
+public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceUpdateGameAfterPopUp {
 
     // properties
     private boolean constructionUnselect = true;
@@ -29,7 +47,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int initialStepCount = 0;
     private Player currentPlayer;
     private int playerTurn = 0;
-
+    private boolean thiefCanMove = false;
+    private boolean initialThief = true;
     @Override
     public void initialize() {
         super.initialize();
@@ -132,12 +151,30 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if(isStepInitial) {
             initialTurn();
         } else if (isStepActual) {
-            actualTurn();
+            //actualTurn();
+            preActualTurn();
         }
     }
 
-    private void outputNotPossible() {
-        System.out.println("Not Possible");
+    private void outputNotPossible(String warningType) {
+        Label warning = getWarningLabel();
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2.0), warning);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        //fadeTransition.setCycleCount(Animation.INDEFINITE);
+
+        if(warningType.equals("Not possible")) {
+            warning.setText("Not Possible");
+            warning.setOpacity(1);
+        }
+        else if(warningType.equals("Thief")){
+            warning.setText("You must move the thief");
+            warning.setOpacity(1);
+        }else{
+            warning.setText("Not enough resource for this type construction");
+            warning.setOpacity(1);
+        }
+        fadeTransition.play();
     }
 
     private boolean isVertexSuitableForConstruction(Vertex vertex) {
@@ -172,7 +209,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 tempRoad = road;
             }
         } else {
-            outputNotPossible();
+            Player player = getPlayers().get(playerTurn);
+            currentPlayer = player;
+            if(currentPlayer instanceof PlayerActual)
+                outputNotPossible(Constants.CONSTRUCTION_STRING);
         }
         unselectConstructions(null);
     }
@@ -287,30 +327,186 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ ACTUAL STEP METHODS ---------------- //
 
-    private void actualTurn() {
+    private void preActualTurn() {
+        boolean gameWillContinue = true;
+        playerTurn = playerTurn % 4;
+        Player player = getPlayers().get(playerTurn);
+        System.out.println(player.getName() + " : " + player.getColor());
+        rollDie();
+        System.out.println("die result: " + die.getDieSum());
+        if (die.getDieSum() == 7) {
+            thiefResourceCardPunishAI();
+            thiefResourceCardPunish();
+            gameWillContinue = false;
+        }
+        // game will not contiuno if the player has to choose cards first.
+        if (gameWillContinue) {
+            actualTurn();
+        }
+    }
+    private void actualTurn()  {
         deActivateAllVertices();
-        while (true) {
-            playerTurn = playerTurn % 4;
-            Player player = getPlayers().get(playerTurn);
-            currentPlayer = player;
-            playerTurn++;
-            rollDie();
-            getTurnProfit();
-            // AI player
-            if (player instanceof PlayerAI) {
-                playAIActualTurn();
+        playerTurn = playerTurn % 4;
+        Player player = getPlayers().get(playerTurn);
+        currentPlayer = player;
+        playerTurn++;
+        if (die.getDieSum() == 7) {
+            playThief(currentPlayer);
+        }
+        getTurnProfit();
+        // AI player
+        if (player instanceof PlayerAI) {
+            playAIActualTurn();
+            preActualTurn();
+        }
+        // Actual Player
+        else if (player instanceof  PlayerActual) {
+
+            deActivateAllVertices();
+            refreshRoadSelectionVertices();
+            constructionUnselect = true;
+            unselectConstructions(null);
+        }
+    }
+    private void thiefResourceCardPunish()  {
+        Player realPlayer = null;
+        for(Player player: getPlayers()){
+            if(player instanceof PlayerActual)
+            {
+                realPlayer = player;
             }
-            // Actual Player
-            else if (player instanceof  PlayerActual) {
-                deActivateAllVertices();
-                refreshRoadSelectionVertices();
-                constructionUnselect = true;
-                unselectConstructions(null);
-                break;
+        }
+        if(realPlayer.getTotalCards() > 7){
+            Stage window = (Stage) root.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Constants.THIEF_VIEW));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ControllerThiefPunishment controller = loader.getController();
+            controller.setPlayer(realPlayer, this);
+            final Stage pop = new Stage();
+            pop.initModality(Modality.APPLICATION_MODAL);
+            pop.initOwner(window);
+            pop.setTitle("Thief will steal something");
+            pop.setScene(new Scene(root, 375, 480));
+            pop.show();
+        }else{
+            updateGameAfterPopUp();
+        }
+    }
+
+    private void thiefResourceCardPunishAI(){
+        for (int i = 0; i < getPlayers().size(); i++) {
+            Player temp = getPlayers().get(i);
+            if ( temp instanceof PlayerAI && temp.getTotalCards() > 7) {
+                ((PlayerAI)temp).punish();
             }
         }
     }
 
+    // i created this function to stop game, game contionous when use finishes selecting card by updateGame function
+
+    private void playThief(Player currentPlayer){
+        thiefCanMove = true;
+        if (initialThief) {
+            imgThiefDefaultLocation.setVisible(false);
+            imgMovingThief.setLayoutX(imgThiefDefaultLocation.getLayoutX());
+            imgMovingThief.setLayoutY(imgThiefDefaultLocation.getLayoutY());
+            imgMovingThief.setVisible(true);
+            initialThief = false;
+        }
+        if (currentPlayer instanceof PlayerAI) {
+                int randomHex = (int)(Math.random()*18) + 1;
+                thiefHexLoca.setThiefHere(false);
+                TerrainHex thiefsNewLocation = getHexWithIndex(randomHex);
+                thiefHexLoca = thiefsNewLocation;
+                imgMovingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
+                imgMovingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
+                thiefsNewLocation.setThiefHere(true);
+                thiefCanMove = false;
+                punishThief();
+        }
+        // Actual Player
+        else if (currentPlayer instanceof  PlayerActual) {
+            outputNotPossible(Constants.THIEF_STRING);
+        }
+    }
+
+    @FXML
+    public void moveThief(MouseEvent mouseEvent){
+        if (thiefCanMove) {
+            thiefHexLoca.setThiefHere(false);
+            imgMovingThief.setLayoutX(mouseEvent.getSceneX());
+            imgMovingThief.setLayoutY(mouseEvent.getSceneY());
+        }
+    }
+
+    @FXML
+    public void thiefMoved(MouseEvent mouseEvent){
+        if (thiefCanMove) {
+            thiefHexLoca.setThiefHere(false);
+            TerrainHex thiefsNewLocation = getHexWithCoordinates(imgMovingThief);
+            if (thiefsNewLocation != null) {
+                thiefCanMove = false;
+                thiefHexLoca = thiefsNewLocation;
+                imgMovingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
+                imgMovingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
+                thiefsNewLocation.setThiefHere(true);
+                punishThief();
+            }
+        }
+    }
+    private void punishThief(){
+        ArrayList<Player> players = thiefHexLoca.getPlayersAroundHere();
+        int size = players.size();
+        if (size == 0) {
+            //there is nobody around thief
+            return;
+        }
+        if (size == 1 && players.get(0) == currentPlayer) {
+            //there is only one person and it is him
+            return;
+        }
+        // if there is nobody around here, it will do nothing
+        int randomPlayer = (int)Math.random()*size;
+
+        Player playerToBePunished = null;
+        boolean choosingPlayerToPunishIsNotOver = true;
+        boolean noVictim = false;
+        int count = 0;
+        while (choosingPlayerToPunishIsNotOver)
+        {
+            playerToBePunished = players.get(randomPlayer);
+            if (playerToBePunished != currentPlayer && playerToBePunished.getTotalCards() != 0) {
+                choosingPlayerToPunishIsNotOver = false;
+            } else {
+                randomPlayer = (randomPlayer == 0) ? (size - 1) : (randomPlayer -1);
+                count++;
+                if (count == size) {
+                    noVictim = true;
+                    //nobody has any source, so playerToBePunished will be null afterwads.
+                    choosingPlayerToPunishIsNotOver = false;
+                }
+            }
+        }
+        if (noVictim) // it means there is no appropriate player to steal from.
+        {
+            playerToBePunished = null;
+        }
+        if (playerToBePunished != null) { // it maybe null in the case that nobody has any source
+            SourceCard punish = playerToBePunished.getPunishedByThief();
+            currentPlayer.addResourceFromThief(punish);
+        }
+    }
+
+    @Override
+    public void updateGameAfterPopUp() {
+    //here the resources of player will be updated, this part has dependency of talha's work. so this will wait
+            actualTurn();
+    }
     private void getTurnProfit() {
         System.out.println("----------------------------------------------------------------------");
         for (Player player: getPlayers()) {
@@ -327,16 +523,15 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     @Override
     public void makeConstructionActual(Circle circle) {
         if (!currentPlayer.hasEnoughResources(selectedConstruction)) {
+            if(currentPlayer instanceof PlayerActual)
+                outputNotPossible(Constants.CONSTRUCTION_STRING);
             return;
         }
-
         if (isSelectedSettlement()) {
             Vertex vertex = getCorrespondingVertex(circle);
-
             if (vertex != null && isVertexSuitableForConstruction(vertex) && vertex.isActive()) {
                 Settlement settlement;
                 String imagePath = "";
-
                 switch (selectedConstruction) {
                     case Constants.CITY:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
@@ -351,7 +546,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                         settlement = new Civilisation(imagePath, vertex, currentPlayer);
                         break;
                 }
-
                 Image img = new Image(settlement.getImagePath());
                 vertex.getShape().setFill(new ImagePattern(img));
                 vertex.getShape().setRadius(Constants.CONSTRUCTION_RADIUS);
@@ -363,7 +557,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 unselectConstructions(null);
                 deActivateAllVertices();
             } else {
-                outputNotPossible();
+                if(currentPlayer instanceof PlayerActual)
+                    outputNotPossible("Not possible");
             }
         }
         else if (selectedConstruction.equals(Constants.ROAD)) {
@@ -398,7 +593,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     }
                 }
             }
-
             // setting first vertex of road;
             int index = (int) (Math.random() * vertices.size());
             Vertex vertex1 = vertices.get(index);
@@ -463,6 +657,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
         if (!currentPlayer.hasEnoughResources(selectedConstruction)) {
             selectedConstruction = "";
+            outputNotPossible(Constants.CONSTRUCTION_STRING);
             return;
         }
 
@@ -497,7 +692,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     isRoadBuild = false;
                     isConstructionBuild = false;
                 } else {
-                    outputNotPossible();
+                    if(currentPlayer instanceof PlayerActual)
+                        outputNotPossible("Not possible");
                     selectConstructionInitial(imgRoad);
                     return;
                 }
@@ -509,7 +705,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             if (initialStepCount == 8) {
                 isStepActual = true;
                 isStepInitial = false;
-                actualTurn();
+                //actualTurn();
+                preActualTurn();
                 return;
             }
         }
@@ -588,7 +785,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 tempSettlement = settlement;
 
             } else {
-                outputNotPossible();
+                if(currentPlayer instanceof PlayerActual)
+                    outputNotPossible("Not possible");
             }
         }
         else if (selectedConstruction.equals(Constants.ROAD)) {
@@ -613,7 +811,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     constructRoad();
                 } else {
                     refreshRoadSelectionVertices();
-                    outputNotPossible();
+                    if(currentPlayer instanceof PlayerActual)
+                        outputNotPossible("Not possible");
                 }
             }
         }
@@ -654,4 +853,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         refreshRoadSelectionVertices();
         constructionUnselect = false;
     }
+
+
 }

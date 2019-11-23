@@ -20,7 +20,7 @@ public class ControllerBaseGame extends ControllerBase {
 
     // FXML Properties
     @FXML
-    private AnchorPane root;
+    protected AnchorPane root;
     @FXML
     private Line road8;
     @FXML
@@ -312,6 +312,8 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Circle vertex8;
     @FXML
+    protected Circle imgMovingThief;
+    @FXML
     protected Rectangle imgRoad;
     @FXML
     protected Rectangle imgVillage;
@@ -331,6 +333,8 @@ public class ControllerBaseGame extends ControllerBase {
     private Label labelPlayer;
     @FXML
     private Label labelLogs;
+    @FXML
+    private Label labelWarning;
     @FXML
     private Circle circleNumberOnHex1;
 
@@ -433,6 +437,8 @@ public class ControllerBaseGame extends ControllerBase {
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
     private Settings settings;
+    protected Circle imgThiefDefaultLocation;
+    protected TerrainHex thiefHexLoca;
     protected Die die;
     
     @FXML
@@ -1124,6 +1130,10 @@ public class ControllerBaseGame extends ControllerBase {
                 color = Color.color(0.4,0.3,0.2);
                 Image imgThief = new Image(Constants.ICON_THIEF);
                 hex.getCircleNumberOnHex().setFill(new ImagePattern(imgThief));
+                hex.setThiefHere(true);
+                thiefHexLoca = hex;
+                imgMovingThief.setFill(new ImagePattern(imgThief));
+                imgThiefDefaultLocation = hex.getCircleNumberOnHex();
             }
             else if (tmp == 4 && countOfMountain > 0) {
                 countOfMountain--;
@@ -1174,7 +1184,9 @@ public class ControllerBaseGame extends ControllerBase {
         terrainHexes.add(new TerrainHex(terrainHex18,"hex18", circleNumberOnHex18, labelHexNum18));
         terrainHexes.add(new TerrainHex(terrainHex19,"hex19", circleNumberOnHex19, labelHexNum19));
     }
-
+    public Label getWarningLabel(){
+        return labelWarning;
+    }
     public ArrayList<Vertex> getVertices() {
         return vertices;
     }
@@ -1245,6 +1257,19 @@ public class ControllerBaseGame extends ControllerBase {
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
+    }
+
+    public TerrainHex getHexWithCoordinates(Circle circleToBeChecked){
+        for(int i = 0; i < terrainHexes.size(); i++){
+            if(terrainHexes.get(i).isShapeInside(circleToBeChecked)){
+                return terrainHexes.get(i);
+            }
+        }
+        return null;
+    }
+
+    public TerrainHex getHexWithIndex(int i){
+        return terrainHexes.get(i-1);
     }
 
 }
