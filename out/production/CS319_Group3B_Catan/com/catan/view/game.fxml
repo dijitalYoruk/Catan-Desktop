@@ -230,7 +230,7 @@
       <Circle fx:id="circleNumberOnHex17" fill="WHITE" layoutX="1006.0" layoutY="530.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="circleNumberOnHex18" fill="WHITE" layoutX="1137.0" layoutY="528.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="circleNumberOnHex19" fill="WHITE" layoutX="1268.0" layoutY="528.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="movingThief" fill="DODGERBLUE" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="imgMovingThief" fill="DODGERBLUE" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <Label fx:id="labelHexNum1" layoutX="1001.0" layoutY="103.0" text="0">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -327,7 +327,7 @@
          </font>
       </Label>
       <JFXButton layoutX="14.0" layoutY="35.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
-      <Label fx:id="warningLabel" alignment="CENTER" layoutX="481.0" layoutY="658.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
+      <Label fx:id="labelWarning" alignment="CENTER" layoutX="481.0" layoutY="658.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
 
 
 

@@ -50,7 +50,7 @@ public class TerrainHex extends Field{
         }
         return playersAround;
     }
-    public boolean isInside(Shape check){
+    public boolean isShapeInside(Shape check){
         if(shape.getBoundsInParent().intersects(check.getBoundsInParent())){
             return true;
         }

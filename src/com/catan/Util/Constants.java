@@ -4,6 +4,11 @@ import javafx.scene.paint.Color;
 
 public class Constants {
 
+    public static final String THIEF_VIEW = "../view/thiefCardPunishment.fxml";
+
+    public static final String CONSTRUCTION_STRING = "Construction";
+    public static final String THIEF_STRING = "Thief";
+
     public static final String ROAD = "road";
     public static final String VILLAGE = "village";
     public static final String CITY = "city";

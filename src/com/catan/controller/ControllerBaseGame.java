@@ -312,7 +312,7 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Circle vertex8;
     @FXML
-    protected Circle movingThief;
+    protected Circle imgMovingThief;
     @FXML
     protected Rectangle imgRoad;
     @FXML
@@ -334,7 +334,7 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Label labelLogs;
     @FXML
-    private Label warningLabel;
+    private Label labelWarning;
     @FXML
     private Circle circleNumberOnHex1;
 
@@ -437,7 +437,7 @@ public class ControllerBaseGame extends ControllerBase {
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
     private Settings settings;
-    protected Circle thiefDefaultLoca;
+    protected Circle imgThiefDefaultLocation;
     protected TerrainHex thiefHexLoca;
     protected Die die;
     
@@ -1132,8 +1132,8 @@ public class ControllerBaseGame extends ControllerBase {
                 hex.getCircleNumberOnHex().setFill(new ImagePattern(imgThief));
                 hex.setThiefHere(true);
                 thiefHexLoca = hex;
-                movingThief.setFill(new ImagePattern(imgThief));
-                thiefDefaultLoca = hex.getCircleNumberOnHex();
+                imgMovingThief.setFill(new ImagePattern(imgThief));
+                imgThiefDefaultLocation = hex.getCircleNumberOnHex();
             }
             else if (tmp == 4 && countOfMountain > 0) {
                 countOfMountain--;
@@ -1185,7 +1185,7 @@ public class ControllerBaseGame extends ControllerBase {
         terrainHexes.add(new TerrainHex(terrainHex19,"hex19", circleNumberOnHex19, labelHexNum19));
     }
     public Label getWarningLabel(){
-        return warningLabel;
+        return labelWarning;
     }
     public ArrayList<Vertex> getVertices() {
         return vertices;
@@ -1259,9 +1259,9 @@ public class ControllerBaseGame extends ControllerBase {
         this.players = players;
     }
 
-    public TerrainHex getHexWithCoordinates(Circle check){
+    public TerrainHex getHexWithCoordinates(Circle circleToBeChecked){
         for(int i = 0; i < terrainHexes.size(); i++){
-            if(terrainHexes.get(i).isInside(check)){
+            if(terrainHexes.get(i).isShapeInside(circleToBeChecked)){
                 return terrainHexes.get(i);
             }
         }

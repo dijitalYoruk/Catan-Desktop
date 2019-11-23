@@ -44,7 +44,7 @@ public class PlayerAI extends Player {
         }
 
         // Village
-        if (hasEnoughResources(Constants.VILLAGE)) {
+        if ( hasEnoughResources(Constants.VILLAGE) ) {
             ArrayList<Settlement> settlements = getSettlementTypes(Constants.VILLAGE);
             int villageCount = settlements.size();
             if ((villageCount == 0 && Math.random() > 0.40) ||
@@ -56,7 +56,6 @@ public class PlayerAI extends Player {
                 makeConstruction.makeVillageActualForAI();
             }
         }
-
         // Road
         if (hasEnoughResources(Constants.ROAD)) {
             if ((roads.size() < 5 && Math.random() > 0.2) ||
@@ -80,7 +79,6 @@ public class PlayerAI extends Player {
 
     public void punish(){
         int punish = getTotalCards()/2;
-        System.out.println("punish amount: " + punish);
         for(int i = 0; i < punish; i++){
             int randomRes = (int) Math.random()*5 + 1;
             punishHelper(randomRes);
@@ -99,12 +97,11 @@ public class PlayerAI extends Player {
             res = Constants.CARD_LUMBER;
         else
             res = Constants.CARD_BRICK;
-        if(getSourceCards().get(res).size() == 0){
+        if( getSourceCards().get(res).size() == 0) {
             int another = (i == 1) ? 5 : (i-1);
             punishHelper(another);
-        }else {
+        } else {
             sourceCards.get(res).remove(sourceCards.get(res).get(0));
-            totalCards--;
         }
     }
 }

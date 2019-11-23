@@ -2,15 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/catan/interfaces/InterfaceUpdateGameAfterPopUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/program.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/program.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerAI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerAI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/TerrainHex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/TerrainHex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,9 +72,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -152,7 +161,10 @@
       <workItem from="1574348040811" duration="1546000" />
       <workItem from="1574362993814" duration="2389000" />
       <workItem from="1574367336201" duration="945000" />
-      <workItem from="1574423929833" duration="8444000" />
+      <workItem from="1574423929833" duration="8761000" />
+      <workItem from="1574454201914" duration="1226000" />
+      <workItem from="1574457435640" duration="4826000" />
+      <workItem from="1574505258623" duration="534000" />
     </task>
     <task id="LOCAL-00001" summary="Thief became functional but card logic is not implemented">
       <created>1573322726673</created>
@@ -182,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574366631020</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="everything is okay, tried as much case as possible.">
+      <created>1574440500446</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574440500446</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +225,7 @@
     <MESSAGE value="Thief functionality is extended and now player actual can choose resource cards to send when die comes 7." />
     <MESSAGE value="thief is fully functional for sure, no bug or etc." />
     <MESSAGE value="some bugs found in thief functions, need more care." />
-    <option name="LAST_COMMIT_MESSAGE" value="some bugs found in thief functions, need more care." />
+    <MESSAGE value="everything is okay, tried as much case as possible." />
+    <option name="LAST_COMMIT_MESSAGE" value="everything is okay, tried as much case as possible." />
   </component>
 </project>

@@ -1,6 +1,7 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.Player;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
@@ -46,9 +47,8 @@ public class ControllerThiefPunishment {
     private int brickP, brickMax;
     private int lumberP, lumberMax;
     Player player;
-    ControllerGame gameController;
-    public void setPlayer(Player current, ControllerGame game){
-        System.out.println("set player is called!! again");
+    InterfaceUpdateGameAfterPopUp gameController;
+    public void setPlayer(Player current, InterfaceUpdateGameAfterPopUp game){
         player = current;
         gameController = game;
         totalP = 0;
@@ -122,7 +122,6 @@ public class ControllerThiefPunishment {
     }
     @FXML
     public void decResource(MouseEvent event){
-        System.out.println("decrement is called!!");
         if (((ImageView)event.getSource()).getId().equals(Constants.CARD_BRICK)){
             brickP--;
             removeResourceFromView((ImageView)event.getSource());
@@ -146,14 +145,14 @@ public class ControllerThiefPunishment {
         }
     }
     @FXML
-    public void confirmPunish() throws IOException {
+    public void confirmPunish() {
         if (totalP == requiredP) {
             player.punishLumber(lumberP);
             player.punishWool(woolP);
             player.punishGrain(grainP);
             player.punishOre(oreP);
             player.punishBrick(brickP);
-            gameController.updateGame();
+            gameController.updateGameAfterPopUp();
             Stage stage = (Stage) thiefAnchorPane.getScene().getWindow();
             stage.close();
         }else{
@@ -162,7 +161,6 @@ public class ControllerThiefPunishment {
             fadeTransition.setToValue(0.0);
             fadeTransition.setCycleCount(Animation.INDEFINITE);
             fadeTransition.play();
-            System.out.println("You have to choose" + requiredP);
         }
     }
 }
