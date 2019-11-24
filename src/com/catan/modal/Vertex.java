@@ -80,7 +80,8 @@ public class Vertex {
 
         for (TerrainHex hex: terrainHexes) {
             String sourceCardName = hex.getSourceCardName();
-            if (!hex.getSourceCardName().equals("") && hex.getNumberOnHex() == dieNumber) {
+            // if thief is in a hex, you cannot get profit from there so, i added "!hex.isThiefHere()" expression.
+            if (!hex.getSourceCardName().equals("") && hex.getNumberOnHex() == dieNumber && !hex.isThiefHere()) {
                 map.put(sourceCardName, map.get(sourceCardName) + 1);
             }
         }
@@ -89,6 +90,7 @@ public class Vertex {
 
     public void addHex(TerrainHex terrainHex) {
         terrainHexes.add(terrainHex);
+        terrainHex.addVertex(this);
     }
 
 

@@ -162,10 +162,10 @@
       <Circle fx:id="vertex8" fill="#ffde2173" layoutX="876.0" layoutY="183.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <HBox layoutX="933.0" layoutY="653.0" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Rectangle fx:id="imgRoad" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
-            <Rectangle fx:id="imgVillage" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
-            <Rectangle fx:id="imgCity" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
-            <Rectangle fx:id="imgCivilisation" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="97.0" />
+            <Rectangle fx:id="imgRoad" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
+            <Rectangle fx:id="imgVillage" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
+            <Rectangle fx:id="imgCity" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
+            <Rectangle fx:id="imgCivilisation" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
          </children>
       </HBox>
       <Rectangle fx:id="imgPriceCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="208.0" layoutX="75.0" layoutY="41.0" stroke="BLACK" strokeType="INSIDE" width="341.0" />
@@ -230,6 +230,7 @@
       <Circle fx:id="circleNumberOnHex17" fill="WHITE" layoutX="1006.0" layoutY="530.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="circleNumberOnHex18" fill="WHITE" layoutX="1137.0" layoutY="528.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="circleNumberOnHex19" fill="WHITE" layoutX="1268.0" layoutY="528.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="imgMovingThief" fill="DODGERBLUE" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <Label fx:id="labelHexNum1" layoutX="1001.0" layoutY="103.0" text="0">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -326,6 +327,7 @@
          </font>
       </Label>
       <JFXButton layoutX="14.0" layoutY="35.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
+      <Label fx:id="labelWarning" alignment="CENTER" layoutX="481.0" layoutY="658.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
 
 
 
