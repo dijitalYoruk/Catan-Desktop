@@ -2,12 +2,57 @@ package com.catan.controller;
 
 import com.catan.Util.Constants;
 import com.catan.modal.Player;
+import com.catan.modal.SourceCard;
+import com.catan.modal.Trade;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ControllerTrade {
+
+    @FXML
+    private ImageView p1lumber;
+
+    @FXML
+    private ImageView p1wool;
+
+    @FXML
+    private ImageView p1ore;
+
+    @FXML
+    private ImageView p1grain;
+
+    @FXML
+    private ImageView p1brick;
+
+    @FXML
+    private ImageView oppBrick;
+
+    @FXML
+    private ImageView oppGrain;
+
+    @FXML
+    private ImageView oppOre;
+
+    @FXML
+    private ImageView oppWool;
+
+    @FXML
+    private ImageView oppLumber;
+
+    @FXML
+    private MenuButton tradingWith;
 
     @FXML
     private Label givenBrick;
@@ -60,7 +105,6 @@ public class ControllerTrade {
     @FXML
     private Label labelActualPlayerLumber;
 
-
     @FXML
     private Label componentsBrick;
 
@@ -76,6 +120,11 @@ public class ControllerTrade {
     @FXML
     private Label componentsLumber;
 
+    @FXML
+    private Label labelOutputOfTrade;
+
+    private boolean isPlayerToTradeWithSelected = false;
+
     private int givenLumberNo = 0;
     private int givenWoolNo = 0;
     private int givenOreNo = 0;
@@ -86,39 +135,19 @@ public class ControllerTrade {
     private int requestedOreNo = 0;
     private int requestedWheatNo = 0;
     private int requestedBrickNo = 0;
+
+    private int playersBrick;
+    private int playersGrain;
+    private int playersOre;
+    private int playersWool;
+    private int playersLumber;
+
     private Player actualPlayer;
-
-    @FXML
-    void initialize(){
-        givenLumberNo = 0;
-        givenWoolNo = 0;
-        givenOreNo = 0;
-        givenWheatNo = 0;
-        givenBrickNo = 0;
-        requestedLumberNo = 0;
-        requestedWoolNo = 0;
-        requestedOreNo = 0;
-        requestedWheatNo = 0;
-        requestedBrickNo = 0;
-
-        componentsLumber.setText("x?");
-        componentsWool.setText("x?");
-        componentsOre.setText("x?");
-        componentsWheat.setText("x?");
-        componentsBrick.setText("x?");
-
-        givenLumber.setText(givenLumberNo+"");
-        givenWool.setText(givenWoolNo+"");
-        givenOre.setText(givenOreNo+"");
-        givenWheat.setText(givenWheatNo+"");
-        givenBrick.setText(givenBrickNo+"");
-
-        requestedLumber.setText(requestedLumberNo+"");
-        requestedWool.setText(requestedWoolNo+"");
-        requestedOre.setText(requestedOreNo+"");
-        requestedWheat.setText(requestedWheatNo+"");
-        requestedBrick.setText(requestedBrickNo+"");
-    }
+    private Player playerToTradeWith;
+    private ArrayList<Player> playersList;
+    private Trade trade;
+    private Map<String, Integer> requestedResourceCards;
+    private Map<String, Integer> offeredResourceCards;
 
     @FXML
     void clearTrade(ActionEvent event) {
@@ -144,20 +173,80 @@ public class ControllerTrade {
         requestedOre.setText("x"+requestedOreNo);
         requestedWheat.setText("x"+requestedWheatNo);
         requestedBrick.setText("x"+requestedBrickNo);
+
+        labelOutputOfTrade.setOpacity(0);
+        setActualPlayerAndLabels(actualPlayer);
     }
 
     @FXML
     void requestTrade(ActionEvent event) {
-        // resolve the trade
+
+        //generate a Trade object
+        if (isPlayerToTradeWithSelected)
+        {
+            requestedResourceCards = new HashMap<String, Integer>();
+            offeredResourceCards = new HashMap<String, Integer>();
+
+            requestedResourceCards.put("ore", requestedOreNo);
+            requestedResourceCards.put("lumber", requestedLumberNo);
+            requestedResourceCards.put("brick", requestedBrickNo);
+            requestedResourceCards.put("grain", requestedWheatNo);
+            requestedResourceCards.put("wool", requestedWoolNo);
+
+            offeredResourceCards.put("ore", givenOreNo);
+            offeredResourceCards.put("lumber", givenLumberNo);
+            offeredResourceCards.put("brick", givenBrickNo);
+            offeredResourceCards.put("grain", givenWheatNo);
+            offeredResourceCards.put("wool", givenWoolNo);
+
+            /*
+            for (String name: requestedResourceCards.keySet()){
+                String key = name.toString();
+                String val = requestedResourceCards.get(name).toString();
+                System.out.println("req: " + key + " : " + val);
+            }
+            for (String name: offeredResourceCards.keySet()){
+                String key = name.toString();
+                String val = offeredResourceCards.get(name).toString();
+                System.out.println("off: " + key + " : " + val);
+            }
+            */
+            trade = new Trade(actualPlayer, playerToTradeWith, requestedResourceCards, offeredResourceCards);
+            trade.requestTrade();
+        }
+        else {
+            outputNotPossible();
+        }
+        //display outcome of trade request
+        if (trade.isTradePossible()) {
+            labelOutputOfTrade.setText("Trade is Successful!");
+            labelOutputOfTrade.setOpacity(1);
+        }
+        else {
+            labelOutputOfTrade.setText("Trade Didn't Happen!");
+            labelOutputOfTrade.setOpacity(1);
+        }
+
     }
 
     @FXML
-    void tradeWith(ActionEvent event) {
-       // this.setTradeWith(((MenuItem)actionEvent.getTarget()).getText());
-       // themes.setText(settingTemp.getCurrentTheme());
+    void selectTradeWith(ActionEvent event) {
 
-        //Player tradeWith = new Player();
-        //Trade trade = new Trade(player, tradeWith);
+        String traderStr = ((MenuItem)event.getTarget()).getText();
+        tradingWith.setText(traderStr);
+        if (traderStr.equals("Player 2")){
+            playerToTradeWith = playersList.get(1);
+            isPlayerToTradeWithSelected = true;
+        }
+        else if (traderStr.equals("Player 3")){
+            playerToTradeWith = playersList.get(2);
+            isPlayerToTradeWithSelected = true;
+        }
+        else if(traderStr.equals("Player 4")){
+            playerToTradeWith = playersList.get(3);
+            isPlayerToTradeWithSelected = true;
+        }
+        // TO BE ADDED: else if CHEST...
     }
 
     @FXML
@@ -171,12 +260,72 @@ public class ControllerTrade {
     }
 
     public void setActualPlayerAndLabels(Player actualPlayer) {
+        playersBrick = actualPlayer.getSourceCards().get(Constants.CARD_BRICK).size();
+        playersGrain = actualPlayer.getSourceCards().get(Constants.CARD_GRAIN).size();
+        playersOre = actualPlayer.getSourceCards().get(Constants.CARD_ORE).size();
+        playersWool = actualPlayer.getSourceCards().get(Constants.CARD_WOOL).size();
+        playersLumber = actualPlayer.getSourceCards().get(Constants.CARD_LUMBER).size();
+
         this.actualPlayer = actualPlayer;
-        labelActualPlayerBrick.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_LUMBER).size());
-        labelActualPlayerWool.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_WOOL).size());
-        labelActualPlayerOre.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_ORE).size());
-        labelActualPlayerGrain.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_GRAIN).size());
-        labelActualPlayerLumber.setText("x" + actualPlayer.getSourceCards().get(Constants.CARD_LUMBER).size());
+        labelActualPlayerBrick.setText("x" + playersBrick);
+        labelActualPlayerWool.setText("x" + playersWool);
+        labelActualPlayerOre.setText("x" + playersOre);
+        labelActualPlayerGrain.setText("x" + playersGrain);
+        labelActualPlayerLumber.setText("x" + playersLumber);
+
     }
 
+    public void passPlayersAL(ArrayList<Player> players){
+        playersList = players;
+    }
+
+
+    public void selectResourcesToOffer(javafx.scene.input.MouseEvent mouseEvent) {
+
+        if (((ImageView)mouseEvent.getSource()).getId().equals("p1brick") && playersBrick > 0){
+            playersBrick--;
+            givenBrickNo++;
+            labelActualPlayerBrick.setText("x" + playersBrick);
+            givenBrick.setText("x" + givenBrickNo);
+        }else if (((ImageView)mouseEvent.getSource()).getId().equals("p1ore") && playersOre > 0){
+            playersOre--;
+            givenOreNo++;
+            labelActualPlayerOre.setText("x" + playersOre);
+            givenOre.setText("x" + givenOreNo);
+        }else if (((ImageView)mouseEvent.getSource()).getId().equals("p1grain") && playersGrain > 0){
+            playersGrain--;
+            givenWheatNo++;
+            labelActualPlayerGrain.setText("x" + playersGrain);
+            givenWheat.setText("x" + givenWheatNo);
+        }else if (((ImageView)mouseEvent.getSource()).getId().equals("p1wool") && playersWool > 0){
+            playersWool--;
+            givenWoolNo++;
+            labelActualPlayerWool.setText("x" + playersWool);
+            givenWool.setText("x" + givenWoolNo);
+        }else if (((ImageView)mouseEvent.getSource()).getId().equals("p1lumber") && playersLumber > 0){
+            playersLumber--;
+            givenLumberNo++;
+            labelActualPlayerLumber.setText("x" + playersLumber);
+            givenLumber.setText("x" + givenLumberNo);
+        }
+    }
+
+    public void selectResourcesToRequest(MouseEvent mouseEvent) {
+        if (((ImageView)mouseEvent.getSource()).getId().equals("oppBrick")){
+            requestedBrickNo++;
+            requestedBrick.setText("x" + requestedBrickNo);
+        }else if (((ImageView)mouseEvent.getSource()).getId().equals("oppOre")){
+            requestedOreNo++;
+            requestedOre.setText("x" + requestedOreNo);
+        }else if (((ImageView)mouseEvent.getSource()).getId().equals("oppGrain")){
+            requestedWheatNo++;
+            requestedWheat.setText("x" + requestedWheatNo);
+        }else if (((ImageView)mouseEvent.getSource()).getId().equals("oppWool")){
+            requestedWoolNo++;
+            requestedWool.setText("x" + requestedWoolNo);
+        }else if (((ImageView)mouseEvent.getSource()).getId().equals("oppLumber")){
+            requestedLumberNo++;
+            requestedLumber.setText("x" + requestedLumberNo);
+        }
+    }
 }

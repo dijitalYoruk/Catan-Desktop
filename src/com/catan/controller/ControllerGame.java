@@ -13,6 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -28,6 +30,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.imageio.IIOParam;
 import javax.naming.ldap.Control;
 import java.io.IOException;
 import java.sql.SQLOutput;
@@ -104,26 +107,23 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     @FXML
     void trade(ActionEvent event) throws IOException {
-        Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.initOwner(root.getScene().getWindow());
+        if (isStepActual) {
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.initOwner(root.getScene().getWindow());
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
+            FXMLLoader fxmlLoader = new FXMLLoader();
 
-        fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/trade.fxml"));
+            fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/trade.fxml"));
 
-        dialog.setTitle("Trade");
-        dialog.getDialogPane().setContent(fxmlLoader.load());
+            dialog.setTitle("Trade");
+            dialog.getDialogPane().setContent(fxmlLoader.load());
 
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-        ControllerTrade tradeController = fxmlLoader.getController();
-        tradeController.setActualPlayerAndLabels(getPlayers().get(0)); // actual player
-
-        Optional<ButtonType> inputOfUser = dialog.showAndWait();
-
-
-        //if (isStepActual) {
-            // TODO trade will be implemented
-        //}
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+            ControllerTrade tradeController = fxmlLoader.getController();
+            tradeController.setActualPlayerAndLabels(getPlayers().get(0)); // actual player
+            tradeController.passPlayersAL(getPlayers());
+            Optional<ButtonType> inputOfUser = dialog.showAndWait();
+        }
     }
 
     @FXML
