@@ -28,9 +28,12 @@ public class Trade {
 
     //methods
 
-    public Trade(Player trader, Player trading, Map<String, Integer> reqCards, Map<String, Integer> offeredCards) { //, Chest chest) {}  to be implemented...
+    public Trade(Player trader, Player trading, Map<String, Integer> reqCards, Map<String, Integer> offeredCards, boolean isTradeWithChest) {
+        this.isTradeWithChest = isTradeWithChest;
         playerTrader = trader;
-        playerTrading = trading;
+        if (!isTradeWithChest) {
+            playerTrading = trading;
+        }
         requestedResourceCards = reqCards;
         offeredResourceCards = offeredCards;
         isTradePossible = true;
@@ -43,7 +46,6 @@ public class Trade {
     public void completeTrade() { //subtracts and adds Resource Cards after Trade is Accepted.
 
         if (isTradePossible) {
-
             // Resource Cards of actual player
             int newOreOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_ORE).size() + requestedResourceCards.get("ore") - offeredResourceCards.get("ore");
             int newBrickOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_BRICK).size() + requestedResourceCards.get("brick") - offeredResourceCards.get("brick");
@@ -89,7 +91,8 @@ public class Trade {
                     playerTrader.sourceCards.get(Constants.CARD_WOOL).remove(playerTrader.sourceCards.get(Constants.CARD_WOOL).get(0));
                 }
             }
-
+        }
+        if (isTradePossible && !isTradeWithChest) {
             // Resource Cards of OTHER player
             int newOreOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_ORE).size() + offeredResourceCards.get("ore") - requestedResourceCards.get("ore");
             int newBrickOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() + offeredResourceCards.get("brick") - requestedResourceCards.get("brick");
@@ -132,32 +135,39 @@ public class Trade {
                     playerTrading.sourceCards.get(Constants.CARD_WOOL).remove(playerTrading.sourceCards.get(Constants.CARD_WOOL).get(0));
                 }
             }
-            System.out.println("TRADER:");
-            playerTrader.showSourceCards();
+        }
+
+        //output
+        System.out.println(isTradeWithChest);
+        System.out.println("TRADER:");
+        playerTrader.showSourceCards();
+        if (!isTradeWithChest) {
             System.out.println("TRADING:");
             playerTrading.showSourceCards();
         }
     }
+
     public void outputNotPossible() {
-
+        System.out.println("trade not possible");
     }
-    public void requestTrade() { // Chest is not yet implemented.
-        // check trading players' resource cards
-        if (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() < requestedResourceCards.get("wool") ||
-            playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() < requestedResourceCards.get("grain") ||
-            playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() < requestedResourceCards.get("lumber") ||
-            playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() < requestedResourceCards.get("brick") ||
-            playerTrading.getSourceCards().get(Constants.CARD_ORE).size() < requestedResourceCards.get("ore")) {
 
-            isTradePossible = false;
+    public void requestTrade() {
+        // check trading players' resource cards
+        if (!isTradeWithChest) {
+            if (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() < requestedResourceCards.get("wool") ||
+                    playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() < requestedResourceCards.get("grain") ||
+                    playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() < requestedResourceCards.get("lumber") ||
+                    playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() < requestedResourceCards.get("brick") ||
+                    playerTrading.getSourceCards().get(Constants.CARD_ORE).size() < requestedResourceCards.get("ore")) {
+                isTradePossible = false;
+            }
         }
-        else {
+        else {  //trade is with chest
             // TO DO: will implement a logical trade decision algo here
             isTradePossible = true;
             //substract and add Resource Cards
             completeTrade();
         }
-
     }
 
 

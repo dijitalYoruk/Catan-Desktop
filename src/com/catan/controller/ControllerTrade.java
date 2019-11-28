@@ -1,6 +1,7 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.modal.Chest;
 import com.catan.modal.Player;
 import com.catan.modal.SourceCard;
 import com.catan.modal.Trade;
@@ -124,7 +125,7 @@ public class ControllerTrade {
     private Label labelOutputOfTrade;
 
     private boolean isPlayerToTradeWithSelected = false;
-
+    private boolean isTradeWithChest = false;
     private int givenLumberNo = 0;
     private int givenWoolNo = 0;
     private int givenOreNo = 0;
@@ -211,7 +212,7 @@ public class ControllerTrade {
                 System.out.println("off: " + key + " : " + val);
             }
             */
-            trade = new Trade(actualPlayer, playerToTradeWith, requestedResourceCards, offeredResourceCards);
+            trade = new Trade(actualPlayer, playerToTradeWith, requestedResourceCards, offeredResourceCards, isTradeWithChest);
             trade.requestTrade();
         }
         else {
@@ -233,20 +234,27 @@ public class ControllerTrade {
     void selectTradeWith(ActionEvent event) {
 
         String traderStr = ((MenuItem)event.getTarget()).getText();
+        System.out.println(traderStr);
         tradingWith.setText(traderStr);
         if (traderStr.equals("Player 2")){
             playerToTradeWith = playersList.get(1);
             isPlayerToTradeWithSelected = true;
+            isTradeWithChest = false;
         }
         else if (traderStr.equals("Player 3")){
             playerToTradeWith = playersList.get(2);
             isPlayerToTradeWithSelected = true;
+            isTradeWithChest = false;
         }
         else if(traderStr.equals("Player 4")){
             playerToTradeWith = playersList.get(3);
             isPlayerToTradeWithSelected = true;
+            isTradeWithChest = false;
         }
-        // TO BE ADDED: else if CHEST...
+        else if (traderStr.equals("Chest")){
+            isTradeWithChest = true;
+            isPlayerToTradeWithSelected = true;
+        }
     }
 
     @FXML
@@ -281,28 +289,27 @@ public class ControllerTrade {
 
 
     public void selectResourcesToOffer(javafx.scene.input.MouseEvent mouseEvent) {
-
-        if (((ImageView)mouseEvent.getSource()).getId().equals("p1brick") && playersBrick > 0){
+        if (((ImageView) mouseEvent.getSource()).getId().equals("p1brick") && playersBrick > 0) {
             playersBrick--;
             givenBrickNo++;
             labelActualPlayerBrick.setText("x" + playersBrick);
             givenBrick.setText("x" + givenBrickNo);
-        }else if (((ImageView)mouseEvent.getSource()).getId().equals("p1ore") && playersOre > 0){
+        } else if (((ImageView) mouseEvent.getSource()).getId().equals("p1ore") && playersOre > 0) {
             playersOre--;
             givenOreNo++;
             labelActualPlayerOre.setText("x" + playersOre);
             givenOre.setText("x" + givenOreNo);
-        }else if (((ImageView)mouseEvent.getSource()).getId().equals("p1grain") && playersGrain > 0){
+        } else if (((ImageView) mouseEvent.getSource()).getId().equals("p1grain") && playersGrain > 0) {
             playersGrain--;
             givenWheatNo++;
             labelActualPlayerGrain.setText("x" + playersGrain);
             givenWheat.setText("x" + givenWheatNo);
-        }else if (((ImageView)mouseEvent.getSource()).getId().equals("p1wool") && playersWool > 0){
+        } else if (((ImageView) mouseEvent.getSource()).getId().equals("p1wool") && playersWool > 0) {
             playersWool--;
             givenWoolNo++;
             labelActualPlayerWool.setText("x" + playersWool);
             givenWool.setText("x" + givenWoolNo);
-        }else if (((ImageView)mouseEvent.getSource()).getId().equals("p1lumber") && playersLumber > 0){
+        } else if (((ImageView) mouseEvent.getSource()).getId().equals("p1lumber") && playersLumber > 0) {
             playersLumber--;
             givenLumberNo++;
             labelActualPlayerLumber.setText("x" + playersLumber);
