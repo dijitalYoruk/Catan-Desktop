@@ -371,6 +371,25 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if (die.getDieSum() == 7) {
             playThief(currentPlayer);
         }
+        // AI player Trade              TO DO: find an alternate condition for trade initiation of AI
+        boolean isTradeWithChest = true;
+        if ((int)(Math.random()) * 10 + 1 < 5) isTradeWithChest = false;
+
+        if (player instanceof PlayerAI && ((int)(Math.random()) * 10 + 1 < 5)) {
+            Player tradingWith = getPlayers().get((int)(Math.random()) * 10 + 1 % 4);
+
+            Trade tradeAI = new Trade(currentPlayer, tradingWith, ((PlayerAI) player).getRequestedResourceCards(),
+                                      ((PlayerAI) player).getOfferedResourceCards(), isTradeWithChest);
+            if (tradingWith.getName().equals("PlayerActual")) {
+                System.out.println("****** pop up trade invitation to game scene ******");
+                //view pop up trade invitation to game scene
+            }
+            tradeAI.requestTrade();
+            System.out.println("***************************AI*********************************** \n****************************TRADE*******************************");
+            System.out.println("Trade between " + player.getName() + " and " + tradingWith.getName() + " is " + tradeAI.isTradePossible());
+            System.out.println("is trade with chest: " + isTradeWithChest);
+            System.out.println("***************************AI*********************************** \n****************************TRADE*******************************");
+        }
         getTurnProfit();
         // AI player
         if (player instanceof PlayerAI) {
@@ -425,7 +444,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    // i created this function to stop game, game contionous when use finishes selecting card by updateGame function
+    // i created this function to stop game, game continuous when use finishes selecting card by updateGame function
 
     private void playThief(Player currentPlayer){
         thiefCanMove = true;

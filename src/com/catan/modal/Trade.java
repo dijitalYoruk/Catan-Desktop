@@ -14,7 +14,7 @@ public class Trade {
 
     private boolean isTradeWithChest;
     private boolean isTradePossible;
-    //private Chest chest;  to be implemented...
+    private Chest chest;  //to be implemented...
     private int givenLumber;
     private int givenBrick;
     private int givenOre;
@@ -47,7 +47,9 @@ public class Trade {
 
         if (isTradePossible) {
             // Resource Cards of actual player
-            int newOreOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_ORE).size() + requestedResourceCards.get("ore") - offeredResourceCards.get("ore");
+            int newOreOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_ORE).size()
+                    + requestedResourceCards.get("ore")
+                    - offeredResourceCards.get("ore");
             int newBrickOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_BRICK).size() + requestedResourceCards.get("brick") - offeredResourceCards.get("brick");
             int newLumberOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_LUMBER).size() + requestedResourceCards.get("lumber") - offeredResourceCards.get("lumber");
             int newGrainOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_GRAIN).size() + requestedResourceCards.get("grain") - offeredResourceCards.get("grain");
@@ -156,7 +158,8 @@ public class Trade {
         if (!isTradeWithChest) {
             if (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() < requestedResourceCards.get("wool") ||
                     playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() < requestedResourceCards.get("grain") ||
-                    playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() < requestedResourceCards.get("lumber") ||
+                    playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() <
+                            requestedResourceCards.get("lumber") ||
                     playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() < requestedResourceCards.get("brick") ||
                     playerTrading.getSourceCards().get(Constants.CARD_ORE).size() < requestedResourceCards.get("ore")) {
                 isTradePossible = false;

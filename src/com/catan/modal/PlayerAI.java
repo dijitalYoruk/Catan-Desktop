@@ -4,8 +4,12 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceMakeConstruction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerAI extends Player {
+
+    private ArrayList<Player> playersList;
     public PlayerAI(String color, String name) {
         super(color, name);
     }
@@ -103,5 +107,66 @@ public class PlayerAI extends Player {
         } else {
             sourceCards.get(res).remove(sourceCards.get(res).get(0));
         }
+    }
+    public  Map<String, Integer> getOfferedResourceCards() {
+        Map<String, Integer> offeredResourceCards = new HashMap<String, Integer>();
+        int offBrick = 0;
+        int offLumber = 0;
+        int offGrain = 0;
+        int offOre = 0;
+        int offWool = 0;
+
+        if ( getSourceCards().get(Constants.CARD_WOOL).size() > 2) {
+            offWool = getSourceCards().get(Constants.CARD_WOOL).size() - 1;
+        }
+        else if ( getSourceCards().get(Constants.CARD_ORE).size() > 2) {
+            offOre = getSourceCards().get(Constants.CARD_ORE).size() - 1;
+        }
+        if ( getSourceCards().get(Constants.CARD_BRICK).size() > 2) {
+            offBrick = getSourceCards().get(Constants.CARD_BRICK).size() - 1;
+        }
+        else if ( getSourceCards().get(Constants.CARD_LUMBER).size() > 2) {
+            offLumber = getSourceCards().get(Constants.CARD_LUMBER).size() - 1;
+        }
+        if ( getSourceCards().get(Constants.CARD_GRAIN).size() > 2) {
+            offGrain = getSourceCards().get(Constants.CARD_GRAIN).size() - 1;
+        }
+        offeredResourceCards.put("wool", offWool);
+        offeredResourceCards.put("brick", offBrick);
+        offeredResourceCards.put("lumber", offLumber);
+        offeredResourceCards.put("grain", offGrain);
+        offeredResourceCards.put("ore", offOre);
+        return offeredResourceCards;
+    }
+
+    public  Map<String, Integer> getRequestedResourceCards() {
+        Map<String, Integer> requestedResourceCards = new HashMap<String, Integer>();
+        int reqBrick = 0;
+        int reqLumber = 0;
+        int reqGrain = 0;
+        int reqOre = 0;
+        int reqWool = 0;
+
+        if ( getSourceCards().get(Constants.CARD_WOOL).size() < 2) {
+            reqWool += 1;
+        }
+        else if ( getSourceCards().get(Constants.CARD_ORE).size() < 2) {
+            reqOre += 1;
+        }
+        if ( getSourceCards().get(Constants.CARD_BRICK).size() < 2) {
+            reqBrick += 1;
+        }
+        else if ( getSourceCards().get(Constants.CARD_LUMBER).size() < 2) {
+            reqLumber += 1;
+        }
+        if ( getSourceCards().get(Constants.CARD_GRAIN).size() < 2) {
+            reqGrain += 1;
+        }
+        requestedResourceCards.put("wool", reqWool);
+        requestedResourceCards.put("brick", reqBrick);
+        requestedResourceCards.put("lumber", reqLumber);
+        requestedResourceCards.put("grain", reqGrain);
+        requestedResourceCards.put("ore", reqOre);
+        return requestedResourceCards;
     }
 }
