@@ -145,7 +145,7 @@ public class ControllerThiefPunishment {
         }
     }
     @FXML
-    public void confirmPunish() {
+    public void confirmPunish() throws IOException {
         if (totalP == requiredP) {
             player.punishLumber(lumberP);
             player.punishWool(woolP);

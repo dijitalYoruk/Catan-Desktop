@@ -165,7 +165,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @FXML
-    public void endTurn(ActionEvent actionEvent) {
+    public void endTurn(ActionEvent actionEvent) throws IOException {
         if(isStepInitial) {
             initialTurn();
         } else if (isStepActual) {
@@ -345,7 +345,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ ACTUAL STEP METHODS ---------------- //
 
-    private void preActualTurn() {
+    private void preActualTurn() throws IOException {
         boolean gameWillContinue = true;
         playerTurn = playerTurn % 4;
         Player player = getPlayers().get(playerTurn);
@@ -362,7 +362,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             actualTurn();
         }
     }
-    private void actualTurn()  {
+    private void actualTurn() throws IOException {
         deActivateAllVertices();
         playerTurn = playerTurn % 4;
         Player player = getPlayers().get(playerTurn);
@@ -371,24 +371,67 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if (die.getDieSum() == 7) {
             playThief(currentPlayer);
         }
+
         // AI player Trade              TO DO: find an alternate condition for trade initiation of AI
-        boolean isTradeWithChest = true;
-        if ((int)(Math.random()) * 10 + 1 < 5) isTradeWithChest = false;
+        boolean isTradeWithChest = false;
+        if ((int)(Math.random() * 100) % 4 < 2) {
+            isTradeWithChest = true;
+        }
+        int noPlayerTradingWith = (int)(Math.random() * 100) % 4;
 
-        if (player instanceof PlayerAI && ((int)(Math.random()) * 10 + 1 < 5)) {
-            Player tradingWith = getPlayers().get((int)(Math.random()) * 10 + 1 % 4);
+        if (player instanceof PlayerAI && !getPlayers().get(noPlayerTradingWith).getName().equals(currentPlayer.getName())) {
 
-            Trade tradeAI = new Trade(currentPlayer, tradingWith, ((PlayerAI) player).getRequestedResourceCards(),
-                                      ((PlayerAI) player).getOfferedResourceCards(), isTradeWithChest);
-            if (tradingWith.getName().equals("PlayerActual")) {
+            Player tradingWith = getPlayers().get(noPlayerTradingWith);
+
+            if (!isTradeWithChest && tradingWith.getName().equals("PlayerActual")) {
                 System.out.println("****** pop up trade invitation to game scene ******");
                 //view pop up trade invitation to game scene
+                Dialog<ButtonType> dialog = new Dialog<>();
+                dialog.initOwner(root.getScene().getWindow());
+
+                FXMLLoader fxmlLoader = new FXMLLoader();
+
+                fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/tradeRequest.fxml"));
+
+                dialog.setTitle("Incoming Trade Offer");
+                dialog.getDialogPane().setContent(fxmlLoader.load());
+
+                dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+                ControllerTradeRequest tradeRequestController = fxmlLoader.getController();
+
+                tradeRequestController.setActualPlayerAndLabels(tradingWith, currentPlayer,  currentPlayer.getRequestedResourceCards(),
+                                         currentPlayer.getOfferedResourceCards());
+                //tradeRequestController.passPlayersAL(getPlayers());
+                Optional<ButtonType> inputOfUser = dialog.showAndWait();
             }
-            tradeAI.requestTrade();
-            System.out.println("***************************AI*********************************** \n****************************TRADE*******************************");
-            System.out.println("Trade between " + player.getName() + " and " + tradingWith.getName() + " is " + tradeAI.isTradePossible());
-            System.out.println("is trade with chest: " + isTradeWithChest);
-            System.out.println("***************************AI*********************************** \n****************************TRADE*******************************");
+            else if (!tradingWith.getName().equals("PlayerActual")) {
+                Trade tradeAI = new Trade(currentPlayer, tradingWith, currentPlayer.getRequestedResourceCards(),
+                                            currentPlayer.getOfferedResourceCards(), isTradeWithChest);
+                tradeAI.requestTrade();
+
+                // output
+                System.out.println("***************************AI*********************************** \n****************************TRADE*******************************");
+                if (isTradeWithChest) {
+                    System.out.println("Trade between " + player.getName() + " and CHEST " + " is " + tradeAI.isTradePossible());
+                } else {
+                    System.out.println("Trade between " + currentPlayer.getName() + " and " + tradingWith.getName() + " is " + tradeAI.isTradePossible());
+                }
+                for (String name : ((PlayerAI) currentPlayer).getRequestedResourceCards().keySet()) {
+                    String key = name.toString();
+                    String val = ((PlayerAI) currentPlayer).getRequestedResourceCards().get(name).toString();
+                    System.out.println("REQ: " + key + " : " + val);
+                }
+                for (String name : ((PlayerAI) currentPlayer).getOfferedResourceCards().keySet()) {
+                    String key = name.toString();
+                    String val = ((PlayerAI) currentPlayer).getOfferedResourceCards().get(name).toString();
+                    System.out.println("OFF: " + key + " : " + val);
+                }
+                System.out.println("FINAL TRADER: ");
+                currentPlayer.showSourceCards();
+                System.out.println("FINAL TRADING: ");
+                tradingWith.showSourceCards();
+                System.out.println("***************************AI*********************************** \n****************************TRADE*******************************");
+            }
         }
         getTurnProfit();
         // AI player
@@ -405,7 +448,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             unselectConstructions(null);
         }
     }
-    private void thiefResourceCardPunish()  {
+    private void thiefResourceCardPunish() throws IOException {
         Player realPlayer = null;
         for(Player player: getPlayers()){
             if(player instanceof PlayerActual)
@@ -540,7 +583,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @Override
-    public void updateGameAfterPopUp() {
+    public void updateGameAfterPopUp() throws IOException {
     //here the resources of player will be updated, this part has dependency of talha's work. so this will wait
             actualTurn();
     }
@@ -710,7 +753,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ INITIAL STEP METHODS ---------------- //
 
-    private void initialTurn() {
+    private void initialTurn() throws IOException {
         while (true) {
             playerTurn = playerTurn % 4;
             Player player = getPlayers().get(playerTurn);

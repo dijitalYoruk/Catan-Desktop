@@ -147,8 +147,6 @@ public class ControllerTrade {
     private Player playerToTradeWith;
     private ArrayList<Player> playersList;
     private Trade trade;
-    private Map<String, Integer> requestedResourceCards;
-    private Map<String, Integer> offeredResourceCards;
 
     @FXML
     void clearTrade(ActionEvent event) {
@@ -185,20 +183,20 @@ public class ControllerTrade {
         //generate a Trade object
         if (isPlayerToTradeWithSelected)
         {
-            requestedResourceCards = new HashMap<String, Integer>();
-            offeredResourceCards = new HashMap<String, Integer>();
+            Map<String, Integer> requestedResourceCards = new HashMap<String, Integer>();
+            Map<String, Integer> offeredResourceCards = new HashMap<String, Integer>();
 
-            requestedResourceCards.put("ore", requestedOreNo);
-            requestedResourceCards.put("lumber", requestedLumberNo);
-            requestedResourceCards.put("brick", requestedBrickNo);
-            requestedResourceCards.put("grain", requestedWheatNo);
-            requestedResourceCards.put("wool", requestedWoolNo);
+            requestedResourceCards.put(Constants.CARD_ORE, requestedOreNo);
+            requestedResourceCards.put(Constants.CARD_LUMBER, requestedLumberNo);
+            requestedResourceCards.put(Constants.CARD_BRICK, requestedBrickNo);
+            requestedResourceCards.put(Constants.CARD_GRAIN, requestedWheatNo);
+            requestedResourceCards.put(Constants.CARD_WOOL, requestedWoolNo);
 
-            offeredResourceCards.put("ore", givenOreNo);
-            offeredResourceCards.put("lumber", givenLumberNo);
-            offeredResourceCards.put("brick", givenBrickNo);
-            offeredResourceCards.put("grain", givenWheatNo);
-            offeredResourceCards.put("wool", givenWoolNo);
+            offeredResourceCards.put(Constants.CARD_ORE, givenOreNo);
+            offeredResourceCards.put(Constants.CARD_LUMBER, givenLumberNo);
+            offeredResourceCards.put(Constants.CARD_BRICK, givenBrickNo);
+            offeredResourceCards.put(Constants.CARD_GRAIN, givenWheatNo);
+            offeredResourceCards.put(Constants.CARD_WOOL, givenWoolNo);
 
             /*
             for (String name: requestedResourceCards.keySet()){

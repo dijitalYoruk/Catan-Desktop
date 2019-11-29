@@ -15,16 +15,6 @@ public class Trade {
     private boolean isTradeWithChest;
     private boolean isTradePossible;
     private Chest chest;  //to be implemented...
-    private int givenLumber;
-    private int givenBrick;
-    private int givenOre;
-    private int givenWool;
-    private int givenGrain;
-    private int receivedLumber;
-    private int receivedBrick;
-    private int receivedOre;
-    private int receivedWool;
-    private int receivedGrain;
 
     //methods
 
@@ -48,12 +38,12 @@ public class Trade {
         if (isTradePossible) {
             // Resource Cards of actual player
             int newOreOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_ORE).size()
-                    + requestedResourceCards.get("ore")
-                    - offeredResourceCards.get("ore");
-            int newBrickOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_BRICK).size() + requestedResourceCards.get("brick") - offeredResourceCards.get("brick");
-            int newLumberOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_LUMBER).size() + requestedResourceCards.get("lumber") - offeredResourceCards.get("lumber");
-            int newGrainOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_GRAIN).size() + requestedResourceCards.get("grain") - offeredResourceCards.get("grain");
-            int newWoolOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_WOOL).size() + requestedResourceCards.get("wool") - offeredResourceCards.get("wool");
+                    + requestedResourceCards.get(Constants.CARD_ORE)
+                    - offeredResourceCards.get(Constants.CARD_ORE);
+            int newBrickOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_BRICK).size() + requestedResourceCards.get(Constants.CARD_BRICK) - offeredResourceCards.get(Constants.CARD_BRICK);
+            int newLumberOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_LUMBER).size() + requestedResourceCards.get(Constants.CARD_LUMBER) - offeredResourceCards.get(Constants.CARD_LUMBER);
+            int newGrainOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_GRAIN).size() + requestedResourceCards.get(Constants.CARD_GRAIN) - offeredResourceCards.get(Constants.CARD_GRAIN);
+            int newWoolOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_WOOL).size() + requestedResourceCards.get(Constants.CARD_WOOL) - offeredResourceCards.get(Constants.CARD_WOOL);
 
             //    System.out.println("*me* ore:" + newOreOfPlayerActual + "brick" + newBrickOfPlayerActual + "lumber" + newLumberOfPlayerActual
             //    + "grain" + newGrainOfPlayerActual + "wool" + newWoolOfPlayerActual);
@@ -96,11 +86,11 @@ public class Trade {
         }
         if (isTradePossible && !isTradeWithChest) {
             // Resource Cards of OTHER player
-            int newOreOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_ORE).size() + offeredResourceCards.get("ore") - requestedResourceCards.get("ore");
-            int newBrickOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() + offeredResourceCards.get("brick") - requestedResourceCards.get("brick");
-            int newLumberOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() + offeredResourceCards.get("lumber") - requestedResourceCards.get("lumber");
-            int newGrainOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() + offeredResourceCards.get("grain") - requestedResourceCards.get("grain");
-            int newWoolOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() + offeredResourceCards.get("wool") - requestedResourceCards.get("wool");
+            int newOreOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_ORE).size() + offeredResourceCards.get(Constants.CARD_ORE) - requestedResourceCards.get(Constants.CARD_ORE);
+            int newBrickOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() + offeredResourceCards.get(Constants.CARD_BRICK) - requestedResourceCards.get(Constants.CARD_BRICK);
+            int newLumberOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() + offeredResourceCards.get(Constants.CARD_LUMBER) - requestedResourceCards.get(Constants.CARD_LUMBER);
+            int newGrainOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() + offeredResourceCards.get(Constants.CARD_GRAIN) - requestedResourceCards.get(Constants.CARD_GRAIN);
+            int newWoolOfPlayerOther = playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() + offeredResourceCards.get(Constants.CARD_WOOL) - requestedResourceCards.get(Constants.CARD_WOOL);
 
             while (playerTrading.getSourceCards().get(Constants.CARD_ORE).size() != newOreOfPlayerOther) {
                 if (playerTrading.getSourceCards().get(Constants.CARD_ORE).size() < newOreOfPlayerOther) {
@@ -156,12 +146,11 @@ public class Trade {
     public void requestTrade() {
         // check trading players' resource cards
         if (!isTradeWithChest) {
-            if (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() < requestedResourceCards.get("wool") ||
-                    playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() < requestedResourceCards.get("grain") ||
-                    playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() <
-                            requestedResourceCards.get("lumber") ||
-                    playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() < requestedResourceCards.get("brick") ||
-                    playerTrading.getSourceCards().get(Constants.CARD_ORE).size() < requestedResourceCards.get("ore")) {
+            if (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() < requestedResourceCards.get(Constants.CARD_WOOL) ||
+                    playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() < requestedResourceCards.get(Constants.CARD_GRAIN) ||
+                    playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() < requestedResourceCards.get(Constants.CARD_LUMBER) ||
+                    playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() < requestedResourceCards.get(Constants.CARD_BRICK) ||
+                    playerTrading.getSourceCards().get(Constants.CARD_ORE).size() < requestedResourceCards.get(Constants.CARD_ORE)) {
                 isTradePossible = false;
             }
         }
