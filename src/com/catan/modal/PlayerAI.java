@@ -6,6 +6,7 @@ import com.catan.interfaces.InterfaceMakeConstruction;
 import java.util.ArrayList;
 
 public class PlayerAI extends Player {
+
     public PlayerAI(String color, String name) {
         super(color, name);
     }

@@ -127,8 +127,8 @@ public class Player {
             HashMap<String, Integer> profit = settlement.getTurnProfit(dieNumber);
             Set<String> keys = profit.keySet();
             for (String key: keys) {
-                //sourceCards.get(key).add(new SourceCard(key, key)); // for checking some functionalities
-                //totalCards += 1; // for checking some functionalities
+//                sourceCards.get(key).add(new SourceCard(key, key)); // for checking some functionalities
+//                totalCards += 1; // for checking some functionalities
                 for (int i = 0; i < profit.get(key); i++) {
                     sourceCards.get(key).add(new SourceCard(key, key));
                 }
@@ -141,6 +141,7 @@ public class Player {
     public void addResourceFromThief(SourceCard thiefSource){
         sourceCards.get(thiefSource.getName()).add(thiefSource);
     }
+
     // this function chooses random 1 source card to give the thief
     public SourceCard getPunishedByThief(){
         SourceCard punishment = null;

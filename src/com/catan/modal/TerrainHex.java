@@ -19,8 +19,8 @@ public class TerrainHex extends Field{
     private Label labelNumberOnHex;
     private boolean isThiefHere;
     private ArrayList<Vertex> verticesNear;
-
     private Polygon shape;
+
     public TerrainHex (Polygon shape, String name, Circle circleNumberOnHex, Label labelNumberOnHex) {
         super(name,shape);
         this.shape = shape;
@@ -50,12 +50,14 @@ public class TerrainHex extends Field{
         }
         return playersAround;
     }
+
     public boolean isShapeInside(Shape check){
         if(shape.getBoundsInParent().intersects(check.getBoundsInParent())){
             return true;
         }
         return false;
     }
+
     public int getNumberOnHex() {
         String s = labelNumberOnHex.getText();
         return Integer.parseInt(s);
@@ -70,6 +72,7 @@ public class TerrainHex extends Field{
             circleNumberOnHex.setFill(Color.WHITE);
         }
     }
+
     public void setNumberOnHex(int number) {
         labelNumberOnHex.setText(number + "");
     }
@@ -81,6 +84,7 @@ public class TerrainHex extends Field{
     public void setSourceCardName(String sourceCardName) {
         this.sourceCardName = sourceCardName;
     }
+
     public Circle getCircleNumberOnHex() {
         return circleNumberOnHex;
     }

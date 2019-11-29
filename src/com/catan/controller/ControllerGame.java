@@ -49,6 +49,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int playerTurn = 0;
     private boolean thiefCanMove = false;
     private boolean initialThief = true;
+
     @Override
     public void initialize() {
         super.initialize();
