@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="472.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTradeRequest">
    <children>
       <Label fx:id="labelTitleOfTradeRequest" layoutX="113.0" layoutY="24.0" text="Player x wants to trade with you!">
@@ -127,7 +126,7 @@
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <Label fx:id="outputOfTradeOffer" layoutX="260.0" layoutY="326.0" opacity="0.0" text="Output" textFill="RED">
+      <Label fx:id="outputOfTradeOffer" layoutX="201.0" layoutY="333.0" opacity="0.0" text="Output" textFill="RED">
          <font>
             <Font size="24.0" />
          </font>

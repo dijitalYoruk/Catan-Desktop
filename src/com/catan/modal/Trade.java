@@ -37,9 +37,7 @@ public class Trade {
 
         if (isTradePossible) {
             // Resource Cards of actual player
-            int newOreOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_ORE).size()
-                    + requestedResourceCards.get(Constants.CARD_ORE)
-                    - offeredResourceCards.get(Constants.CARD_ORE);
+            int newOreOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_ORE).size() + requestedResourceCards.get(Constants.CARD_ORE) - offeredResourceCards.get(Constants.CARD_ORE);
             int newBrickOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_BRICK).size() + requestedResourceCards.get(Constants.CARD_BRICK) - offeredResourceCards.get(Constants.CARD_BRICK);
             int newLumberOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_LUMBER).size() + requestedResourceCards.get(Constants.CARD_LUMBER) - offeredResourceCards.get(Constants.CARD_LUMBER);
             int newGrainOfPlayerActual = playerTrader.getSourceCards().get(Constants.CARD_GRAIN).size() + requestedResourceCards.get(Constants.CARD_GRAIN) - offeredResourceCards.get(Constants.CARD_GRAIN);
@@ -128,15 +126,6 @@ public class Trade {
                 }
             }
         }
-
-        //output
-        System.out.println(isTradeWithChest);
-        System.out.println("TRADER:");
-        playerTrader.showSourceCards();
-        if (!isTradeWithChest) {
-            System.out.println("TRADING:");
-            playerTrading.showSourceCards();
-        }
     }
 
     public void outputNotPossible() {
@@ -144,8 +133,9 @@ public class Trade {
     }
 
     public void requestTrade() {
-        // check trading players' resource cards
         if (!isTradeWithChest) {
+            //trade is between players
+            // check trading players' resource cards
             if (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() < requestedResourceCards.get(Constants.CARD_WOOL) ||
                     playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() < requestedResourceCards.get(Constants.CARD_GRAIN) ||
                     playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() < requestedResourceCards.get(Constants.CARD_LUMBER) ||
@@ -153,13 +143,16 @@ public class Trade {
                     playerTrading.getSourceCards().get(Constants.CARD_ORE).size() < requestedResourceCards.get(Constants.CARD_ORE)) {
                 isTradePossible = false;
             }
+            else
+                isTradePossible = true;
         }
-        else {  //trade is with chest
+        else {
+            //trade is with chest
             // TO DO: will implement a logical trade decision algo here
             isTradePossible = true;
-            //substract and add Resource Cards
-            completeTrade();
         }
+        //substract and add Resource Cards
+        completeTrade();
     }
 
 

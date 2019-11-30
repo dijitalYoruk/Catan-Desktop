@@ -198,18 +198,6 @@ public class ControllerTrade {
             offeredResourceCards.put(Constants.CARD_GRAIN, givenWheatNo);
             offeredResourceCards.put(Constants.CARD_WOOL, givenWoolNo);
 
-            /*
-            for (String name: requestedResourceCards.keySet()){
-                String key = name.toString();
-                String val = requestedResourceCards.get(name).toString();
-                System.out.println("req: " + key + " : " + val);
-            }
-            for (String name: offeredResourceCards.keySet()){
-                String key = name.toString();
-                String val = offeredResourceCards.get(name).toString();
-                System.out.println("off: " + key + " : " + val);
-            }
-            */
             trade = new Trade(actualPlayer, playerToTradeWith, requestedResourceCards, offeredResourceCards, isTradeWithChest);
             trade.requestTrade();
         }

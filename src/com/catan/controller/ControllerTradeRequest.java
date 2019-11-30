@@ -61,11 +61,21 @@ public class ControllerTradeRequest {
 
     @FXML
     void acceptTradeOffer(ActionEvent event) {
-        Trade tradeInvitationAcception = new Trade(playerInvitor, playerInvitedToTrade, requestedRCFromPlayer,
-                                offeredRCFromPlayer, false);
-        tradeInvitationAcception.requestTrade();
-        outputOfTradeOffer.setText("Trade Offer Accepted!");
-        outputOfTradeOffer.setOpacity(1);
+        if (playerInvitedToTrade.getSourceCards().get(Constants.CARD_WOOL).size() < requestedRCFromPlayer.get(Constants.CARD_WOOL) ||
+                playerInvitedToTrade.getSourceCards().get(Constants.CARD_GRAIN).size() < requestedRCFromPlayer.get(Constants.CARD_GRAIN) ||
+                playerInvitedToTrade.getSourceCards().get(Constants.CARD_LUMBER).size() < requestedRCFromPlayer.get(Constants.CARD_LUMBER) ||
+                playerInvitedToTrade.getSourceCards().get(Constants.CARD_BRICK).size() < requestedRCFromPlayer.get(Constants.CARD_BRICK) ||
+                playerInvitedToTrade.getSourceCards().get(Constants.CARD_ORE).size() < requestedRCFromPlayer.get(Constants.CARD_ORE)) {
+            outputOfTradeOffer.setText("You don't have enough Resource Cards!");
+            outputOfTradeOffer.setOpacity(1);
+        }
+        else {
+            Trade tradeInvitationAcception = new Trade(playerInvitor, playerInvitedToTrade, requestedRCFromPlayer,
+                    offeredRCFromPlayer, false);
+            tradeInvitationAcception.requestTrade();
+            outputOfTradeOffer.setText("Trade Offer Accepted!");
+            outputOfTradeOffer.setOpacity(1);
+        }
     }
 
     @FXML

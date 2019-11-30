@@ -35,6 +35,7 @@ import javax.naming.ldap.Control;
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Optional;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceUpdateGameAfterPopUp {
@@ -372,7 +373,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             playThief(currentPlayer);
         }
 
-        // AI player Trade              TO DO: find an alternate condition for trade initiation of AI
+        // AI player Trade
         boolean isTradeWithChest = false;
         if ((int)(Math.random() * 100) % 4 < 2) {
             isTradeWithChest = true;
@@ -383,8 +384,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
             Player tradingWith = getPlayers().get(noPlayerTradingWith);
 
+            Map<String, Integer> requestedRC = currentPlayer.getRequestedResourceCards();
+            Map<String, Integer> offeredRC = currentPlayer.getOfferedResourceCards();
+
+            //trade request sent to actual player by playerAI
             if (!isTradeWithChest && tradingWith.getName().equals("PlayerActual")) {
-                System.out.println("****** pop up trade invitation to game scene ******");
+
                 //view pop up trade invitation to game scene
                 Dialog<ButtonType> dialog = new Dialog<>();
                 dialog.initOwner(root.getScene().getWindow());
@@ -399,39 +404,22 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
                 ControllerTradeRequest tradeRequestController = fxmlLoader.getController();
 
-                tradeRequestController.setActualPlayerAndLabels(tradingWith, currentPlayer,  currentPlayer.getRequestedResourceCards(),
-                                         currentPlayer.getOfferedResourceCards());
-                //tradeRequestController.passPlayersAL(getPlayers());
+                tradeRequestController.setActualPlayerAndLabels(tradingWith, currentPlayer, requestedRC, offeredRC);
                 Optional<ButtonType> inputOfUser = dialog.showAndWait();
             }
             else if (!tradingWith.getName().equals("PlayerActual")) {
-                Trade tradeAI = new Trade(currentPlayer, tradingWith, currentPlayer.getRequestedResourceCards(),
-                                            currentPlayer.getOfferedResourceCards(), isTradeWithChest);
+
+                Trade tradeAI = new Trade(currentPlayer, tradingWith, requestedRC, offeredRC, isTradeWithChest);
                 tradeAI.requestTrade();
 
                 // output
-                System.out.println("***************************AI*********************************** \n****************************TRADE*******************************");
                 if (isTradeWithChest) {
                     System.out.println("Trade between " + player.getName() + " and CHEST " + " is " + tradeAI.isTradePossible());
                 } else {
                     System.out.println("Trade between " + currentPlayer.getName() + " and " + tradingWith.getName() + " is " + tradeAI.isTradePossible());
                 }
-                for (String name : ((PlayerAI) currentPlayer).getRequestedResourceCards().keySet()) {
-                    String key = name.toString();
-                    String val = ((PlayerAI) currentPlayer).getRequestedResourceCards().get(name).toString();
-                    System.out.println("REQ: " + key + " : " + val);
-                }
-                for (String name : ((PlayerAI) currentPlayer).getOfferedResourceCards().keySet()) {
-                    String key = name.toString();
-                    String val = ((PlayerAI) currentPlayer).getOfferedResourceCards().get(name).toString();
-                    System.out.println("OFF: " + key + " : " + val);
-                }
-                System.out.println("FINAL TRADER: ");
-                currentPlayer.showSourceCards();
-                System.out.println("FINAL TRADING: ");
-                tradingWith.showSourceCards();
-                System.out.println("***************************AI*********************************** \n****************************TRADE*******************************");
             }
+
         }
         getTurnProfit();
         // AI player

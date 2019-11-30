@@ -292,6 +292,7 @@ public class Player {
         offeredResourceCards.put(Constants.CARD_LUMBER, offLumber);
         offeredResourceCards.put(Constants.CARD_GRAIN, offGrain);
         offeredResourceCards.put(Constants.CARD_ORE, offOre);
+
         return offeredResourceCards;
     }
 
@@ -323,6 +324,7 @@ public class Player {
         requestedResourceCards.put(Constants.CARD_LUMBER, reqLumber);
         requestedResourceCards.put(Constants.CARD_GRAIN, reqGrain);
         requestedResourceCards.put(Constants.CARD_ORE, reqOre);
+
         return requestedResourceCards;
     }
 }
