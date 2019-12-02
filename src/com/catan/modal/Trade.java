@@ -48,35 +48,35 @@ public class Trade {
 
             while (playerTrader.getSourceCards().get(Constants.CARD_ORE).size() != newOreOfPlayerActual) {
                 if (playerTrader.getSourceCards().get(Constants.CARD_ORE).size() < newOreOfPlayerActual) {
-                    playerTrader.sourceCards.get(Constants.CARD_ORE).add(new SourceCard("ore", "ore"));
+                    playerTrader.sourceCards.get(Constants.CARD_ORE).add(new SourceCard(Constants.CARD_ORE, Constants.CARD_ORE));
                 } else if (playerTrader.getSourceCards().get(Constants.CARD_ORE).size() > newOreOfPlayerActual) {
                     playerTrader.sourceCards.get(Constants.CARD_ORE).remove(playerTrader.sourceCards.get(Constants.CARD_ORE).get(0));
                 }
             }
             while (playerTrader.getSourceCards().get(Constants.CARD_BRICK).size() != newBrickOfPlayerActual) {
                 if (playerTrader.getSourceCards().get(Constants.CARD_BRICK).size() < newBrickOfPlayerActual) {
-                    playerTrader.sourceCards.get(Constants.CARD_BRICK).add(new SourceCard("brick", "brick"));
+                    playerTrader.sourceCards.get(Constants.CARD_BRICK).add(new SourceCard(Constants.CARD_BRICK, Constants.CARD_BRICK));
                 } else if (playerTrader.getSourceCards().get(Constants.CARD_BRICK).size() > newBrickOfPlayerActual) {
                     playerTrader.sourceCards.get(Constants.CARD_BRICK).remove(playerTrader.sourceCards.get(Constants.CARD_BRICK).get(0));
                 }
             }
             while (playerTrader.getSourceCards().get(Constants.CARD_LUMBER).size() != newLumberOfPlayerActual) {
                 if (playerTrader.getSourceCards().get(Constants.CARD_LUMBER).size() < newLumberOfPlayerActual) {
-                    playerTrader.sourceCards.get(Constants.CARD_LUMBER).add(new SourceCard("lumber", "lumber"));
+                    playerTrader.sourceCards.get(Constants.CARD_LUMBER).add(new SourceCard(Constants.CARD_LUMBER, Constants.CARD_LUMBER));
                 } else if (playerTrader.getSourceCards().get(Constants.CARD_LUMBER).size() > newLumberOfPlayerActual) {
                     playerTrader.sourceCards.get(Constants.CARD_LUMBER).remove(playerTrader.sourceCards.get(Constants.CARD_LUMBER).get(0));
                 }
             }
             while (playerTrader.getSourceCards().get(Constants.CARD_GRAIN).size() != newGrainOfPlayerActual) {
                 if (playerTrader.getSourceCards().get(Constants.CARD_GRAIN).size() < newGrainOfPlayerActual) {
-                    playerTrader.sourceCards.get(Constants.CARD_GRAIN).add(new SourceCard("grain", "grain"));
+                    playerTrader.sourceCards.get(Constants.CARD_GRAIN).add(new SourceCard(Constants.CARD_GRAIN, Constants.CARD_GRAIN));
                 } else if (playerTrader.getSourceCards().get(Constants.CARD_GRAIN).size() > newGrainOfPlayerActual) {
                     playerTrader.sourceCards.get(Constants.CARD_GRAIN).remove(playerTrader.sourceCards.get(Constants.CARD_GRAIN).get(0));
                 }
             }
             while (playerTrader.getSourceCards().get(Constants.CARD_WOOL).size() != newWoolOfPlayerActual) {
                 if (playerTrader.getSourceCards().get(Constants.CARD_WOOL).size() < newWoolOfPlayerActual) {
-                    playerTrader.sourceCards.get(Constants.CARD_WOOL).add(new SourceCard("wool", "wool"));
+                    playerTrader.sourceCards.get(Constants.CARD_WOOL).add(new SourceCard(Constants.CARD_WOOL, Constants.CARD_WOOL));
                 } else if (playerTrader.getSourceCards().get(Constants.CARD_WOOL).size() > newWoolOfPlayerActual) {
                     playerTrader.sourceCards.get(Constants.CARD_WOOL).remove(playerTrader.sourceCards.get(Constants.CARD_WOOL).get(0));
                 }
@@ -92,35 +92,35 @@ public class Trade {
 
             while (playerTrading.getSourceCards().get(Constants.CARD_ORE).size() != newOreOfPlayerOther) {
                 if (playerTrading.getSourceCards().get(Constants.CARD_ORE).size() < newOreOfPlayerOther) {
-                    playerTrading.sourceCards.get(Constants.CARD_ORE).add(new SourceCard("ore", "ore"));
+                    playerTrading.sourceCards.get(Constants.CARD_ORE).add(new SourceCard(Constants.CARD_ORE, Constants.CARD_ORE));
                 } else if (playerTrading.getSourceCards().get(Constants.CARD_ORE).size() > newOreOfPlayerOther) {
                     playerTrading.sourceCards.get(Constants.CARD_ORE).remove(playerTrading.sourceCards.get(Constants.CARD_ORE).get(0));
                 }
             }
             while (playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() != newBrickOfPlayerOther) {
                 if (playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() < newBrickOfPlayerOther) {
-                    playerTrading.sourceCards.get(Constants.CARD_BRICK).add(new SourceCard("brick", "brick"));
+                    playerTrading.sourceCards.get(Constants.CARD_BRICK).add(new SourceCard(Constants.CARD_BRICK, Constants.CARD_BRICK));
                 } else if (playerTrading.getSourceCards().get(Constants.CARD_BRICK).size() > newBrickOfPlayerOther) {
                     playerTrading.sourceCards.get(Constants.CARD_BRICK).remove(playerTrading.sourceCards.get(Constants.CARD_BRICK).get(0));
                 }
             }
             while (playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() != newLumberOfPlayerOther) {
                 if (playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() < newLumberOfPlayerOther) {
-                    playerTrading.sourceCards.get(Constants.CARD_LUMBER).add(new SourceCard("lumber", "lumber"));
+                    playerTrading.sourceCards.get(Constants.CARD_LUMBER).add(new SourceCard(Constants.CARD_LUMBER, Constants.CARD_LUMBER));
                 } else if (playerTrading.getSourceCards().get(Constants.CARD_LUMBER).size() > newLumberOfPlayerOther) {
                     playerTrading.sourceCards.get(Constants.CARD_LUMBER).remove(playerTrading.sourceCards.get(Constants.CARD_LUMBER).get(0));
                 }
             }
             while (playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() != newGrainOfPlayerOther) {
                 if (playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() < newGrainOfPlayerOther) {
-                    playerTrading.sourceCards.get(Constants.CARD_GRAIN).add(new SourceCard("grain", "grain"));
+                    playerTrading.sourceCards.get(Constants.CARD_GRAIN).add(new SourceCard(Constants.CARD_GRAIN, Constants.CARD_GRAIN));
                 } else if (playerTrading.getSourceCards().get(Constants.CARD_GRAIN).size() > newGrainOfPlayerOther) {
                     playerTrading.sourceCards.get(Constants.CARD_GRAIN).remove(playerTrading.sourceCards.get(Constants.CARD_GRAIN).get(0));
                 }
             }
             while (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() != newWoolOfPlayerOther) {
                 if (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() < newWoolOfPlayerOther) {
-                    playerTrading.sourceCards.get(Constants.CARD_WOOL).add(new SourceCard("wool", "wool"));
+                    playerTrading.sourceCards.get(Constants.CARD_WOOL).add(new SourceCard(Constants.CARD_WOOL, Constants.CARD_WOOL));
                 } else if (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() > newWoolOfPlayerOther) {
                     playerTrading.sourceCards.get(Constants.CARD_WOOL).remove(playerTrading.sourceCards.get(Constants.CARD_WOOL).get(0));
                 }
@@ -133,7 +133,14 @@ public class Trade {
     }
 
     public void requestTrade() {
-        if (!isTradeWithChest) {
+        if (offeredResourceCards.get(Constants.CARD_WOOL) == 0 &&
+                offeredResourceCards.get(Constants.CARD_GRAIN) == 0 &&
+                offeredResourceCards.get(Constants.CARD_LUMBER) == 0 &&
+                offeredResourceCards.get(Constants.CARD_BRICK) == 0 &&
+                offeredResourceCards.get(Constants.CARD_ORE) == 0) {
+            isTradePossible = false;
+        }
+        else if (!isTradeWithChest) {
             //trade is between players
             // check trading players' resource cards
             if (playerTrading.getSourceCards().get(Constants.CARD_WOOL).size() < requestedResourceCards.get(Constants.CARD_WOOL) ||
@@ -148,7 +155,7 @@ public class Trade {
         }
         else {
             //trade is with chest
-            // TO DO: will implement a logical trade decision algo here
+            // can advance trade decision algo here
             isTradePossible = true;
         }
         //substract and add Resource Cards

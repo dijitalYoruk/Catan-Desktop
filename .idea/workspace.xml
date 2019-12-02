@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTrade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTrade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Trade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Trade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerTrade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerTrade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/tradeRequest.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/tradeRequest.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
