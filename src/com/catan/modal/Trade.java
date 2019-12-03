@@ -140,6 +140,13 @@ public class Trade {
                 offeredResourceCards.get(Constants.CARD_ORE) == 0) {
             isTradePossible = false;
         }
+        if (requestedResourceCards.get(Constants.CARD_WOOL) == 0 &&
+                requestedResourceCards.get(Constants.CARD_GRAIN) == 0 &&
+                requestedResourceCards.get(Constants.CARD_LUMBER) == 0 &&
+                requestedResourceCards.get(Constants.CARD_BRICK) == 0 &&
+                requestedResourceCards.get(Constants.CARD_ORE) == 0) {
+            isTradePossible = false;
+        }
         else if (!isTradeWithChest) {
             //trade is between players
             // check trading players' resource cards

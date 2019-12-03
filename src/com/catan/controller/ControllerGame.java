@@ -375,6 +375,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
         // AI player Trade
         boolean isTradeWithChest = false;
+        boolean isTradeContinued = true;
         if ((int)(Math.random() * 100) % 4 < 2) {
             isTradeWithChest = true;
         }
@@ -386,9 +387,18 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
             Map<String, Integer> requestedRC = currentPlayer.getRequestedResourceCards();
             Map<String, Integer> offeredRC = currentPlayer.getOfferedResourceCards();
+            if (requestedRC.get(Constants.CARD_WOOL) == 0 &&
+                    requestedRC.get(Constants.CARD_BRICK) == 0 &&
+                    requestedRC.get(Constants.CARD_LUMBER) == 0 &&
+                    requestedRC.get(Constants.CARD_ORE) == 0 &&
+                    requestedRC.get(Constants.CARD_GRAIN) == 0) {
+                isTradeContinued = false;
+            }
+
+
 
             //trade request sent to actual player by playerAI
-            if (!isTradeWithChest && tradingWith.getName().equals("PlayerActual")) {
+            if (isTradeContinued && !isTradeWithChest && tradingWith.getName().equals("PlayerActual")) {
 
                 //view pop up trade invitation to game scene
                 Dialog<ButtonType> dialog = new Dialog<>();
@@ -407,7 +417,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 tradeRequestController.setActualPlayerAndLabels(tradingWith, currentPlayer, requestedRC, offeredRC);
                 Optional<ButtonType> inputOfUser = dialog.showAndWait();
             }
-            else if (!tradingWith.getName().equals("PlayerActual")) {
+            else if (isTradeContinued && !tradingWith.getName().equals("PlayerActual")) {
 
                 Trade tradeAI = new Trade(currentPlayer, tradingWith, requestedRC, offeredRC, isTradeWithChest);
                 tradeAI.requestTrade();
