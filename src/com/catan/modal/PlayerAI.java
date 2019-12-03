@@ -4,8 +4,12 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceMakeConstruction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerAI extends Player {
+
+    private ArrayList<Player> playersList;
 
     public PlayerAI(String color, String name) {
         super(color, name);
@@ -105,4 +109,5 @@ public class PlayerAI extends Player {
             sourceCards.get(res).remove(sourceCards.get(res).get(0));
         }
     }
+
 }

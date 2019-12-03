@@ -1,145 +1,239 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListCell?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTrade">
+<AnchorPane prefHeight="746.0" prefWidth="1000.0" style="-fx-background-color: #FFD692;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTrade">
    <children>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="197.0" layoutY="610.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="p1lumber" fitHeight="96.0" fitWidth="73.0" layoutX="45.0" layoutY="569.0" onMouseClicked="#selectResourcesToOffer" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_wood.jpg" />
          </image>
       </ImageView>
-      <Text layoutX="779.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Give:">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </Text>
-      <Text layoutX="751.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request:">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="237.0" layoutX="693.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" width="244.0" />
-      <JFXButton buttonType="RAISED" layoutX="693.0" layoutY="690.0" prefHeight="73.0" prefWidth="128.0" ripplerFill="#3d689000" text="Request" />
-      <JFXButton buttonType="RAISED" layoutX="820.0" layoutY="690.0" prefHeight="73.0" prefWidth="118.0" ripplerFill="#d77474" text="Clear" />
-      <ImageView fitHeight="105.0" fitWidth="91.0" layoutX="40.0" layoutY="653.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icon_back.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="197.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="605.0" layoutY="104.0" stroke="BLACK" strokeType="INSIDE" width="360.0" />
+      <ImageView fx:id="p1wool" fitHeight="96.0" fitWidth="73.0" layoutX="45.0" layoutY="454.0" onMouseClicked="#selectResourcesToOffer" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_sheep.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="197.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="p1ore" fitHeight="96.0" fitWidth="73.0" layoutX="45.0" layoutY="336.0" onMouseClicked="#selectResourcesToOffer" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_ore.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="197.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="p1grain" fitHeight="96.0" fitWidth="73.0" layoutX="45.0" layoutY="221.0" onMouseClicked="#selectResourcesToOffer" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_grain.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="197.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="p1brick" fitHeight="96.0" fitWidth="73.0" layoutX="45.0" layoutY="104.0" onMouseClicked="#selectResourcesToOffer" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_brick.jpg" />
          </image>
       </ImageView>
-      <Text layoutX="230.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </Text>
-      <JFXListCell layoutX="489.0" layoutY="43.0" prefHeight="66.0" prefWidth="159.0" text="Player to Trade">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </JFXListCell>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="480.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="oppBrick" fitHeight="96.0" fitWidth="73.0" layoutX="276.0" layoutY="104.0" onMouseClicked="#selectResourcesToRequest" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_brick.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="480.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="oppGrain" fitHeight="96.0" fitWidth="73.0" layoutX="390.0" layoutY="105.0" onMouseClicked="#selectResourcesToRequest" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_grain.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="480.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="oppOre" fitHeight="96.0" fitWidth="73.0" layoutX="500.0" layoutY="105.0" onMouseClicked="#selectResourcesToRequest" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_ore.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="480.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="oppWool" fitHeight="96.0" fitWidth="73.0" layoutX="332.0" layoutY="224.0" onMouseClicked="#selectResourcesToRequest" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_sheep.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="73.0" layoutX="480.0" layoutY="611.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="oppLumber" fitHeight="96.0" fitWidth="73.0" layoutX="451.0" layoutY="224.0" onMouseClicked="#selectResourcesToRequest" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_wood.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="237.0" layoutX="693.0" layoutY="433.0" stroke="BLACK" strokeType="INSIDE" width="244.0" />
-      <Text layoutX="275.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x3" wrappingWidth="72.9970703125">
+      <MenuButton fx:id="tradingWith" layoutX="276.0" layoutY="33.0" mnemonicParsing="false" text="Select Player to Trade With">
+        <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectTradeWith" text="Player 2" />
+          <MenuItem mnemonicParsing="false" onAction="#selectTradeWith" text="Player 3" />
+          <MenuItem mnemonicParsing="false" onAction="#selectTradeWith" text="Player 4" />
+            <MenuItem mnemonicParsing="false" onAction="#selectTradeWith" text="Chest" />
+        </items>
          <font>
-            <Font size="34.0" />
+            <Font size="20.0" />
          </font>
-      </Text>
-      <Text layoutX="275.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x2" wrappingWidth="72.9970703125">
+      </MenuButton>
+      <Label alignment="CENTER" layoutX="44.0" layoutY="30.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="Player 1" />
+      <Label alignment="CENTER" layoutX="685.0" layoutY="30.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="Give:" />
+      <Label alignment="CENTER" layoutX="685.0" layoutY="359.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="Request:" />
+      <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="623.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_brick.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="623.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_grain.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="50.0" layoutX="862.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_ore.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="748.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_sheep.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="748.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_wood.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="605.0" layoutY="429.0" stroke="BLACK" strokeType="INSIDE" width="360.0" />
+      <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="628.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_brick.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="628.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_grain.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="50.0" layoutX="862.0" layoutY="493.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_ore.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="753.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_sheep.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="753.0" layoutY="538.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_wood.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="givenBrick" layoutX="691.0" layoutY="135.0" text="x0">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
-      </Text>
-      <Text layoutX="275.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0" wrappingWidth="72.9970703125">
+      </Label>
+      <Label fx:id="givenWheat" layoutX="691.0" layoutY="230.0" text="x0">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
-      </Text>
-      <Text layoutX="275.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0" wrappingWidth="72.9970703125">
+      </Label>
+      <Label fx:id="givenWool" layoutX="823.0" layoutY="135.0" text="x0">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
-      </Text>
-      <Text layoutX="275.0" layoutY="667.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0" wrappingWidth="72.9970703125">
+      </Label>
+      <Label fx:id="givenLumber" layoutX="823.0" layoutY="232.0" text="x0">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
-      </Text>
-      <Text layoutX="558.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x?" wrappingWidth="72.9970703125">
+      </Label>
+      <Label fx:id="givenOre" layoutX="927.0" layoutY="179.0" text="x0">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
-      </Text>
-      <Text layoutX="558.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x?" wrappingWidth="72.9970703125">
+      </Label>
+      <Label fx:id="requestedBrick" layoutX="696.0" layoutY="464.0" text="x0">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
-      </Text>
-      <Text layoutX="558.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x?" wrappingWidth="72.9970703125">
+      </Label>
+      <Label fx:id="requestedWheat" layoutX="696.0" layoutY="555.0" text="x0">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
-      </Text>
-      <Text layoutX="558.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x?" wrappingWidth="72.9970703125">
+      </Label>
+      <Label fx:id="requestedWool" layoutX="823.0" layoutY="464.0" text="x0">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
-      </Text>
-      <Text layoutX="558.0" layoutY="667.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x?" wrappingWidth="72.9970703125">
+      </Label>
+      <Label fx:id="requestedLumber" layoutX="823.0" layoutY="555.0" text="x0">
          <font>
-            <Font size="34.0" />
+            <Font size="24.0" />
          </font>
-      </Text>
-      <JFXButton buttonType="RAISED" layoutX="52.0" layoutY="654.0" prefHeight="73.0" prefWidth="66.0" ripplerFill="#d77474" text="  " />
+      </Label>
+      <Label fx:id="requestedOre" layoutX="927.0" layoutY="512.0" text="x0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="requestButton" layoutX="602.0" layoutY="644.0" mnemonicParsing="false" onAction="#requestTrade" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" text="Request" />
+      <Button fx:id="clearTradeButton" layoutX="810.0" layoutY="644.0" mnemonicParsing="false" onAction="#clearTrade" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" text="Clear" />
+      <Label fx:id="labelActualPlayerBrick" layoutX="144.0" layoutY="126.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelActualPlayerGrain" layoutX="144.0" layoutY="243.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelActualPlayerOre" layoutX="144.0" layoutY="358.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelActualPlayerWool" layoutX="144.0" layoutY="476.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelActualPlayerLumber" layoutX="144.0" layoutY="591.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="componentsBrick" disable="true" layoutX="577.0" layoutY="347.0" opacity="0.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="componentsWheat" disable="true" layoutX="561.0" layoutY="385.0" opacity="0.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="componentsOre" disable="true" layoutX="561.0" layoutY="310.0" opacity="0.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="componentsWool" disable="true" layoutX="545.0" layoutY="412.0" opacity="0.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="componentsLumber" disable="true" layoutX="554.0" layoutY="347.0" opacity="0.0" text="x?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelOutputOfTrade" layoutX="248.0" layoutY="465.0" opacity="0.0" styleClass="warning-label" text="Output">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
