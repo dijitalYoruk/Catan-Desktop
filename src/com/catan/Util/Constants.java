@@ -13,6 +13,7 @@ public class Constants {
     public static final String VILLAGE = "village";
     public static final String CITY = "city";
     public static final String CIVILISATION = "civilisation";
+    public static final String HARBOUR = "harbour";
     public static final int CONSTRUCTION_RADIUS = 22;
 
     public static final Color COLOR_CONSTRUCTION_UNSELECTED = Color.color(0.4,0.4,0.4);
@@ -26,6 +27,7 @@ public class Constants {
     public static final String PATH_CITY = "./com/catan/assets/city.png";
     public static final String PATH_CIVILISATION = "./com/catan/assets/civilisation.jpg";
     public static final String PATH_CARD_PRICE = "./com/catan/assets/price_card.png";
+    public static final String PATH_HARBOUR = "./com/catan/assets/harbour.gif";
 
     public static final String PATH_CITY_RED    = "./com/catan/assets/city_red.png";
     public static final String PATH_CITY_BLUE   = "./com/catan/assets/city_blue.png";
@@ -65,4 +67,14 @@ public class Constants {
     public static final String CARD_ORE = "ore";
     public static final String CARD_BRICK = "brick";
     public static final String CARD_LUMBER = "lumber";
+
+    public static final int PANE_WIDTH = 1920;
+    public static final int PANE_HEIGHT = 1080;
+
+    public static final double HARBOUR_NO_RATIO = -1;
+    public static final double HARBOUR_RATIO_1 = 0.5;
+    public static final double HARBOUR_RATIO_2 = 0.5;
+    public static final double HARBOUR_RATIO_3 = 0.6;
+    public static final double HARBOUR_RATIO_4 = 0.6;
+
 }

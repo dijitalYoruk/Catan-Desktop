@@ -1,5 +1,6 @@
 package com.catan;
 
+import com.catan.Util.Constants;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,10 +13,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/program.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1500, 800));
+        primaryStage.setScene(new Scene(root, Constants.PANE_WIDTH, Constants.PANE_HEIGHT));
+        primaryStage.setFullScreen(true);
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);
