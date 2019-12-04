@@ -234,88 +234,45 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         int imgHeight = 87;
         int imgWidth = 60;
         int spaceBetweenImages = 6;
+        HashMap<String, Object[]> map = new HashMap<>();
+
+        map.put("wool", new Object[] {woolLabel, woolImages, woolsPane, "resource_sheep.jpg"});
+        map.put("ore", new Object[] {oreLabel, oreImages, oresPane, "resource_ore.jpg"});
+        map.put("lumber", new Object[] {lumberLabel, lumberImages, lumbersPane, "resource_wood.jpg"});
+        map.put("brick", new Object[] {brickLabel, brickImages, bricksPane, "resource_brick.jpg"});
+        map.put("grain", new Object[] {grainLabel, grainImages, grainsPane, "resource_grain.jpg"});
+
         Player actualPlayer = getPlayers().get(0);
         HashMap<String, ArrayList<SourceCard>> sourceCards = actualPlayer.getSourceCards();
         Set<String> keys = sourceCards.keySet();
 
         for (String key: keys) {
+            Object[] ass = map.get(key);
             String noOfCards = sourceCards.get(key).size() == 0 ? "" : sourceCards.get(key).size() + "";
-            if (key.equals("wool")) {
-                woolLabel.setText(noOfCards);
-                while (sourceCards.get(key).size() > woolImages.size() - 1) {
-                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_sheep.jpg");
-                    imgToAdd.setLayoutX(woolImages.get(woolImages.size() - 1).getLayoutX() + spaceBetweenImages);
-                    imgToAdd.setLayoutY(woolImages.get(woolImages.size() - 1).getLayoutY());
-                    imgToAdd.setFitHeight(imgHeight);
-                    imgToAdd.setFitWidth(imgWidth);
-                    woolImages.add(imgToAdd);
-                    woolsPane.getChildren().add(imgToAdd);
-                }
-                while (sourceCards.get(key).size() < woolImages.size() - 1) {
-                    woolsPane.getChildren().remove(woolImages.get(woolImages.size() - 1));
-                    woolImages.remove(woolImages.size() - 1);
-                }
-            } else if (key.equals("ore")) {
-                oreLabel.setText(noOfCards);
-                while (sourceCards.get(key).size() > oreImages.size() - 1) {
-                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_ore.jpg");
-                    imgToAdd.setLayoutX(oreImages.get(oreImages.size() - 1).getLayoutX() + spaceBetweenImages);
-                    imgToAdd.setLayoutY(oreImages.get(oreImages.size() - 1).getLayoutY());
-                    imgToAdd.setFitHeight(imgHeight);
-                    imgToAdd.setFitWidth(imgWidth);
-                    oreImages.add(imgToAdd);
-                    oresPane.getChildren().add(imgToAdd);
-                }
-                while (sourceCards.get(key).size() < oreImages.size() - 1) {
-                    oresPane.getChildren().remove(oreImages.get(oreImages.size() - 1));
-                    oreImages.remove(oreImages.size() - 1);
-                }
-            } else if (key.equals("lumber")) {
-                lumberLabel.setText(noOfCards);
-                // size() - 1 because there will always be a dummy node in the list
-                while (sourceCards.get(key).size() > lumberImages.size() - 1) {
-                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_wood.jpg");
-                    imgToAdd.setLayoutX(lumberImages.get(lumberImages.size() - 1).getLayoutX() + spaceBetweenImages);
-                    imgToAdd.setLayoutY(lumberImages.get(lumberImages.size() - 1).getLayoutY());
-                    imgToAdd.setFitHeight(imgHeight);
-                    imgToAdd.setFitWidth(imgWidth);
-                    lumberImages.add(imgToAdd);
-                    lumbersPane.getChildren().add(imgToAdd);
-                }
-                while (sourceCards.get(key).size() < lumberImages.size() - 1) {
-                    lumbersPane.getChildren().remove(lumberImages.get(lumberImages.size() - 1));
-                    lumberImages.remove(lumberImages.size() - 1);
-                }
-            } if (key.equals("brick")) {
-                brickLabel.setText(noOfCards);
-                while (sourceCards.get(key).size() > brickImages.size() - 1) {
-                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_brick.jpg");
-                    imgToAdd.setLayoutX(brickImages.get(brickImages.size() - 1).getLayoutX() + spaceBetweenImages);
-                    imgToAdd.setLayoutY(brickImages.get(brickImages.size() - 1).getLayoutY());
-                    imgToAdd.setFitHeight(imgHeight);
-                    imgToAdd.setFitWidth(imgWidth);
-                    brickImages.add(imgToAdd);
-                    bricksPane.getChildren().add(imgToAdd);
-                }
-                while (sourceCards.get(key).size() < brickImages.size() - 1) {
-                    bricksPane.getChildren().remove(brickImages.get(brickImages.size() - 1));
-                    brickImages.remove(brickImages.size() - 1);
-                }
-            } if (key.equals("grain")) {
-                grainLabel.setText(noOfCards);
-                while (sourceCards.get(key).size() > grainImages.size() - 1) {
-                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_grain.jpg");
-                    imgToAdd.setLayoutX(grainImages.get(grainImages.size() - 1).getLayoutX() + spaceBetweenImages);
-                    imgToAdd.setLayoutY(grainImages.get(grainImages.size() - 1).getLayoutY());
-                    imgToAdd.setFitHeight(imgHeight);
-                    imgToAdd.setFitWidth(imgWidth);
-                    grainImages.add(imgToAdd);
-                    grainsPane.getChildren().add(imgToAdd);
-                }
-                while (sourceCards.get(key).size() < grainImages.size() - 1) {
-                    grainsPane.getChildren().remove(grainImages.get(grainImages.size() - 1));
-                    grainImages.remove(grainImages.size() - 1);
-                }
+
+            // updates the textual representation of the number of cards
+            ((Label)ass[0]).setText(noOfCards);
+            // if the no of source card it has is more than what is displayed on the screen,
+            // add more card images to the display
+            while (sourceCards.get(key).size() > ((ArrayList<ImageView>)ass[1]).size() - 1) {
+                ImageView imgToAdd = new ImageView("./com/catan/assets/" + ((String)ass[3]));
+                // puts the image right next to its predecessor
+                imgToAdd.setLayoutX(((ArrayList<ImageView>)ass[1]).get(((ArrayList<ImageView>)ass[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                imgToAdd.setLayoutY(((ArrayList<ImageView>)ass[1]).get(((ArrayList<ImageView>)ass[1]).size() - 1).getLayoutY());
+                imgToAdd.setFitHeight(imgHeight);
+                imgToAdd.setFitWidth(imgWidth);
+                // puts the image into its corresponding list. ex: grainImage -> grainImages
+                ((ArrayList<ImageView>)ass[1]).add(imgToAdd);
+                // puts image into its corresponding pane. ex : grainImage -> grainsPane
+                ((Pane)ass[2]).getChildren().add(imgToAdd);
+            }
+            // if no of source card it has is less than what is displayed on the screen,
+            // remove the displayed card images
+            while (sourceCards.get(key).size() < ((ArrayList<ImageView>)ass[1]).size() - 1) {
+                // removes the image from its corresponding pane
+                ((Pane)ass[2]).getChildren().remove(((ArrayList<ImageView>)ass[1]).get(((ArrayList<ImageView>)ass[1]).size() - 1));
+                // removes the image from its corresponding list
+                ((ArrayList<ImageView>)ass[1]).remove(((ArrayList<ImageView>)ass[1]).size() - 1);
             }
         }
     }
@@ -912,7 +869,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     // ------------ INITIAL STEP METHODS ---------------- //
 
     private void initialTurn() throws IOException {
-        System.out.println("INITAL TURN");
         while (true) {
             playerTurn = playerTurn % 4;
             Player player = getPlayers().get(playerTurn);
@@ -954,11 +910,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void playAIInitialTurn() {
         try {
             //Thread.sleep(1000);
-            System.out.println("WAITED 1 SEC");
+            //System.out.println("WAITED 1 SEC");
         }
         catch(Exception ex) {
-            System.out.println("THREAD ERROR!");
-            Thread.currentThread().interrupt();
+            //System.out.println("THREAD ERROR!");
+            //Thread.currentThread().interrupt();
         }
         tempRoad = null;
         tempSettlement = null;
@@ -1031,7 +987,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 unselectConstructions(null);
                 activatePlayerVertices();
                 tempSettlement = settlement;
-                System.out.println("ADDED SETTLEMENTs");
             } else {
                 if(currentPlayer instanceof PlayerActual)
                     outputNotPossible("Not possible");
