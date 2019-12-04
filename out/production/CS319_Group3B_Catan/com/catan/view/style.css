@@ -1,20 +1,21 @@
 #program-pane {
     -fx-background-image: url("../assets/background.jpg");
     -fx-background-size: cover;
-    -fx-pref-width: 1500;
-    -fx-pref-height: 800;
+    -fx-pref-width: 1920;
+    -fx-pref-height: 1080;
 }
 #settings-pane {
     -fx-background-image: url("../assets/background.jpg");
     -fx-background-size: cover;
-    -fx-pref-width: 1500;
-    -fx-pref-height: 800;
+    -fx-pref-width: 1920;
+    -fx-pref-height: 1080;
 }
 
-
 #game-pane {
-    -fx-pref-width: 1500;
-    -fx-pref-height: 800;
+    -fx-background-image: url("../assets/background_game.jpg");
+    -fx-background-size: cover;
+    -fx-pref-width: 1920;
+    -fx-pref-height: 1080;
 }
 
 #terrain-hex {
@@ -25,8 +26,8 @@
 .settings{
     -fx-background-image: url("../assets/background.jpg");
     -fx-background-size: cover;
-    -fx-pref-width: 1500;
-    -fx-pref-height: 800;
+    -fx-pref-width: 1920;
+    -fx-pref-height: 1080;
 }
 .thresholds{
     -fx-background-color: orange;
@@ -69,7 +70,7 @@
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-background-radius: 40;
-    -fx-pref-width: 250;
+    -fx-pref-width: 300;
     -fx-pref-height: 50;
     -fx-font-size: 20;
 }
@@ -79,7 +80,7 @@
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-background-radius: 40;
-    -fx-pref-width: 250;
+    -fx-pref-width: 300;
     -fx-pref-height: 50;
     -fx-font-size: 20;
 }
@@ -113,6 +114,7 @@
     -fx-pref-height: 30;
     -fx-font-size: 20;
 }
+
 #die-button {
     -fx-background-color: orange;
     -fx-margin:50px;

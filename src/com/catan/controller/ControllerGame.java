@@ -16,6 +16,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +34,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.imageio.IIOParam;
 import javax.naming.ldap.Control;
 import java.io.IOException;
 import java.sql.SQLOutput;
@@ -40,6 +43,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.Map;
+import java.util.Optional;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceUpdateGameAfterPopUp {
 
@@ -116,9 +121,23 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @FXML
-    void trade(ActionEvent event) {
+    void trade(ActionEvent event) throws IOException {
         if (isStepActual) {
-            // TODO trade will be implemented
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.initOwner(root.getScene().getWindow());
+
+            FXMLLoader fxmlLoader = new FXMLLoader();
+
+            fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/trade.fxml"));
+
+            dialog.setTitle("Trade");
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+            ControllerTrade tradeController = fxmlLoader.getController();
+            tradeController.setActualPlayerAndLabels(getPlayers().get(0)); // actual player
+            tradeController.passPlayersAL(getPlayers());
+            Optional<ButtonType> inputOfUser = dialog.showAndWait();
         }
     }
 
@@ -161,7 +180,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @FXML
-    public void endTurn(ActionEvent actionEvent) {
+    public void endTurn(ActionEvent actionEvent) throws IOException {
         if(isStepInitial) {
             initialTurn();
         } else if (isStepActual) {
@@ -385,7 +404,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ ACTUAL STEP METHODS ---------------- //
 
-    private void preActualTurn() {
+    private void preActualTurn() throws IOException {
         boolean gameWillContinue = true;
         playerTurn = playerTurn % 4;
         Player player = getPlayers().get(playerTurn);
@@ -403,14 +422,54 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             actualTurn();
         }
     }
-    private void actualTurn()  {
+    private void actualTurn() throws IOException {
         deActivateAllVertices();
         playerTurn = playerTurn % 4;
         Player player = getPlayers().get(playerTurn);
         currentPlayer = player;
         playerTurn++;
+
+        //  playing the thief
         if (die.getDieSum() == 7) {
             playThief(currentPlayer);
+        }
+
+        // AI player Trade
+        boolean isTradeWithChest = Math.random() < 0.3;
+        int noPlayerTradingWith = (int)(Math.random() * 100) % 4;
+
+        if (currentPlayer instanceof PlayerAI && !getPlayers().get(noPlayerTradingWith).getName().equals(currentPlayer.getName())) {
+            // setting trade materials
+            Player tradingWith = getPlayers().get(noPlayerTradingWith);
+            Map<String, Integer> requestedRC = ((PlayerAI)currentPlayer).getRequestedResourceCards();
+            Map<String, Integer> offeredRC = ((PlayerAI)currentPlayer).getOfferedResourceCards(requestedRC);
+
+            //trade request sent to actual player by playerAI
+            if (!isTradeWithChest && tradingWith == playerActual) {
+                //view pop up trade invitation to game scene
+                Dialog<ButtonType> dialog = new Dialog<>();
+                dialog.initOwner(root.getScene().getWindow());
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getClassLoader()
+                        .getResource(Constants.PATH_VIEW_TRADE_REQUEST));
+                dialog.setTitle("Incoming Trade Offer");
+                dialog.getDialogPane().setContent(fxmlLoader.load());
+                dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+                ControllerTradeRequest tradeRequestController = fxmlLoader.getController();
+                tradeRequestController.setActualPlayerAndLabels(tradingWith, currentPlayer, requestedRC, offeredRC);
+            } // trade request sent to AI player by playerAI
+            else if (tradingWith != playerActual) {
+                Trade tradeAI = new Trade(currentPlayer, tradingWith, requestedRC, offeredRC, isTradeWithChest);
+//                tradeAI.requestTrade();
+
+                // output
+                if (isTradeWithChest) {
+                    System.out.println("Trade between " + player.getName() + " and CHEST " + " is " + tradeAI.isTradePossible());
+                } else {
+                    System.out.println("Trade between " + currentPlayer.getName() + " and " + tradingWith.getName() + " is " + tradeAI.isTradePossible());
+                }
+            }
+
         }
         getTurnProfit();
         // AI player
@@ -419,15 +478,15 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             preActualTurn();
         }
         // Actual Player
-        else if (player instanceof  PlayerActual) {
-
+        else if (player instanceof PlayerActual) {
             deActivateAllVertices();
             refreshRoadSelectionVertices();
             constructionUnselect = true;
             unselectConstructions(null);
         }
     }
-    private void thiefResourceCardPunish()  {
+
+    private void thiefResourceCardPunish() throws IOException {
         Player realPlayer = null;
         for(Player player: getPlayers()){
             if(player instanceof PlayerActual)
@@ -466,7 +525,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    // i created this function to stop game, game contionous when use finishes selecting card by updateGame function
+    // i created this function to stop game, game continuous when use finishes selecting card by updateGame function
 
     private void playThief(Player currentPlayer){
         thiefCanMove = true;
@@ -562,7 +621,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @Override
-    public void updateGameAfterPopUp() {
+    public void updateGameAfterPopUp() throws IOException {
     //here the resources of player will be updated, this part has dependency of talha's work. so this will wait
             actualTurn();
             updateCardsOfActualPlayerInView();
@@ -738,7 +797,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ INITIAL STEP METHODS ---------------- //
 
-    private void initialTurn() {
+    private void initialTurn() throws IOException {
         System.out.println("INITAL TURN");
         while (true) {
             playerTurn = playerTurn % 4;
