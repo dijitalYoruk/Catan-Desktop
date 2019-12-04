@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,6 +21,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -66,6 +68,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     int gameLogIterator = 0;
     private int noOfRound = 1;
     FlowPane gameLogsFlowPane;
+    private ArrayList<ImageView> lumberImages = new ArrayList<>();
+    private ArrayList<ImageView> brickImages = new ArrayList<>();
+    private ArrayList<ImageView> grainImages = new ArrayList<>();
+    private ArrayList<ImageView> oreImages = new ArrayList<>();
+    private ArrayList<ImageView> woolImages = new ArrayList<>();
 
     @Override
     public void initialize() {
@@ -74,6 +81,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         currentPlayer = getPlayers().get(0);
         activateAllVertices();
         gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
+
+        lumberImages.add(dummyLumberImageView);
+        brickImages.add(dummyBrickImageView);
+        grainImages.add(dummyGrainImageView);
+        oreImages.add(dummyOreImageView);
+        woolImages.add(dummyWoolImageView);
     }
 
     @FXML
@@ -194,42 +207,111 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     private void updateCardsOfActualPlayerInView() {
-        HashMap<String, ArrayList<SourceCard>> sourceCards = currentPlayer.getSourceCards();
+        int imgHeight = 87;
+        int imgWidth = 60;
+        Player actualPlayer = getPlayers().get(0);
+        HashMap<String, ArrayList<SourceCard>> sourceCards = actualPlayer.getSourceCards();
         Set<String> keys = sourceCards.keySet();
-        String log = "";
+
         for (String key: keys) {
+            String noOfCards = sourceCards.get(key).size() == 0 ? "" : sourceCards.get(key).size() + "";
             if (key.equals("wool")) {
-
+                woolLabel.setText(noOfCards);
+                while (sourceCards.get(key).size() > woolImages.size() - 1) {
+                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_sheep.jpg");
+                    imgToAdd.setLayoutX(woolImages.get(woolImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutY(woolImages.get(woolImages.size() - 1).getLayoutY());
+                    imgToAdd.setFitHeight(imgHeight);
+                    imgToAdd.setFitWidth(imgWidth);
+                    woolImages.add(imgToAdd);
+                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                }
+                while (sourceCards.get(key).size() < woolImages.size() - 1) {
+                    actualPlayerCardsPane.getChildren().remove(woolImages.get(woolImages.size() - 1));
+                    woolImages.remove(woolImages.size() - 1);
+                }
             } else if (key.equals("ore")) {
-
+                oreLabel.setText(noOfCards);
+                while (sourceCards.get(key).size() > oreImages.size() - 1) {
+                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_ore.jpg");
+                    imgToAdd.setLayoutX(oreImages.get(oreImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutY(oreImages.get(oreImages.size() - 1).getLayoutY());
+                    imgToAdd.setFitHeight(imgHeight);
+                    imgToAdd.setFitWidth(imgWidth);
+                    oreImages.add(imgToAdd);
+                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                }
+                while (sourceCards.get(key).size() < oreImages.size() - 1) {
+                    actualPlayerCardsPane.getChildren().remove(oreImages.get(oreImages.size() - 1));
+                    oreImages.remove(oreImages.size() - 1);
+                }
             } else if (key.equals("lumber")) {
-
+                lumberLabel.setText(noOfCards);
+                while (sourceCards.get(key).size() > lumberImages.size() - 1) {
+                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_wood.jpg");
+                    imgToAdd.setLayoutX(lumberImages.get(lumberImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutY(lumberImages.get(lumberImages.size() - 1).getLayoutY());
+                    imgToAdd.setFitHeight(imgHeight);
+                    imgToAdd.setFitWidth(imgWidth);
+                    lumberImages.add(imgToAdd);
+                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                }
+                while (sourceCards.get(key).size() < lumberImages.size() - 1) {
+                    actualPlayerCardsPane.getChildren().remove(lumberImages.get(lumberImages.size() - 1));
+                    lumberImages.remove(lumberImages.size() - 1);
+                }
             } if (key.equals("brick")) {
-
+                brickLabel.setText(noOfCards);
+                while (sourceCards.get(key).size() > brickImages.size() - 1) {
+                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_brick.jpg");
+                    imgToAdd.setLayoutX(brickImages.get(brickImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutY(brickImages.get(brickImages.size() - 1).getLayoutY());
+                    imgToAdd.setFitHeight(imgHeight);
+                    imgToAdd.setFitWidth(imgWidth);
+                    brickImages.add(imgToAdd);
+                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                }
+                while (sourceCards.get(key).size() < brickImages.size() - 1) {
+                    actualPlayerCardsPane.getChildren().remove(brickImages.get(brickImages.size() - 1));
+                    brickImages.remove(brickImages.size() - 1);
+                }
             } if (key.equals("grain")) {
-
+                grainLabel.setText(noOfCards);
+                while (sourceCards.get(key).size() > grainImages.size() - 1) {
+                    ImageView imgToAdd = new ImageView("./com/catan/assets/resource_grain.jpg");
+                    imgToAdd.setLayoutX(grainImages.get(grainImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutY(grainImages.get(grainImages.size() - 1).getLayoutY());
+                    imgToAdd.setFitHeight(imgHeight);
+                    imgToAdd.setFitWidth(imgWidth);
+                    grainImages.add(imgToAdd);
+                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                }
+                while (sourceCards.get(key).size() < grainImages.size() - 1) {
+                    actualPlayerCardsPane.getChildren().remove(grainImages.get(grainImages.size() - 1));
+                    grainImages.remove(grainImages.size() - 1);
+                }
             }
-            log += key + ": " + sourceCards.get(key).size();
         }
         //cardsOfPlayerTextArea.setText(log);
+
     }
 
     private void updateGameLogsInView() {
         for (; gameLogIterator < gameLog.size(); gameLogIterator++) {
             String[] log = gameLog.get(gameLogIterator);
-            JFXTextField logTextField = new JFXTextField("  " + log[0]);
-            logTextField.setMinWidth(400);
-            logTextField.setMinHeight(35);
-            logTextField.setEditable(false);
+            Label logLabel = new Label("  " + log[0]);
+            logLabel.setMinWidth(400);
+            logLabel.setMinHeight(35);
+            logLabel.setCursor(Cursor.DEFAULT);
             String marginProperty = " -fx-padding: 2px;" + "-fx-border-insets: 2px;" + "-fx-background-insets: 2px;";
             if (log[0].indexOf("has ended") >= 0) {
-                logTextField.setStyle("-fx-background-color: gray; -fx-text-inner-color: white;" + marginProperty);
+                logLabel.setStyle("-fx-background-color: gray; -fx-text-fill: white;" + marginProperty);
             } else {
                 Player playerOfLog = getPlayers().get(Integer.parseInt(log[1]));
                 String playerColor = playerOfLog.getColor();
-                logTextField.setStyle("-fx-background-color:" + playerColor + ";" + "-fx-text-inner-color: white;" + marginProperty);
+                logLabel.setStyle("-fx-background-color:" + playerColor + ";" + "-fx-text-fill: white;" + marginProperty);
             }
-            gameLogsFlowPane.getChildren().add(0, logTextField);
+            gameLogsFlowPane.getChildren().add(0, logLabel);
         }
     }
 
@@ -411,11 +493,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         System.out.println(player.getName() + " : " + player.getColor());
         rollDie();
         System.out.println("die result: " + die.getDieSum());
+        gameLog.add(new String[] {"Player " + playerTurn + ": has rolled " + die.getDieSum() + ".", "" + (playerTurn % 4)});
         if (die.getDieSum() == 7) {
             thiefResourceCardPunishAI();
             thiefResourceCardPunish();
             gameWillContinue = false;
-            gameLog.add(new String[] {"Player " + playerTurn + ": has rolled 7.", "" + playerTurn});
         }
         // game will not contiuno if the player has to choose cards first.
         if (gameWillContinue) {
@@ -655,19 +737,19 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     case Constants.CITY:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
                         settlement = new City(imagePath, vertex, currentPlayer);
-                        // FIXME: how the fk is this function supposed to work
-                        // FIXME: AI kullanıcılar buildi nerede yapıyor? aşağıdaki makeVillageActualForAI nerede kullanılıyor?
+                        // FIXME: playerTurn is not who it should correspond to
+                        // FIXME: like it should be blue but it is purple?
                         gameLog.add(new String[] {"Player " + playerTurn + ": has built a city.", "" + playerTurn});
                         break;
                     case Constants.VILLAGE:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
                         settlement = new Village(imagePath, vertex, currentPlayer);
-                        gameLog.add(new String[] {"Player " + playerTurn + ": has built a village.", "" + playerTurn});
+                        gameLog.add(new String[] {"Player " + playerTurn + ": has built a village.", "" + (playerTurn % 4)});
                         break;
                     default:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CIVILISATION);
                         settlement = new Civilisation(imagePath, vertex, currentPlayer);
-                        gameLog.add(new String[] {"Player " + playerTurn + ": has built civilisation.", "" + playerTurn});
+                        gameLog.add(new String[] {"Player " + playerTurn + ": has built civilisation.", "" + (playerTurn % 4)});
                         break;
                 }
                 Image img = new Image(settlement.getImagePath());

@@ -33,7 +33,7 @@ public class PlayerAI extends Player {
                 if (cities.size() > 0) {
                     makeConstruction.selectActualConstructionForAI(Constants.CIVILISATION);
                     makeSettlement(cities, makeConstruction);
-                    gameLog.add(new String[] {"Player " + playerTurn + ": has built a civilisation.", "" + playerTurn});
+                    gameLog.add(new String[] {"Player " + playerTurn + ": has built a civilisation.", "" + (playerTurn % 4)});
                 }
             }
         }
@@ -45,7 +45,7 @@ public class PlayerAI extends Player {
                 if (villages.size() > 0) {
                     makeConstruction.selectActualConstructionForAI(Constants.CITY);
                     makeSettlement(villages, makeConstruction);
-                    gameLog.add(new String[] {"Player " + playerTurn + ": has built a city.", "" + playerTurn});
+                    gameLog.add(new String[] {"Player " + playerTurn + ": has built a city.", "" + (playerTurn % 4)});
                 }
             }
         }
@@ -61,7 +61,7 @@ public class PlayerAI extends Player {
                 (villageCount == 4 && Math.random() > 0.99)) {
                 makeConstruction.selectActualConstructionForAI(Constants.VILLAGE);
                 makeConstruction.makeVillageActualForAI();
-                gameLog.add(new String[] {"Player " + playerTurn + ": has built village.", "" + playerTurn});
+                gameLog.add(new String[] {"Player " + playerTurn + ": has built village.", "" + (playerTurn % 4)});
             }
 
         }
@@ -73,7 +73,7 @@ public class PlayerAI extends Player {
                 (roads.size() >= 7 && Math.random() > 0.8)) {
                 makeConstruction.selectActualConstructionForAI(Constants.ROAD);
                 makeConstruction.makeRoadActualForAI();
-                gameLog.add(new String[] {"Player " + playerTurn + ": has built a road.", "" + playerTurn});
+                gameLog.add(new String[] {"Player " + playerTurn + ": has built a road.", "" + (playerTurn % 4)});
             }
         }
     }

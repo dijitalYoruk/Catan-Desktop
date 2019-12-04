@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -332,8 +333,6 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Rectangle imgDie2;
     @FXML
-    private Label labelPlayer;
-    @FXML
     private Label labelLogs;
     @FXML
     private Label labelWarning;
@@ -467,7 +466,28 @@ public class ControllerBaseGame extends ControllerBase {
 
     @FXML
     protected ScrollPane gameLogsScrollPane;
-
+    @FXML
+    protected Label woolLabel;
+    @FXML
+    protected Label oreLabel;
+    @FXML
+    protected Label lumberLabel;
+    @FXML
+    protected Label brickLabel;
+    @FXML
+    protected Label grainLabel;
+    @FXML
+    protected ImageView dummyLumberImageView;
+    @FXML
+    protected ImageView dummyWoolImageView;
+    @FXML
+    protected ImageView dummyGrainImageView;
+    @FXML
+    protected ImageView dummyBrickImageView;
+    @FXML
+    protected ImageView dummyOreImageView;
+    @FXML
+    protected Pane actualPlayerCardsPane;
 
     // Properties
     private ArrayList<TerrainHex> terrainHexes;
@@ -1299,14 +1319,6 @@ public class ControllerBaseGame extends ControllerBase {
 
     public void setImgDie2(Rectangle imgDie2) {
         this.imgDie2 = imgDie2;
-    }
-
-    public Label getLabelPlayer() {
-        return labelPlayer;
-    }
-
-    public void setLabelPlayer(Label labelPlayer) {
-        this.labelPlayer = labelPlayer;
     }
 
     public Label getLabelLogs() {
