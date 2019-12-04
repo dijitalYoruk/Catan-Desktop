@@ -71,6 +71,8 @@ public class Constants {
     public static final int PANE_WIDTH = 1920;
     public static final int PANE_HEIGHT = 1080;
 
+    public static String PATH_VIEW_TRADE_REQUEST = "com/catan/view/tradeRequest.fxml";
+
     public static final double HARBOUR_NO_RATIO = -1;
     public static final double HARBOUR_RATIO_1 = 0.5;
     public static final double HARBOUR_RATIO_2 = 0.5;

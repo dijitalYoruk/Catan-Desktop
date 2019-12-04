@@ -199,7 +199,7 @@ public class ControllerTrade {
             offeredResourceCards.put(Constants.CARD_WOOL, givenWoolNo);
 
             trade = new Trade(actualPlayer, playerToTradeWith, requestedResourceCards, offeredResourceCards, isTradeWithChest);
-            trade.requestTrade();
+//            trade.requestTrade();
         }
         else {
             outputNotPossible();

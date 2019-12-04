@@ -475,6 +475,7 @@ public class ControllerBaseGame extends ControllerBase {
     protected Circle imgThiefDefaultLocation;
     protected TerrainHex thiefHexLoca;
     protected Die die;
+    protected Player playerActual;
     
     @FXML
     public void initialize() {
@@ -484,7 +485,8 @@ public class ControllerBaseGame extends ControllerBase {
         settlements = new ArrayList<>();
         players = new ArrayList<>();
         harbours = new ArrayList<>();
-        players.add(new PlayerActual(Constants.COLOR_RED, "PlayerActual"));
+        playerActual = new PlayerActual(Constants.COLOR_RED, "PlayerActual");
+        players.add(playerActual);
         players.add(new PlayerAI(Constants.COLOR_BLUE, "PlayerArtificial1"));
         players.add(new PlayerAI(Constants.COLOR_PURPLE, "PlayerArtificial2"));
         players.add(new PlayerAI(Constants.COLOR_GREEN, "PlayerArtificial3"));
