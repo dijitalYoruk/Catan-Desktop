@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
@@ -208,8 +211,7 @@
             </JFXButton>
          </children>
       </HBox>
-      <Label fx:id="labelPlayer" alignment="TOP_LEFT" layoutX="76.0" layoutY="332.0" prefHeight="94.0" prefWidth="340.0" text="Label Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \nLabel Label Label Label Label Label Label Label Label Label Label Label  \n " wrapText="true" />
-      <Line endX="158.0" layoutX="256.0" layoutY="440.0" startX="-178.0" />
+      <Line endX="158.0" layoutX="256.0" layoutY="454.0" startX="-178.0" />
       <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
       <Circle fx:id="circleNumberOnHex1" fill="WHITE" layoutX="1006.0" layoutY="116.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="circleNumberOnHex2" fill="WHITE" layoutX="1137.0" layoutY="115.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
@@ -328,7 +330,13 @@
       </Label>
       <JFXButton layoutX="14.0" layoutY="35.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
       <Label fx:id="labelWarning" alignment="CENTER" layoutX="481.0" layoutY="658.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
-      <JFXTextArea fx:id="gameLogsTextArea" editable="false" layoutX="78.0" layoutY="457.0" prefHeight="170.0" prefWidth="337.0" />
+      <JFXTextArea fx:id="cardsOfPlayerTextArea" editable="false" layoutX="77.0" layoutY="329.0" prefHeight="116.0" prefWidth="337.0" />
+      <ScrollPane fx:id="gameLogsScrollPane" hbarPolicy="NEVER" layoutX="78.0" layoutY="467.0" prefHeight="200.0" prefWidth="337.0">
+         <content>
+            <FlowPane maxWidth="336.0" prefHeight="195.0" prefWidth="336.0" />
+         </content>
+      </ScrollPane>
+      <JFXDialog layoutX="552.0" layoutY="338.0" prefWidth="63.0" />
 
 
 

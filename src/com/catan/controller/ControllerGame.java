@@ -5,12 +5,14 @@ import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.*;
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import com.sun.deploy.security.SelectableSecurityManager;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -33,7 +36,10 @@ import javax.naming.ldap.Control;
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceUpdateGameAfterPopUp {
 
@@ -51,11 +57,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int playerTurn = 0;
     private boolean thiefCanMove = false;
     private boolean initialThief = true;
-    private List<String> gameLog = new ArrayList<>();
+    private List<String[]> gameLog = new ArrayList<>();
+    int gameLogIterator = 0;
     private int noOfRound = 1;
-    
-    @FXML
-    private JFXTextArea gameLogsTextArea;
+    FlowPane gameLogsFlowPane;
 
     @Override
     public void initialize() {
@@ -63,6 +68,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         selectConstructionInitial(imgRoad);
         currentPlayer = getPlayers().get(0);
         activateAllVertices();
+        gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
     }
 
     @FXML
@@ -161,19 +167,51 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         } else if (isStepActual) {
             //actualTurn();
             preActualTurn();
+            gameLog.add(new String[] {"Round "  + noOfRound + " has ended.", "-1"});
+            noOfRound++;
         }
-        gameLog.add("Round "  + noOfRound + " has ended.");
-        // FIXME: should increment round counter somewhere else, incremented when error is shown.
-        noOfRound++;
         updateGameLogsInView();
+        updateCardsOfActualPlayerInView();
+    }
+
+    private void updateCardsOfActualPlayerInView() {
+        HashMap<String, ArrayList<SourceCard>> sourceCards = currentPlayer.getSourceCards();
+        Set<String> keys = sourceCards.keySet();
+        String log = "";
+        for (String key: keys) {
+            if (key.equals("wool")) {
+
+            } else if (key.equals("ore")) {
+
+            } else if (key.equals("lumber")) {
+
+            } if (key.equals("brick")) {
+
+            } if (key.equals("grain")) {
+
+            }
+            log += key + ": " + sourceCards.get(key).size();
+        }
+        //cardsOfPlayerTextArea.setText(log);
     }
 
     private void updateGameLogsInView() {
-        String log = "";
-        for (int i = gameLog.size() - 1; i >= 0; i--) {
-            log += gameLog.get(i) + "\n";
+        for (; gameLogIterator < gameLog.size(); gameLogIterator++) {
+            String[] log = gameLog.get(gameLogIterator);
+            JFXTextField logTextField = new JFXTextField("  " + log[0]);
+            logTextField.setMinWidth(330);
+            logTextField.setMinHeight(35);
+            logTextField.setEditable(false);
+            String marginProperty = " -fx-padding: 2px;" + "-fx-border-insets: 2px;" + "-fx-background-insets: 2px;";
+            if (log[0].indexOf("has ended") >= 0) {
+                logTextField.setStyle("-fx-background-color: gray; -fx-text-inner-color: white;" + marginProperty);
+            } else {
+                Player playerOfLog = getPlayers().get(Integer.parseInt(log[1]));
+                String playerColor = playerOfLog.getColor();
+                logTextField.setStyle("-fx-background-color:" + playerColor + ";" + "-fx-text-inner-color: white;" + marginProperty);
+            }
+            gameLogsFlowPane.getChildren().add(0, logTextField);
         }
-        gameLogsTextArea.setText(log);
     }
 
     private void outputNotPossible(String warningType) {
@@ -358,7 +396,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             thiefResourceCardPunishAI();
             thiefResourceCardPunish();
             gameWillContinue = false;
-            gameLog.add("Player " + playerTurn + ": has rolled 7.");
+            gameLog.add(new String[] {"Player " + playerTurn + ": has rolled 7.", "" + playerTurn});
         }
         // game will not contiuno if the player has to choose cards first.
         if (gameWillContinue) {
@@ -527,6 +565,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     public void updateGameAfterPopUp() {
     //here the resources of player will be updated, this part has dependency of talha's work. so this will wait
             actualTurn();
+            updateCardsOfActualPlayerInView();
     }
     private void getTurnProfit() {
         System.out.println("----------------------------------------------------------------------");
@@ -557,14 +596,19 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     case Constants.CITY:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
                         settlement = new City(imagePath, vertex, currentPlayer);
+                        // FIXME: how the fk is this function supposed to work
+                        // FIXME: AI kullanıcılar buildi nerede yapıyor? aşağıdaki makeVillageActualForAI nerede kullanılıyor?
+                        gameLog.add(new String[] {"Player " + playerTurn + ": has built a city.", "" + playerTurn});
                         break;
                     case Constants.VILLAGE:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
                         settlement = new Village(imagePath, vertex, currentPlayer);
+                        gameLog.add(new String[] {"Player " + playerTurn + ": has built a village.", "" + playerTurn});
                         break;
                     default:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CIVILISATION);
                         settlement = new Civilisation(imagePath, vertex, currentPlayer);
+                        gameLog.add(new String[] {"Player " + playerTurn + ": has built civilisation.", "" + playerTurn});
                         break;
                 }
                 Image img = new Image(settlement.getImagePath());
@@ -695,6 +739,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     // ------------ INITIAL STEP METHODS ---------------- //
 
     private void initialTurn() {
+        System.out.println("INITAL TURN");
         while (true) {
             playerTurn = playerTurn % 4;
             Player player = getPlayers().get(playerTurn);
@@ -734,6 +779,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     private void playAIInitialTurn() {
+        try {
+            //Thread.sleep(1000);
+            System.out.println("WAITED 1 SEC");
+        }
+        catch(Exception ex) {
+            System.out.println("THREAD ERROR!");
+            Thread.currentThread().interrupt();
+        }
         tempRoad = null;
         tempSettlement = null;
 
@@ -758,14 +811,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             vertex = vertex.getNeighbors().get(index);
             makeConstructionInitial(vertex.getShape());
 
-            gameLog.add("Player " + playerTurn + ": has built road.");
+            //gameLog.add("Player " + playerTurn + ": has built road.");
 
             setSelectedConstruction(Constants.VILLAGE);
             if (tempRoad != null) {
                 ArrayList<Vertex> twoVertex = new ArrayList<>();
                 twoVertex.add(tempRoad.getVertices().get(0));
                 twoVertex.add(tempRoad.getVertices().get(1));
-                gameLog.add("Player " + playerTurn + ": has built village.");
+                //gameLog.add("Player " + playerTurn + ": has built village.");
                 if (isVertexSuitableForConstruction(twoVertex.get(0))) {
                     makeConstructionInitial(twoVertex.get(0).getShape());
                 }
@@ -805,8 +858,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 unselectConstructions(null);
                 activatePlayerVertices();
                 tempSettlement = settlement;
-
-
+                System.out.println("ADDED SETTLEMENTs");
             } else {
                 if(currentPlayer instanceof PlayerActual)
                     outputNotPossible("Not possible");

@@ -2,8 +2,10 @@ package com.catan.controller;
 
 import com.catan.Util.Constants;
 import com.catan.modal.*;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -429,6 +431,9 @@ public class ControllerBaseGame extends ControllerBase {
     private Label labelHexNum18;
     @FXML
     private Label labelHexNum19;
+    @FXML
+    protected ScrollPane gameLogsScrollPane;
+
 
     // Properties
     private ArrayList<TerrainHex> terrainHexes;
