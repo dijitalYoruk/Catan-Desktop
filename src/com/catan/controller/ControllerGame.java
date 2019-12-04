@@ -218,7 +218,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         for (; gameLogIterator < gameLog.size(); gameLogIterator++) {
             String[] log = gameLog.get(gameLogIterator);
             JFXTextField logTextField = new JFXTextField("  " + log[0]);
-            logTextField.setMinWidth(330);
+            logTextField.setMinWidth(400);
             logTextField.setMinHeight(35);
             logTextField.setEditable(false);
             String marginProperty = " -fx-padding: 2px;" + "-fx-border-insets: 2px;" + "-fx-background-insets: 2px;";
