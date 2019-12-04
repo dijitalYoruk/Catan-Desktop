@@ -72,7 +72,7 @@ public class ControllerTradeRequest {
         else {
             Trade tradeInvitationAcception = new Trade(playerInvitor, playerInvitedToTrade, requestedRCFromPlayer,
                     offeredRCFromPlayer, false);
-            tradeInvitationAcception.requestTrade();
+//            tradeInvitationAcception.requestTrade();
             outputOfTradeOffer.setText("Trade Offer Accepted!");
             outputOfTradeOffer.setOpacity(1);
         }

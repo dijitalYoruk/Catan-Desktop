@@ -1,5 +1,6 @@
 package com.catan.controller;
 
+import com.catan.Util.Constants;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,13 +18,10 @@ public class ControllerProgram {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../view/game.fxml"));
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-
+            window.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @FXML
@@ -31,24 +29,23 @@ public class ControllerProgram {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../view/settings.fxml"));
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-
+            window.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void gotoInstructions(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../view/instructions.fxml"));
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
-
+            window.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void exitGame(){
         System.exit(0);
