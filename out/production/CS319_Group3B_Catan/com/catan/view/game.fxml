@@ -360,56 +360,76 @@
       </ScrollPane>
       <Pane fx:id="actualPlayerCardsPane" layoutX="1517.0" layoutY="281.0" prefHeight="481.0" prefWidth="359.0" style="-fx-background-color: #FFC41F; -fx-border-color: black;">
          <children>
-            <ImageView fx:id="dummyLumberImageView" fitHeight="87.0" fitWidth="60.0" layoutX="9.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../assets/resource_wood.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="dummyBrickImageView" fitHeight="87.0" fitWidth="60.0" layoutX="203.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../assets/resource_brick.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="dummyGrainImageView" fitHeight="87.0" fitWidth="60.0" layoutX="9.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../assets/resource_grain.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="dummyWoolImageView" fitHeight="87.0" fitWidth="60.0" layoutX="203.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../assets/resource_sheep.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="dummyOreImageView" fitHeight="87.0" fitWidth="60.0" layoutX="9.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../assets/resource_ore.jpg" />
-               </image>
-            </ImageView>
-            <Label fx:id="woolLabel" layoutX="224.0" layoutY="112.0" prefHeight="21.0" prefWidth="32.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="oreLabel" layoutX="30.0" layoutY="250.0" prefHeight="21.0" prefWidth="32.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="lumberLabel" layoutX="30.0" layoutY="112.0" prefHeight="21.0" prefWidth="32.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="brickLabel" layoutX="224.0" layoutY="250.0" prefHeight="21.0" prefWidth="32.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="grainLabel" layoutX="30.0" layoutY="396.0" prefHeight="21.0" prefWidth="32.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
+            <Pane fx:id="lumbersPane" layoutX="7.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="dummyLumberImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_wood.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lumberLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="woolsPane" layoutX="125.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="dummyWoolImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_sheep.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="woolLabel" layoutX="36.0" layoutY="101.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="oresPane" layoutX="7.0" layoutY="154.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="dummyOreImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_ore.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="oreLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="bricksPane" layoutX="235.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="dummyBrickImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_brick.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="brickLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="grainsPane" layoutX="125.0" layoutY="154.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="dummyGrainImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_grain.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="grainLabel" layoutX="39.0" layoutY="101.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </Pane>
 

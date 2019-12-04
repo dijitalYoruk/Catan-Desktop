@@ -25,6 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -40,13 +41,8 @@ import javax.imageio.IIOParam;
 import javax.naming.ldap.Control;
 import java.io.IOException;
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.Map;
-import java.util.Optional;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceUpdateGameAfterPopUp {
 
@@ -73,6 +69,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private ArrayList<ImageView> grainImages = new ArrayList<>();
     private ArrayList<ImageView> oreImages = new ArrayList<>();
     private ArrayList<ImageView> woolImages = new ArrayList<>();
+    private Pane[] cardPanes = new Pane[5];
+    double[][] cardsPaneLocations = new double[5][2];
 
     @Override
     public void initialize() {
@@ -82,11 +80,32 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         activateAllVertices();
         gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
 
+        initializeActualPlayerCardsPaneRelatedComponents();
+    }
+
+    private void initializeActualPlayerCardsPaneRelatedComponents() {
+        dummyLumberImageView.setVisible(false);
         lumberImages.add(dummyLumberImageView);
+        dummyBrickImageView.setVisible(false);
         brickImages.add(dummyBrickImageView);
+        dummyGrainImageView.setVisible(false);
         grainImages.add(dummyGrainImageView);
+        dummyOreImageView.setVisible(false);
         oreImages.add(dummyOreImageView);
+        dummyWoolImageView.setVisible(false);
         woolImages.add(dummyWoolImageView);
+
+        cardPanes[0] = lumbersPane;
+        cardPanes[1] = woolsPane;
+        cardPanes[2] = oresPane;
+        cardPanes[3] = bricksPane;
+        cardPanes[4] = grainsPane;
+
+        cardsPaneLocations[0] = new double[] {lumbersPane.getLayoutX(), lumbersPane.getLayoutY()};
+        cardsPaneLocations[1] = new double[] {woolsPane.getLayoutX(), woolsPane.getLayoutY()};
+        cardsPaneLocations[2] = new double[] {bricksPane.getLayoutX(), bricksPane.getLayoutY()};
+        cardsPaneLocations[3] = new double[] {oresPane.getLayoutX(), oresPane.getLayoutY()};
+        cardsPaneLocations[4] = new double[] {grainsPane.getLayoutX(), grainsPane.getLayoutY()};
     }
 
     @FXML
@@ -207,8 +226,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     private void updateCardsOfActualPlayerInView() {
+        updateNumbersOfCardsInPanes();
+        updateLocationsOfCardPanes();
+    }
+
+    private void updateNumbersOfCardsInPanes() {
         int imgHeight = 87;
         int imgWidth = 60;
+        int spaceBetweenImages = 6;
         Player actualPlayer = getPlayers().get(0);
         HashMap<String, ArrayList<SourceCard>> sourceCards = actualPlayer.getSourceCards();
         Set<String> keys = sourceCards.keySet();
@@ -219,81 +244,88 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 woolLabel.setText(noOfCards);
                 while (sourceCards.get(key).size() > woolImages.size() - 1) {
                     ImageView imgToAdd = new ImageView("./com/catan/assets/resource_sheep.jpg");
-                    imgToAdd.setLayoutX(woolImages.get(woolImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutX(woolImages.get(woolImages.size() - 1).getLayoutX() + spaceBetweenImages);
                     imgToAdd.setLayoutY(woolImages.get(woolImages.size() - 1).getLayoutY());
                     imgToAdd.setFitHeight(imgHeight);
                     imgToAdd.setFitWidth(imgWidth);
                     woolImages.add(imgToAdd);
-                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                    woolsPane.getChildren().add(imgToAdd);
                 }
                 while (sourceCards.get(key).size() < woolImages.size() - 1) {
-                    actualPlayerCardsPane.getChildren().remove(woolImages.get(woolImages.size() - 1));
+                    woolsPane.getChildren().remove(woolImages.get(woolImages.size() - 1));
                     woolImages.remove(woolImages.size() - 1);
                 }
             } else if (key.equals("ore")) {
                 oreLabel.setText(noOfCards);
                 while (sourceCards.get(key).size() > oreImages.size() - 1) {
                     ImageView imgToAdd = new ImageView("./com/catan/assets/resource_ore.jpg");
-                    imgToAdd.setLayoutX(oreImages.get(oreImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutX(oreImages.get(oreImages.size() - 1).getLayoutX() + spaceBetweenImages);
                     imgToAdd.setLayoutY(oreImages.get(oreImages.size() - 1).getLayoutY());
                     imgToAdd.setFitHeight(imgHeight);
                     imgToAdd.setFitWidth(imgWidth);
                     oreImages.add(imgToAdd);
-                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                    oresPane.getChildren().add(imgToAdd);
                 }
                 while (sourceCards.get(key).size() < oreImages.size() - 1) {
-                    actualPlayerCardsPane.getChildren().remove(oreImages.get(oreImages.size() - 1));
+                    oresPane.getChildren().remove(oreImages.get(oreImages.size() - 1));
                     oreImages.remove(oreImages.size() - 1);
                 }
             } else if (key.equals("lumber")) {
                 lumberLabel.setText(noOfCards);
+                // size() - 1 because there will always be a dummy node in the list
                 while (sourceCards.get(key).size() > lumberImages.size() - 1) {
                     ImageView imgToAdd = new ImageView("./com/catan/assets/resource_wood.jpg");
-                    imgToAdd.setLayoutX(lumberImages.get(lumberImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutX(lumberImages.get(lumberImages.size() - 1).getLayoutX() + spaceBetweenImages);
                     imgToAdd.setLayoutY(lumberImages.get(lumberImages.size() - 1).getLayoutY());
                     imgToAdd.setFitHeight(imgHeight);
                     imgToAdd.setFitWidth(imgWidth);
                     lumberImages.add(imgToAdd);
-                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                    lumbersPane.getChildren().add(imgToAdd);
                 }
                 while (sourceCards.get(key).size() < lumberImages.size() - 1) {
-                    actualPlayerCardsPane.getChildren().remove(lumberImages.get(lumberImages.size() - 1));
+                    lumbersPane.getChildren().remove(lumberImages.get(lumberImages.size() - 1));
                     lumberImages.remove(lumberImages.size() - 1);
                 }
             } if (key.equals("brick")) {
                 brickLabel.setText(noOfCards);
                 while (sourceCards.get(key).size() > brickImages.size() - 1) {
                     ImageView imgToAdd = new ImageView("./com/catan/assets/resource_brick.jpg");
-                    imgToAdd.setLayoutX(brickImages.get(brickImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutX(brickImages.get(brickImages.size() - 1).getLayoutX() + spaceBetweenImages);
                     imgToAdd.setLayoutY(brickImages.get(brickImages.size() - 1).getLayoutY());
                     imgToAdd.setFitHeight(imgHeight);
                     imgToAdd.setFitWidth(imgWidth);
                     brickImages.add(imgToAdd);
-                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                    bricksPane.getChildren().add(imgToAdd);
                 }
                 while (sourceCards.get(key).size() < brickImages.size() - 1) {
-                    actualPlayerCardsPane.getChildren().remove(brickImages.get(brickImages.size() - 1));
+                    bricksPane.getChildren().remove(brickImages.get(brickImages.size() - 1));
                     brickImages.remove(brickImages.size() - 1);
                 }
             } if (key.equals("grain")) {
                 grainLabel.setText(noOfCards);
                 while (sourceCards.get(key).size() > grainImages.size() - 1) {
                     ImageView imgToAdd = new ImageView("./com/catan/assets/resource_grain.jpg");
-                    imgToAdd.setLayoutX(grainImages.get(grainImages.size() - 1).getLayoutX() + 7);
+                    imgToAdd.setLayoutX(grainImages.get(grainImages.size() - 1).getLayoutX() + spaceBetweenImages);
                     imgToAdd.setLayoutY(grainImages.get(grainImages.size() - 1).getLayoutY());
                     imgToAdd.setFitHeight(imgHeight);
                     imgToAdd.setFitWidth(imgWidth);
                     grainImages.add(imgToAdd);
-                    actualPlayerCardsPane.getChildren().add(imgToAdd);
+                    grainsPane.getChildren().add(imgToAdd);
                 }
                 while (sourceCards.get(key).size() < grainImages.size() - 1) {
-                    actualPlayerCardsPane.getChildren().remove(grainImages.get(grainImages.size() - 1));
+                    grainsPane.getChildren().remove(grainImages.get(grainImages.size() - 1));
                     grainImages.remove(grainImages.size() - 1);
                 }
             }
         }
-        //cardsOfPlayerTextArea.setText(log);
+    }
 
+    private void updateLocationsOfCardPanes() {
+        Arrays.sort(cardPanes, (a, b) -> b.getChildren().size() - a.getChildren().size());
+        for (int i = 0; i < cardPanes.length; i++) {
+            cardPanes[i].setLayoutX(cardsPaneLocations[i][0]);
+            cardPanes[i].setLayoutY(cardsPaneLocations[i][1]);
+        }
     }
 
     private void updateGameLogsInView() {

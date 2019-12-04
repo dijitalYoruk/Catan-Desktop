@@ -488,6 +488,16 @@ public class ControllerBaseGame extends ControllerBase {
     protected ImageView dummyOreImageView;
     @FXML
     protected Pane actualPlayerCardsPane;
+    @FXML
+    protected Pane lumbersPane;
+    @FXML
+    protected Pane woolsPane;
+    @FXML
+    protected Pane oresPane;
+    @FXML
+    protected Pane grainsPane;
+    @FXML
+    protected Pane bricksPane;
 
     // Properties
     private ArrayList<TerrainHex> terrainHexes;
