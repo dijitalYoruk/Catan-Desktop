@@ -2,6 +2,7 @@ package com.catan.controller;
 
 import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceMakeConstruction;
+import com.catan.interfaces.InterfaceMakeTrade;
 import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.*;
 import com.sun.deploy.security.SelectableSecurityManager;
@@ -35,10 +36,11 @@ import javax.naming.ldap.Control;
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceUpdateGameAfterPopUp {
+public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceMakeTrade, InterfaceUpdateGameAfterPopUp {
 
     // properties
     private boolean constructionUnselect = true;
@@ -376,44 +378,13 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             playThief(currentPlayer);
         }
 
-        // AI player Trade
-        boolean isTradeWithChest = Math.random() < 0.3;
-        int noPlayerTradingWith = (int)(Math.random() * 100) % 4;
-
-        if (currentPlayer instanceof PlayerAI && !getPlayers().get(noPlayerTradingWith).getName().equals(currentPlayer.getName())) {
-            // setting trade materials
-            Player tradingWith = getPlayers().get(noPlayerTradingWith);
-            Map<String, Integer> requestedRC = ((PlayerAI)currentPlayer).getRequestedResourceCards();
-            Map<String, Integer> offeredRC = ((PlayerAI)currentPlayer).getOfferedResourceCards(requestedRC);
-
-            //trade request sent to actual player by playerAI
-            if (!isTradeWithChest && tradingWith == playerActual) {
-                //view pop up trade invitation to game scene
-                Dialog<ButtonType> dialog = new Dialog<>();
-                dialog.initOwner(root.getScene().getWindow());
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getClassLoader()
-                        .getResource(Constants.PATH_VIEW_TRADE_REQUEST));
-                dialog.setTitle("Incoming Trade Offer");
-                dialog.getDialogPane().setContent(fxmlLoader.load());
-                dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-                ControllerTradeRequest tradeRequestController = fxmlLoader.getController();
-                tradeRequestController.setActualPlayerAndLabels(tradingWith, currentPlayer, requestedRC, offeredRC);
-            } // trade request sent to AI player by playerAI
-            else if (tradingWith != playerActual) {
-                Trade tradeAI = new Trade(currentPlayer, tradingWith, requestedRC, offeredRC, isTradeWithChest);
-//                tradeAI.requestTrade();
-
-                // output
-                if (isTradeWithChest) {
-                    System.out.println("Trade between " + player.getName() + " and CHEST " + " is " + tradeAI.isTradePossible());
-                } else {
-                    System.out.println("Trade between " + currentPlayer.getName() + " and " + tradingWith.getName() + " is " + tradeAI.isTradePossible());
-                }
-            }
-
-        }
         getTurnProfit();
+
+        // AI player Trade
+        if (currentPlayer instanceof PlayerAI) {
+            ((PlayerAI) currentPlayer).decideToMakeTrade(this);
+        }
+
         // AI player
         if (player instanceof PlayerAI) {
             playAIActualTurn();
@@ -428,11 +399,50 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
+    @Override
+    public void makeTradeForAI(boolean isTradeWithChest) {
+        int idOfPlayerToBeTraded = (int)(Math.random() * 4);
+        Player playerToBeTraded = getPlayers().get(0);
+
+        if (currentPlayer instanceof PlayerAI && playerToBeTraded != currentPlayer) {
+            // setting trade materials
+            HashMap<String, Integer> requestedRC = ((PlayerAI)currentPlayer).getRequestedResourceCards(playerToBeTraded);
+            HashMap<String, Integer> offeredRC = ((PlayerAI)currentPlayer).getOfferedResourceCards(requestedRC);
+
+            System.out.println("tradeden gecti");
+
+            //trade request sent to actual player by playerAI
+            if (!isTradeWithChest && playerToBeTraded == playerActual) {
+                System.out.println("icerde");
+
+                try { //view pop up trade invitation to game scene
+                    Dialog<ButtonType> dialog = new Dialog<>();
+                    dialog.initOwner(root.getScene().getWindow());
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getClassLoader()
+                            .getResource(Constants.PATH_VIEW_TRADE_REQUEST));
+                    dialog.setTitle("Incoming Trade Offer");
+                    dialog.getDialogPane().setContent(fxmlLoader.load());
+                    dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+                    ControllerTradeRequest tradeRequestController = fxmlLoader.getController();
+                    tradeRequestController.setTradeOfferProperties(playerToBeTraded,
+                            currentPlayer, requestedRC, offeredRC);
+
+                    dialog.showAndWait();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else { // trade request sent to AI player by playerAI
+                new Trade(currentPlayer, playerToBeTraded, requestedRC, offeredRC, isTradeWithChest);
+            }
+        }
+    }
+
     private void thiefResourceCardPunish() throws IOException {
         Player realPlayer = null;
         for(Player player: getPlayers()){
-            if(player instanceof PlayerActual)
-            {
+            if(player instanceof PlayerActual) {
                 realPlayer = player;
             }
         }

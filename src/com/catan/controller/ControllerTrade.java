@@ -183,8 +183,8 @@ public class ControllerTrade {
         //generate a Trade object
         if (isPlayerToTradeWithSelected)
         {
-            Map<String, Integer> requestedResourceCards = new HashMap<String, Integer>();
-            Map<String, Integer> offeredResourceCards = new HashMap<String, Integer>();
+            HashMap<String, Integer> requestedResourceCards = new HashMap<>();
+            HashMap<String, Integer> offeredResourceCards = new HashMap<>();
 
             requestedResourceCards.put(Constants.CARD_ORE, requestedOreNo);
             requestedResourceCards.put(Constants.CARD_LUMBER, requestedLumberNo);
