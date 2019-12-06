@@ -272,8 +272,10 @@ public class Player {
     }
 
     public void removeResources(String resourceType, int removeCount) {
-        if (removeCount > 0) {
+        if (removeCount < sourceCards.get(resourceType).size()) {
             sourceCards.get(resourceType).subList(0, removeCount).clear();
+        } else {
+            sourceCards.get(resourceType).clear();
         }
     }
 }

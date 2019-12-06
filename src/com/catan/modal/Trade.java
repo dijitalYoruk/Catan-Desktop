@@ -13,18 +13,20 @@ public class Trade {
     private HashMap<String, Integer> offeredResourceCards;
     private boolean isTradeWithChest;
     private boolean isTradePossible;
+    private boolean isTradeCompleted;
 
     // constructor
-    public Trade(Player trader, Player trading, HashMap<String, Integer> reqCards, HashMap<String, Integer> offeredCards, boolean isTradeWithChest) {
+    public Trade(Player trader, Player playerToBeTraded, HashMap<String, Integer> reqCards, HashMap<String, Integer> offeredCards, boolean isTradeWithChest) {
         this.isTradeWithChest = isTradeWithChest;
         playerTrader = trader;
         requestedResourceCards = reqCards;
         offeredResourceCards = offeredCards;
         isTradePossible = true;
+        isTradeCompleted = false;
         String errorMessage = "";
 
         if (!isTradeWithChest) {
-            playerToBeTraded = trading;
+            this.playerToBeTraded = playerToBeTraded;
         }
 
         // evaluation of the possibility of trade
@@ -33,6 +35,7 @@ public class Trade {
             offeredResourceCards.get(Constants.CARD_LUMBER) == 0 &&
             offeredResourceCards.get(Constants.CARD_BRICK)  == 0 &&
             offeredResourceCards.get(Constants.CARD_ORE)    == 0) {
+            isTradePossible = false;
             return;
         }
         if (requestedResourceCards.get(Constants.CARD_WOOL)   == 0 &&
@@ -40,10 +43,11 @@ public class Trade {
             requestedResourceCards.get(Constants.CARD_LUMBER) == 0 &&
             requestedResourceCards.get(Constants.CARD_BRICK)  == 0 &&
             requestedResourceCards.get(Constants.CARD_ORE)    == 0) {
+            isTradePossible = false;
             return;
         }
 
-        if (playerToBeTraded != null && playerTrader instanceof PlayerActual) {
+        if (playerToBeTraded != null) {
             HashMap<String, ArrayList<SourceCard>> resourceCards = playerToBeTraded.getSourceCards();
             isTradePossible = resourceCards.get(Constants.CARD_WOOL).size()   >= requestedResourceCards.get(Constants.CARD_WOOL)   &&
                               resourceCards.get(Constants.CARD_GRAIN).size()  >= requestedResourceCards.get(Constants.CARD_GRAIN)  &&
@@ -68,6 +72,11 @@ public class Trade {
                     printTradeDetails(errorMessage);
                 }
             }
+            else if (isTradeWithChest) {
+                printPlayerDetails();
+                completeTrade();
+                printPlayerDetails();
+            }
         } else {
             printTradeDetails(errorMessage);
         }
@@ -90,20 +99,21 @@ public class Trade {
             }
             // arranging resource cards of players
             exchangeResources(resourceNames, tradeDifferences, playerTrader);
-        }
-        if (isTradePossible && !isTradeWithChest) {
-            // Resource Cards of the player to be traded.
-            ArrayList<Integer> tradeDifferences = new ArrayList<>();
-            // calculating differences
-            for (String resourceName: resourceNames) {
-                int difference = offeredResourceCards.get(resourceName) - requestedResourceCards.get(resourceName);
-                tradeDifferences.add(difference);
-            }
-            // arranging resource cards of players
-            exchangeResources(resourceNames, tradeDifferences, playerToBeTraded);
-        }
 
-        printTradeDetails(null);
+            if (playerToBeTraded != null) {
+                // Resource Cards of the player to be traded.
+                tradeDifferences = new ArrayList<>();
+                // calculating differences
+                for (String resourceName: resourceNames) {
+                    int difference = offeredResourceCards.get(resourceName) - requestedResourceCards.get(resourceName);
+                    tradeDifferences.add(difference);
+                }
+                // arranging resource cards of players
+                exchangeResources(resourceNames, tradeDifferences, playerToBeTraded);
+            }
+
+            printTradeDetails(null);
+        }
     }
 
     private void exchangeResources(ArrayList<String> resourceNames, ArrayList<Integer> tradeDifferences, Player player) {
@@ -117,37 +127,33 @@ public class Trade {
         }
     }
 
-    private void printTradeDetails(String errorMessage) {
+    public void printTradeDetails(String errorMessage) {
         System.out.println("**********************************************************************");
         if (errorMessage == null) {
             if (isTradeWithChest) {
                 System.out.println("Trade between " + playerTrader.getName() + " and CHEST:" + isTradePossible);
-                System.out.println(">>>>" + "GIVEN SOURCES" + "<<<<");
-                Set<String> keySet = requestedResourceCards.keySet();
-                for (String key: keySet) {
-                    System.out.println("* " +  key + ": " + requestedResourceCards.get(key));
-                }
-
-            } else {
-                System.out.println("------------------------------");
-                System.out.println(">>>>" + "OBTAINED SOURCES" + "<<<<");
-                Set<String> keySet = requestedResourceCards.keySet();
-                for (String key: keySet) {
-                    System.out.println("* " +  key + ": " + requestedResourceCards.get(key));
-                }
-                System.out.println(">>>>" + "GIVEN SOURCES" + "<<<<");
-                for (String key: keySet) {
-                    System.out.println("* " +  key + ": " + offeredResourceCards.get(key));
-                }
-                System.out.println("------------------------------");
             }
+
+            System.out.println("------------------------------");
+            System.out.println(">>>>" + "OBTAINED SOURCES" + "<<<<");
+            Set<String> keySet = requestedResourceCards.keySet();
+            for (String key: keySet) {
+                System.out.println("* " +  key + ": " + requestedResourceCards.get(key));
+            }
+            System.out.println(">>>>" + "GIVEN SOURCES" + "<<<<");
+            for (String key: keySet) {
+                System.out.println("* " +  key + ": " + offeredResourceCards.get(key));
+            }
+            System.out.println("------------------------------");
+            isTradeCompleted = true;
+
         } else {
             System.out.println(errorMessage);
         }
         System.out.println("**********************************************************************");
     }
 
-    private void printPlayerDetails() {
+    public void printPlayerDetails() {
         System.out.println("**********************************************************************");
         System.out.println("TRADER: " + playerTrader.getName());
         System.out.println("------------------------------");
@@ -161,6 +167,21 @@ public class Trade {
         System.out.println("**********************************************************************");
     }
 
+    public Player getPlayerTrader() {
+        return playerTrader;
+    }
+
+    public Player getPlayerToBeTraded() {
+        return playerToBeTraded;
+    }
+
+    public HashMap<String, Integer> getRequestedResourceCards() {
+        return requestedResourceCards;
+    }
+
+    public HashMap<String, Integer> getOfferedResourceCards() {
+        return offeredResourceCards;
+    }
 
     public void outputNotPossible() {
         System.out.println("trade not possible");
@@ -168,6 +189,10 @@ public class Trade {
 
     public boolean isTradePossible() {
         return isTradePossible;
+    }
+
+    public boolean isTradeCompleted() {
+        return isTradeCompleted;
     }
 
 }

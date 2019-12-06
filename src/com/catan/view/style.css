@@ -104,6 +104,7 @@
     -fx-pref-height: 100;
     -fx-font-size: 20;
 }
+
 .card-punishment-screen-resources{
     -fx-alignment: center;
     -fx-background-color: orange;
@@ -112,6 +113,16 @@
     -fx-background-radius: 20;
     -fx-pref-width: 40;
     -fx-pref-height: 30;
+    -fx-font-size: 20;
+}
+
+#trade-label {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-pref-width: 270;
+    -fx-pref-height: 50;
     -fx-font-size: 20;
 }
 
@@ -153,3 +164,35 @@
     -fx-background-size: 50px;
 }
 
+#selector-bg {
+    -fx-fill: orange;
+    -fx-arc-height:  50;
+    -fx-arc-width:  50;
+    -fx-font-family: "Book Antiqua";
+    -fx-font-size: 20;
+}
+
+Label {
+    -fx-font-family: "Book Antiqua";
+}
+
+.trade-pane {
+    -fx-pref-width: 700;
+    -fx-pref-height: 200;
+}
+
+trade-pane-bg {
+    -fx-pref-width: cover;
+    -fx-pref-height: cover;
+
+}
+
+.trade-pane-button {
+    -fx-background-color: #FF5722;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 140;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
