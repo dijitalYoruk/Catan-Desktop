@@ -80,10 +80,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         activateAllVertices();
         gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
 
-        initializeActualPlayerCardsPaneRelatedComponents();
+        initializeComponentsRelatedToActualPlayerCardsPane();
     }
 
-    private void initializeActualPlayerCardsPaneRelatedComponents() {
+    // this obnoxiously named function initializes the components related to the
+    // section where number of cards of the actual player is shown
+    private void initializeComponentsRelatedToActualPlayerCardsPane() {
         dummyLumberImageView.setVisible(false);
         lumberImages.add(dummyLumberImageView);
         dummyBrickImageView.setVisible(false);
@@ -227,13 +229,16 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     private void updateCardsOfActualPlayerInView() {
         updateNumbersOfCardsInPanes();
-        updateLocationsOfCardPanes();
+        updateOrderOfCardPanes();
     }
 
+    // updates the card numbers and the number of card images on the cards pane
     private void updateNumbersOfCardsInPanes() {
         int imgHeight = 87;
         int imgWidth = 60;
         int spaceBetweenImages = 6;
+
+        // reason of this map is to update all card panes in a loop
         HashMap<String, Object[]> map = new HashMap<>();
 
         map.put("wool", new Object[] {woolLabel, woolImages, woolsPane, "resource_sheep.jpg"});
@@ -247,37 +252,41 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         Set<String> keys = sourceCards.keySet();
 
         for (String key: keys) {
-            Object[] ass = map.get(key);
+            // this object array contains all card related objects in every iteration
+            // ex:
+            Object[] currentCardRelated = map.get(key);
             String noOfCards = sourceCards.get(key).size() == 0 ? "" : sourceCards.get(key).size() + "";
 
             // updates the textual representation of the number of cards
-            ((Label)ass[0]).setText(noOfCards);
-            // if the no of source card it has is more than what is displayed on the screen,
+            ((Label)currentCardRelated[0]).setText(noOfCards);
+            // if the number of source cards it has is more than what is displayed on the screen,
             // add more card images to the display
-            while (sourceCards.get(key).size() > ((ArrayList<ImageView>)ass[1]).size() - 1) {
-                ImageView imgToAdd = new ImageView("./com/catan/assets/" + ((String)ass[3]));
+            while (sourceCards.get(key).size() > ((ArrayList<ImageView>)currentCardRelated[1]).size() - 1) {
+                ImageView imgToAdd = new ImageView("./com/catan/assets/" + ((String)currentCardRelated[3]));
                 // puts the image right next to its predecessor
-                imgToAdd.setLayoutX(((ArrayList<ImageView>)ass[1]).get(((ArrayList<ImageView>)ass[1]).size() - 1).getLayoutX() + spaceBetweenImages);
-                imgToAdd.setLayoutY(((ArrayList<ImageView>)ass[1]).get(((ArrayList<ImageView>)ass[1]).size() - 1).getLayoutY());
+                imgToAdd.setLayoutX(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                imgToAdd.setLayoutY(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutY());
                 imgToAdd.setFitHeight(imgHeight);
                 imgToAdd.setFitWidth(imgWidth);
                 // puts the image into its corresponding list. ex: grainImage -> grainImages
-                ((ArrayList<ImageView>)ass[1]).add(imgToAdd);
+                ((ArrayList<ImageView>)currentCardRelated[1]).add(imgToAdd);
                 // puts image into its corresponding pane. ex : grainImage -> grainsPane
-                ((Pane)ass[2]).getChildren().add(imgToAdd);
+                ((Pane)currentCardRelated[2]).getChildren().add(imgToAdd);
             }
-            // if no of source card it has is less than what is displayed on the screen,
+            // if number of source cards it has is less than what is displayed on the screen,
             // remove the displayed card images
-            while (sourceCards.get(key).size() < ((ArrayList<ImageView>)ass[1]).size() - 1) {
+            while (sourceCards.get(key).size() < ((ArrayList<ImageView>)currentCardRelated[1]).size() - 1) {
                 // removes the image from its corresponding pane
-                ((Pane)ass[2]).getChildren().remove(((ArrayList<ImageView>)ass[1]).get(((ArrayList<ImageView>)ass[1]).size() - 1));
+                ((Pane)currentCardRelated[2]).getChildren().remove(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1));
                 // removes the image from its corresponding list
-                ((ArrayList<ImageView>)ass[1]).remove(((ArrayList<ImageView>)ass[1]).size() - 1);
+                ((ArrayList<ImageView>)currentCardRelated[1]).remove(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1);
             }
         }
     }
 
-    private void updateLocationsOfCardPanes() {
+    // makes the card panes sorted in descending order
+    // ex: 4 lumbers will be presented before 3 wools
+    private void updateOrderOfCardPanes() {
         Arrays.sort(cardPanes, (a, b) -> b.getChildren().size() - a.getChildren().size());
         for (int i = 0; i < cardPanes.length; i++) {
             cardPanes[i].setLayoutX(cardsPaneLocations[i][0]);
@@ -727,7 +736,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
                         settlement = new City(imagePath, vertex, currentPlayer);
                         // FIXME: playerTurn is not who it should correspond to
-                        // FIXME: like it should be blue but it is purple?
+                        // FIXME: ex: when blue constructs city, the color is purple. something wrong with the
+                        // FIXME: incrementation of the currentPlayer variable. It works for some players though.
                         gameLog.add(new String[] {"Player " + playerTurn + ": has built a city.", "" + playerTurn});
                         break;
                     case Constants.VILLAGE:
