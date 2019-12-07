@@ -241,11 +241,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         // reason of this map is to update all card panes in a loop
         HashMap<String, Object[]> map = new HashMap<>();
 
-        map.put("wool", new Object[] {woolLabel, woolImages, woolsPane, "resource_sheep.jpg"});
-        map.put("ore", new Object[] {oreLabel, oreImages, oresPane, "resource_ore.jpg"});
-        map.put("lumber", new Object[] {lumberLabel, lumberImages, lumbersPane, "resource_wood.jpg"});
-        map.put("brick", new Object[] {brickLabel, brickImages, bricksPane, "resource_brick.jpg"});
-        map.put("grain", new Object[] {grainLabel, grainImages, grainsPane, "resource_grain.jpg"});
+        map.put("wool", new Object[] {woolLabel, woolImages, woolsPane, Constants.PATH_RESOURCE_SHEEP});
+        map.put("ore", new Object[] {oreLabel, oreImages, oresPane, Constants.PATH_RESOURCE_ORE});
+        map.put("lumber", new Object[] {lumberLabel, lumberImages, lumbersPane, Constants.PATH_RESOURCE_WOOD});
+        map.put("brick", new Object[] {brickLabel, brickImages, bricksPane, Constants.PATH_RESOURCE_BRICK});
+        map.put("grain", new Object[] {grainLabel, grainImages, grainsPane, Constants.PATH_RESOURCE_GRAIN});
 
         Player actualPlayer = getPlayers().get(0);
         HashMap<String, ArrayList<SourceCard>> sourceCards = actualPlayer.getSourceCards();
@@ -262,7 +262,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             // if the number of source cards it has is more than what is displayed on the screen,
             // add more card images to the display
             while (sourceCards.get(key).size() > ((ArrayList<ImageView>)currentCardRelated[1]).size() - 1) {
-                ImageView imgToAdd = new ImageView("./com/catan/assets/" + ((String)currentCardRelated[3]));
+                ImageView imgToAdd = new ImageView(((String)currentCardRelated[3]));
                 // puts the image right next to its predecessor
                 imgToAdd.setLayoutX(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
                 imgToAdd.setLayoutY(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutY());
