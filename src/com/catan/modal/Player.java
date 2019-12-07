@@ -255,6 +255,12 @@ public class Player {
         return price;
     }
 
+    public void addResources(String resourceType, int resourceCount) {
+        for (int i = 0; i < resourceCount; i++) {
+            sourceCards.get(resourceType).add(new SourceCard(resourceType, resourceType));
+        }
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -263,5 +269,13 @@ public class Player {
                 ", roads=" + roads +
                 ", color='" + color + '\'' +
                 '}';
+    }
+
+    public void removeResources(String resourceType, int removeCount) {
+        if (removeCount < sourceCards.get(resourceType).size()) {
+            sourceCards.get(resourceType).subList(0, removeCount).clear();
+        } else {
+            sourceCards.get(resourceType).clear();
+        }
     }
 }
