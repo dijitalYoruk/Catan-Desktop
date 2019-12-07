@@ -918,14 +918,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     private void playAIInitialTurn() {
-        try {
-            //Thread.sleep(1000);
-            //System.out.println("WAITED 1 SEC");
-        }
-        catch(Exception ex) {
-            //System.out.println("THREAD ERROR!");
-            //Thread.currentThread().interrupt();
-        }
         tempRoad = null;
         tempSettlement = null;
 
@@ -950,14 +942,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             vertex = vertex.getNeighbors().get(index);
             makeConstructionInitial(vertex.getShape());
 
-            //gameLog.add("Player " + playerTurn + ": has built road.");
-
             setSelectedConstruction(Constants.VILLAGE);
             if (tempRoad != null) {
                 ArrayList<Vertex> twoVertex = new ArrayList<>();
                 twoVertex.add(tempRoad.getVertices().get(0));
                 twoVertex.add(tempRoad.getVertices().get(1));
-                //gameLog.add("Player " + playerTurn + ": has built village.");
+
                 if (isVertexSuitableForConstruction(twoVertex.get(0))) {
                     makeConstructionInitial(twoVertex.get(0).getShape());
                 }
