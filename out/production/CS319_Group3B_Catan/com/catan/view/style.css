@@ -192,7 +192,8 @@ trade-pane-bg {
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-background-radius: 40;
-    -fx-pref-width: 140;
+    -fx-pref-width: 100;
     -fx-pref-height: 50;
     -fx-font-size: 20;
 }
+

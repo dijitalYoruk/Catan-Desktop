@@ -263,10 +263,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "settlements=" + settlements +
-                ", sourceCards=" + sourceCards +
-                ", roads=" + roads +
+        return "Player{" + name +
                 ", color='" + color + '\'' +
                 '}';
     }

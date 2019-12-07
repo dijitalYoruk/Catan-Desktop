@@ -14,6 +14,7 @@ public class Trade {
     private boolean isTradeWithChest;
     private boolean isTradePossible;
     private boolean isTradeCompleted;
+    private String errorMessage;
 
     // constructor
     public Trade(Player trader, Player playerToBeTraded, HashMap<String, Integer> reqCards, HashMap<String, Integer> offeredCards, boolean isTradeWithChest) {
@@ -23,7 +24,7 @@ public class Trade {
         offeredResourceCards = offeredCards;
         isTradePossible = true;
         isTradeCompleted = false;
-        String errorMessage = "";
+        errorMessage = "";
 
         if (!isTradeWithChest) {
             this.playerToBeTraded = playerToBeTraded;
@@ -36,6 +37,7 @@ public class Trade {
             offeredResourceCards.get(Constants.CARD_BRICK)  == 0 &&
             offeredResourceCards.get(Constants.CARD_ORE)    == 0) {
             isTradePossible = false;
+            errorMessage = "yazılmayan";
             return;
         }
         if (requestedResourceCards.get(Constants.CARD_WOOL)   == 0 &&
@@ -54,7 +56,6 @@ public class Trade {
                               resourceCards.get(Constants.CARD_LUMBER).size() >= requestedResourceCards.get(Constants.CARD_LUMBER) &&
                               resourceCards.get(Constants.CARD_BRICK).size()  >= requestedResourceCards.get(Constants.CARD_BRICK)  &&
                               resourceCards.get(Constants.CARD_ORE).size()    >= requestedResourceCards.get(Constants.CARD_ORE);
-            errorMessage = "The player does not contain requested resources.";
         }
 
         if (isTradePossible) {
@@ -69,7 +70,7 @@ public class Trade {
                 } else {
                     errorMessage = "The trade request from " + playerTrader.getName() +
                             " was denied by " + playerToBeTraded.getName() + ".";
-                    printTradeDetails(errorMessage);
+                    printTradeDetails();
                 }
             }
             else if (isTradeWithChest) {
@@ -78,7 +79,7 @@ public class Trade {
                 printPlayerDetails();
             }
         } else {
-            printTradeDetails(errorMessage);
+            printTradeDetails();
         }
     }
 
@@ -112,7 +113,7 @@ public class Trade {
                 exchangeResources(resourceNames, tradeDifferences, playerToBeTraded);
             }
 
-            printTradeDetails(null);
+            printTradeDetails();
         }
     }
 
@@ -127,9 +128,9 @@ public class Trade {
         }
     }
 
-    public void printTradeDetails(String errorMessage) {
+    public void printTradeDetails() {
         System.out.println("**********************************************************************");
-        if (errorMessage == null) {
+        if (errorMessage.isEmpty()) {
             if (isTradeWithChest) {
                 System.out.println("Trade between " + playerTrader.getName() + " and CHEST:" + isTradePossible);
             }
@@ -193,6 +194,14 @@ public class Trade {
 
     public boolean isTradeCompleted() {
         return isTradeCompleted;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
 }

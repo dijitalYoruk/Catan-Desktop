@@ -5,13 +5,10 @@ import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.interfaces.InterfaceMakeTrade;
 import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.*;
-import com.sun.deploy.security.SelectableSecurityManager;
-import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
@@ -19,26 +16,17 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.imageio.IIOParam;
-import javax.naming.ldap.Control;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceMakeTrade, InterfaceUpdateGameAfterPopUp {
 
@@ -115,10 +103,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.initOwner(root.getScene().getWindow());
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/trade.fxml"));
+            fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/tradeOffer.fxml"));
             dialog.setTitle("Trade");
             dialog.getDialogPane().setContent(fxmlLoader.load());
-            ControllerTrade tradeController = fxmlLoader.getController();
+            ControllerTradeOffer tradeController = fxmlLoader.getController();
             // TODO actual player needs to be passed here afterwards.
             tradeController.setActualPlayerAndLabels(getPlayers().get(0));
             tradeController.setAllPlayers(getPlayers());
