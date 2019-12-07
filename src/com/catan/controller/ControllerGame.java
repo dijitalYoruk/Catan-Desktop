@@ -86,28 +86,28 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     // this obnoxiously named function initializes the components related to the
     // section where number of cards of the actual player is shown
     private void initializeComponentsRelatedToActualPlayerCardsPane() {
-        dummyLumberImageView.setVisible(false);
-        lumberImages.add(dummyLumberImageView);
-        dummyBrickImageView.setVisible(false);
-        brickImages.add(dummyBrickImageView);
-        dummyGrainImageView.setVisible(false);
-        grainImages.add(dummyGrainImageView);
-        dummyOreImageView.setVisible(false);
-        oreImages.add(dummyOreImageView);
-        dummyWoolImageView.setVisible(false);
-        woolImages.add(dummyWoolImageView);
+        ImgViewLumberDummy.setVisible(false);
+        lumberImages.add(ImgViewLumberDummy);
+        ImgViewBrickDummy.setVisible(false);
+        brickImages.add(ImgViewBrickDummy);
+        ImgViewGrainDummy.setVisible(false);
+        grainImages.add(ImgViewGrainDummy);
+        ImgViewOreDummy.setVisible(false);
+        oreImages.add(ImgViewOreDummy);
+        ImgViewWoolDummy.setVisible(false);
+        woolImages.add(ImgViewWoolDummy);
 
-        cardPanes[0] = lumbersPane;
-        cardPanes[1] = woolsPane;
-        cardPanes[2] = oresPane;
-        cardPanes[3] = bricksPane;
-        cardPanes[4] = grainsPane;
+        cardPanes[0] = paneLumbers;
+        cardPanes[1] = paneWools;
+        cardPanes[2] = paneOres;
+        cardPanes[3] = paneBricks;
+        cardPanes[4] = paneGrains;
 
-        cardsPaneLocations[0] = new double[] {lumbersPane.getLayoutX(), lumbersPane.getLayoutY()};
-        cardsPaneLocations[1] = new double[] {woolsPane.getLayoutX(), woolsPane.getLayoutY()};
-        cardsPaneLocations[2] = new double[] {bricksPane.getLayoutX(), bricksPane.getLayoutY()};
-        cardsPaneLocations[3] = new double[] {oresPane.getLayoutX(), oresPane.getLayoutY()};
-        cardsPaneLocations[4] = new double[] {grainsPane.getLayoutX(), grainsPane.getLayoutY()};
+        cardsPaneLocations[0] = new double[] {paneLumbers.getLayoutX(), paneLumbers.getLayoutY()};
+        cardsPaneLocations[1] = new double[] {paneWools.getLayoutX(), paneWools.getLayoutY()};
+        cardsPaneLocations[2] = new double[] {paneBricks.getLayoutX(), paneBricks.getLayoutY()};
+        cardsPaneLocations[3] = new double[] {paneOres.getLayoutX(), paneOres.getLayoutY()};
+        cardsPaneLocations[4] = new double[] {paneGrains.getLayoutX(), paneGrains.getLayoutY()};
     }
 
     @FXML
@@ -241,11 +241,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         // reason of this map is to update all card panes in a loop
         HashMap<String, Object[]> map = new HashMap<>();
 
-        map.put("wool", new Object[] {woolLabel, woolImages, woolsPane, Constants.PATH_RESOURCE_SHEEP});
-        map.put("ore", new Object[] {oreLabel, oreImages, oresPane, Constants.PATH_RESOURCE_ORE});
-        map.put("lumber", new Object[] {lumberLabel, lumberImages, lumbersPane, Constants.PATH_RESOURCE_WOOD});
-        map.put("brick", new Object[] {brickLabel, brickImages, bricksPane, Constants.PATH_RESOURCE_BRICK});
-        map.put("grain", new Object[] {grainLabel, grainImages, grainsPane, Constants.PATH_RESOURCE_GRAIN});
+        map.put("wool", new Object[] {woolLabel, woolImages, paneWools, Constants.PATH_RESOURCE_SHEEP});
+        map.put("ore", new Object[] {oreLabel, oreImages, paneOres, Constants.PATH_RESOURCE_ORE});
+        map.put("lumber", new Object[] {lumberLabel, lumberImages, paneLumbers, Constants.PATH_RESOURCE_WOOD});
+        map.put("brick", new Object[] {brickLabel, brickImages, paneBricks, Constants.PATH_RESOURCE_BRICK});
+        map.put("grain", new Object[] {grainLabel, grainImages, paneGrains, Constants.PATH_RESOURCE_GRAIN});
 
         Player actualPlayer = getPlayers().get(0);
         HashMap<String, ArrayList<SourceCard>> sourceCards = actualPlayer.getSourceCards();

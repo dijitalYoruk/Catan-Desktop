@@ -360,9 +360,9 @@
       </ScrollPane>
       <Pane fx:id="actualPlayerCardsPane" layoutX="1517.0" layoutY="281.0" prefHeight="481.0" prefWidth="359.0" style="-fx-background-color: #FFC41F; -fx-border-color: black;">
          <children>
-            <Pane fx:id="lumbersPane" layoutX="7.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+            <Pane fx:id="paneLumbers" layoutX="7.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="dummyLumberImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewLumberDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/resource_wood.jpg" />
                      </image>
@@ -374,9 +374,9 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="woolsPane" layoutX="125.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+            <Pane fx:id="paneWools" layoutX="125.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="dummyWoolImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewWoolDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/resource_sheep.jpg" />
                      </image>
@@ -388,9 +388,9 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="oresPane" layoutX="7.0" layoutY="154.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+            <Pane fx:id="paneOres" layoutX="7.0" layoutY="154.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="dummyOreImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewOreDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/resource_ore.jpg" />
                      </image>
@@ -402,9 +402,9 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="bricksPane" layoutX="235.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+            <Pane fx:id="paneBricks" layoutX="235.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="dummyBrickImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewBrickDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/resource_brick.jpg" />
                      </image>
@@ -416,9 +416,9 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="grainsPane" layoutX="125.0" layoutY="154.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+            <Pane fx:id="paneGrains" layoutX="125.0" layoutY="154.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="dummyGrainImageView" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewGrainDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/resource_grain.jpg" />
                      </image>

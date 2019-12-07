@@ -477,27 +477,27 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     protected Label grainLabel;
     @FXML
-    protected ImageView dummyLumberImageView;
+    protected ImageView ImgViewLumberDummy;
     @FXML
-    protected ImageView dummyWoolImageView;
+    protected ImageView ImgViewWoolDummy;
     @FXML
-    protected ImageView dummyGrainImageView;
+    protected ImageView ImgViewGrainDummy;
     @FXML
-    protected ImageView dummyBrickImageView;
+    protected ImageView ImgViewBrickDummy;
     @FXML
-    protected ImageView dummyOreImageView;
+    protected ImageView ImgViewOreDummy;
     @FXML
     protected Pane actualPlayerCardsPane;
     @FXML
-    protected Pane lumbersPane;
+    protected Pane paneLumbers;
     @FXML
-    protected Pane woolsPane;
+    protected Pane paneWools;
     @FXML
-    protected Pane oresPane;
+    protected Pane paneOres;
     @FXML
-    protected Pane grainsPane;
+    protected Pane paneGrains;
     @FXML
-    protected Pane bricksPane;
+    protected Pane paneBricks;
 
     // Properties
     private ArrayList<TerrainHex> terrainHexes;
