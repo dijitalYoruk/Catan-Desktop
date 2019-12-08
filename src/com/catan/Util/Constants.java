@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 
 public class Constants {
 
-    public static final String THIEF_VIEW = "../view/thiefCardPunishment.fxml";
+    public static final String VIEW_THIEF = "../view/thiefCardPunishment.fxml";
 
     public static final String CONSTRUCTION_STRING = "Construction";
     public static final String THIEF_STRING = "Thief";

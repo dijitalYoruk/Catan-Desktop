@@ -2,20 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/catan/modal/Thief.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTrade.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTradeRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTradeRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerAI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerAI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Trade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Trade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/trade.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/resource_sheep.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/assets/resource_wool.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/resource_wood.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/assets/resource_lumber.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerTrade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerTrade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/trade.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/trade.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/thiefCardPunishment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/thiefCardPunishment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/tradeOffer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/tradeOffer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/tradeRequest.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/tradeRequest.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,29 +96,33 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="207" />
+          <entry key="css" value="222" />
+          <entry key="dummy" value="5" />
           <entry key="fxml" value="8" />
-          <entry key="java" value="11990" />
+          <entry key="java" value="16427" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="208" />
-          <entry key="JAVA" value="11989" />
+          <entry key="CSS" value="223" />
+          <entry key="JAVA" value="16426" />
+          <entry key="PLAIN_TEXT" value="5" />
           <entry key="XML" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="1" />
+          <entry key="css" value="3" />
           <entry key="fxml" value="4" />
-          <entry key="java" value="63" />
+          <entry key="java" value="80" />
+          <entry key="jpg" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="1" />
-          <entry key="JAVA" value="63" />
+          <entry key="CSS" value="3" />
+          <entry key="Image" value="2" />
+          <entry key="JAVA" value="80" />
           <entry key="XML" value="4" />
         </counts>
       </usages-collector>
@@ -117,55 +133,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-235">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="105">
+              <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#2231#2523#0" />
+                <element signature="e#2529#3238#0" />
+                <element signature="e#3244#3559#0" />
+                <element signature="e#3565#3898#0" />
+                <element signature="e#4703#4862#0" />
+                <element signature="e#4868#5025#0" />
+                <element signature="e#5414#5703#0" />
+                <element signature="e#6743#7024#0" />
+                <element signature="e#7030#8145#0" />
+                <element signature="e#8151#8562#0" />
+                <element signature="e#8568#8808#0" />
+                <element signature="e#8814#9040#0" />
+                <element signature="e#9114#9293#0" />
+                <element signature="e#9299#9434#0" />
+                <element signature="e#9440#9722#0" />
+                <element signature="e#9728#10971#0" />
+                <element signature="e#10977#11424#0" />
+                <element signature="e#11430#11560#0" />
+                <element signature="e#11566#11807#0" />
+                <element signature="e#22067#24930#0" />
+                <element signature="e#24936#26101#0" />
+                <element signature="e#26107#26440#0" />
+                <element signature="e#26446#27006#0" />
+                <element signature="e#27012#28329#0" />
+                <element signature="e#29697#31376#0" />
+                <element signature="e#31382#33991#0" />
+                <element signature="e#33997#35330#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerTrade.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2541">
-              <caret line="149" selection-start-line="149" selection-end-line="149" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/catan/view/tradeRequest.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="123" column="37" selection-start-line="123" selection-start-column="37" selection-end-line="123" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/catan/view/trade.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="89" column="22" lean-forward="true" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -173,8 +174,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="245" column="52" lean-forward="true" selection-start-line="245" selection-start-column="52" selection-end-line="245" selection-end-column="52" />
+            <state relative-caret-position="466">
+              <caret line="158" column="16" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="588">
+              <caret line="158" selection-start-line="158" selection-end-line="158" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/catan/assets/resource_lumber.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/catan/assets/resource_wool.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/catan/Util/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="78" column="51" lean-forward="true" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -182,12 +211,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Trade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3">
-              <caret line="126" column="9" lean-forward="true" selection-start-line="126" selection-start-column="9" selection-end-line="126" selection-end-column="9" />
-              <folding>
-                <element signature="e#8161#8162#0" expanded="true" />
-                <element signature="e#8200#8201#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="420">
+              <caret line="88" column="8" selection-start-line="88" selection-start-column="8" selection-end-line="91" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Vertex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1155">
+              <caret line="83" column="116" selection-start-line="83" selection-start-column="116" selection-end-line="83" selection-end-column="116" />
             </state>
           </provider>
         </entry>
@@ -195,26 +229,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-109">
-              <caret line="203" column="66" lean-forward="true" selection-start-line="203" selection-start-column="66" selection-end-line="203" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="57" column="40" lean-forward="true" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+            <state relative-caret-position="-147">
+              <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/catan/view/style.css">
+        <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Thief.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3801">
-              <caret line="181" column="1" lean-forward="true" selection-start-line="181" selection-start-column="1" selection-end-line="181" selection-end-column="1" />
+            <state relative-caret-position="210">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#126#127#0" expanded="true" />
+                <element signature="e#159#160#0" expanded="true" />
+                <element signature="e#990#991#0" expanded="true" />
+                <element signature="e#1025#1026#0" expanded="true" />
+                <element signature="e#1082#1083#0" expanded="true" />
+                <element signature="e#1130#1131#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -242,6 +276,9 @@
       <find>makeTradeForAI</find>
       <find>trade</find>
       <find>select</find>
+      <find>makeTra</find>
+      <find>passed</find>
+      <find>7</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -250,22 +287,26 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java" />
         <option value="$PROJECT_DIR$/src/com/catan/Main.java" />
         <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerBase.java" />
         <option value="$PROJECT_DIR$/src/com/catan/modal/Harbour.java" />
-        <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" />
-        <option value="$PROJECT_DIR$/src/com/catan/Util/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/catan/interfaces/InterfaceMakeTrade.java" />
-        <option value="$PROJECT_DIR$/src/com/catan/modal/Player.java" />
-        <option value="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" />
-        <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" />
         <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" />
         <option value="$PROJECT_DIR$/src/com/catan/view/trade.fxml" />
         <option value="$PROJECT_DIR$/src/com/catan/modal/Trade.java" />
-        <option value="$PROJECT_DIR$/src/com/catan/view/style.css" />
         <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerTrade.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/Util/Constants.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeOffer.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/modal/Player.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/view/style.css" />
+        <option value="$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/modal/Vertex.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/modal/Thief.java" />
         <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" />
       </list>
     </option>
   </component>
@@ -275,9 +316,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-112" />
+    <option name="y" value="-9" />
     <option name="width" value="1936" />
     <option name="height" value="1066" />
   </component>
@@ -315,6 +356,13 @@
               <item name="CS319_Group3B_Catan" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="catan" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS319_Group3B_Catan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS319_Group3B_Catan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="catan" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -331,6 +379,27 @@
               <item name="catan" type="462c0819:PsiDirectoryNode" />
               <item name="modal" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CS319_Group3B_Catan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS319_Group3B_Catan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="catan" type="462c0819:PsiDirectoryNode" />
+              <item name="persistent_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS319_Group3B_Catan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS319_Group3B_Catan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="catan" type="462c0819:PsiDirectoryNode" />
+              <item name="Util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS319_Group3B_Catan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS319_Group3B_Catan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="catan" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -340,7 +409,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575668085580" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575767145026" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -473,13 +542,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93473000" />
+    <option name="totallyTimeSpent" value="119889000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8788853" visible="true" weight="0.17857143" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8788853" visible="true" weight="0.18336888" />
       <window_info id="Structure" order="1" sideWeight="0.121114686" side_tool="true" weight="0.17377399" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -488,8 +557,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.10610932" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38733125" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27009645" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.120042875" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -573,6 +642,13 @@
     <MESSAGE value="everything is okay, tried as much case as possible." />
     <option name="LAST_COMMIT_MESSAGE" value="everything is okay, tried as much case as possible." />
   </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="trade.playerTrader" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -583,20 +659,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Settlement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Road.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -626,23 +688,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Vertex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        <state relative-caret-position="286">
+          <caret line="50" column="37" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/modal/PriceCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
+        <state relative-caret-position="216">
           <caret line="60" column="15" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="35" />
         </state>
       </provider>
@@ -703,13 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2098">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -759,44 +807,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/Util/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1533">
-          <caret line="73" column="86" selection-start-line="73" selection-start-column="86" selection-end-line="73" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="245" column="52" lean-forward="true" selection-start-line="245" selection-start-column="52" selection-end-line="245" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -812,7 +826,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/view/trade.fxml">
+    <entry file="file://$PROJECT_DIR$/src/com/catan/view/tradeOffer.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="461">
@@ -820,55 +834,195 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Trade.java">
+    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Settlement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="126" column="9" lean-forward="true" selection-start-line="126" selection-start-column="9" selection-end-line="126" selection-end-column="9" />
+        <state relative-caret-position="145">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/javafx-src.zip!/javafx/scene/layout/Background.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2856">
+          <caret line="205" column="11" selection-start-line="205" selection-start-column="11" selection-end-line="205" selection-end-column="11" />
           <folding>
-            <element signature="e#8161#8162#0" expanded="true" />
-            <element signature="e#8200#8201#0" expanded="true" />
+            <element signature="e#8334#8335#0" expanded="true" />
+            <element signature="e#8367#8368#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java">
+    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerTradeOffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-109">
-          <caret line="203" column="66" lean-forward="true" selection-start-line="203" selection-start-column="66" selection-end-line="203" selection-end-column="66" />
+        <state relative-caret-position="594">
+          <caret line="338" column="54" selection-start-line="338" selection-start-column="54" selection-end-line="338" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="62" column="51" selection-start-line="62" selection-start-column="51" selection-end-line="62" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/view/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3801">
-          <caret line="181" column="1" lean-forward="true" selection-start-line="181" selection-start-column="1" selection-end-line="181" selection-end-column="1" />
+        <state>
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/interfaces/InterfaceUpdateGameAfterPopUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding>
+            <element signature="e#2557#2558#0" expanded="true" />
+            <element signature="e#2597#2598#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-235">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="63">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerTrade.java">
+    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2541">
-          <caret line="149" selection-start-line="149" selection-end-line="149" />
+        <state relative-caret-position="189">
+          <caret line="1192" selection-start-line="1192" selection-end-line="1192" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#37065#37066#0" expanded="true" />
+            <element signature="e#37100#37101#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Thief.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#126#127#0" expanded="true" />
+            <element signature="e#159#160#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#1082#1083#0" expanded="true" />
+            <element signature="e#1130#1131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Vertex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="83" column="116" selection-start-line="83" selection-start-column="116" selection-end-line="83" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-147">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Trade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="88" column="8" selection-start-line="88" selection-start-column="8" selection-end-line="91" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="158" column="16" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/Util/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="78" column="51" lean-forward="true" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/assets/resource_wool.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/assets/resource_lumber.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="57" column="40" lean-forward="true" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+        <state relative-caret-position="105">
+          <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
+          <folding>
+            <element signature="e#2231#2523#0" />
+            <element signature="e#2529#3238#0" />
+            <element signature="e#3244#3559#0" />
+            <element signature="e#3565#3898#0" />
+            <element signature="e#4703#4862#0" />
+            <element signature="e#4868#5025#0" />
+            <element signature="e#5414#5703#0" />
+            <element signature="e#6743#7024#0" />
+            <element signature="e#7030#8145#0" />
+            <element signature="e#8151#8562#0" />
+            <element signature="e#8568#8808#0" />
+            <element signature="e#8814#9040#0" />
+            <element signature="e#9114#9293#0" />
+            <element signature="e#9299#9434#0" />
+            <element signature="e#9440#9722#0" />
+            <element signature="e#9728#10971#0" />
+            <element signature="e#10977#11424#0" />
+            <element signature="e#11430#11560#0" />
+            <element signature="e#11566#11807#0" />
+            <element signature="e#22067#24930#0" />
+            <element signature="e#24936#26101#0" />
+            <element signature="e#26107#26440#0" />
+            <element signature="e#26446#27006#0" />
+            <element signature="e#27012#28329#0" />
+            <element signature="e#29697#31376#0" />
+            <element signature="e#31382#33991#0" />
+            <element signature="e#33997#35330#0" />
+          </folding>
         </state>
       </provider>
     </entry>

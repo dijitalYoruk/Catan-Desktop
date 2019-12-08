@@ -5,7 +5,9 @@ import com.catan.modal.Trade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ControllerTradeRequest {
@@ -52,7 +54,8 @@ public class ControllerTradeRequest {
     void declineOffer(ActionEvent actionEvent) {
         String errorMessage = "The trade request from " + trade.getPlayerTrader().getName() +
                 " was denied by " + trade.getPlayerToBeTraded().getName() + ".";
-        trade.printTradeDetails(errorMessage);
+        trade.setErrorMessage(errorMessage);
+        trade.printTradeDetails();
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
     }

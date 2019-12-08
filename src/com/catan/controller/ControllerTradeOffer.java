@@ -3,18 +3,24 @@ package com.catan.controller;
 import com.catan.Util.Constants;
 import com.catan.modal.Player;
 import com.catan.modal.Trade;
+import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class ControllerTrade {
+public class ControllerTradeOffer {
 
     @FXML
     private ImageView imgOfferLumber;
@@ -70,6 +76,8 @@ public class ControllerTrade {
     private Label labelActualPlayerLumber;
     @FXML
     private Label labelOutputOfTrade;
+    @FXML
+    private AnchorPane root;
 
     // properties
     private HashMap<String, Integer> offeredResources;
@@ -95,7 +103,6 @@ public class ControllerTrade {
             offeredResources.put(resourceName, 0);
             requestedResources.put(resourceName, 0);
         }
-        selectorTrade.setPromptText("Select Player");
         selectorTrade.setStyle("-fx-font: 20px \"Book " +
                 "Antiqua\"; -fx-background-color: orange");
     }
@@ -135,21 +142,35 @@ public class ControllerTrade {
     @FXML
     void requestTrade(ActionEvent event) {
         if (isTradeWithChest) {
-            Trade trade = new Trade(actualPlayer, null, requestedResources, offeredResources, isTradeWithChest);
-            if (trade.isTradeCompleted()) {
-                labelOutputOfTrade.setText("Trade is successful.");
-            } else {
-                labelOutputOfTrade.setText("Trade is not successful.");
-            }
+            Trade trade = new Trade(actualPlayer, null, requestedResources, offeredResources, true);
+            terminateTrade(trade);
         } else {
-            Trade trade = new Trade(actualPlayer, playerToBeTraded, requestedResources, offeredResources, isTradeWithChest);
-            if (trade.isTradeCompleted()) {
-                labelOutputOfTrade.setText("Trade is successful.");
-            } else {
-                labelOutputOfTrade.setText("Trade is not successful.");
+            Trade trade = new Trade(actualPlayer, playerToBeTraded, requestedResources, offeredResources, false);
+            terminateTrade(trade);
+        }
+    }
+
+    private void terminateTrade(Trade trade) {
+        if (trade.isTradeCompleted()) {
+            labelOutputOfTrade.setText("Trade is successful.");
+            labelOutputOfTrade.setOpacity(1);
+            new Thread(() -> {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Platform.runLater(() -> {
+                    closeDialog(null);
+                });
+            }).start();
+        } else {
+            String errorMessage = trade.getErrorMessage();
+            if (!errorMessage.isEmpty()) {
+                labelOutputOfTrade.setText(errorMessage);
+                labelOutputOfTrade.setOpacity(1);
             }
         }
-        labelOutputOfTrade.setOpacity(1);
     }
 
     @FXML
@@ -177,6 +198,8 @@ public class ControllerTrade {
             }
         }
         selectorTrade.getItems().add("Chest");
+        selectorTrade.setPromptText(this.allPlayers.get(0).getName());
+        playerToBeTraded = this.allPlayers.get(0);
     }
 
     @FXML
@@ -310,5 +333,11 @@ public class ControllerTrade {
             requestedResources.put(Constants.CARD_WOOL, requestedWoolCount);
             labelRequestedWool.setText("x" + requestedWoolCount);
         }
+    }
+
+    @FXML
+    public void closeDialog(ActionEvent actionEvent) {
+        Stage window = (Stage) root.getScene().getWindow();
+        window.close();
     }
 }

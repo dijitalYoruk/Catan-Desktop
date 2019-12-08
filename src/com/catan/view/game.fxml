@@ -200,7 +200,6 @@
       <Circle fx:id="circleNumberOnHex17" fill="WHITE" layoutX="872.0" layoutY="688.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="circleNumberOnHex18" fill="WHITE" layoutX="1003.0" layoutY="686.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="circleNumberOnHex19" fill="WHITE" layoutX="1134.0" layoutY="686.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="imgMovingThief" fill="DODGERBLUE" layoutX="-134.0" layoutY="158.0" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <Label fx:id="labelHexNum1" layoutX="867.0" layoutY="261.0" text="0">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -354,6 +353,7 @@
       <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
       <JFXButton layoutX="14.0" layoutY="35.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
       <Label fx:id="labelWarning" alignment="CENTER" layoutX="1510.0" layoutY="931.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
+      <Circle fx:id="imgMovingThief" fill="DODGERBLUE" layoutX="100.0" layoutY="158.0" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
 
 
 
