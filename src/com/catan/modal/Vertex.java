@@ -8,20 +8,23 @@ import java.util.HashMap;
 
 public class Vertex {
 
-    private Circle shape;
-    private ArrayList<Vertex> neighbors;
-    private boolean isActive;
-    private Settlement settlement;
+    // properties
     private ArrayList<TerrainHex> terrainHexes;
+    private ArrayList<Vertex> neighbors;
+    private Settlement settlement;
+    private boolean isActive;
+    private Circle shape;
 
+    // constructor
     public Vertex(Circle shape) {
         this.terrainHexes = new ArrayList<>();
         this.neighbors = new ArrayList<>();
-        this.shape = shape;
-        this.isActive = false;
         this.settlement = null;
+        this.isActive = false;
+        this.shape = shape;
     }
 
+    // methods
     public ArrayList<TerrainHex> getFields() {
         return terrainHexes;
     }
@@ -70,28 +73,23 @@ public class Vertex {
         this.settlement = settlement;
     }
 
-    public HashMap<String, Integer> getTurnProfit(int dieNumber) {
-        HashMap<String, Integer> map = new HashMap<>();
-        map.put(Constants.CARD_BRICK, 0);
-        map.put(Constants.CARD_GRAIN, 0);
-        map.put(Constants.CARD_LUMBER, 0);
-        map.put(Constants.CARD_ORE, 0);
-        map.put(Constants.CARD_WOOL, 0);
-
-        for (TerrainHex hex: terrainHexes) {
-            String sourceCardName = hex.getSourceCardName();
-            // if thief is in a hex, you cannot get profit from there so, i added "!hex.isThiefHere()" expression.
-            if (!hex.getSourceCardName().equals("") && hex.getNumberOnHex() == dieNumber /* && !hex.isThiefHere() */) {
-                map.put(sourceCardName, map.get(sourceCardName) + 1);
-            }
-        }
-        return map;
-    }
-
     public void addHex(TerrainHex terrainHex) {
         terrainHexes.add(terrainHex);
         terrainHex.addVertex(this);
     }
 
-
+    public HashMap<String, Integer> getTurnProfit(int dieNumber, TerrainHex terrainHex) {
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String resourceName: Constants.resourceNames) {
+            map.put(resourceName, 0);
+        }
+        for (TerrainHex hex: terrainHexes) {
+            String sourceCardName = hex.getSourceCardName();
+            // if thief is in a hex, you cannot get profit from there so, i added "hex != terrainHex" expression.
+            if (!sourceCardName.equals("") && hex.getNumberOnHex() == dieNumber && hex != terrainHex) {
+                map.put(sourceCardName, map.get(sourceCardName) + 1);
+            }
+        }
+        return map;
+    }
 }

@@ -2,6 +2,9 @@ package com.catan.Util;
 
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Constants {
 
     public static final String VIEW_THIEF = "../view/thiefCardPunishment.fxml";
@@ -14,6 +17,7 @@ public class Constants {
     public static final String CITY = "city";
     public static final String CIVILISATION = "civilisation";
     public static final String HARBOUR = "harbour";
+    public static final String DEVELOPMENT_CARD = "development_card";
     public static final int CONSTRUCTION_RADIUS = 22;
 
     public static final Color COLOR_CONSTRUCTION_UNSELECTED = Color.color(0.4,0.4,0.4);
@@ -72,11 +76,26 @@ public class Constants {
     public static final int PANE_HEIGHT = 1080;
 
     public static String PATH_VIEW_TRADE_REQUEST = "com/catan/view/tradeRequest.fxml";
-
     public static final double HARBOUR_NO_RATIO = -1;
-    public static final double HARBOUR_RATIO_1 = 0.5;
-    public static final double HARBOUR_RATIO_2 = 0.5;
-    public static final double HARBOUR_RATIO_3 = 0.6;
-    public static final double HARBOUR_RATIO_4 = 0.6;
+
+    public static final ArrayList<String> resourceNames = new ArrayList<>(
+            Arrays.asList(Constants.CARD_ORE,
+                          Constants.CARD_BRICK,
+                          Constants.CARD_LUMBER,
+                          Constants.CARD_GRAIN,
+                          Constants.CARD_WOOL));
+
+    public static final ArrayList<String> constructionNames = new ArrayList<>(
+            Arrays.asList(Constants.ROAD,
+                          Constants.VILLAGE,
+                          Constants.CITY,
+                          Constants.CIVILISATION)
+    );
+
+    public static final ArrayList<String> settlementNames = new ArrayList<>(
+            Arrays.asList(Constants.VILLAGE,
+                          Constants.CITY,
+                          Constants.CIVILISATION)
+    );
 
 }

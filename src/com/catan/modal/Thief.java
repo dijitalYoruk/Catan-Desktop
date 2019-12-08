@@ -10,10 +10,12 @@ import java.util.ArrayList;
 
 public class Thief {
 
+    // properties
     private TerrainHex terrainHex;
     private Circle imageThief;
     private boolean canThiefMove;
 
+    // constructor
     public Thief(TerrainHex terrainHex, Circle imageThief) {
         this.imageThief = imageThief;
         this.imageThief.setVisible(true);
@@ -23,6 +25,7 @@ public class Thief {
         canThiefMove = false;
     }
 
+    // methods
     public TerrainHex getTerrainHex() {
         return terrainHex;
     }
