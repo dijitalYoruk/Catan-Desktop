@@ -75,6 +75,16 @@
     -fx-font-size: 20;
 }
 
+.thief-button {
+    -fx-background-color: #CD853F;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 250;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+
 .trade-button {
     -fx-background-color: orange;
     -fx-margin:50px;

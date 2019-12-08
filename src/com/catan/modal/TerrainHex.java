@@ -17,7 +17,6 @@ public class TerrainHex extends Field{
     private String sourceCardName;
     private Circle circleNumberOnHex;
     private Label labelNumberOnHex;
-    private boolean isThiefHere;
     private ArrayList<Vertex> verticesNear;
     private Polygon shape;
 
@@ -27,19 +26,14 @@ public class TerrainHex extends Field{
         this.sourceCardName = "";
         this.circleNumberOnHex = circleNumberOnHex;
         this.labelNumberOnHex = labelNumberOnHex;
-        this.isThiefHere = false;
         verticesNear = new ArrayList<>();
-    }
-
-    public boolean isThiefHere(){
-        return isThiefHere;
     }
 
     public void addVertex(Vertex vertex){
         verticesNear.add(vertex);
     }
 
-    public ArrayList<Player> getPlayersAroundHere(){
+    public ArrayList<Player> getPlayersAround(){
         ArrayList<Player> playersAround = new ArrayList<>();
         for(Vertex vertex: verticesNear){
             Settlement settlementOfVertex = vertex.getSettlement();
@@ -61,16 +55,6 @@ public class TerrainHex extends Field{
     public int getNumberOnHex() {
         String s = labelNumberOnHex.getText();
         return Integer.parseInt(s);
-    }
-
-    public void setThiefHere(boolean status){
-        isThiefHere = status;
-        if(status) {
-            javafx.scene.image.Image imgThief = new Image(Constants.ICON_THIEF);
-            circleNumberOnHex.setFill(new ImagePattern(imgThief));
-        }else{
-            circleNumberOnHex.setFill(Color.WHITE);
-        }
     }
 
     public void setNumberOnHex(int number) {

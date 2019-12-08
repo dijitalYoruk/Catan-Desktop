@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="775.0" prefWidth="1116.0" style="-fx-background-color: #FFD692;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTrade">
+<AnchorPane fx:id="root" prefHeight="775.0" prefWidth="1116.0" style="-fx-background-color: #FFD692;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTradeOffer">
    <children>
       <Button fx:id="requestButton" layoutX="765.0" layoutY="33.0" mnemonicParsing="false" onAction="#requestTrade" prefHeight="52.0" prefWidth="132.0" styleClass="trade-pane-button" text="Request" />
       <Button fx:id="clearTradeButton" layoutX="878.0" layoutY="33.0" mnemonicParsing="false" onAction="#clearTrade" prefHeight="52.0" prefWidth="153.0" styleClass="trade-pane-button" text="Clear" />
@@ -54,7 +54,7 @@
             </Label>
             <ImageView fx:id="imgOfferWool" fitHeight="96.0" fitWidth="73.0" layoutX="429.0" layoutY="80.0" onMouseClicked="#offerResource" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_sheep.jpg" />
+                  <Image url="@../assets/resource_wool.jpg" />
                </image>
             </ImageView>
             <Label fx:id="labelActualPlayerWool" layoutX="507.0" layoutY="106.0" text="x?">
@@ -64,7 +64,7 @@
             </Label>
             <ImageView fx:id="imgOfferLumber" fitHeight="96.0" fitWidth="73.0" layoutX="565.0" layoutY="81.0" onMouseClicked="#offerResource" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_wood.jpg" />
+                  <Image url="@../assets/resource_lumber.jpg" />
                </image>
             </ImageView>
             <Label fx:id="labelActualPlayerLumber" layoutX="641.0" layoutY="107.0" text="x?">
@@ -111,7 +111,7 @@
             </Label>
             <ImageView fx:id="imgRequestWool" fitHeight="96.0" fitWidth="73.0" layoutX="436.0" layoutY="79.0" onMouseClicked="#requestResource" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_sheep.jpg" />
+                  <Image url="@../assets/resource_wool.jpg" />
                </image>
             </ImageView>
             <Label layoutX="513.0" layoutY="105.0" text="x?">
@@ -121,7 +121,7 @@
             </Label>
             <ImageView fx:id="imgRequestLumber" fitHeight="96.0" fitWidth="73.0" layoutX="570.0" layoutY="79.0" onMouseClicked="#requestResource" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_wood.jpg" />
+                  <Image url="@../assets/resource_lumber.jpg" />
                </image>
             </ImageView>
             <Label layoutX="643.0" layoutY="105.0" text="x?">
@@ -147,7 +147,7 @@
             </Label>
             <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="130.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_sheep.jpg" />
+                  <Image url="@../assets/resource_wool.jpg" />
                </image>
             </ImageView>
             <Label fx:id="labelOfferedWool" layoutX="189.0" layoutY="105.0" text="x0">
@@ -167,7 +167,7 @@
             </Label>
             <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="77.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_wood.jpg" />
+                  <Image url="@../assets/resource_lumber.jpg" />
                </image>
             </ImageView>
             <Label fx:id="labelOfferedLumber" layoutX="136.0" layoutY="197.0" text="x0">
@@ -203,7 +203,7 @@
             </Label>
             <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="128.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_sheep.jpg" />
+                  <Image url="@../assets/resource_wool.jpg" />
                </image>
             </ImageView>
             <Label fx:id="labelRequestedWool" layoutX="186.0" layoutY="103.0" text="x0">
@@ -223,7 +223,7 @@
             </Label>
             <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="81.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_wood.jpg" />
+                  <Image url="@../assets/resource_lumber.jpg" />
                </image>
             </ImageView>
             <Label fx:id="labelRequestedLumber" layoutX="141.0" layoutY="198.0" text="x0">

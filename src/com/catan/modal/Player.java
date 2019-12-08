@@ -136,61 +136,21 @@ public class Player {
         }
     }
 
-
-    // this function add the source card-that comes from thief- to this player
-    public void addResourceFromThief(SourceCard thiefSource){
-        sourceCards.get(thiefSource.getName()).add(thiefSource);
-    }
-
-    // this function chooses random 1 source card to give the thief
-    public SourceCard getPunishedByThief(){
-        SourceCard punishment = null;
-        boolean choosingCardNotOver = true;
-        String[] cards = {Constants.CARD_BRICK, Constants.CARD_GRAIN,
-                            Constants.CARD_ORE, Constants.CARD_WOOL, Constants.CARD_LUMBER};
-        int randomCard = (int)Math.random()*5; // generates number in range 0-4
-        int count = 0;
-        while(choosingCardNotOver){
-            String sourceName = cards[randomCard];
-            ArrayList<SourceCard> sourcesThisType = sourceCards.get(sourceName);
-            if (sourcesThisType.size() != 0){
-                SourceCard tribute = sourcesThisType.get(0);
-                sourcesThisType.remove(tribute);
-                punishment = tribute;
-                choosingCardNotOver = false;
+    public String getPunishedByThief(){
+        // getting potential resource keys.
+        ArrayList<String> keys = new ArrayList<>(sourceCards.keySet());
+        for (int i = 0; i < keys.size(); i++) {
+            if (sourceCards.get(keys.get(i)).size() == 0) {
+                keys.remove(i--);
             }
-            randomCard = (randomCard == 0) ? 4 : (randomCard-1);
-            count++;
-            if(count == 6)
-                break;
         }
-        return punishment;
+        // removing and choosing one random card to give.
+        int index = (int)(Math.random() * keys.size());
+        String resourceToBeRemoved = keys.get(index);
+        removeResources(resourceToBeRemoved, 1);
+        return resourceToBeRemoved;
     }
-    public void punishWool(int punish){
-        for(int i = 0; i < punish; i++ ) {
-            sourceCards.get(Constants.CARD_WOOL).remove(sourceCards.get(Constants.CARD_WOOL).get(0));
-        }
-    }
-    public void punishLumber(int punish){
-        for(int i = 0; i < punish; i++ ) {
-            sourceCards.get(Constants.CARD_LUMBER).remove(sourceCards.get(Constants.CARD_LUMBER).get(0));
-        }
-    }
-    public void punishOre(int punish){
-        for(int i = 0; i < punish; i++ ) {
-            sourceCards.get(Constants.CARD_ORE).remove(sourceCards.get(Constants.CARD_ORE).get(0));
-        }
-    }
-    public void punishGrain(int punish){
-        for(int i = 0; i < punish; i++ ) {
-            sourceCards.get(Constants.CARD_GRAIN).remove(sourceCards.get(Constants.CARD_GRAIN).get(0));
-        }
-    }
-    public void punishBrick(int punish){
-        for(int i = 0; i < punish; i++ ) {
-            sourceCards.get(Constants.CARD_BRICK).remove(sourceCards.get(Constants.CARD_BRICK).get(0));
-        }
-    }
+
     public int getTotalCards(){
         ArrayList<SourceCard> wools = sourceCards.get(Constants.CARD_WOOL);
         ArrayList<SourceCard> lumbers = sourceCards.get(Constants.CARD_LUMBER);

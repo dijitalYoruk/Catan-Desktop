@@ -465,18 +465,18 @@ public class ControllerBaseGame extends ControllerBase {
 
 
     // Properties
-    private ArrayList<TerrainHex> terrainHexes;
+    protected ArrayList<TerrainHex> terrainHexes;
     private ArrayList<Vertex> vertices;
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
     private ArrayList<Harbour> harbours;
     private Settings settings;
-    protected Circle imgThiefDefaultLocation;
-    protected TerrainHex thiefHexLoca;
     protected Die die;
     protected Player playerActual;
-    
+    protected Thief thief;
+
+
     @FXML
     public void initialize() {
         terrainHexes = new ArrayList<>();
@@ -1189,12 +1189,7 @@ public class ControllerBaseGame extends ControllerBase {
                 countOfDesert--;
                 img = new Image(Constants.PATH_HEX_DESERT);
                 color = Color.color(0.4,0.3,0.2);
-                Image imgThief = new Image(Constants.ICON_THIEF);
-                hex.getCircleNumberOnHex().setFill(new ImagePattern(imgThief));
-                hex.setThiefHere(true);
-                thiefHexLoca = hex;
-                imgMovingThief.setFill(new ImagePattern(imgThief));
-                imgThiefDefaultLocation = hex.getCircleNumberOnHex();
+                thief = new Thief(hex, imgMovingThief);
             }
             else if (tmp == 4 && countOfMountain > 0) {
                 countOfMountain--;
@@ -1327,10 +1322,6 @@ public class ControllerBaseGame extends ControllerBase {
             }
         }
         return null;
-    }
-
-    public TerrainHex getHexWithIndex(int i){
-        return terrainHexes.get(i-1);
     }
 
 }

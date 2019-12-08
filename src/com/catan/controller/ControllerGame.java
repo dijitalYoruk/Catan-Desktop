@@ -16,6 +16,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -28,7 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceMakeTrade, InterfaceUpdateGameAfterPopUp {
+public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceMakeTrade {
 
     // properties
     private boolean constructionUnselect = true;
@@ -42,8 +43,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int initialStepCount = 0;
     private Player currentPlayer;
     private int playerTurn = 0;
-    private boolean thiefCanMove = false;
-    private boolean initialThief = true;
 
     @Override
     public void initialize() {
@@ -100,7 +99,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     @FXML
     void trade(ActionEvent event) throws IOException {
         if (isStepActual) {
-            Dialog<ButtonType> dialog = new Dialog<>();
+            Dialog dialog = new Dialog<>();
             dialog.initOwner(root.getScene().getWindow());
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/tradeOffer.fxml"));
@@ -153,8 +152,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if(isStepInitial) {
             initialTurn();
         } else if (isStepActual) {
-            //actualTurn();
-            preActualTurn();
+            actualTurn();
         }
     }
 
@@ -163,18 +161,20 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2.0), warning);
         fadeTransition.setFromValue(1.0);
         fadeTransition.setToValue(0.0);
-        //fadeTransition.setCycleCount(Animation.INDEFINITE);
 
-        if(warningType.equals("Not possible")) {
-            warning.setText("Not Possible");
-            warning.setOpacity(1);
-        }
-        else if(warningType.equals("Thief")){
-            warning.setText("You must move the thief");
-            warning.setOpacity(1);
-        }else{
-            warning.setText("Not enough resource for this type construction");
-            warning.setOpacity(1);
+        switch (warningType) {
+            case "Not possible":
+                warning.setText("Not Possible");
+                warning.setOpacity(1);
+                break;
+            case "Thief":
+                warning.setText("You must move the thief");
+                warning.setOpacity(1);
+                break;
+            default:
+                warning.setText("Not enough resource for this type construction");
+                warning.setOpacity(1);
+                break;
         }
         fadeTransition.play();
     }
@@ -328,50 +328,34 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ ACTUAL STEP METHODS ---------------- //
 
-    private void preActualTurn() throws IOException {
-        boolean gameWillContinue = true;
-        playerTurn = playerTurn % 4;
-        Player player = getPlayers().get(playerTurn);
-        System.out.println(player.getName() + " : " + player.getColor());
-        rollDie();
-        System.out.println("die result: " + die.getDieSum());
-        if (die.getDieSum() == 7) {
-            thiefResourceCardPunishAI();
-            thiefResourceCardPunish();
-            gameWillContinue = false;
-        }
-        // game will not continue if the
-        // player has to choose cards first.
-        if (gameWillContinue) {
-            actualTurn();
-        }
-    }
     private void actualTurn() throws IOException {
-        deActivateAllVertices();
         playerTurn = playerTurn % 4;
-        Player player = getPlayers().get(playerTurn);
-        currentPlayer = player;
+        currentPlayer = getPlayers().get(playerTurn);
+
+        System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor());
+        System.out.println("die result: " + die.getDieSum());
+
+        rollDie();
+        deActivateAllVertices();
         playerTurn++;
 
-        //  playing the thief
+        //  doing thief operations.
         if (die.getDieSum() == 7) {
+            thiefResourceCardPunishAI();
+            thiefResourceCardPunishActual();
             playThief(currentPlayer);
         }
 
         getTurnProfit();
 
-        // AI player Trade
+        // AI player
         if (currentPlayer instanceof PlayerAI) {
-            ((PlayerAI) currentPlayer).decideToMakeTrade(this);
+            playAIActualTurn();
+            actualTurn();
         }
 
-        // AI player
-        if (player instanceof PlayerAI) {
-            playAIActualTurn();
-            preActualTurn();
-        }
         // Actual Player
-        else if (player instanceof PlayerActual) {
+        else if (currentPlayer instanceof PlayerActual) {
             deActivateAllVertices();
             refreshRoadSelectionVertices();
             constructionUnselect = true;
@@ -403,7 +387,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                                 requestedRC, offeredRC, isTradeWithChest);
 
                         if (trade.isTradePossible()) {
-                            Dialog<ButtonType> dialog = new Dialog<>();
+                            Dialog dialog = new Dialog<>();
                             dialog.initOwner(root.getScene().getWindow());
                             FXMLLoader fxmlLoader = new FXMLLoader();
                             fxmlLoader.setLocation(getClass().getClassLoader()
@@ -426,144 +410,66 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    private void thiefResourceCardPunish() throws IOException {
-        Player realPlayer = null;
-        for(Player player: getPlayers()){
-            if(player instanceof PlayerActual) {
-                realPlayer = player;
-            }
-        }
-        if(realPlayer.getTotalCards() > 7){
-            Stage window = (Stage) root.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Constants.THIEF_VIEW));
-            Parent root = null;
+    private void thiefResourceCardPunishActual() {
+        if(playerActual.getTotalCards() > 7){
             try {
-                root = loader.load();
-            } catch (IOException e) {
+                Dialog dialog = new Dialog<>();
+                dialog.initOwner(root.getScene().getWindow());
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getClassLoader()
+                        .getResource("com/catan/view/thiefCardPunishment.fxml"));
+                dialog.setTitle("Thief will steal something");
+                dialog.getDialogPane().setContent(fxmlLoader.load());
+                ControllerThiefPunishment controller = fxmlLoader.getController();
+                controller.setPlayer(playerActual);
+                dialog.showAndWait();
+            }
+            catch (IOException e) {
                 e.printStackTrace();
             }
-            ControllerThiefPunishment controller = loader.getController();
-            controller.setPlayer(realPlayer, this);
-            final Stage pop = new Stage();
-            pop.initModality(Modality.APPLICATION_MODAL);
-            pop.initOwner(window);
-            pop.setTitle("Thief will steal something");
-            pop.setScene(new Scene(root, 375, 480));
-            pop.show();
-        }else{
-            updateGameAfterPopUp();
         }
     }
 
     private void thiefResourceCardPunishAI(){
         for (int i = 0; i < getPlayers().size(); i++) {
-            Player temp = getPlayers().get(i);
-            if ( temp instanceof PlayerAI && temp.getTotalCards() > 7) {
-                ((PlayerAI)temp).punish();
+            Player player = getPlayers().get(i);
+            if (player instanceof PlayerAI && player.getTotalCards() > 7) {
+                ((PlayerAI)player).punish();
             }
         }
     }
 
-    // i created this function to stop game, game continuous when use finishes selecting card by updateGame function
-
     private void playThief(Player currentPlayer){
-        thiefCanMove = true;
-        if (initialThief) {
-            imgThiefDefaultLocation.setVisible(false);
-            imgMovingThief.setLayoutX(imgThiefDefaultLocation.getLayoutX());
-            imgMovingThief.setLayoutY(imgThiefDefaultLocation.getLayoutY());
-            imgMovingThief.setVisible(true);
-            initialThief = false;
-        }
         if (currentPlayer instanceof PlayerAI) {
-                int randomHex = (int)(Math.random()*18) + 1;
-                thiefHexLoca.setThiefHere(false);
-                TerrainHex thiefsNewLocation = getHexWithIndex(randomHex);
-                thiefHexLoca = thiefsNewLocation;
-                imgMovingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
-                imgMovingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
-                thiefsNewLocation.setThiefHere(true);
-                thiefCanMove = false;
-                punishThief();
+            int randomHexIndex = (int)(Math.random() * 19);
+            thief.setTerrainHex(terrainHexes.get(randomHexIndex));
+            thief.punishUsersAroundHexByThief(currentPlayer);
         }
-        // Actual Player
-        else if (currentPlayer instanceof  PlayerActual) {
+        else if (currentPlayer instanceof PlayerActual) {
+            thief.setCanThiefMove(true);
             outputNotPossible(Constants.THIEF_STRING);
         }
     }
 
     @FXML
     public void moveThief(MouseEvent mouseEvent){
-        if (thiefCanMove) {
-            thiefHexLoca.setThiefHere(false);
-            imgMovingThief.setLayoutX(mouseEvent.getSceneX());
-            imgMovingThief.setLayoutY(mouseEvent.getSceneY());
+        if (thief.canThiefMove()) {
+            thief.updateLocation(mouseEvent.getSceneX(), mouseEvent.getSceneY());
         }
     }
 
     @FXML
     public void thiefMoved(MouseEvent mouseEvent){
-        if (thiefCanMove) {
-            thiefHexLoca.setThiefHere(false);
-            TerrainHex thiefsNewLocation = getHexWithCoordinates(imgMovingThief);
-            if (thiefsNewLocation != null) {
-                thiefCanMove = false;
-                thiefHexLoca = thiefsNewLocation;
-                imgMovingThief.setLayoutX(thiefsNewLocation.getCircleNumberOnHex().getLayoutX());
-                imgMovingThief.setLayoutY(thiefsNewLocation.getCircleNumberOnHex().getLayoutY());
-                thiefsNewLocation.setThiefHere(true);
-                punishThief();
+        if (thief.canThiefMove()) {
+            TerrainHex newHex = getHexWithCoordinates(imgMovingThief);
+            if (newHex != null) {
+                thief.setCanThiefMove(false);
+                thief.setTerrainHex(newHex);
+                thief.punishUsersAroundHexByThief(currentPlayer);
             }
         }
     }
-    private void punishThief(){
-        ArrayList<Player> players = thiefHexLoca.getPlayersAroundHere();
-        int size = players.size();
-        if (size == 0) {
-            //there is nobody around thief
-            return;
-        }
-        if (size == 1 && players.get(0) == currentPlayer) {
-            //there is only one person and it is him
-            return;
-        }
-        // if there is nobody around here, it will do nothing
-        int randomPlayer = (int)Math.random()*size;
 
-        Player playerToBePunished = null;
-        boolean choosingPlayerToPunishIsNotOver = true;
-        boolean noVictim = false;
-        int count = 0;
-        while (choosingPlayerToPunishIsNotOver)
-        {
-            playerToBePunished = players.get(randomPlayer);
-            if (playerToBePunished != currentPlayer && playerToBePunished.getTotalCards() != 0) {
-                choosingPlayerToPunishIsNotOver = false;
-            } else {
-                randomPlayer = (randomPlayer == 0) ? (size - 1) : (randomPlayer -1);
-                count++;
-                if (count == size) {
-                    noVictim = true;
-                    //nobody has any source, so playerToBePunished will be null afterwads.
-                    choosingPlayerToPunishIsNotOver = false;
-                }
-            }
-        }
-        if (noVictim) // it means there is no appropriate player to steal from.
-        {
-            playerToBePunished = null;
-        }
-        if (playerToBePunished != null) { // it maybe null in the case that nobody has any source
-            SourceCard punish = playerToBePunished.getPunishedByThief();
-            currentPlayer.addResourceFromThief(punish);
-        }
-    }
-
-    @Override
-    public void updateGameAfterPopUp() throws IOException {
-    //here the resources of player will be updated, this part has dependency of talha's work. so this will wait
-            actualTurn();
-    }
     private void getTurnProfit() {
         System.out.println("----------------------------------------------------------------------");
         for (Player player: getPlayers()) {
@@ -574,6 +480,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     private void playAIActualTurn() {
+        ((PlayerAI) currentPlayer).decideToMakeTrade(this);
         ((PlayerAI) currentPlayer).getActualAIDecision(this);
     }
 
@@ -762,8 +669,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             if (initialStepCount == 8) {
                 isStepActual = true;
                 isStepInitial = false;
-                //actualTurn();
-                preActualTurn();
+                actualTurn();
                 return;
             }
         }
