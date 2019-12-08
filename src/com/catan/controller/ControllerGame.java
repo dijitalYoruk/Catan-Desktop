@@ -473,7 +473,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void getTurnProfit() {
         System.out.println("----------------------------------------------------------------------");
         for (Player player: getPlayers()) {
-            player.getTurnProfit(die.getDieSum());
+            player.getTurnProfit(die.getDieSum(), thief.getTerrainHex());
             player.showSourceCards();
         }
         System.out.println("----------------------------------------------------------------------");
@@ -481,7 +481,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     private void playAIActualTurn() {
         ((PlayerAI) currentPlayer).decideToMakeTrade(this);
-        ((PlayerAI) currentPlayer).getActualAIDecision(this);
+        ((PlayerAI) currentPlayer).getAIDecisionForConstruction(this);
     }
 
     @Override

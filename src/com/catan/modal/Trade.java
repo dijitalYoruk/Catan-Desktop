@@ -19,11 +19,11 @@ public class Trade {
     // constructor
     public Trade(Player trader, Player playerToBeTraded, HashMap<String, Integer> reqCards, HashMap<String, Integer> offeredCards, boolean isTradeWithChest) {
         this.isTradeWithChest = isTradeWithChest;
-        playerTrader = trader;
-        requestedResourceCards = reqCards;
         offeredResourceCards = offeredCards;
-        isTradePossible = true;
+        requestedResourceCards = reqCards;
         isTradeCompleted = false;
+        isTradePossible = true;
+        playerTrader = trader;
         errorMessage = "";
 
         if (!isTradeWithChest) {
@@ -36,8 +36,8 @@ public class Trade {
             offeredResourceCards.get(Constants.CARD_LUMBER) == 0 &&
             offeredResourceCards.get(Constants.CARD_BRICK)  == 0 &&
             offeredResourceCards.get(Constants.CARD_ORE)    == 0) {
+            errorMessage = "No offered resources specified.";
             isTradePossible = false;
-            errorMessage = "yazılmayan";
             return;
         }
         if (requestedResourceCards.get(Constants.CARD_WOOL)   == 0 &&
@@ -45,17 +45,19 @@ public class Trade {
             requestedResourceCards.get(Constants.CARD_LUMBER) == 0 &&
             requestedResourceCards.get(Constants.CARD_BRICK)  == 0 &&
             requestedResourceCards.get(Constants.CARD_ORE)    == 0) {
+            errorMessage = "No requested resources specified.";
             isTradePossible = false;
             return;
         }
 
         if (playerToBeTraded != null) {
             HashMap<String, ArrayList<SourceCard>> resourceCards = playerToBeTraded.getSourceCards();
-            isTradePossible = resourceCards.get(Constants.CARD_WOOL).size()   >= requestedResourceCards.get(Constants.CARD_WOOL)   &&
-                              resourceCards.get(Constants.CARD_GRAIN).size()  >= requestedResourceCards.get(Constants.CARD_GRAIN)  &&
-                              resourceCards.get(Constants.CARD_LUMBER).size() >= requestedResourceCards.get(Constants.CARD_LUMBER) &&
-                              resourceCards.get(Constants.CARD_BRICK).size()  >= requestedResourceCards.get(Constants.CARD_BRICK)  &&
-                              resourceCards.get(Constants.CARD_ORE).size()    >= requestedResourceCards.get(Constants.CARD_ORE);
+            for (String resourceName: Constants.resourceNames) {
+                if (resourceCards.get(resourceName).size() < requestedResourceCards.get(resourceName)) {
+                    isTradePossible = false;
+                    break;
+                }
+            }
         }
 
         if (isTradePossible) {
@@ -84,46 +86,39 @@ public class Trade {
     }
 
     // methods
-
     public void completeTrade() {
-        ArrayList<String> resourceNames = new ArrayList<>(
-                Arrays.asList(Constants.CARD_ORE, Constants.CARD_BRICK, Constants.CARD_LUMBER,
-                        Constants.CARD_GRAIN, Constants.CARD_WOOL)
-        );
-
         if (isTradePossible) {
             ArrayList<Integer> tradeDifferences = new ArrayList<>();
             // calculating differences
-            for (String resourceName: resourceNames) {
+            for (String resourceName: Constants.resourceNames) {
                 int difference = requestedResourceCards.get(resourceName) - offeredResourceCards.get(resourceName);
                 tradeDifferences.add(difference);
             }
             // arranging resource cards of players
-            exchangeResources(resourceNames, tradeDifferences, playerTrader);
+            exchangeResources(tradeDifferences, playerTrader);
 
             if (playerToBeTraded != null) {
                 // Resource Cards of the player to be traded.
                 tradeDifferences = new ArrayList<>();
                 // calculating differences
-                for (String resourceName: resourceNames) {
+                for (String resourceName: Constants.resourceNames) {
                     int difference = offeredResourceCards.get(resourceName) - requestedResourceCards.get(resourceName);
                     tradeDifferences.add(difference);
                 }
                 // arranging resource cards of players
-                exchangeResources(resourceNames, tradeDifferences, playerToBeTraded);
+                exchangeResources(tradeDifferences, playerToBeTraded);
             }
-
             printTradeDetails();
         }
     }
 
-    private void exchangeResources(ArrayList<String> resourceNames, ArrayList<Integer> tradeDifferences, Player player) {
+    private void exchangeResources(ArrayList<Integer> tradeDifferences, Player player) {
         for (int i = 0; i < tradeDifferences.size(); i++) {
             if (tradeDifferences.get(i) > 0) {
-                player.addResources(resourceNames.get(i), tradeDifferences.get(i));
+                player.addResources(Constants.resourceNames.get(i), tradeDifferences.get(i));
             } else if (tradeDifferences.get(i) < 0) {
                 int difference = -1 * tradeDifferences.get(i);
-                player.removeResources(resourceNames.get(i), difference);
+                player.removeResources(Constants.resourceNames.get(i), difference);
             }
         }
     }
@@ -182,10 +177,6 @@ public class Trade {
 
     public HashMap<String, Integer> getOfferedResourceCards() {
         return offeredResourceCards;
-    }
-
-    public void outputNotPossible() {
-        System.out.println("trade not possible");
     }
 
     public boolean isTradePossible() {
