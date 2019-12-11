@@ -19,12 +19,16 @@ public class Player {
     protected ArrayList<Road> roads;
     private String color;
     private String name;
+    private int knightCount;
+    private int victoryPoints;
 
     // constructor
     public Player(String color, String name) {
         settlements = new ArrayList<>();
         sourceCards = new HashMap<>();
         roads = new ArrayList<>();
+        this.victoryPoints = 0;
+        this.knightCount = 0;
         this.color = color;
         this.name = name;
         for (String resourceName: Constants.resourceNames) {
@@ -170,6 +174,22 @@ public class Player {
         } else {
             sourceCards.get(resourceType).clear();
         }
+    }
+
+    public void incrementKnightCount() {
+        knightCount++;
+    }
+
+    public int getKnightCount() {
+        return knightCount;
+    }
+
+    public void incrementVictoryPoints() {
+        victoryPoints++;
+    }
+
+    public int getVictoryPoints() {
+        return victoryPoints;
     }
 
     @Override

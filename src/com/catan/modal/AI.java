@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class AI {
 
-    public void getAIDecisionForConstruction(InterfaceMakeConstruction makeConstruction, PlayerAI player) {
+    public void decideToMakeConstruction(InterfaceMakeConstruction makeConstruction, PlayerAI player) {
         // Civilisation
         if (player.hasEnoughResources(Constants.CIVILISATION)) {
             if (Math.random() > 0.1) {

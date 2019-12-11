@@ -1,8 +1,12 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
+import com.catan.controller.ControllerGame;
+import com.catan.interfaces.InterfaceDestroyRoad;
+import com.catan.interfaces.InterfaceExchangeTurnProfit;
 import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.interfaces.InterfaceMakeTrade;
+import javafx.scene.shape.Circle;
 
 import java.util.*;
 
@@ -57,8 +61,8 @@ public class PlayerAI extends Player {
         }
     }
 
-    public void getAIDecisionForConstruction(InterfaceMakeConstruction makeConstruction) {
-        ai.getAIDecisionForConstruction(makeConstruction, this);
+    public void decideToMakeConstruction(InterfaceMakeConstruction makeConstruction) {
+        ai.decideToMakeConstruction(makeConstruction, this);
     }
 
     public  HashMap<String, Integer> getRequestedResourceCards(Player playerToBeTraded) {
@@ -85,4 +89,95 @@ public class PlayerAI extends Player {
         ai.decideToMakeTrade(makeTrade, getSourceCards());
     }
 
+    public HashMap<String, Integer> getInventionResourceCardSelection() {
+        HashMap<String, Integer> desiredResources = new HashMap<>();
+
+        String minKey2 = null;
+        Integer minValue2 = null;
+        String minKey1 = Constants.resourceNames.get(0);
+        Integer minValue1 = getSourceCards().get(Constants.resourceNames.get(0)).size();
+
+
+        for (String resourceName: Constants.resourceNames) {
+            desiredResources.put(resourceName, 0);
+            if (getSourceCards().get(resourceName).size() <= minValue1 && !minKey1.equals(resourceName)) {
+                minKey2 = minKey1;
+                minValue2 = minValue1;
+                minKey1 = resourceName;
+                minValue1 = getSourceCards().get(resourceName).size();
+            }
+        }
+
+        if (minKey2 != null && minValue1.equals(minValue2)) {
+            desiredResources.put(minKey1, 1);
+            desiredResources.put(minKey2, 1);
+        } else {
+            desiredResources.put(minKey1, 2);
+        }
+
+        return desiredResources;
+    }
+
+    public boolean decideToPlayDevelopmentCard() {
+        return Math.random() < 1;
+    }
+
+    public String getMonopolResourceCardDecision() {
+        String minKey1 = Constants.resourceNames.get(0);
+        int minValue1 = getSourceCards().get(Constants.resourceNames.get(0)).size();
+
+        for (String resourceName: Constants.resourceNames) {
+            if (getSourceCards().get(resourceName).size() <= minValue1 && !minKey1.equals(resourceName)) {
+                minKey1 = resourceName;
+            }
+        }
+
+        return minKey1;
+    }
+
+    public void decideForHexesToExchangeProfit(ArrayList<TerrainHex> terrainHexes, InterfaceExchangeTurnProfit exchangeTurnProfit) {
+        ArrayList<TerrainHex> playerHexes = new ArrayList<>();
+        ArrayList<TerrainHex> filteredHexes = new ArrayList<>();
+
+        for (Settlement settlement: getSettlements()) {
+            for (TerrainHex hex: settlement.getVertex().getFields()) {
+                if (!playerHexes.contains(hex) &&
+                    hex.getNumberOnHex() != 6  &&
+                    hex.getNumberOnHex() != 8  &&
+                    hex.getNumberOnHex() != 0) {
+                    playerHexes.add(hex);
+                }
+            }
+        }
+
+        for (TerrainHex hex: terrainHexes) {
+            if (!playerHexes.contains(hex) && (
+                hex.getNumberOnHex() == 5 ||
+                hex.getNumberOnHex() == 6 ||
+                hex.getNumberOnHex() == 8 ||
+                hex.getNumberOnHex() == 9)) {
+                filteredHexes.add(hex);
+            }
+        }
+
+        int randomIndex1 = (int) (Math.random() * playerHexes.size());
+        int randomIndex2 = (int) (Math.random() * filteredHexes.size());
+        Circle circle1 = playerHexes.get(randomIndex1).getCircleNumberOnHex();
+        Circle circle2 = filteredHexes.get(randomIndex2).getCircleNumberOnHex();
+        exchangeTurnProfit.exchangeTurnProfit(circle1);
+        exchangeTurnProfit.exchangeTurnProfit(circle2);
+    }
+
+    public void decideForDestroyingRoad(ArrayList<Player> players, InterfaceDestroyRoad destroyRoad) {
+        ArrayList<Road> roadsToBeDestroyed = new ArrayList<>();
+
+        for (Player player: players) {
+            if (player != this) { roadsToBeDestroyed.addAll(player.getRoads()); }
+        }
+
+        if (!roadsToBeDestroyed.isEmpty()) {
+            int randomIndex = (int) (Math.random() * roadsToBeDestroyed.size());
+            destroyRoad.destroyRoad( roadsToBeDestroyed.get(randomIndex) );
+        }
+    }
 }

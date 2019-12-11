@@ -72,6 +72,21 @@ public class Constants {
     public static final String CARD_BRICK = "brick";
     public static final String CARD_LUMBER = "lumber";
 
+    public static final String DEVELOPMENT_CARD_PROFIT_EXCHANGE = "DEVELOPMENT_CARD_PROFIT_EXCHANGE";
+    public static final String DEVELOPMENT_CARD_ROAD_DESTRUCTION = "DEVELOPMENT_CARD_ROAD_DESTRUCTION";
+    public static final String DEVELOPMENT_CARD_INVENTION = "DEVELOPMENT_CARD_INVENTION";
+    public static final String DEVELOPMENT_CARD_VICTORY_POINT = "DEVELOPMENT_CARD_VICTORY_POINT";
+    public static final String DEVELOPMENT_CARD_KNIGHT = "DEVELOPMENT_CARD_KNIGHT";
+    public static final String DEVELOPMENT_CARD_MONOPOL = "DEVELOPMENT_CARD_MONOPOL";
+
+    public static final ArrayList<String> developmentCardNames = new ArrayList<>(
+            Arrays.asList(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE,
+                          Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION,
+                          Constants.DEVELOPMENT_CARD_INVENTION,
+                          Constants.DEVELOPMENT_CARD_VICTORY_POINT,
+                          Constants.DEVELOPMENT_CARD_MONOPOL,
+                          Constants.DEVELOPMENT_CARD_KNIGHT));
+
     public static final int PANE_WIDTH = 1920;
     public static final int PANE_HEIGHT = 1080;
 

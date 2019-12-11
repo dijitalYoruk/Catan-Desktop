@@ -1,35 +1,32 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.interfaces.InterfaceDestroyRoad;
+import com.catan.interfaces.InterfaceExchangeTurnProfit;
 import com.catan.interfaces.InterfaceMakeConstruction;
 import com.catan.interfaces.InterfaceMakeTrade;
-import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.*;
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceMakeTrade {
+public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceMakeTrade, InterfaceExchangeTurnProfit, InterfaceDestroyRoad {
 
     // properties
     private boolean constructionUnselect = true;
@@ -39,10 +36,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private boolean isStepInitial = true;
     private boolean isStepActual = false;
     private boolean isConstructionBuild = false;
+    private boolean isProfitExchangePhase = false;
+    private boolean isRoadDestructionPhase = false;
     private boolean isRoadBuild = false;
     private int initialStepCount = 0;
     private Player currentPlayer;
     private int playerTurn = 0;
+    private Chest chest;
+
 
     @Override
     public void initialize() {
@@ -50,6 +51,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         selectConstructionInitial(imgRoad);
         currentPlayer = getPlayers().get(0);
         activateAllVertices();
+        chest = new Chest();
     }
 
     @FXML
@@ -97,27 +99,217 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @FXML
-    void trade(ActionEvent event) throws IOException {
+    void trade(ActionEvent event) {
         if (isStepActual) {
-            Dialog dialog = new Dialog<>();
-            dialog.initOwner(root.getScene().getWindow());
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/tradeOffer.fxml"));
-            dialog.setTitle("Trade");
-            dialog.getDialogPane().setContent(fxmlLoader.load());
-            ControllerTradeOffer tradeController = fxmlLoader.getController();
-            // TODO actual player needs to be passed here afterwards.
-            tradeController.setActualPlayerAndLabels(getPlayers().get(0));
-            tradeController.setAllPlayers(getPlayers());
-            dialog.showAndWait();
+            try {
+                Dialog dialog = new Dialog<>();
+                dialog.initOwner(root.getScene().getWindow());
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/tradeOffer.fxml"));
+                dialog.setTitle("Trade");
+                dialog.getDialogPane().setContent(fxmlLoader.load());
+                ControllerTradeOffer tradeController = fxmlLoader.getController();
+                // TODO actual player needs to be passed here afterwards.
+                tradeController.setActualPlayerAndLabels(getPlayers().get(0));
+                tradeController.setAllPlayers(getPlayers());
+                dialog.showAndWait();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @FXML
     void playDevelopmentCard(ActionEvent event) {
         if (isStepActual) {
-            // TODO playDevelopmentCard will be implemented
+            DevelopmentCard developmentCard = chest.getDevelopmentCard();
+            performDevelopmentCardFeatures(developmentCard);
         }
+    }
+
+    private void performDevelopmentCardFeatures(DevelopmentCard developmentCard) {
+        if (developmentCard == null) {
+            System.out.println("No development cards are available in chest anymore.");
+            return;
+        }
+
+        System.out.println("===========================================");
+        System.out.println(developmentCard.getName());
+        System.out.println(currentPlayer.getName());
+        System.out.println("===========================================");
+
+
+        if (developmentCard.getName().equals( Constants.DEVELOPMENT_CARD_INVENTION )) {
+            if (currentPlayer == playerActual) {
+                try {
+                    Dialog dialog = new Dialog<>();
+                    dialog.initOwner(root.getScene().getWindow());
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/inventionDevCard.fxml"));
+                    dialog.setTitle("Invention Development Card");
+                    dialog.getDialogPane().setContent(fxmlLoader.load());
+                    ControllerDevInvention inventionController = fxmlLoader.getController();
+                    inventionController.setProperties(currentPlayer, developmentCard);
+                    dialog.showAndWait();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                HashMap<String, Integer> desiredResources = ((PlayerAI)currentPlayer).getInventionResourceCardSelection();
+                developmentCard.performInventionCardFeatures(currentPlayer, desiredResources);
+            }
+        }
+        else if (developmentCard.getName().equals( Constants.DEVELOPMENT_CARD_KNIGHT )) {
+            developmentCard.performKnightCardFeatures(currentPlayer);
+        }
+        else if (developmentCard.getName().equals( Constants.DEVELOPMENT_CARD_MONOPOL )) {
+            if (currentPlayer == playerActual) {
+                try {
+                    Dialog dialog = new Dialog<>();
+                    dialog.initOwner(root.getScene().getWindow());
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/monopolDevCard.fxml"));
+                    dialog.setTitle("Monopol Development Card");
+                    dialog.getDialogPane().setContent(fxmlLoader.load());
+                    ControllerDevMonopol monopolController = fxmlLoader.getController();
+                    monopolController.setProperties(currentPlayer, developmentCard, getPlayers());
+                    dialog.showAndWait();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                String resourceName = ((PlayerAI)currentPlayer).getMonopolResourceCardDecision();
+                developmentCard.performMonopolyCardFeatures(resourceName, getPlayers(), currentPlayer);
+            }
+        }
+
+        else if (developmentCard.getName().equals(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE)) {
+            if (currentPlayer == playerActual) {
+                outputNotPossible("ProfitExchange");
+                isProfitExchangePhase = true;
+            } else {
+                ((PlayerAI)currentPlayer).decideForHexesToExchangeProfit(terrainHexes, this);
+            }
+        }
+
+        else if (developmentCard.getName().equals( Constants.DEVELOPMENT_CARD_VICTORY_POINT )) {
+            developmentCard.performVictoryCardFeatures(currentPlayer);
+        }
+
+        else if (developmentCard.getName().equals( Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION )) {
+            isRoadDestructionPhase = true;
+            if (currentPlayer == playerActual) {
+                outputNotPossible("RoadDestruction");
+            } else {
+                ((PlayerAI) currentPlayer).decideForDestroyingRoad(getPlayers(), this);
+            }
+        }
+
+    }
+
+    @FXML
+    public void destroyRoad(MouseEvent mouseEvent) {
+        if (isRoadDestructionPhase) {
+            Line line = (Line)mouseEvent.getSource();
+            Road road = getCorrespondingRoad(line);
+            destroyRoad(road);
+        }
+    }
+
+    public void destroyRoad(Road road) {
+        if (isRoadDestructionPhase && road != null) {
+            Player player = getOwnerOfRoad(road);
+            if (player != null && player != currentPlayer) {
+                Color color = Color.BLACK;
+                road.getRoad().setStroke(color);
+                road.getRoad().setVisible(false);
+                player.getRoads().remove(road);
+                isRoadDestructionPhase = false;
+            }
+        }
+    }
+
+    private Player getOwnerOfRoad(Road road) {
+        for (Player player: getPlayers()) {
+            for (Road r: player.getRoads()) {
+                if (r == road) {
+                    return player;
+                }
+            }
+        }
+        return null;
+    }
+
+    private Road getCorrespondingRoad(Line line) {
+        for (Road road: getRoads()) {
+            if (road.getRoad() == line) {
+                return road;
+            }
+        }
+        return null;
+    }
+
+    private TerrainHex profitTerrainHex1 = null;
+    private TerrainHex profitTerrainHex2 = null;
+
+    @FXML
+    public void exchangeTurnProfit(MouseEvent mouseEvent) {
+        Circle circle = (Circle) mouseEvent.getSource();
+        exchangeTurnProfit(circle);
+    }
+
+    @Override
+    public void exchangeTurnProfit(Circle circle) {
+        if (isProfitExchangePhase) {
+            TerrainHex hex = getCorrespondingHex(circle);
+
+            if (profitTerrainHex1 == null) {
+                profitTerrainHex1 = hex;
+                circle.setFill(Color.ORANGE);
+            }
+            else if (profitTerrainHex2 == null) {
+                profitTerrainHex2 = hex;
+                circle.setFill(Color.ORANGE);
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Platform.runLater(() -> {
+                        String number1 = profitTerrainHex1.getLabelOnHex().getText();
+                        String number2 = profitTerrainHex2.getLabelOnHex().getText();
+                        profitTerrainHex1.getLabelOnHex().setText(number2);
+                        profitTerrainHex2.getLabelOnHex().setText(number1);
+                        refreshProfitExchangeHexes();
+                    });
+                }).start();
+            }
+        }
+    }
+
+    public TerrainHex getCorrespondingHex(Circle circle) {
+        for (TerrainHex hex: terrainHexes) {
+            if (hex.getCircleNumberOnHex() == circle) {
+                return hex;
+            }
+        }
+        return null;
+    }
+
+    public void refreshProfitExchangeHexes() {
+        isProfitExchangePhase = false;
+        if (profitTerrainHex1 != null) {
+            profitTerrainHex1.getCircleNumberOnHex().setFill(Color.WHITE);
+        }
+        if (profitTerrainHex2 != null) {
+            profitTerrainHex2.getCircleNumberOnHex().setFill(Color.WHITE);
+        }
+        profitTerrainHex1 = null;
+        profitTerrainHex2 = null;
     }
 
     @FXML
@@ -169,6 +361,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 break;
             case "Thief":
                 warning.setText("You must move the thief");
+                warning.setOpacity(1);
+                break;
+            case "ProfitExchange":
+                warning.setText("Please exchange the profits of terrain hexes by selecting them.");
+                warning.setOpacity(1);
+                break;
+            case "RoadDestruction":
+                warning.setText("Please destroy a road.");
                 warning.setOpacity(1);
                 break;
             default:
@@ -328,7 +528,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ ACTUAL STEP METHODS ---------------- //
 
-    private void actualTurn() throws IOException {
+    private void actualTurn() {
+        refreshProfitExchangeHexes();
+        isRoadDestructionPhase = false;
         playerTurn = playerTurn % 4;
         currentPlayer = getPlayers().get(playerTurn);
 
@@ -481,7 +683,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     private void playAIActualTurn() {
         ((PlayerAI) currentPlayer).decideToMakeTrade(this);
-        ((PlayerAI) currentPlayer).getAIDecisionForConstruction(this);
+        ((PlayerAI) currentPlayer).decideToMakeConstruction(this);
+        boolean decision = ((PlayerAI) currentPlayer).decideToPlayDevelopmentCard();
+        if (decision) {
+            playDevelopmentCard(null);
+        }
+
     }
 
     @Override
@@ -816,6 +1023,4 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         refreshRoadSelectionVertices();
         constructionUnselect = false;
     }
-
-
 }

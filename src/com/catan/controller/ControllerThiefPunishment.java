@@ -1,7 +1,6 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
-import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.Player;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
@@ -15,8 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.xml.transform.Source;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
