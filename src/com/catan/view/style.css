@@ -217,6 +217,11 @@ trade-pane-bg {
     -fx-background-size: cover;
 }
 
+#development-card-pane {
+    -fx-background-image: url("../assets/invention_ng.jpg");
+    -fx-background-size: cover;
+}
+
 .invention-label {
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";

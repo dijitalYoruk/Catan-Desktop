@@ -37,12 +37,7 @@ public class ControllerDevMonopol {
 
     @FXML
     public void initialize() {
-        imageViews = new ArrayList<>(Arrays.asList(
-                imgOre,
-                imgBrick,
-                imgLumber,
-                imgGrain,
-                imgWool));
+        imageViews = new ArrayList<>(Arrays.asList(imgOre, imgBrick, imgLumber, imgGrain, imgWool));
     }
 
     // methods

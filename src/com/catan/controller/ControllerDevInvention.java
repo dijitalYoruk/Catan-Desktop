@@ -63,24 +63,18 @@ public class ControllerDevInvention {
     @FXML
     public void initialize() {
         incrementShapes = new ArrayList<>(Arrays.asList(
-                incrementOre,
-                incrementBrick,
-                incrementLumber,
-                incrementGrain,
+                incrementOre, incrementBrick,
+                incrementLumber, incrementGrain,
                 incrementWool));
 
         decrementShapes = new ArrayList<>(Arrays.asList(
-                decrementOre,
-                decrementBrick,
-                decrementLumber,
-                decrementGrain,
+                decrementOre, decrementBrick,
+                decrementLumber, decrementGrain,
                 decrementWool));
 
         labels = new ArrayList<>(Arrays.asList(
-                labelOre,
-                labelBrick,
-                labelLumber,
-                labelGrain,
+                labelOre, labelBrick,
+                labelLumber, labelGrain,
                 labelWool));
 
         desiredResources = new HashMap<>();

@@ -3,18 +3,15 @@ package com.catan.controller;
 import com.catan.Util.Constants;
 import com.catan.modal.Player;
 import com.catan.modal.Trade;
-import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,15 +80,16 @@ public class ControllerTradeOffer {
     private HashMap<String, Integer> offeredResources;
     private HashMap<String, Integer> requestedResources;
     private HashMap<String, Integer> actualPlayerResources;
-    private ArrayList<Player> allPlayers;
     private boolean isTradeWithChest = false;
+    private ArrayList<Player> allPlayers;
+    private ArrayList<Label> labelsRequests;
+    private ArrayList<Label> labelsOffer;
+    private ArrayList<Label> labelsActualPlayer;
+    private ArrayList<ImageView> imgOffers;
+    private ArrayList<ImageView> imgRequests;
     private Player actualPlayer;
     private Player playerToBeTraded;
 
-    private ArrayList<String> resourceNames = new ArrayList<>(
-            Arrays.asList(Constants.CARD_ORE, Constants.CARD_BRICK, Constants.CARD_LUMBER,
-                    Constants.CARD_GRAIN, Constants.CARD_WOOL)
-    );
 
     @FXML
     public void initialize() {
@@ -99,7 +97,32 @@ public class ControllerTradeOffer {
         actualPlayerResources = new HashMap<>();
         offeredResources = new HashMap<>();
 
-        for (String resourceName: resourceNames) {
+        labelsRequests = new ArrayList<>(Arrays.asList(
+                labelRequestedOre, labelRequestedBrick,
+                labelRequestedLumber, labelRequestedGrain,
+                labelRequestedWool));
+
+        labelsOffer = new ArrayList<>(Arrays.asList(
+                labelOfferedOre, labelOfferedBrick,
+                labelOfferedLumber, labelOfferedGrain,
+                labelOfferedWool));
+
+        labelsActualPlayer = new ArrayList<>(Arrays.asList(
+                labelActualPlayerOre, labelActualPlayerBrick,
+                labelActualPlayerLumber, labelActualPlayerGrain,
+                labelActualPlayerWool));
+
+        imgOffers = new ArrayList<>(Arrays.asList(
+                imgOfferOre, imgOfferBrick,
+                imgOfferLumber, imgOfferGrain,
+                imgOfferWool));
+
+        imgRequests = new ArrayList<>(Arrays.asList(
+                imgRequestOre, imgRequestBrick,
+                imgRequestLumber, imgRequestGrain,
+                imgRequestWool));
+
+        for (String resourceName: Constants.resourceNames) {
             offeredResources.put(resourceName, 0);
             requestedResources.put(resourceName, 0);
         }
@@ -109,34 +132,23 @@ public class ControllerTradeOffer {
 
     @FXML
     void clearTrade(ActionEvent event) {
-        for (String resourceName: resourceNames) {
+        for (String resourceName: Constants.resourceNames) {
             offeredResources.put(resourceName, 0);
             requestedResources.put(resourceName, 0);
         }
-        labelOfferedBrick.setText("x0");
-        labelOfferedGrain.setText("x0");
-        labelOfferedOre.setText("x0");
-        labelOfferedWool.setText("x0");
-        labelOfferedLumber.setText("x0");
-        labelRequestedBrick.setText("x0");
-        labelRequestedGrain.setText("x0");
-        labelRequestedOre.setText("x0");
-        labelRequestedWool.setText("x0");
-        labelRequestedLumber.setText("x0");
+        for (Label label: labelsRequests) { label.setText("x0"); }
+        for (Label label: labelsOffer)    { label.setText("x0"); }
         setActualPlayerAndLabels(actualPlayer);
     }
 
     public void setActualPlayerAndLabels(Player actualPlayer) {
         this.actualPlayer = actualPlayer;
-        for (String resourceName: resourceNames) {
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
             int resourceCount = actualPlayer.getSourceCards().get(resourceName).size();
             actualPlayerResources.put(resourceName, resourceCount);
+            labelsActualPlayer.get(i).setText("x" + actualPlayerResources.get(resourceName));
         }
-        labelActualPlayerLumber.setText("x" + actualPlayerResources.get(Constants.CARD_LUMBER));
-        labelActualPlayerBrick.setText("x" + actualPlayerResources.get(Constants.CARD_BRICK));
-        labelActualPlayerGrain.setText("x" + actualPlayerResources.get(Constants.CARD_GRAIN));
-        labelActualPlayerOre.setText("x" + actualPlayerResources.get(Constants.CARD_ORE));
-        labelActualPlayerWool.setText("x" + actualPlayerResources.get(Constants.CARD_WOOL));
     }
 
     @FXML
@@ -205,92 +217,38 @@ public class ControllerTradeOffer {
     @FXML
     public void offerResource(MouseEvent mouseEvent) {
         if (isTradeWithChest) {
-            labelOfferedBrick.setText("x0");
-            labelOfferedGrain.setText("x0");
-            labelOfferedOre.setText("x0");
-            labelOfferedWool.setText("x0");
-            labelOfferedLumber.setText("x0");
             setActualPlayerAndLabels(actualPlayer);
-            for (String resourceName: resourceNames) {
+
+            for (int i = 0; i < Constants.resourceNames.size(); i++) {
+                String resourceName = Constants.resourceNames.get(i);
+                labelsOffer.get(i).setText("x0");
                 offeredResources.put(resourceName, 0);
             }
 
-            if (mouseEvent.getSource() == imgOfferBrick && actualPlayerResources.get(Constants.CARD_BRICK) >= 4){
-                labelOfferedBrick.setText("x4");
-                offeredResources.put(Constants.CARD_BRICK, 4);
-                int playerBrickCount = actualPlayerResources.get(Constants.CARD_BRICK) - 4;
-                actualPlayerResources.put(Constants.CARD_BRICK, playerBrickCount);
-                labelActualPlayerBrick.setText("x" + playerBrickCount);
+            for (int i = 0; i < Constants.resourceNames.size(); i++) {
+                String resourceName = Constants.resourceNames.get(i);
+                if (mouseEvent.getSource() == imgOffers.get(i) && actualPlayerResources.get(resourceName) >= 4){
+                    labelsOffer.get(i).setText("x4");
+                    offeredResources.put(resourceName, 4);
+                    int playerResourceCount = actualPlayerResources.get(resourceName) - 4;
+                    actualPlayerResources.put(resourceName, playerResourceCount);
+                    labelsActualPlayer.get(i).setText("x" + playerResourceCount);
+                    break;
+                }
             }
-            else if (mouseEvent.getSource() == imgOfferOre && actualPlayerResources.get(Constants.CARD_ORE) >= 4){
-                labelOfferedOre.setText("x4");
-                offeredResources.put(Constants.CARD_ORE, 4);
-                int playerOreCount = actualPlayerResources.get(Constants.CARD_ORE) - 4;
-                actualPlayerResources.put(Constants.CARD_ORE, playerOreCount);
-                labelActualPlayerOre.setText("x" + playerOreCount);
-            }
-            else if (mouseEvent.getSource() == imgOfferGrain && actualPlayerResources.get(Constants.CARD_GRAIN) >= 4){
-                labelOfferedGrain.setText("x4");
-                offeredResources.put(Constants.CARD_GRAIN, 4);
-                int playerGrainCount = actualPlayerResources.get(Constants.CARD_GRAIN) - 4;
-                actualPlayerResources.put(Constants.CARD_GRAIN, playerGrainCount);
-                labelActualPlayerGrain.setText("x" + playerGrainCount);
-            }
-            else if (mouseEvent.getSource() == imgOfferLumber && actualPlayerResources.get(Constants.CARD_LUMBER) >= 4){
-                labelOfferedLumber.setText("x4");
-                offeredResources.put(Constants.CARD_LUMBER, 4);
-                int playerLumberCount = actualPlayerResources.get(Constants.CARD_LUMBER) - 4;
-                actualPlayerResources.put(Constants.CARD_LUMBER, playerLumberCount);
-                labelActualPlayerLumber.setText("x" + playerLumberCount);
-            }
-            else if (mouseEvent.getSource() == imgOfferWool && actualPlayerResources.get(Constants.CARD_WOOL) >= 4){
-                labelOfferedWool.setText("x4");
-                offeredResources.put(Constants.CARD_WOOL, 4);
-                int playerWoolCount = actualPlayerResources.get(Constants.CARD_WOOL) - 4;
-                actualPlayerResources.put(Constants.CARD_WOOL, playerWoolCount);
-                labelActualPlayerWool.setText("x" + playerWoolCount);
-            }
-
-        } else {
-            if (mouseEvent.getSource() == imgOfferBrick && actualPlayerResources.get(Constants.CARD_BRICK) > 0){
-                int offeredBrickCount = offeredResources.get(Constants.CARD_BRICK) + 1;
-                offeredResources.put(Constants.CARD_BRICK, offeredBrickCount);
-                int playerBrickCount = actualPlayerResources.get(Constants.CARD_BRICK) - 1;
-                actualPlayerResources.put(Constants.CARD_BRICK, playerBrickCount);
-                labelOfferedBrick.setText("x" + offeredBrickCount);
-                labelActualPlayerBrick.setText("x" + playerBrickCount);
-            }
-            else if (mouseEvent.getSource() == imgOfferOre && actualPlayerResources.get(Constants.CARD_ORE) > 0){
-                int offeredOreCount = offeredResources.get(Constants.CARD_ORE) + 1;
-                offeredResources.put(Constants.CARD_ORE, offeredOreCount);
-                int playerOreCount = actualPlayerResources.get(Constants.CARD_ORE) - 1;
-                actualPlayerResources.put(Constants.CARD_ORE, playerOreCount);
-                labelOfferedOre.setText("x" + offeredOreCount);
-                labelActualPlayerOre.setText("x" + playerOreCount);
-            }
-            else if (mouseEvent.getSource() == imgOfferGrain && actualPlayerResources.get(Constants.CARD_GRAIN) > 0){
-                int offeredGrainCount = offeredResources.get(Constants.CARD_GRAIN) + 1;
-                offeredResources.put(Constants.CARD_GRAIN, offeredGrainCount);
-                int playerGrainCount = actualPlayerResources.get(Constants.CARD_GRAIN) - 1;
-                actualPlayerResources.put(Constants.CARD_GRAIN, playerGrainCount);
-                labelOfferedGrain.setText("x" + offeredGrainCount);
-                labelActualPlayerGrain.setText("x" + playerGrainCount);
-            }
-            else if (mouseEvent.getSource() == imgOfferLumber && actualPlayerResources.get(Constants.CARD_LUMBER) > 0){
-                int offeredLumberCount = offeredResources.get(Constants.CARD_LUMBER) + 1;
-                offeredResources.put(Constants.CARD_LUMBER, offeredLumberCount);
-                int playerLumberCount = actualPlayerResources.get(Constants.CARD_LUMBER) - 1;
-                actualPlayerResources.put(Constants.CARD_LUMBER, playerLumberCount);
-                labelOfferedLumber.setText("x" + offeredLumberCount);
-                labelActualPlayerLumber.setText("x" + playerLumberCount);
-            }
-            else if (mouseEvent.getSource() == imgOfferWool && actualPlayerResources.get(Constants.CARD_WOOL) > 0){
-                int offeredWoolCount = offeredResources.get(Constants.CARD_WOOL) + 1;
-                offeredResources.put(Constants.CARD_WOOL, offeredWoolCount);
-                int playerWoolCount = actualPlayerResources.get(Constants.CARD_WOOL) - 1;
-                actualPlayerResources.put(Constants.CARD_WOOL, playerWoolCount);
-                labelOfferedWool.setText("x" + offeredWoolCount);
-                labelActualPlayerWool.setText("x" + playerWoolCount);
+        }
+        else {
+            for (int i = 0; i < Constants.resourceNames.size(); i++) {
+                String resourceName = Constants.resourceNames.get(i);
+                if (mouseEvent.getSource() == imgOffers.get(i) && actualPlayerResources.get(resourceName) > 0){
+                    int offeredResourceCount = offeredResources.get(resourceName) + 1;
+                    offeredResources.put(resourceName, offeredResourceCount);
+                    int playerResourceCount = actualPlayerResources.get(resourceName) - 1;
+                    actualPlayerResources.put(resourceName, playerResourceCount);
+                    labelsOffer.get(i).setText("x" + offeredResourceCount);
+                    labelsActualPlayer.get(i).setText("x" + playerResourceCount);
+                    break;
+                }
             }
         }
     }
@@ -298,40 +256,20 @@ public class ControllerTradeOffer {
     @FXML
     public void requestResource(MouseEvent mouseEvent) {
         if (isTradeWithChest) {
-            labelRequestedBrick.setText("x0");
-            labelRequestedGrain.setText("x0");
-            labelRequestedOre.setText("x0");
-            labelRequestedWool.setText("x0");
-            labelRequestedLumber.setText("x0");
-            for (String resourceName: resourceNames) {
+            for (int i = 0; i < Constants.resourceNames.size(); i++) {
+                String resourceName = Constants.resourceNames.get(i);
+                labelsRequests.get(i).setText("x0");
                 requestedResources.put(resourceName, 0);
             }
         }
-
-        if (mouseEvent.getSource() == imgRequestBrick){
-            int requestedBrickCount = requestedResources.get(Constants.CARD_BRICK) + 1;
-            requestedResources.put(Constants.CARD_BRICK, requestedBrickCount);
-            labelRequestedBrick.setText("x" + requestedBrickCount);
-        }
-        else if (mouseEvent.getSource() == imgRequestOre){
-            int requestedOreCount = requestedResources.get(Constants.CARD_ORE) + 1;
-            requestedResources.put(Constants.CARD_ORE, requestedOreCount);
-            labelRequestedOre.setText("x" + requestedOreCount);
-        }
-        else if (mouseEvent.getSource() == imgRequestGrain){
-            int requestedGrainCount = requestedResources.get(Constants.CARD_GRAIN) + 1;
-            requestedResources.put(Constants.CARD_GRAIN, requestedGrainCount);
-            labelRequestedGrain.setText("x" + requestedGrainCount);
-        }
-        else if (mouseEvent.getSource() == imgRequestLumber){
-            int requestedLumberCount = requestedResources.get(Constants.CARD_LUMBER) + 1;
-            requestedResources.put(Constants.CARD_LUMBER, requestedLumberCount);
-            labelRequestedLumber.setText("x" + requestedLumberCount);
-        }
-        else if (mouseEvent.getSource() == imgRequestWool){
-            int requestedWoolCount = requestedResources.get(Constants.CARD_WOOL) + 1;
-            requestedResources.put(Constants.CARD_WOOL, requestedWoolCount);
-            labelRequestedWool.setText("x" + requestedWoolCount);
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
+            if (mouseEvent.getSource() == imgRequests.get(i)){
+                int requestedResourceCount = requestedResources.get(resourceName) + 1;
+                requestedResources.put(resourceName, requestedResourceCount);
+                labelsRequests.get(i).setText("x" + requestedResourceCount);
+                break;
+            }
         }
     }
 

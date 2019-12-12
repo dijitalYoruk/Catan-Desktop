@@ -77,15 +77,16 @@ public class AI {
         }
 
         for (String resourceName: Constants.resourceNames) {
-            if (resourceCards.get(resourceName).size() < 1 && Math.random() < 0.7 && totalReqCount < 4 && opponentsCards.get(resourceName).size() > 0) {
+            if (resourceCards.get(resourceName).size() < 1 && Math.random() < 0.7 && opponentsCards.get(resourceName).size() > 0) {
                 int count = Math.random() < 0.3 && opponentsCards.get(resourceName).size() > 1 ? 2 : 1;
                 requestedResourceCards.put(resourceName, count);
                 totalReqCount += count;
+                break;
             }
         }
         for (String resourceName: Constants.resourceNames) {
             int requested = requestedResourceCards.get(resourceName);
-            if (resourceCards.get(resourceName).size() <= 2 && Math.random() < 0.5 && requested == 0 && totalReqCount < 4 && opponentsCards.get(resourceName).size() > 0) {
+            if (resourceCards.get(resourceName).size() <= 2 && Math.random() < 0.5 && requested == 0 && totalReqCount < 3 && opponentsCards.get(resourceName).size() > 0) {
                 requestedResourceCards.put(resourceName, requested + 1);
                 totalReqCount++;
             }

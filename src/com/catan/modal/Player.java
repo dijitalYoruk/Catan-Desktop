@@ -3,20 +3,17 @@ package com.catan.modal;
 import com.catan.Util.Constants;
 import javafx.scene.paint.Color;
 
-import javax.xml.transform.Source;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 public class Player {
 
     // properties
-    protected HashMap<String, ArrayList<SourceCard>> sourceCards;
-    protected ArrayList<Settlement> settlements;
-    protected ArrayList<Road> roads;
+    private HashMap<String, ArrayList<SourceCard>> sourceCards;
+    private HashMap<String, Integer> developmentCards;
+    private ArrayList<Settlement> settlements;
+    private ArrayList<Road> roads;
     private String color;
     private String name;
     private int knightCount;
@@ -24,6 +21,7 @@ public class Player {
 
     // constructor
     public Player(String color, String name) {
+        developmentCards = new HashMap<>();
         settlements = new ArrayList<>();
         sourceCards = new HashMap<>();
         roads = new ArrayList<>();
@@ -33,6 +31,9 @@ public class Player {
         this.name = name;
         for (String resourceName: Constants.resourceNames) {
             sourceCards.put(resourceName,  new ArrayList<>());
+        }
+        for (String devCardName: Constants.developmentCardNames) {
+            developmentCards.put(devCardName, 0);
         }
     }
 
@@ -59,6 +60,22 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public void incrementKnightCount() {
+        knightCount++;
+    }
+
+    public int getKnightCount() {
+        return knightCount;
+    }
+
+    public void incrementVictoryPoints() {
+        victoryPoints++;
+    }
+
+    public int getVictoryPoints() {
+        return victoryPoints;
     }
 
     public String getSettlementImagePath(String construction) {
@@ -101,11 +118,12 @@ public class Player {
     }
 
     public void showSourceCards() {
-        System.out.println(">>>>>>>" + name + "<<<<<<<" + "  " + getColor());
-        Set<String> keys = sourceCards.keySet();
-        for (String key: keys) {
-            System.out.println(key + ": " + sourceCards.get(key).size());
+        System.out.print("| ");
+        for (String resourceName: Constants.resourceNames) {
+            int count = getSourceCards().get(resourceName).size();
+            System.out.print(resourceName + " --> " + count + " | ");
         }
+        System.out.println(" => " + name);
     }
 
     public void getTurnProfit(int dieNumber, TerrainHex terrainHex) {
@@ -142,8 +160,16 @@ public class Player {
         return totalCount;
     }
 
-    public boolean hasEnoughResources(String selectedConstruction) {
-        Map<String, Integer> price = getPrice(selectedConstruction);;
+    public int getTotalDevelopmentCards(){
+        int totalCount = 0;
+        for (String name: Constants.developmentCardNames) {
+            totalCount += developmentCards.get(name);
+        }
+        return totalCount;
+    }
+
+    public boolean hasEnoughResources(String selectedItem) {
+        Map<String, Integer> price = getPrice(selectedItem);;
         for (String resourceName: Constants.resourceNames) {
             if (sourceCards.get(resourceName).size() < price.get(resourceName)) { return false; }
         }
@@ -176,20 +202,18 @@ public class Player {
         }
     }
 
-    public void incrementKnightCount() {
-        knightCount++;
+    public void removeDevelopmentCard(String cardType) {
+        int count = developmentCards.get(cardType);
+        developmentCards.put(cardType, count - 1);
     }
 
-    public int getKnightCount() {
-        return knightCount;
+    public HashMap<String, Integer> getDevelopmentCards() {
+        return developmentCards;
     }
 
-    public void incrementVictoryPoints() {
-        victoryPoints++;
-    }
-
-    public int getVictoryPoints() {
-        return victoryPoints;
+    private void addDevelopmentCard(String developmentType) {
+        int count = developmentCards.get(developmentType);
+        developmentCards.put(developmentType, count + 1);
     }
 
     @Override
@@ -197,4 +221,14 @@ public class Player {
         return "Player{" + name + ", color='" + color + '\'' + '}';
     }
 
+    public void buyDevelopmentCard(Chest chest) {
+        boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
+        if (hasEnoughResources) {
+            DevelopmentCard card = chest.getDevelopmentCard();
+            addDevelopmentCard(card.getName());
+            System.out.println("==============================================================================================");
+            System.out.println(getName() + " bought " + card.getName());
+            System.out.println("==============================================================================================");
+        }
+    }
 }

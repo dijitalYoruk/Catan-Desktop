@@ -2,10 +2,7 @@ package com.catan.modal;
 
 import com.catan.Util.Constants;
 import com.catan.controller.ControllerGame;
-import com.catan.interfaces.InterfaceDestroyRoad;
-import com.catan.interfaces.InterfaceExchangeTurnProfit;
-import com.catan.interfaces.InterfaceMakeConstruction;
-import com.catan.interfaces.InterfaceMakeTrade;
+import com.catan.interfaces.*;
 import javafx.scene.shape.Circle;
 
 import java.util.*;
@@ -48,7 +45,7 @@ public class PlayerAI extends Player {
             int another = (i == 1) ? 5 : (i-1);
             punishHelper(another);
         } else {
-            sourceCards.get(res).remove(0);
+            getSourceCards().get(res).remove(0);
         }
     }
 
@@ -118,8 +115,24 @@ public class PlayerAI extends Player {
         return desiredResources;
     }
 
-    public boolean decideToPlayDevelopmentCard() {
-        return Math.random() < 1;
+    public void decideToPlayDevelopmentCard(InterfaceDevelopmentCard interfaceDevelopmentCard) {
+        if (getTotalDevelopmentCards() > 0) {
+            boolean decision = Math.random() < 0.9;
+            if (decision) {
+                Set<String> keySet = getDevelopmentCards().keySet();
+                ArrayList<String> keys = new ArrayList<>(keySet);
+
+                for (int i = 0; i < keys.size(); i++) {
+                    if (getDevelopmentCards().get(keys.get(i)) == 0) { keys.remove(i--); }
+                }
+
+                int randomIndex = (int)(Math.random() * keys.size());
+                String key = keys.get(randomIndex);
+                removeDevelopmentCard(key);
+                DevelopmentCard developmentCard = new DevelopmentCard(key);
+                interfaceDevelopmentCard.playDevelopmentCard(developmentCard);
+            }
+        }
     }
 
     public String getMonopolResourceCardDecision() {
@@ -131,7 +144,6 @@ public class PlayerAI extends Player {
                 minKey1 = resourceName;
             }
         }
-
         return minKey1;
     }
 
@@ -149,7 +161,6 @@ public class PlayerAI extends Player {
                 }
             }
         }
-
         for (TerrainHex hex: terrainHexes) {
             if (!playerHexes.contains(hex) && (
                 hex.getNumberOnHex() == 5 ||
@@ -164,8 +175,8 @@ public class PlayerAI extends Player {
         int randomIndex2 = (int) (Math.random() * filteredHexes.size());
         Circle circle1 = playerHexes.get(randomIndex1).getCircleNumberOnHex();
         Circle circle2 = filteredHexes.get(randomIndex2).getCircleNumberOnHex();
-        exchangeTurnProfit.exchangeTurnProfit(circle1);
-        exchangeTurnProfit.exchangeTurnProfit(circle2);
+        exchangeTurnProfit.exchangeTurnProfit(circle1, this);
+        exchangeTurnProfit.exchangeTurnProfit(circle2, this);
     }
 
     public void decideForDestroyingRoad(ArrayList<Player> players, InterfaceDestroyRoad destroyRoad) {
@@ -177,7 +188,13 @@ public class PlayerAI extends Player {
 
         if (!roadsToBeDestroyed.isEmpty()) {
             int randomIndex = (int) (Math.random() * roadsToBeDestroyed.size());
-            destroyRoad.destroyRoad( roadsToBeDestroyed.get(randomIndex) );
+            destroyRoad.destroyRoad(roadsToBeDestroyed.get(randomIndex), this, players);
         }
+    }
+
+    public void decideToBuyDevelopmentCard(InterfaceDevelopmentCard interfaceDevelopmentCard) {
+        if (!hasEnoughResources(Constants.DEVELOPMENT_CARD)) return;
+        boolean decision = Math.random() < 1;
+        if (decision) { interfaceDevelopmentCard.buyDevelopmentCard(null); }
     }
 }

@@ -13,12 +13,12 @@ public class Chest {
     // constructor
     public Chest() {
         developmentCards = new HashMap<>();
-        developmentCards.put(Constants.DEVELOPMENT_CARD_INVENTION, 2);
-        developmentCards.put(Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION, 10);
-        developmentCards.put(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE, 0);
+        developmentCards.put(Constants.DEVELOPMENT_CARD_INVENTION, 4);
+        developmentCards.put(Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION, 2);
+        developmentCards.put(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE, 3);
         developmentCards.put(Constants.DEVELOPMENT_CARD_VICTORY_POINT, 2);
-        developmentCards.put(Constants.DEVELOPMENT_CARD_MONOPOL, 0);
-        developmentCards.put(Constants.DEVELOPMENT_CARD_KNIGHT, 0);
+        developmentCards.put(Constants.DEVELOPMENT_CARD_MONOPOL, 3);
+        developmentCards.put(Constants.DEVELOPMENT_CARD_KNIGHT, 5);
     }
 
     // methods
