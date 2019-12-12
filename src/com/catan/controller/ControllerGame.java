@@ -1,37 +1,33 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
-import com.catan.interfaces.InterfaceMakeConstruction;
-import com.catan.interfaces.InterfaceMakeTrade;
-import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
+import com.catan.interfaces.*;
 import com.catan.modal.*;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceMakeTrade {
+public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceDevelopmentCard, InterfaceMakeTrade {
 
     // properties
+    private DevelopmentCard developmentCardExchangeProfit;
+    private DevelopmentCard developmentCardDestroyRoad;
+    private DevelopmentCard developmentCardInvention;
     private boolean constructionUnselect = true;
     private String selectedConstruction = "";
     private Vertex roadVertex1 = null;
@@ -41,15 +37,27 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private boolean isConstructionBuild = false;
     private boolean isRoadBuild = false;
     private int initialStepCount = 0;
+    private Settlement tempSettlement;
     private Player currentPlayer;
     private int playerTurn = 0;
+    private Road tempRoad;
+    private Chest chest;
+
+    @Override
+    public void setDevelopmentCardInvention(DevelopmentCard developmentCardInvention) {
+        this.developmentCardInvention = developmentCardInvention;
+    }
 
     @Override
     public void initialize() {
         super.initialize();
+        developmentCardExchangeProfit = null;
+        developmentCardDestroyRoad = null;
+        developmentCardInvention = null;
         selectConstructionInitial(imgRoad);
         currentPlayer = getPlayers().get(0);
         activateAllVertices();
+        chest = new Chest();
     }
 
     @FXML
@@ -97,33 +105,129 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @FXML
-    void trade(ActionEvent event) throws IOException {
+    void trade(ActionEvent event) {
         if (isStepActual) {
+            openDialog(Constants.PATH_VIEW_TRADE_OFFER, "Trade" , null, null);
+        }
+    }
+
+    @FXML
+    public void playDevelopmentCard(ActionEvent event) {
+        if (!isStepActual) return;
+        if (currentPlayer.getTotalDevelopmentCards() > 0) {
+            openDialog(Constants.PATH_VIEW_PLAY_DEVELOPMENT_CARD,
+                    "Play Development Card", null, null);
+        } else {
+            outputNotPossible("No resource");
+        }
+    }
+
+    @Override
+    public void playDevelopmentCard(DevelopmentCard developmentCard) {
+        if (!isStepActual) return;
+
+        if (developmentCard != null) {
+            developmentCard.performDevelopmentCardFeatures(currentPlayer,
+                    getPlayers(), terrainHexes, this);
+            if (currentPlayer == playerActual) {
+                if (developmentCard.getName().equals(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE)) {
+                    developmentCardExchangeProfit = developmentCard;
+                } else if (developmentCard.getName().equals(Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION)) {
+                    developmentCardDestroyRoad = developmentCard;
+                }
+            }
+        }
+    }
+
+    @FXML
+    public void destroyRoad(MouseEvent mouseEvent) {
+        if (developmentCardDestroyRoad == null) return;
+        Line line = (Line)mouseEvent.getSource();
+        Road road = getCorrespondingRoad(line);
+        developmentCardDestroyRoad.destroyRoad(road,
+                currentPlayer, getPlayers());
+    }
+
+    @FXML
+    public void exchangeTurnProfit(MouseEvent mouseEvent) {
+        if (developmentCardExchangeProfit == null) return;
+        Circle circle = (Circle) mouseEvent.getSource();
+        developmentCardExchangeProfit.exchangeTurnProfit(circle, currentPlayer);
+        if (developmentCardExchangeProfit.isDevelopmentCardUsed()) {
+            developmentCardExchangeProfit = null;
+        }
+    }
+
+    @Override
+    public void openDialog(String viewPath, String title, DevelopmentCard developmentCard, Trade trade) {
+        try {
             Dialog dialog = new Dialog<>();
             dialog.initOwner(root.getScene().getWindow());
+            dialog.setTitle(title);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getClassLoader().getResource("com/catan/view/tradeOffer.fxml"));
-            dialog.setTitle("Trade");
+            fxmlLoader.setLocation(getClass().getClassLoader().getResource(viewPath));
             dialog.getDialogPane().setContent(fxmlLoader.load());
-            ControllerTradeOffer tradeController = fxmlLoader.getController();
-            // TODO actual player needs to be passed here afterwards.
-            tradeController.setActualPlayerAndLabels(getPlayers().get(0));
-            tradeController.setAllPlayers(getPlayers());
+
+            // Monopoly development card dialog.
+            if (viewPath.equals(Constants.PATH_VIEW_DEV_MONOPOL_CARD)) {
+                ControllerDevMonopol monopolController = fxmlLoader.getController();
+                monopolController.setProperties(currentPlayer, developmentCard, getPlayers());
+            }
+
+            // Invention development card dialog.
+            else if (viewPath.equals(Constants.PATH_VIEW_DEV_INVENTION_CARD)) {
+                ControllerDevInvention inventionController = fxmlLoader.getController();
+                inventionController.setProperties(currentPlayer, developmentCard);
+            }
+
+            // Trade offer dialog.
+            else if (viewPath.equals(Constants.PATH_VIEW_TRADE_OFFER)) {
+                ControllerTradeOffer tradeController = fxmlLoader.getController();
+                // TODO actual player needs to be passed here afterwards.
+                tradeController.setActualPlayerAndLabels(playerActual);
+                tradeController.setAllPlayers(getPlayers());
+            }
+
+            // Incoming Trade Request dialog.
+            else if (viewPath.equals(Constants.PATH_VIEW_TRADE_REQUEST) && trade.isTradePossible()) {
+                ControllerTradeRequest tradeRequestController = fxmlLoader.getController();
+                tradeRequestController.setProperties(trade);
+            }
+
+            // Thief punishment dialog.
+            else if (viewPath.equals(Constants.PATH_VIEW_PUNISHMENT)) {
+                ControllerThiefPunishment controller = fxmlLoader.getController();
+                controller.setPlayer(playerActual);
+            }
+
+            // Play development card dialog.
+            else if (viewPath.equals(Constants.PATH_VIEW_PLAY_DEVELOPMENT_CARD)) {
+                ControllerPlayDevelopmentCard controller = fxmlLoader.getController();
+                controller.setProperties(currentPlayer, this);
+            }
+
             dialog.showAndWait();
+            if (developmentCardInvention != null) {
+                DevelopmentCard card = developmentCardInvention;
+                developmentCardInvention = null;
+                playDevelopmentCard(card);
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     @FXML
-    void playDevelopmentCard(ActionEvent event) {
+    @Override
+    public void buyDevelopmentCard(ActionEvent event) {
         if (isStepActual) {
-            // TODO playDevelopmentCard will be implemented
-        }
-    }
-
-    @FXML
-    void buyDevelopmentCard(ActionEvent event) {
-        if (isStepActual) {
-            // TODO buyDevelopmentCard will be implemented
+            boolean hasEnoughResources = currentPlayer.hasEnoughResources(Constants.DEVELOPMENT_CARD);
+            if (hasEnoughResources) {
+                currentPlayer.buyDevelopmentCard(chest);
+            } else {
+                outputNotPossible("not enough resources");
+            }
         }
     }
 
@@ -156,7 +260,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    private void outputNotPossible(String warningType) {
+    @Override
+    public void outputNotPossible(String warningType) {
         Label warning = getWarningLabel();
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2.0), warning);
         fadeTransition.setFromValue(1.0);
@@ -171,6 +276,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 warning.setText("You must move the thief");
                 warning.setOpacity(1);
                 break;
+            case "ProfitExchange":
+                warning.setText("Please exchange the profits of terrain hexes by selecting them.");
+                warning.setOpacity(1);
+                break;
+            case "RoadDestruction":
+                warning.setText("Please destroy a road.");
+                warning.setOpacity(1);
+                break;
             default:
                 warning.setText("Not enough resource for this type construction");
                 warning.setOpacity(1);
@@ -179,12 +292,17 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         fadeTransition.play();
     }
 
+    private Road getCorrespondingRoad(Line line) {
+        for (Road road: getRoads()) {
+            if (road.getRoad() == line) { return road; }
+        }
+        return null;
+    }
+
     private boolean isVertexSuitableForConstruction(Vertex vertex) {
         ArrayList<Vertex> neighbors = vertex.getNeighbors();
         for (Vertex v: neighbors) {
-            if (v.hasConstruction()) {
-                return false;
-            }
+            if (v.hasConstruction()) { return false; }
         }
         return true;
     }
@@ -231,50 +349,39 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     private Road getCorrespondingRoad(Vertex vertex1, Vertex vertex2) {
         for (Road road: getRoads()) {
-            if (road.containsRoad(vertex1, vertex2)) {
-                return road;
-            }
+            if (road.containsRoad(vertex1, vertex2)) { return road; }
         }
         return null;
     }
 
     private Vertex getCorrespondingVertex(Circle shape) {
         for (Vertex vertex: getVertices()) {
-            if (vertex.getShape() == shape) {
-                return vertex;
-            }
+            if (vertex.getShape() == shape) { return vertex; }
         }
         return null;
     }
 
-    private Road tempRoad;
-    private Settlement tempSettlement;
-
-
-    public void activateAllVertices() {
+    private void activateAllVertices() {
         for (Vertex vertex: getVertices()) {
-            if (!vertex.hasConstruction())
-                vertex.setActive(true);
+            if (!vertex.hasConstruction()) { vertex.setActive(true); }
         }
     }
 
-    public void deActivateAllVertices() {
+    private void deActivateAllVertices() {
         for (Vertex vertex: getVertices()) {
             vertex.setActive(false);
         }
     }
 
-    public ArrayList<Vertex> getActivatedVertices() {
+    private ArrayList<Vertex> getActivatedVertices() {
         ArrayList<Vertex> activated = new ArrayList<>();
         for(Vertex vertex: getVertices()) {
-            if (vertex.isActive()) {
-                activated.add(vertex);
-            }
+            if (vertex.isActive()) { activated.add(vertex); }
         }
         return activated;
     }
 
-    public void activatePlayerVertices() {
+    private void activatePlayerVertices() {
         deActivateAllVertices();
         ArrayList<Road> roads = currentPlayer.getRoads();
         for (Road road: roads) {
@@ -304,23 +411,21 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    public void  activateNeighbours(Vertex vertex) {
+    private void  activateNeighbours(Vertex vertex) {
         for (Vertex v: vertex.getNeighbors()) {
             Settlement settlement = v.getSettlement();
             if (settlement == null || settlement.getPlayer() == currentPlayer) {
                 Road road = getCorrespondingRoad(vertex, v);
-                if (road != null && !road.getRoad().isVisible()) {
-                    v.setActive(true);
-                }
+                if (road != null && !road.getRoad().isVisible()) { v.setActive(true); }
             }
         }
     }
 
-    public void setSelectedConstruction(String selectedConstruction) {
+    private void setSelectedConstruction(String selectedConstruction) {
         this.selectedConstruction = selectedConstruction;
     }
 
-    public boolean isSelectedSettlement() {
+    private boolean isSelectedSettlement() {
         return selectedConstruction.equals(Constants.VILLAGE)||
                selectedConstruction.equals(Constants.CITY)   ||
                selectedConstruction.equals(Constants.CIVILISATION);
@@ -328,16 +433,16 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ ACTUAL STEP METHODS ---------------- //
 
-    private void actualTurn() throws IOException {
+    private void actualTurn() {
+        developmentCardExchangeProfit = null;
+        developmentCardDestroyRoad = null;
         playerTurn = playerTurn % 4;
-        currentPlayer = getPlayers().get(playerTurn);
-
-        System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor());
-        System.out.println("die result: " + die.getDieSum());
-
+        currentPlayer = getPlayers().get(playerTurn++);
         rollDie();
-        deActivateAllVertices();
-        playerTurn++;
+
+        System.out.println("----------------------------------------------------------------------------------------------");
+        System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor() + " | Die Result: " + die.getDieSum());
+        System.out.println("----------------------------------------------------------------------------------------------");
 
         //  doing thief operations.
         if (die.getDieSum() == 7) {
@@ -363,6 +468,13 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
+    private void playAIActualTurn() {
+        ((PlayerAI) currentPlayer).decideToMakeTrade(this);
+        ((PlayerAI) currentPlayer).decideToMakeConstruction(this);
+        ((PlayerAI) currentPlayer).decideToBuyDevelopmentCard(this);
+        ((PlayerAI) currentPlayer).decideToPlayDevelopmentCard(this);
+    }
+
     @Override
     public void makeTradeForAI(boolean isTradeWithChest) {
         if (isTradeWithChest) { // trade with chest
@@ -379,32 +491,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 // setting trade materials
                 HashMap<String, Integer> requestedRC = ((PlayerAI)currentPlayer).getRequestedResourceCards(playerToBeTraded);
                 HashMap<String, Integer> offeredRC = ((PlayerAI)currentPlayer).getOfferedResourceCards(requestedRC);
+                Trade trade = new Trade(currentPlayer, playerToBeTraded, requestedRC, offeredRC, isTradeWithChest);
 
-                //trade request sent to actual player by playerAI
-                if (playerToBeTraded == playerActual) {
-                    try { //view pop up trade invitation to game scene
-                        Trade trade = new Trade(currentPlayer, playerToBeTraded,
-                                requestedRC, offeredRC, isTradeWithChest);
-
-                        if (trade.isTradePossible()) {
-                            Dialog dialog = new Dialog<>();
-                            dialog.initOwner(root.getScene().getWindow());
-                            FXMLLoader fxmlLoader = new FXMLLoader();
-                            fxmlLoader.setLocation(getClass().getClassLoader()
-                                    .getResource(Constants.PATH_VIEW_TRADE_REQUEST));
-                            dialog.setTitle("Incoming Trade Offer");
-                            dialog.getDialogPane().setContent(fxmlLoader.load());
-                            ControllerTradeRequest tradeRequestController = fxmlLoader.getController();
-                            tradeRequestController.setTradeOfferProperties(trade);
-                            dialog.showAndWait();
-                        }
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else { // trade request sent to AI player by playerAI
-                    new Trade(currentPlayer, playerToBeTraded, requestedRC, offeredRC, isTradeWithChest);
+                // trade request sent to actual player by playerAI
+                if (playerToBeTraded == playerActual && trade.isTradePossible()) {
+                    openDialog(Constants.PATH_VIEW_TRADE_REQUEST, "Incoming Trade Offer", null, trade);
                 }
             }
         }
@@ -412,21 +503,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     private void thiefResourceCardPunishActual() {
         if(playerActual.getTotalCards() > 7){
-            try {
-                Dialog dialog = new Dialog<>();
-                dialog.initOwner(root.getScene().getWindow());
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getClassLoader()
-                        .getResource("com/catan/view/thiefCardPunishment.fxml"));
-                dialog.setTitle("Thief will steal something");
-                dialog.getDialogPane().setContent(fxmlLoader.load());
-                ControllerThiefPunishment controller = fxmlLoader.getController();
-                controller.setPlayer(playerActual);
-                dialog.showAndWait();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
+            openDialog(Constants.PATH_VIEW_PUNISHMENT, "Thief will steal something", null, null);
         }
     }
 
@@ -471,17 +548,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     private void getTurnProfit() {
-        System.out.println("----------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------");
         for (Player player: getPlayers()) {
             player.getTurnProfit(die.getDieSum(), thief.getTerrainHex());
             player.showSourceCards();
         }
-        System.out.println("----------------------------------------------------------------------");
-    }
-
-    private void playAIActualTurn() {
-        ((PlayerAI) currentPlayer).decideToMakeTrade(this);
-        ((PlayerAI) currentPlayer).getAIDecisionForConstruction(this);
+        System.out.println("----------------------------------------------------------------------------------------------");
     }
 
     @Override
@@ -601,7 +673,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    public void selectConstructionActual(Rectangle rectangle) {
+    private void selectConstructionActual(Rectangle rectangle) {
         // setting all of the pane as unselected
         imgRoad.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
         imgCity.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
@@ -721,8 +793,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     private void makeConstructionInitial(Circle circle) {
         if (selectedConstruction.equals(Constants.CITY)   ||
-                selectedConstruction.equals(Constants.VILLAGE)||
-                selectedConstruction.equals(Constants.CIVILISATION)) {
+            selectedConstruction.equals(Constants.VILLAGE)||
+            selectedConstruction.equals(Constants.CIVILISATION)) {
 
             if (isRoadBuild && !isConstructionBuild) {
                 selectConstructionInitial(imgVillage);
@@ -816,6 +888,4 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         refreshRoadSelectionVertices();
         constructionUnselect = false;
     }
-
-
 }

@@ -1,7 +1,6 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
-import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.Player;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
@@ -15,8 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.xml.transform.Source;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -56,12 +53,14 @@ public class ControllerThiefPunishment {
     private HBox horizontalBox4;
 
     // properties
-    private ArrayList<HBox> horizontalBoxes;
-    private Player player;
     private HashMap<String, Integer> resourcesOfPlayer;
     private HashMap<String, Integer> resourcesOfChosen;
+    private ArrayList<ImageView> imgResources;
+    private ArrayList<Label> labelsResources;
+    private ArrayList<HBox> horizontalBoxes;
     private int totalChosenResources;
     private int requiredResources;
+    private Player player;
 
     private ArrayList<String> resourceNames = new ArrayList<>(
             Arrays.asList(Constants.CARD_ORE, Constants.CARD_BRICK, Constants.CARD_LUMBER,
@@ -71,142 +70,71 @@ public class ControllerThiefPunishment {
     // methods
     public void setPlayer(Player player){
         this.player = player;
-        horizontalBoxes = new ArrayList<>();
-        horizontalBoxes.add(horizontalBox1);
-        horizontalBoxes.add(horizontalBox2);
-        horizontalBoxes.add(horizontalBox3);
-        horizontalBoxes.add(horizontalBox4);
+        totalChosenResources = 0;
         resourcesOfChosen = new HashMap<>();
         resourcesOfPlayer = new HashMap<>();
+        requiredResources = player.getTotalCards() / 2;
 
-        for (String resourceName: resourceNames) {
+        horizontalBoxes = new ArrayList<>(Arrays.asList(
+                horizontalBox1, horizontalBox2,
+                horizontalBox3, horizontalBox4
+        ));
+
+        imgResources = new ArrayList<>(Arrays.asList(
+                imgOre, imgBrick, imgLumber, imgGrain, imgWool
+        ));
+
+        labelsResources = new ArrayList<>(Arrays.asList(
+                labelOre, labelBrick, labelLumber,
+                labelGrain, labelWool
+        ));
+
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
             int count =  player.getSourceCards().get(resourceName).size();
             resourcesOfPlayer.put(resourceName, count);
             resourcesOfChosen.put(resourceName, 0);
+            labelsResources.get(i).setText("x " + count);
         }
 
-        totalChosenResources = 0;
-        requiredResources = player.getTotalCards() / 2;
-        labelWool.setText(  "x " + resourcesOfPlayer.get(Constants.CARD_WOOL   ));
-        labelGrain.setText( "x " + resourcesOfPlayer.get(Constants.CARD_GRAIN  ));
-        labelOre.setText(   "x " + resourcesOfPlayer.get(Constants.CARD_ORE    ));
-        labelBrick.setText( "x " + resourcesOfPlayer.get(Constants.CARD_BRICK  ));
-        labelLumber.setText("x " + resourcesOfPlayer.get(Constants.CARD_LUMBER ));
-        labelInformation.setText("You need to choose " + requiredResources + " cards");
+        labelInformation.setText("You need to choose " +
+                requiredResources + " cards");
     }
 
     @FXML
     public void incrementResource(MouseEvent event){
         Object view = event.getSource();
 
-        if (view == imgBrick){
-            int playerBrickCount = resourcesOfPlayer.get(Constants.CARD_BRICK);
-            int chosenBrickCount = resourcesOfChosen.get(Constants.CARD_BRICK);
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
+            if (view == imgResources.get(i)){
+                int playerResourcesCount = resourcesOfPlayer.get(resourceName);
+                int chosenResourcesCount = resourcesOfChosen.get(resourceName);
 
-            if(chosenBrickCount != playerBrickCount && totalChosenResources != requiredResources) {
-                resourcesOfChosen.put(Constants.CARD_BRICK, ++chosenBrickCount);
-                labelBrick.setText("x" + (playerBrickCount - chosenBrickCount));
-                addResouceToView(Constants.CARD_BRICK);
+                if(chosenResourcesCount != playerResourcesCount && totalChosenResources != requiredResources) {
+                    resourcesOfChosen.put(resourceName, ++chosenResourcesCount);
+                    labelsResources.get(i).setText("x" + (playerResourcesCount - chosenResourcesCount));
+                    addResourceToView(resourceName);
+                }
+                break;
             }
         }
-        else if (view == imgOre){
-            int playerOreCount = resourcesOfPlayer.get(Constants.CARD_ORE);
-            int chosenOreCount = resourcesOfChosen.get(Constants.CARD_ORE);
-
-            if(chosenOreCount != playerOreCount && totalChosenResources != requiredResources) {
-                resourcesOfChosen.put(Constants.CARD_ORE, ++chosenOreCount);
-                labelOre.setText("x" + (playerOreCount - chosenOreCount));
-                addResouceToView(Constants.CARD_ORE);
-            }
-        }
-        else if (view == imgGrain){
-            int playerGrainCount = resourcesOfPlayer.get(Constants.CARD_GRAIN);
-            int chosenGrainCount = resourcesOfChosen.get(Constants.CARD_GRAIN);
-
-            if(chosenGrainCount != playerGrainCount && totalChosenResources != requiredResources) {
-                resourcesOfChosen.put(Constants.CARD_GRAIN, ++chosenGrainCount);
-                labelGrain.setText("x" + (playerGrainCount - chosenGrainCount));
-                addResouceToView(Constants.CARD_GRAIN);
-            }
-        }
-        else if (view == imgWool){
-            int playerWoolCount = resourcesOfPlayer.get(Constants.CARD_WOOL);
-            int chosenWoolCount = resourcesOfChosen.get(Constants.CARD_WOOL);
-
-            if(chosenWoolCount != playerWoolCount && totalChosenResources != requiredResources) {
-                resourcesOfChosen.put(Constants.CARD_WOOL, ++chosenWoolCount);
-                labelWool.setText("x" + (playerWoolCount - chosenWoolCount));
-                addResouceToView(Constants.CARD_WOOL);
-            }
-        }
-        else if (view == imgLumber){
-            int playerLumberCount = resourcesOfPlayer.get(Constants.CARD_LUMBER);
-            int chosenLumberCount = resourcesOfChosen.get(Constants.CARD_LUMBER);
-
-            if(chosenLumberCount != playerLumberCount && totalChosenResources != requiredResources) {
-                resourcesOfChosen.put(Constants.CARD_LUMBER, ++chosenLumberCount);
-                labelLumber.setText("x" + (playerLumberCount - chosenLumberCount));
-                addResouceToView(Constants.CARD_LUMBER);
-            }
-        }
-    }
-
-    private void addResouceToView(String resource){
-        ImageView temp = new ImageView();
-        temp.setId(resource);
-        temp.setFitWidth(40);
-        temp.setFitHeight(50);
-        temp.setImage(new Image(".\\com\\catan\\assets\\resource_"+resource+".jpg"));
-        temp.setOnMouseClicked(this::decreaseResource);
-        horizontalBoxes.get(totalChosenResources/4).getChildren().add(temp);
-        totalChosenResources++;
-    }
-
-    private void removeResourceFromView(ImageView resource){
-        ((HBox)resource.getParent()).getChildren().remove(resource);
-        totalChosenResources--;
     }
 
     @FXML
     public void decreaseResource(MouseEvent event){
         ImageView view = (ImageView) event.getSource();
-
-        switch (view.getId()) {
-            case Constants.CARD_BRICK:
-                int playerBrickCount = resourcesOfPlayer.get(Constants.CARD_BRICK);
-                int chosenBrickCount = resourcesOfChosen.get(Constants.CARD_BRICK);
-                resourcesOfChosen.put(Constants.CARD_BRICK, --chosenBrickCount);
-                labelBrick.setText("x" + (playerBrickCount - chosenBrickCount));
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
+            if (view.getId().equals(resourceName)){
+                int playerResourceCount = resourcesOfPlayer.get(resourceName);
+                int chosenResourceCount = resourcesOfChosen.get(resourceName);
+                resourcesOfChosen.put(resourceName, --chosenResourceCount);
+                int difference = playerResourceCount - chosenResourceCount;
+                labelsResources.get(i).setText("x" + difference);
                 removeResourceFromView(view);
                 break;
-            case Constants.CARD_ORE:
-                int playerOreCount = resourcesOfPlayer.get(Constants.CARD_ORE);
-                int chosenOreCount = resourcesOfChosen.get(Constants.CARD_ORE);
-                resourcesOfChosen.put(Constants.CARD_ORE, --chosenOreCount);
-                labelOre.setText("x" + (playerOreCount - chosenOreCount));
-                removeResourceFromView(view);
-                break;
-            case Constants.CARD_GRAIN:
-                int playerGrainCount = resourcesOfPlayer.get(Constants.CARD_GRAIN);
-                int chosenGrainCount = resourcesOfChosen.get(Constants.CARD_GRAIN);
-                resourcesOfChosen.put(Constants.CARD_BRICK, --chosenGrainCount);
-                labelGrain.setText("x" + (playerGrainCount - chosenGrainCount));
-                removeResourceFromView(view);
-                break;
-            case Constants.CARD_WOOL:
-                int playerWoolCount = resourcesOfPlayer.get(Constants.CARD_WOOL);
-                int chosenWoolCount = resourcesOfChosen.get(Constants.CARD_WOOL);
-                resourcesOfChosen.put(Constants.CARD_WOOL, --chosenWoolCount);
-                labelWool.setText("x" + (playerWoolCount - chosenWoolCount));
-                removeResourceFromView(view);
-                break;
-            case Constants.CARD_LUMBER:
-                int playerLumberCount = resourcesOfPlayer.get(Constants.CARD_LUMBER);
-                int chosenLumberCount = resourcesOfChosen.get(Constants.CARD_LUMBER);
-                resourcesOfChosen.put(Constants.CARD_LUMBER, --chosenLumberCount);
-                labelLumber.setText("x" + (playerLumberCount - chosenLumberCount));
-                removeResourceFromView(view);
-                break;
+            }
         }
     }
 
@@ -229,5 +157,21 @@ public class ControllerThiefPunishment {
             fadeTransition.setToValue(0.0);
             fadeTransition.play();
         }
+    }
+
+    private void addResourceToView(String resource){
+        ImageView temp = new ImageView();
+        temp.setId(resource);
+        temp.setFitWidth(40);
+        temp.setFitHeight(50);
+        temp.setImage(new Image(".\\com\\catan\\assets\\resource_"+resource+".jpg"));
+        temp.setOnMouseClicked(this::decreaseResource);
+        horizontalBoxes.get(totalChosenResources/4).getChildren().add(temp);
+        totalChosenResources++;
+    }
+
+    private void removeResourceFromView(ImageView resource){
+        ((HBox)resource.getParent()).getChildren().remove(resource);
+        totalChosenResources--;
     }
 }

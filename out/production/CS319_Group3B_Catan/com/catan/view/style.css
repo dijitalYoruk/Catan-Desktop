@@ -207,3 +207,37 @@ trade-pane-bg {
     -fx-font-size: 20;
 }
 
+#okey-button {
+    -fx-background-image: url("../assets/icon_okey.png");
+    -fx-background-size: 50px;
+}
+
+#invention-pane {
+    -fx-background-image: url("../assets/invention_ng.jpg");
+    -fx-background-size: cover;
+}
+
+#development-card-pane {
+    -fx-background-image: url("../assets/invention_ng.jpg");
+    -fx-background-size: cover;
+}
+
+.invention-label {
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 340;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+    -fx-background-color: #FF5722;
+}
+
+.invention-button {
+    -fx-background-color: #F57C00;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 300;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}

@@ -43,9 +43,7 @@ public class ControllerTradeRequest {
 
     @FXML
     void acceptTradeOffer(ActionEvent actionEvent) {
-        trade.printPlayerDetails();
         trade.completeTrade();
-        trade.printPlayerDetails();
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
     }
@@ -60,9 +58,9 @@ public class ControllerTradeRequest {
         window.close();
     }
 
-    public void setTradeOfferProperties(Trade trade) {
+    public void setProperties(Trade trade) {
         this.trade = trade;
-        //Display invitor's name
+        // Display invitor's name
         labelTitleOfTradeRequest.setText(trade.getPlayerTrader().getName() + " offers you a Trade!");
 
         // Display offered Resource Cards

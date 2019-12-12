@@ -17,7 +17,8 @@ public class Trade {
     private String errorMessage;
 
     // constructor
-    public Trade(Player trader, Player playerToBeTraded, HashMap<String, Integer> reqCards, HashMap<String, Integer> offeredCards, boolean isTradeWithChest) {
+    public Trade(Player trader, Player playerToBeTraded, HashMap<String, Integer> reqCards,
+                 HashMap<String, Integer> offeredCards, boolean isTradeWithChest) {
         this.isTradeWithChest = isTradeWithChest;
         offeredResourceCards = offeredCards;
         requestedResourceCards = reqCards;
@@ -54,6 +55,7 @@ public class Trade {
             HashMap<String, ArrayList<SourceCard>> resourceCards = playerToBeTraded.getSourceCards();
             for (String resourceName: Constants.resourceNames) {
                 if (resourceCards.get(resourceName).size() < requestedResourceCards.get(resourceName)) {
+                    errorMessage = "The player does not have all requested resources.";
                     isTradePossible = false;
                     break;
                 }
@@ -65,29 +67,22 @@ public class Trade {
                 boolean aiDecision = ((PlayerAI) playerToBeTraded).respondToTradeRequest(
                         requestedResourceCards, offeredResourceCards);
 
-                if (aiDecision) {
-                    printPlayerDetails();
-                    completeTrade();
-                    printPlayerDetails();
-                } else {
+                if (aiDecision) { completeTrade(); }
+                else {
                     errorMessage = "The trade request from " + playerTrader.getName() +
                             " was denied by " + playerToBeTraded.getName() + ".";
-                    printTradeDetails();
                 }
             }
-            else if (isTradeWithChest) {
-                printPlayerDetails();
-                completeTrade();
-                printPlayerDetails();
-            }
-        } else {
-            printTradeDetails();
+            else if (isTradeWithChest) { completeTrade(); }
         }
+        else { printTradeDetails(); }
     }
 
     // methods
     public void completeTrade() {
         if (isTradePossible) {
+            System.out.println("==============================================================================================");
+            printPlayerDetails();
             ArrayList<Integer> tradeDifferences = new ArrayList<>();
             // calculating differences
             for (String resourceName: Constants.resourceNames) {
@@ -109,6 +104,8 @@ public class Trade {
                 exchangeResources(tradeDifferences, playerToBeTraded);
             }
             printTradeDetails();
+            printPlayerDetails();
+            System.out.println("==============================================================================================");
         }
     }
 
@@ -124,43 +121,41 @@ public class Trade {
     }
 
     public void printTradeDetails() {
-        System.out.println("**********************************************************************");
         if (errorMessage.isEmpty()) {
             if (isTradeWithChest) {
                 System.out.println("Trade between " + playerTrader.getName() + " and CHEST:" + isTradePossible);
             }
-
-            System.out.println("------------------------------");
-            System.out.println(">>>>" + "OBTAINED SOURCES" + "<<<<");
-            Set<String> keySet = requestedResourceCards.keySet();
-            for (String key: keySet) {
-                System.out.println("* " +  key + ": " + requestedResourceCards.get(key));
-            }
-            System.out.println(">>>>" + "GIVEN SOURCES" + "<<<<");
-            for (String key: keySet) {
-                System.out.println("* " +  key + ": " + offeredResourceCards.get(key));
-            }
-            System.out.println("------------------------------");
+            showResourceDetails(requestedResourceCards, "OBTAINED RESOURCES");
+            showResourceDetails(offeredResourceCards,   "GIVEN RESOURCES");
             isTradeCompleted = true;
-
-        } else {
-            System.out.println(errorMessage);
         }
-        System.out.println("**********************************************************************");
+        else {
+            System.out.println("==============================================================================================");
+            System.out.println(errorMessage);
+            System.out.println("==============================================================================================");
+        }
     }
 
-    public void printPlayerDetails() {
-        System.out.println("**********************************************************************");
-        System.out.println("TRADER: " + playerTrader.getName());
-        System.out.println("------------------------------");
-        playerTrader.showSourceCards();
+    private void printPlayerDetails() {
+        System.out.println("----------------------------------------------------------------------------------------------");
+        if (playerTrader != null) {
+            System.out.print("TRADER ==> ");
+            playerTrader.showSourceCards();
+        }
         if (playerToBeTraded != null) {
-            System.out.println("------------------------------");
-            System.out.println("TRADED: " + playerToBeTraded.getName());
-            System.out.println("------------------------------");
+            System.out.print("TRADED ==> ");
             playerToBeTraded.showSourceCards();
         }
-        System.out.println("**********************************************************************");
+        System.out.println("----------------------------------------------------------------------------------------------");
+    }
+
+    private void showResourceDetails(HashMap<String, Integer> map, String mapTitle) {
+        System.out.print("| ");
+        for (String resourceName: Constants.resourceNames) {
+            int count = map.get(resourceName);
+            System.out.print(resourceName + " --> " + count + " | ");
+        }
+        System.out.println(" => " + mapTitle);
     }
 
     public Player getPlayerTrader() {

@@ -72,10 +72,46 @@ public class Constants {
     public static final String CARD_BRICK = "brick";
     public static final String CARD_LUMBER = "lumber";
 
+
+    public static final String PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE = "com/catan/assets/dev_card_profit.jpg";
+    public static final String PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION = "com/catan/assets/dev_card_road_destruction.jpg";
+    public static final String PATH_DEVELOPMENT_CARD_INVENTION = "com/catan/assets/dev_card_invention.jpg";
+    public static final String PATH_DEVELOPMENT_CARD_VICTORY_POINT = "com/catan/assets/dev_card_victory.jpg";
+    public static final String PATH_DEVELOPMENT_CARD_KNIGHT = "com/catan/assets/dev_card_knight.jpg";
+    public static final String PATH_DEVELOPMENT_CARD_MONOPOL = "com/catan/assets/dev_card_monopoly.jpg";
+
+    public static final ArrayList<String> developmentCardPaths = new ArrayList<>(
+            Arrays.asList(Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE,
+                          Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION,
+                          Constants.PATH_DEVELOPMENT_CARD_INVENTION,
+                          Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT,
+                          Constants.PATH_DEVELOPMENT_CARD_KNIGHT,
+                          Constants.PATH_DEVELOPMENT_CARD_MONOPOL));
+
+    public static final String DEVELOPMENT_CARD_PROFIT_EXCHANGE  = "Profit Exchange Development Card";
+    public static final String DEVELOPMENT_CARD_ROAD_DESTRUCTION = "Road Destruction Development Card";
+    public static final String DEVELOPMENT_CARD_INVENTION = "Invention Development Card";
+    public static final String DEVELOPMENT_CARD_VICTORY_POINT = "Victory Development Card";
+    public static final String DEVELOPMENT_CARD_KNIGHT  = "Knight Development Card";
+    public static final String DEVELOPMENT_CARD_MONOPOL = "Monopoly Development Card";
+
+    public static final ArrayList<String> developmentCardNames = new ArrayList<>(
+            Arrays.asList(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE,
+                          Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION,
+                          Constants.DEVELOPMENT_CARD_INVENTION,
+                          Constants.DEVELOPMENT_CARD_VICTORY_POINT,
+                          Constants.DEVELOPMENT_CARD_MONOPOL,
+                          Constants.DEVELOPMENT_CARD_KNIGHT));
+
     public static final int PANE_WIDTH = 1920;
     public static final int PANE_HEIGHT = 1080;
 
     public static String PATH_VIEW_TRADE_REQUEST = "com/catan/view/tradeRequest.fxml";
+    public static String PATH_VIEW_PLAY_DEVELOPMENT_CARD = "com/catan/view/playDevelopmentCard.fxml";
+    public static String PATH_VIEW_DEV_MONOPOL_CARD = "com/catan/view/monopolDevCard.fxml";
+    public static String PATH_VIEW_DEV_INVENTION_CARD = "com/catan/view/inventionDevCard.fxml";
+    public static String PATH_VIEW_TRADE_OFFER = "com/catan/view/tradeOffer.fxml";
+    public static String PATH_VIEW_PUNISHMENT = "com/catan/view/thiefCardPunishment.fxml";
     public static final double HARBOUR_NO_RATIO = -1;
 
     public static final ArrayList<String> resourceNames = new ArrayList<>(
