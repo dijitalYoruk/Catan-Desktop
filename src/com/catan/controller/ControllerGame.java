@@ -2,7 +2,11 @@ package com.catan.controller;
 
 import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceMakeConstruction;
+<<<<<<< Updated upstream
 import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
+=======
+import com.catan.interfaces.InterfaceMakeTrade;
+>>>>>>> Stashed changes
 import com.catan.modal.*;
 import com.sun.deploy.security.SelectableSecurityManager;
 import javafx.animation.Animation;

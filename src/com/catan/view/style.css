@@ -28,6 +28,16 @@
     -fx-pref-width: 1500;
     -fx-pref-height: 800;
 }
+.title{
+    -fx-text-alignment: center;
+    -fx-background-color: #CD853F;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-pref-width: 330;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
 .thresholds{
     -fx-background-color: orange;
     -fx-margin:50px;

@@ -1,7 +1,6 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
-import com.catan.interfaces.InterfaceUpdateGameAfterPopUp;
 import com.catan.modal.Player;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;

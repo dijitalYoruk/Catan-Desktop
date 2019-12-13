@@ -2,10 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/CS319_Group3B_Catan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CS319_Group3B_Catan.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerThiefPunishment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerThiefPunishment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/interfaces/InterfaceUpdateGameAfterPopUp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/AI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/AI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerAI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerAI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Settlement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Settlement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/SourceCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/SourceCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/TerrainHex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/TerrainHex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Thief.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Thief.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Vertex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Vertex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/tradeRequest.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/tradeRequest.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/tradeRequest.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/tradeRequest.fxml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,13 +90,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectId" id="1TOBFcVuKbvOq0UQW50kZVSSCjG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+=======
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectId" id="1TOBFcVuKbvOq0UQW50kZVSSCjG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+>>>>>>> Stashed changes
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< Updated upstream
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573164347926" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../jfoenix-8.0.2.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -81,6 +118,16 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575807808241" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/jfoenix-8.0.8.jar!/" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+>>>>>>> Stashed changes
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -193,6 +240,12 @@
     <option name="localTasksCounter" value="6" />
     <servers />
   </component>
+<<<<<<< Updated upstream
+=======
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="128616000" />
+  </component>
+>>>>>>> Stashed changes
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -217,4 +270,14 @@
     <MESSAGE value="everything is okay, tried as much case as possible." />
     <option name="LAST_COMMIT_MESSAGE" value="everything is okay, tried as much case as possible." />
   </component>
+<<<<<<< Updated upstream
+=======
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="trade.playerTrader" />
+      </configuration>
+    </watches-manager>
+  </component>
+>>>>>>> Stashed changes
 </project>
