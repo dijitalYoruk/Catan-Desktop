@@ -16,7 +16,10 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,6 +48,7 @@ public class ControllerSettings extends ControllerBase {
 
     // properties
     private Settings settingTemp;
+    private InputStream music;
 
     @FXML
     public void initialize() {
@@ -85,8 +89,27 @@ public class ControllerSettings extends ControllerBase {
     public void changeTheme(ActionEvent actionEvent){
         settingTemp.setCurrentTheme(((MenuItem)actionEvent.getTarget()).getText());
         themes.setText(settingTemp.getCurrentTheme());
+
+        //change music
+        //TODO: add other theme music
+        if(settingTemp.getCurrentTheme().equals("CatanDefault")){
+            playMusic("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\music\\catan_theme.wav");
+        }
     }
 
+    @FXML
+    public void playMusic(String filepath) {
+        try
+        {
+            InputStream music = new FileInputStream(new File(filepath));
+            AudioStream themeSong = new AudioStream(music);
+            AudioPlayer.player.start(themeSong);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"music error");
+        }
+    }
     @FXML
     public void changeTh(MouseEvent mouseEvent){
         String id = (((Rectangle)mouseEvent.getSource()).getId()).toString();

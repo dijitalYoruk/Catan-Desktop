@@ -31,11 +31,11 @@
 }
 .title{
     -fx-text-alignment: center;
-    -fx-background-color: #CD853F;
+    -fx-background-color: #FF5722;
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-background-radius: 30;
-    -fx-pref-width: 330;
+    -fx-pref-width: 400;
     -fx-pref-height: 50;
     -fx-font-size: 20;
 }
@@ -233,6 +233,7 @@ trade-pane-bg {
 }
 
 .invention-label {
+    -fx-text-alignment: center;
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-background-radius: 40;
@@ -250,4 +251,8 @@ trade-pane-bg {
     -fx-pref-width: 300;
     -fx-pref-height: 50;
     -fx-font-size: 20;
+}
+
+.development-card-label {
+	-fx-font-family: Roboto;
 }
