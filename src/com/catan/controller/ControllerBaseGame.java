@@ -337,13 +337,10 @@ public class ControllerBaseGame extends ControllerBase {
     private Label labelWarning;
     @FXML
     private Circle circleNumberOnHex1;
-
     @FXML
     private Circle circleNumberOnHex2;
-
     @FXML
     private Circle circleNumberOnHex3;
-
     @FXML
     private Circle circleNumberOnHex4;
 
@@ -429,18 +426,57 @@ public class ControllerBaseGame extends ControllerBase {
     private Label labelHexNum18;
     @FXML
     private Label labelHexNum19;
+    @FXML
+    private Polygon harbour18;
+    @FXML
+    private Polygon harbour17;
+    @FXML
+    private Polygon harbour16;
+    @FXML
+    private Polygon harbour15;
+    @FXML
+    private Polygon harbour14;
+    @FXML
+    private Polygon harbour13;
+    @FXML
+    private Polygon harbour1;
+    @FXML
+    private Polygon harbour2;
+    @FXML
+    private Polygon harbour3;
+    @FXML
+    private Polygon harbour12;
+    @FXML
+    private Polygon harbour11;
+    @FXML
+    private Polygon harbour10;
+    @FXML
+    private Polygon harbour9;
+    @FXML
+    private Polygon harbour8;
+    @FXML
+    private Polygon harbour7;
+    @FXML
+    private Polygon harbour6;
+    @FXML
+    private Polygon harbour5;
+    @FXML
+    private Polygon harbour4;
+
 
     // Properties
-    private ArrayList<TerrainHex> terrainHexes;
+    protected ArrayList<TerrainHex> terrainHexes;
     private ArrayList<Vertex> vertices;
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
+    private ArrayList<Harbour> harbours;
     private Settings settings;
-    protected Circle imgThiefDefaultLocation;
-    protected TerrainHex thiefHexLoca;
     protected Die die;
-    
+    protected Player playerActual;
+    protected Thief thief;
+
+
     @FXML
     public void initialize() {
         terrainHexes = new ArrayList<>();
@@ -448,7 +484,9 @@ public class ControllerBaseGame extends ControllerBase {
         roads = new ArrayList<>();
         settlements = new ArrayList<>();
         players = new ArrayList<>();
-        players.add(new PlayerActual(Constants.COLOR_RED, "PlayerActual"));
+        harbours = new ArrayList<>();
+        playerActual = new PlayerActual(Constants.COLOR_RED, "PlayerActual");
+        players.add(playerActual);
         players.add(new PlayerAI(Constants.COLOR_BLUE, "PlayerArtificial1"));
         players.add(new PlayerAI(Constants.COLOR_PURPLE, "PlayerArtificial2"));
         players.add(new PlayerAI(Constants.COLOR_GREEN, "PlayerArtificial3"));
@@ -460,18 +498,42 @@ public class ControllerBaseGame extends ControllerBase {
         initializeBoard();
         assignNumbersToHexes();
         initializeConstructionBox();
+        initializeHarbours();
 
         Image imgForDice1 = new Image("./com/catan/assets/die6.png");
         imgDie1.setFill(new ImagePattern(imgForDice1));
-        imgDie1.setStroke(Color.color(0.4,0.4,0.4));
-        imgDie1.setStrokeWidth(1);
         Image img2ForDice2 = new Image("./com/catan/assets/die6.png");
         imgDie2.setFill(new ImagePattern(img2ForDice2));
-        imgDie2.setStroke(Color.color(0.4,0.4,0.4));
-        imgDie2.setStrokeWidth(1);
         Image img = new Image(Constants.PATH_CARD_PRICE);
         imgPriceCard.setFill(new ImagePattern(img));
-        imgPriceCard.setStrokeWidth(0);
+    }
+
+    private void initializeHarbours() {
+        harbours.add( new Harbour(Constants.HARBOUR, harbour1, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour2, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour3, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour4, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour5, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour6, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour7, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour8, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour9, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour10, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour11, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour12, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour13, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour14, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour15, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour16, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour17, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour18, Constants.HARBOUR_NO_RATIO) );
+
+        for (Harbour harbour: harbours) {
+            Image img = new Image(Constants.PATH_HARBOUR);
+            harbour.getShape().setFill(new ImagePattern(img));
+            harbour.getShape().setStroke(Color.color(0,0.3,1));
+            harbour.getShape().setStrokeWidth(1);
+        }
     }
 
     private void assignNumbersToHexes() {
@@ -1017,7 +1079,6 @@ public class ControllerBaseGame extends ControllerBase {
         Road r70 = new Road(road70, v51, v52);
         Road r71 = new Road(road71, v52, v53);
         Road r72 = new Road(road72, v53, v54);
-
         roads.add(r1);
         roads.add(r2);
         roads.add(r3);
@@ -1128,12 +1189,7 @@ public class ControllerBaseGame extends ControllerBase {
                 countOfDesert--;
                 img = new Image(Constants.PATH_HEX_DESERT);
                 color = Color.color(0.4,0.3,0.2);
-                Image imgThief = new Image(Constants.ICON_THIEF);
-                hex.getCircleNumberOnHex().setFill(new ImagePattern(imgThief));
-                hex.setThiefHere(true);
-                thiefHexLoca = hex;
-                imgMovingThief.setFill(new ImagePattern(imgThief));
-                imgThiefDefaultLocation = hex.getCircleNumberOnHex();
+                thief = new Thief(hex, imgMovingThief);
             }
             else if (tmp == 4 && countOfMountain > 0) {
                 countOfMountain--;
@@ -1266,10 +1322,6 @@ public class ControllerBaseGame extends ControllerBase {
             }
         }
         return null;
-    }
-
-    public TerrainHex getHexWithIndex(int i){
-        return terrainHexes.get(i-1);
     }
 
 }

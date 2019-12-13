@@ -34,12 +34,12 @@
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="145.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/resource_sheep.jpg" />
+            <Image url="@../assets/resource_wool.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="145.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/resource_wood.jpg" />
+            <Image url="@../assets/resource_lumber.jpg" />
          </image>
       </ImageView>
       <Label fx:id="labelOfferedBrick" layoutX="108.0" layoutY="165.0" text="x0">
@@ -85,12 +85,12 @@
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="469.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/resource_sheep.jpg" />
+            <Image url="@../assets/resource_wool.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="469.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/resource_wood.jpg" />
+            <Image url="@../assets/resource_lumber.jpg" />
          </image>
       </ImageView>
       <Label fx:id="labelRequestedBrick" layoutX="432.0" layoutY="166.0" text="x0">

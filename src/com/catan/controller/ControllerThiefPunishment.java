@@ -14,152 +14,164 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.xml.transform.Source;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class ControllerThiefPunishment {
     @FXML
-    AnchorPane thiefAnchorPane;
+    private AnchorPane thiefAnchorPane;
     @FXML
-    Label information;
+    private ImageView imgBrick;
     @FXML
-    Label woolCurrent;
+    private ImageView imgGrain;
     @FXML
-    Label grainCurrent;
+    private ImageView imgOre;
     @FXML
-    Label oreCurrent;
+    private ImageView imgWool;
     @FXML
-    Label brickCurrent;
+    private ImageView imgLumber;
     @FXML
-    Label lumberCurrent;
+    private Label labelBrick;
+    @FXML
+    private Label labelGrain;
+    @FXML
+    private Label labelOre;
+    @FXML
+    private Label labelWool;
+    @FXML
+    private Label labelLumber;
+    @FXML
+    private Label labelInformation;
+    @FXML
+    private HBox horizontalBox1;
+    @FXML
+    private HBox horizontalBox2;
+    @FXML
+    private HBox horizontalBox3;
+    @FXML
+    private HBox horizontalBox4;
 
-    @FXML
-    HBox thief_hbox_1, thief_hbox_2, thief_hbox_3, thief_hbox_4;
+    // properties
+    private HashMap<String, Integer> resourcesOfPlayer;
+    private HashMap<String, Integer> resourcesOfChosen;
+    private ArrayList<ImageView> imgResources;
+    private ArrayList<Label> labelsResources;
+    private ArrayList<HBox> horizontalBoxes;
+    private int totalChosenResources;
+    private int requiredResources;
+    private Player player;
 
-    private ArrayList<HBox> hBoxes;
-    private int totalP;
-    private int requiredP;
-    private int woolP, woolMax;
-    private int grainP, grainMax;
-    private int oreP, oreMax;
-    private int brickP, brickMax;
-    private int lumberP, lumberMax;
-    Player player;
-    InterfaceUpdateGameAfterPopUp gameController;
-    public void setPlayer(Player current, InterfaceUpdateGameAfterPopUp game){
-        player = current;
-        gameController = game;
-        totalP = 0;
-        hBoxes = new ArrayList<>();
-        hBoxes.add(thief_hbox_1);
-        hBoxes.add(thief_hbox_2);
-        hBoxes.add(thief_hbox_3);
-        hBoxes.add(thief_hbox_4);
-        requiredP = player.getTotalCards() / 2;
-        woolP = 0; woolMax = player.getSourceCards().get(Constants.CARD_WOOL).size();
-        grainP = 0; grainMax = player.getSourceCards().get(Constants.CARD_GRAIN).size();
-        brickP = 0; brickMax = player.getSourceCards().get(Constants.CARD_BRICK).size();
-        lumberP = 0; lumberMax = player.getSourceCards().get(Constants.CARD_LUMBER).size();
-        oreP = 0; oreMax = player.getSourceCards().get(Constants.CARD_ORE).size();
-        woolCurrent.setText("x " + woolMax);
-        grainCurrent.setText("x " + grainMax);
-        oreCurrent.setText("x " + oreMax);
-        brickCurrent.setText("x " + brickMax);
-        lumberCurrent.setText("x " + lumberMax);
-        information.setText("You need to choose " + requiredP + " cards");
+    private ArrayList<String> resourceNames = new ArrayList<>(
+            Arrays.asList(Constants.CARD_ORE, Constants.CARD_BRICK, Constants.CARD_LUMBER,
+                    Constants.CARD_GRAIN, Constants.CARD_WOOL)
+    );
+
+    // methods
+    public void setPlayer(Player player){
+        this.player = player;
+        totalChosenResources = 0;
+        resourcesOfChosen = new HashMap<>();
+        resourcesOfPlayer = new HashMap<>();
+        requiredResources = player.getTotalCards() / 2;
+
+        horizontalBoxes = new ArrayList<>(Arrays.asList(
+                horizontalBox1, horizontalBox2,
+                horizontalBox3, horizontalBox4
+        ));
+
+        imgResources = new ArrayList<>(Arrays.asList(
+                imgOre, imgBrick, imgLumber, imgGrain, imgWool
+        ));
+
+        labelsResources = new ArrayList<>(Arrays.asList(
+                labelOre, labelBrick, labelLumber,
+                labelGrain, labelWool
+        ));
+
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
+            int count =  player.getSourceCards().get(resourceName).size();
+            resourcesOfPlayer.put(resourceName, count);
+            resourcesOfChosen.put(resourceName, 0);
+            labelsResources.get(i).setText("x " + count);
+        }
+
+        labelInformation.setText("You need to choose " +
+                requiredResources + " cards");
     }
 
     @FXML
-    public void incResource(MouseEvent event){
-        if (((ImageView)event.getSource()).getId().equals(Constants.CARD_BRICK)){
-            if(brickP != brickMax && totalP != requiredP) {
-                brickP++;
-                brickCurrent.setText("x" + (brickMax - brickP));
-                addResouceToView(Constants.CARD_BRICK);
-            }
-        }else if (((ImageView)event.getSource()).getId().equals(Constants.CARD_ORE)){
-            if(oreP != oreMax && totalP != requiredP) {
-                oreP++;
-                oreCurrent.setText("x" + (oreMax-oreP));
-                addResouceToView(Constants.CARD_ORE);
-            }
-        }else if (((ImageView)event.getSource()).getId().equals(Constants.CARD_GRAIN)){
-            if(grainP != grainMax && totalP != requiredP) {
-                grainP++;
-                grainCurrent.setText("x" + (grainMax - grainP));
-                addResouceToView(Constants.CARD_GRAIN);
-            }
-        }else if (((ImageView)event.getSource()).getId().equals(Constants.CARD_WOOL)){
-            if(woolP != woolMax && totalP != requiredP) {
-                woolP++;
-                woolCurrent.setText("x" + (woolMax - woolP));
-                addResouceToView("sheep");
-            }
-        }else {
-            if(lumberP != lumberMax && totalP != requiredP) {
-                lumberP++;
-                lumberCurrent.setText("x" + (lumberMax - lumberP));
-                addResouceToView("wood");
+    public void incrementResource(MouseEvent event){
+        Object view = event.getSource();
+
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
+            if (view == imgResources.get(i)){
+                int playerResourcesCount = resourcesOfPlayer.get(resourceName);
+                int chosenResourcesCount = resourcesOfChosen.get(resourceName);
+
+                if(chosenResourcesCount != playerResourcesCount && totalChosenResources != requiredResources) {
+                    resourcesOfChosen.put(resourceName, ++chosenResourcesCount);
+                    labelsResources.get(i).setText("x" + (playerResourcesCount - chosenResourcesCount));
+                    addResourceToView(resourceName);
+                }
+                break;
             }
         }
     }
 
-    private void addResouceToView(String resource){
+    @FXML
+    public void decreaseResource(MouseEvent event){
+        ImageView view = (ImageView) event.getSource();
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
+            if (view.getId().equals(resourceName)){
+                int playerResourceCount = resourcesOfPlayer.get(resourceName);
+                int chosenResourceCount = resourcesOfChosen.get(resourceName);
+                resourcesOfChosen.put(resourceName, --chosenResourceCount);
+                int difference = playerResourceCount - chosenResourceCount;
+                labelsResources.get(i).setText("x" + difference);
+                removeResourceFromView(view);
+                break;
+            }
+        }
+    }
+
+    @FXML
+    public void confirmPunish() {
+        if (totalChosenResources == requiredResources) {
+            // subtracting resources from player.
+            for (String resourceName: resourceNames) {
+                int count = resourcesOfChosen.get(resourceName);
+                player.removeResources(resourceName, count);
+            }
+            // closing dialog
+            Stage stage = (Stage)thiefAnchorPane.getScene().getWindow();
+            stage.close();
+        }
+        else {
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), labelInformation);
+            fadeTransition.setCycleCount(Animation.INDEFINITE);
+            fadeTransition.setFromValue(1.0);
+            fadeTransition.setToValue(0.0);
+            fadeTransition.play();
+        }
+    }
+
+    private void addResourceToView(String resource){
         ImageView temp = new ImageView();
         temp.setId(resource);
         temp.setFitWidth(40);
         temp.setFitHeight(50);
         temp.setImage(new Image(".\\com\\catan\\assets\\resource_"+resource+".jpg"));
-        temp.setOnMouseClicked(this::decResource);
-        hBoxes.get(totalP/4).getChildren().add(temp);
-        totalP++;
+        temp.setOnMouseClicked(this::decreaseResource);
+        horizontalBoxes.get(totalChosenResources/4).getChildren().add(temp);
+        totalChosenResources++;
     }
+
     private void removeResourceFromView(ImageView resource){
-        totalP--;
         ((HBox)resource.getParent()).getChildren().remove(resource);
-    }
-    @FXML
-    public void decResource(MouseEvent event){
-        if (((ImageView)event.getSource()).getId().equals(Constants.CARD_BRICK)){
-            brickP--;
-            removeResourceFromView((ImageView)event.getSource());
-            brickCurrent.setText("x" + (brickMax - brickP));
-        }else if (((ImageView)event.getSource()).getId().equals(Constants.CARD_ORE)){
-            oreP--;
-            removeResourceFromView((ImageView)event.getSource());
-            oreCurrent.setText("x" + (oreMax-oreP));
-        }else if (((ImageView)event.getSource()).getId().equals(Constants.CARD_GRAIN)){
-            grainP--;
-            removeResourceFromView((ImageView)event.getSource());
-            grainCurrent.setText("x" + (grainMax - grainP));
-        }else if (((ImageView)event.getSource()).getId().equals("sheep")){
-            woolP--;
-            removeResourceFromView((ImageView)event.getSource());
-            woolCurrent.setText("x" + (woolMax - woolP));
-        }else {
-            lumberP--;
-            removeResourceFromView((ImageView)event.getSource());
-            lumberCurrent.setText("x" + (lumberMax - lumberP));
-        }
-    }
-    @FXML
-    public void confirmPunish() throws IOException {
-        if (totalP == requiredP) {
-            player.punishLumber(lumberP);
-            player.punishWool(woolP);
-            player.punishGrain(grainP);
-            player.punishOre(oreP);
-            player.punishBrick(brickP);
-            gameController.updateGameAfterPopUp();
-            Stage stage = (Stage) thiefAnchorPane.getScene().getWindow();
-            stage.close();
-        }else{
-            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), information);
-            fadeTransition.setFromValue(1.0);
-            fadeTransition.setToValue(0.0);
-            fadeTransition.setCycleCount(Animation.INDEFINITE);
-            fadeTransition.play();
-        }
+        totalChosenResources--;
     }
 }

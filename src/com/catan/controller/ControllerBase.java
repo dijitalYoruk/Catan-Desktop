@@ -1,5 +1,6 @@
 package com.catan.controller;
 
+import com.catan.Util.Constants;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +18,7 @@ public class ControllerBase {
         try{
             Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
+            window.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }

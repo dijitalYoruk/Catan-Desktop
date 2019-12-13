@@ -86,6 +86,7 @@ public class ControllerSettings extends ControllerBase {
         settingTemp.setCurrentTheme(((MenuItem)actionEvent.getTarget()).getText());
         themes.setText(settingTemp.getCurrentTheme());
     }
+
     @FXML
     public void changeTh(MouseEvent mouseEvent){
         String id = (((Rectangle)mouseEvent.getSource()).getId()).toString();

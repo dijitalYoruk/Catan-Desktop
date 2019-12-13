@@ -10,11 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-<<<<<<< Updated upstream
           <root url="jar://$MODULE_DIR$/../../jfoenix-8.0.2.jar!/" />
-=======
-          <root url="jar://$USER_HOME$/Desktop/jfoenix-8.0.8.jar!/" />
->>>>>>> Stashed changes
         </CLASSES>
         <JAVADOC />
         <SOURCES />
