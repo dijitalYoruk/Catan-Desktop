@@ -17,7 +17,6 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.ResourceBundle;
 
 public class ControllerThiefPunishment {
     @FXML
@@ -52,8 +51,7 @@ public class ControllerThiefPunishment {
     private HBox horizontalBox3;
     @FXML
     private HBox horizontalBox4;
-    @FXML
-    ResourceBundle resources;
+
     // properties
     private HashMap<String, Integer> resourcesOfPlayer;
     private HashMap<String, Integer> resourcesOfChosen;
@@ -99,8 +97,8 @@ public class ControllerThiefPunishment {
             labelsResources.get(i).setText("x " + count);
         }
 
-        labelInformation.setText(resources.getString("thiefCardPunishmentView_ExplanationPart1") +
-                requiredResources + " " + resources.getString("thiefCardPunishmentView_ExplanationPart2"));
+        labelInformation.setText("You need to choose " +
+                requiredResources + " cards");
     }
 
     @FXML

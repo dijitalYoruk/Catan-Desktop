@@ -197,7 +197,7 @@ public class DevelopmentCard extends Card implements InterfaceExchangeTurnProfit
             case Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE: {
                 this.terrainHexes = terrainHexes;
                 if (currentPlayer == playerActual) {
-                    interfaceDevelopmentCard.displayWarning("ProfitExchange");
+                    interfaceDevelopmentCard.outputNotPossible("ProfitExchange");
                 } else {
                     ((PlayerAI) currentPlayer).decideForHexesToExchangeProfit(terrainHexes, this);
                 }
@@ -209,7 +209,7 @@ public class DevelopmentCard extends Card implements InterfaceExchangeTurnProfit
             // Road Destruction Development Card
             case Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION: {
                 if (currentPlayer == playerActual) {
-                    interfaceDevelopmentCard.displayWarning("RoadDestruction");
+                    interfaceDevelopmentCard.outputNotPossible("RoadDestruction");
                 } else {
                     ((PlayerAI) currentPlayer).decideForDestroyingRoad(allPlayers, this);
                 }

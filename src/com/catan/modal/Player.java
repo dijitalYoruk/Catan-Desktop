@@ -224,16 +224,11 @@ public class Player {
     public void buyDevelopmentCard(Chest chest) {
         boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
         if (hasEnoughResources) {
-            try{
-                DevelopmentCard card = chest.getDevelopmentCard();
-                addDevelopmentCard(card.getName());
-                System.out.println("==============================================================================================");
-                System.out.println(getName() + " bought " + card.getName());
-                System.out.println("==============================================================================================");
-            }catch (Exception e){
-
-            }
-
+            DevelopmentCard card = chest.getDevelopmentCard();
+            addDevelopmentCard(card.getName());
+            System.out.println("==============================================================================================");
+            System.out.println(getName() + " bought " + card.getName());
+            System.out.println("==============================================================================================");
         }
     }
 }

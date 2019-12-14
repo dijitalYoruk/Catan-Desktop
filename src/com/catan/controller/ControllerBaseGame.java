@@ -14,9 +14,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class ControllerBaseGame extends ControllerBase {
 
@@ -464,7 +462,6 @@ public class ControllerBaseGame extends ControllerBase {
     private Polygon harbour5;
     @FXML
     private Polygon harbour4;
-
 
 
     // Properties

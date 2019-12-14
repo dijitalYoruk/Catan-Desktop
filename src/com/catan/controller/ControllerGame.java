@@ -1,14 +1,12 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
-import com.catan.Util.UTF8Control;
 import com.catan.interfaces.*;
 import com.catan.modal.*;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -21,11 +19,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceDevelopmentCard, InterfaceMakeTrade {
 
@@ -47,10 +42,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int playerTurn = 0;
     private Road tempRoad;
     private Chest chest;
-
-    //Language Resource
-    @FXML
-    private ResourceBundle resources ;
 
     @Override
     public void setDevelopmentCardInvention(DevelopmentCard developmentCardInvention) {
@@ -127,16 +118,13 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             openDialog(Constants.PATH_VIEW_PLAY_DEVELOPMENT_CARD,
                     "Play Development Card", null, null);
         } else {
-            displayWarning("No Dev Card");
+            outputNotPossible("No resource");
         }
     }
 
     @Override
     public void playDevelopmentCard(DevelopmentCard developmentCard) {
-        if (!isStepActual) {
-            displayWarning("Wrong time for dev card");
-            return;
-        }
+        if (!isStepActual) return;
 
         if (developmentCard != null) {
             developmentCard.performDevelopmentCardFeatures(currentPlayer,
@@ -177,10 +165,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             dialog.initOwner(root.getScene().getWindow());
             dialog.setTitle(title);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
             fxmlLoader.setLocation(getClass().getClassLoader().getResource(viewPath));
-            fxmlLoader.setResources(bundle);
             dialog.getDialogPane().setContent(fxmlLoader.load());
+
             // Monopoly development card dialog.
             if (viewPath.equals(Constants.PATH_VIEW_DEV_MONOPOL_CARD)) {
                 ControllerDevMonopol monopolController = fxmlLoader.getController();
@@ -239,7 +226,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             if (hasEnoughResources) {
                 currentPlayer.buyDevelopmentCard(chest);
             } else {
-                displayWarning("Poor to buy dev card");
+                outputNotPossible("not enough resources");
             }
         }
     }
@@ -274,51 +261,31 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @Override
-    public void displayWarning(String warningType) {
+    public void outputNotPossible(String warningType) {
         Label warning = getWarningLabel();
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(4.0), warning);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2.0), warning);
         fadeTransition.setFromValue(1.0);
         fadeTransition.setToValue(0.0);
 
         switch (warningType) {
-            case "Road Error":
-                warning.setText(resources.getString("warning_roadError"));
-                warning.setOpacity(1);
-                break;
-            case "No Dev Card":
-                warning.setText(resources.getString("warning_noDevCardWarning"));
-                warning.setOpacity(1);
-                break;
-            case "Poor to buy dev card":
-                warning.setText(resources.getString("warning_noResourcesForDevCard"));
-                warning.setOpacity(1);
-                break;
-            case "Wrong time for dev card":
-                warning.setText(resources.getString("warning_wrongTimeForDevCard"));
-                warning.setOpacity(1);
-                break;
             case "Not possible":
-                warning.setText(resources.getString("warning_notPossible"));
+                warning.setText("Not Possible");
                 warning.setOpacity(1);
                 break;
             case "Thief":
-                warning.setText(resources.getString("warning_playingThiefWarning"));
+                warning.setText("You must move the thief");
                 warning.setOpacity(1);
                 break;
             case "ProfitExchange":
-                warning.setText(resources.getString("warning_profitExchangeWarning"));
+                warning.setText("Please exchange the profits of terrain hexes by selecting them.");
                 warning.setOpacity(1);
                 break;
             case "RoadDestruction":
-                warning.setText(resources.getString("warning_roadDestructionWarning"));
-                warning.setOpacity(1);
-                break;
-            case "Construction Overlap":
-                warning.setText(resources.getString("warning_constructionOverLap"));
+                warning.setText("Please destroy a road.");
                 warning.setOpacity(1);
                 break;
             default:
-                warning.setText(resources.getString("warning_defaultErrorMessage"));
+                warning.setText("Not enough resource for this type construction");
                 warning.setOpacity(1);
                 break;
         }
@@ -335,10 +302,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private boolean isVertexSuitableForConstruction(Vertex vertex) {
         ArrayList<Vertex> neighbors = vertex.getNeighbors();
         for (Vertex v: neighbors) {
-            if (v.hasConstruction()) {
-                displayWarning("Construction Overlap");
-                return false;
-            }
+            if (v.hasConstruction()) { return false; }
         }
         return true;
     }
@@ -367,7 +331,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         } else {
             currentPlayer = getPlayers().get(playerTurn);
             if(currentPlayer instanceof PlayerActual)
-                displayWarning("Road Error");
+                outputNotPossible(Constants.CONSTRUCTION_STRING);
         }
         unselectConstructions(null);
     }
@@ -560,7 +524,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
         else if (currentPlayer instanceof PlayerActual) {
             thief.setCanThiefMove(true);
-            displayWarning(Constants.THIEF_STRING);
+            outputNotPossible(Constants.THIEF_STRING);
         }
     }
 
@@ -596,7 +560,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     public void makeConstructionActual(Circle circle) {
         if (!currentPlayer.hasEnoughResources(selectedConstruction)) {
             if(currentPlayer instanceof PlayerActual)
-                displayWarning(Constants.CONSTRUCTION_STRING);
+                outputNotPossible(Constants.CONSTRUCTION_STRING);
             return;
         }
         if (isSelectedSettlement()) {
@@ -630,7 +594,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 deActivateAllVertices();
             } else {
                 if(currentPlayer instanceof PlayerActual)
-                    displayWarning("Not possible");
+                    outputNotPossible("Not possible");
             }
         }
         else if (selectedConstruction.equals(Constants.ROAD)) {
@@ -729,7 +693,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
         if (!currentPlayer.hasEnoughResources(selectedConstruction)) {
             selectedConstruction = "";
-            displayWarning(Constants.CONSTRUCTION_STRING);
+            outputNotPossible(Constants.CONSTRUCTION_STRING);
             return;
         }
 
@@ -765,7 +729,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     isConstructionBuild = false;
                 } else {
                     if(currentPlayer instanceof PlayerActual)
-                        displayWarning("Not possible");
+                        outputNotPossible("Not possible");
                     selectConstructionInitial(imgRoad);
                     return;
                 }
@@ -857,7 +821,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
             } else {
                 if(currentPlayer instanceof PlayerActual)
-                    displayWarning("Not possible");
+                    outputNotPossible("Not possible");
             }
         }
         else if (selectedConstruction.equals(Constants.ROAD)) {
@@ -883,7 +847,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 } else {
                     refreshRoadSelectionVertices();
                     if(currentPlayer instanceof PlayerActual)
-                        displayWarning("Not possible");
+                        outputNotPossible("Not possible");
                 }
             }
         }
