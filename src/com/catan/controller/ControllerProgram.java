@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ControllerProgram {
+public class ControllerProgram extends ControllerMusic{
 
     @FXML
     public void gotoPlayGame(ActionEvent actionEvent) {

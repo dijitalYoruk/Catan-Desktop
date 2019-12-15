@@ -165,6 +165,13 @@
     -fx-background-size: 50px;
 }
 
+.music-button {
+    -fx-background-image: url("../assets/music_button.png");
+    -fx-background-size: 50px;
+    -fx-pref-width: 50;
+    -fx-pref-height: 50;
+}
+
 #end-button {
     -fx-background-color: orange;
     -fx-margin:50px;

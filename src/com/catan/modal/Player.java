@@ -13,6 +13,7 @@ public class Player {
     private HashMap<String, ArrayList<SourceCard>> sourceCards;
     private HashMap<String, Integer> developmentCards;
     private ArrayList<Settlement> settlements;
+    private ArrayList<Harbour> harbours;
     private ArrayList<Road> roads;
     private String color;
     private String name;
@@ -25,6 +26,7 @@ public class Player {
         settlements = new ArrayList<>();
         sourceCards = new HashMap<>();
         roads = new ArrayList<>();
+        harbours = new ArrayList<>();
         this.victoryPoints = 0;
         this.knightCount = 0;
         this.color = color;
@@ -210,6 +212,8 @@ public class Player {
     public HashMap<String, Integer> getDevelopmentCards() {
         return developmentCards;
     }
+
+    public ArrayList<Harbour> getHarbours() { return harbours; }
 
     private void addDevelopmentCard(String developmentType) {
         int count = developmentCards.get(developmentType);

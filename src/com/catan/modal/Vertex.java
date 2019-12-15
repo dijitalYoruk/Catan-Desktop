@@ -14,6 +14,7 @@ public class Vertex {
     private Settlement settlement;
     private boolean isActive;
     private Circle shape;
+    private String name;
 
     // constructor
     public Vertex(Circle shape) {

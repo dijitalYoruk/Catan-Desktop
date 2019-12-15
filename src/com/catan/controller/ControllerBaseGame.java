@@ -13,7 +13,13 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
+import javax.swing.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ControllerBaseGame extends ControllerBase {
@@ -427,42 +433,25 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Label labelHexNum19;
     @FXML
-    private Polygon harbour18;
-    @FXML
-    private Polygon harbour17;
-    @FXML
-    private Polygon harbour16;
-    @FXML
-    private Polygon harbour15;
-    @FXML
-    private Polygon harbour14;
-    @FXML
-    private Polygon harbour13;
-    @FXML
     private Polygon harbour1;
     @FXML
     private Polygon harbour2;
     @FXML
     private Polygon harbour3;
     @FXML
-    private Polygon harbour12;
-    @FXML
-    private Polygon harbour11;
-    @FXML
-    private Polygon harbour10;
-    @FXML
-    private Polygon harbour9;
-    @FXML
-    private Polygon harbour8;
-    @FXML
-    private Polygon harbour7;
-    @FXML
-    private Polygon harbour6;
+    private Polygon harbour4;
     @FXML
     private Polygon harbour5;
     @FXML
-    private Polygon harbour4;
-
+    private Label labelGrainHarbourRatio;
+    @FXML
+    private Label labelLumberHarbourRatio;
+    @FXML
+    private Label labelBrickHarbourRatio;
+    @FXML
+    private Label labelOreHarbourRatio;
+    @FXML
+    private Label labelWoolHarbourRatio;
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;
@@ -470,7 +459,7 @@ public class ControllerBaseGame extends ControllerBase {
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
-    private ArrayList<Harbour> harbours;
+    protected ArrayList<Harbour> harbours;
     private Settings settings;
     protected Die die;
     protected Player playerActual;
@@ -509,31 +498,19 @@ public class ControllerBaseGame extends ControllerBase {
     }
 
     private void initializeHarbours() {
-        harbours.add( new Harbour(Constants.HARBOUR, harbour1, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour2, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour3, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour4, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour5, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour6, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour7, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour8, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour9, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour10, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour11, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour12, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour13, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour14, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour15, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour16, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour17, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour18, Constants.HARBOUR_NO_RATIO) );
-
+        harbours.add( new Harbour(Constants.HARBOUR, harbour1, 2 , Constants.CARD_BRICK));
+        harbours.add( new Harbour(Constants.HARBOUR, harbour2, 3 , Constants.CARD_LUMBER));
+        harbours.add( new Harbour(Constants.HARBOUR, harbour3, 3 , Constants.CARD_ORE));
+        harbours.add( new Harbour(Constants.HARBOUR, harbour4, 2 , Constants.CARD_WOOL));
+        harbours.add( new Harbour(Constants.HARBOUR, harbour5, 2 , Constants.CARD_GRAIN));
+        /*
         for (Harbour harbour: harbours) {
             Image img = new Image(Constants.PATH_HARBOUR);
             harbour.getShape().setFill(new ImagePattern(img));
             harbour.getShape().setStroke(Color.color(0,0.3,1));
             harbour.getShape().setStrokeWidth(1);
         }
+        */
     }
 
     private void assignNumbersToHexes() {
