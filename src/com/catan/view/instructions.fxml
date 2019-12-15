@@ -19,6 +19,6 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="musicButton" layoutX="1835.0" layoutY="35.0" onAction="#switchMusic" styleClass="music-button" stylesheets="@../../../../out/production/CS319_Group3B_Catan/com/catan/view/style.css" text=" " />
+      <JFXButton fx:id="musicButton" layoutX="1825.0" layoutY="23.0" onAction="#switchMusic" prefHeight="37.0" prefWidth="50.0" styleClass="music-button" stylesheets="@style.css" text=" " />
    </children>
 </AnchorPane>

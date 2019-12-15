@@ -3,6 +3,7 @@ package com.catan.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -13,7 +14,7 @@ import java.io.*;
 public class ControllerMusic {
 
     @FXML
-    private JFXButton musicButton;
+    private JFXButton musicButton = new JFXButton("");;
     @FXML
     private ImageView imageViewMusicButton;
 
@@ -32,10 +33,13 @@ public class ControllerMusic {
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             isMusicOn = true;
             //change button image
-            Image image = new Image(getClass().getResourceAsStream("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\assets\\musicbutton.png"));
-            imageViewMusicButton.setFitHeight(50);
-            imageViewMusicButton.setFitWidth(50);
-            imageViewMusicButton.setImage(image);
+            //musicButton.setStyle("-fx-background-image: url('/../assets/musicbutton.jpg');");
+            //musicButton.setStyle("-fx-background-size: cover;");
+            FileInputStream input = new FileInputStream("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\assets\\musicbutton.jpg");
+            Image image = new Image(input);
+            ImageView imageView = new ImageView(image);
+            musicButton = new JFXButton("",imageView);
+
         }
         catch (Exception exc)
         {
@@ -44,34 +48,34 @@ public class ControllerMusic {
     }
 
     @FXML
-    public void settingsMusic(String filename){
+    public void settingsMusic(String filename) {
         if (isMusicOn) {
-            System.out.println("musc off -settings");
             clip.stop();
             isMusicOn = false;
         }
         playMusic(filename);
     }
+
     @FXML
     public void switchMusic(ActionEvent event) throws FileNotFoundException {
         if (isMusicOn) {
-            System.out.println("musc off -switch music");
             //change button image
-            Image image = new Image(getClass().getResourceAsStream("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\assets\\musicbutton-muted.png"));
-            imageViewMusicButton.setFitHeight(50);
-            imageViewMusicButton.setFitWidth(50);
-            imageViewMusicButton.setImage(image);
+            //musicButton.setStyle("-fx-background-image: url('/../assets/musicbutton-muted.png')");
+            FileInputStream input = new FileInputStream("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\assets\\musicbutton-muted.jpg");
+            Image image = new Image(input);
+            ImageView imageView = new ImageView(image);
+            musicButton = new JFXButton("",imageView);
             //stop music
             clip.stop();
             isMusicOn = false;
         }
         else {
-            System.out.println("musc on -switch music");
             //change button image
-            Image image = new Image(getClass().getResourceAsStream("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\assets\\musicbutton-muted.png"));
-            imageViewMusicButton.setFitHeight(50);
-            imageViewMusicButton.setFitWidth(50);
-            imageViewMusicButton.setImage(image);
+            //musicButton.setStyle("-fx-background-image: url('/../assets/musicbutton-muted.png')");
+            FileInputStream input = new FileInputStream("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\assets\\musicbutton-muted.jpg");
+            Image image = new Image(input);
+            ImageView imageView = new ImageView(image);
+            musicButton = new JFXButton("",imageView);
             //play music
             BufferedReader br = null;
             try {

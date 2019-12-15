@@ -354,7 +354,7 @@
       <JFXButton layoutX="14.0" layoutY="35.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
       <Label fx:id="labelWarning" alignment="CENTER" layoutX="1510.0" layoutY="931.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
       <Circle fx:id="imgMovingThief" fill="DODGERBLUE" layoutX="100.0" layoutY="158.0" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-      <JFXButton fx:id="musicButton" layoutX="1835.0" layoutY="35.0" onAction="#switchMusic" text="Music" />
+      <JFXButton fx:id="musicButton" layoutX="1825.0" layoutY="23.0" onAction="#switchMusic" prefHeight="37.0" prefWidth="50.0" styleClass="music-button" stylesheets="@../../../../out/production/CS319_Group3B_Catan/com/catan/view/style.css" text=" " />
 
 
 

@@ -2,51 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/catan_theme.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/musicbutton-muted.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/musicbutton-muted1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/musicbutton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/musicbutton1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerMusic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/intro.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/karadeniz_theme.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space_theme.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/musicbutton-muted.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/musicbutton.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerSettings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTradeOffer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTradeOffer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Harbour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Harbour.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Vertex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Vertex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/music/catan_theme.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/music/karadeniz_theme.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/music/space_theme.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerMusic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerMusic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/persistent_data/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/persistent_data/settings.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/instructions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/instructions.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/program.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/program.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/settings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeOffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Harbour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Harbour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Vertex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/music/catan_theme.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/music/karadeniz_theme.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/music/space_theme.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/musicbutton-muted.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/musicbutton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerMusic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/persistent_data/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/persistent_data/settings.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/view/instructions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/instructions.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/view/program.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/program.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

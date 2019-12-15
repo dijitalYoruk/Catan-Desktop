@@ -5,8 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -37,15 +35,6 @@
       <Label fx:id="largestArmyTh" alignment="CENTER" layoutX="767.0" layoutY="103.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
       <Label fx:id="longestRoadTh" alignment="CENTER" layoutX="767.0" layoutY="157.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
       <Button layoutX="79.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
-      <AnchorPane layoutX="1000.0" layoutY="91.0" prefHeight="50.0" prefWidth="50.0">
-         <children>
-            <JFXButton fx:id="musicButton" layoutX="-1.0" layoutY="-2.0" onAction="#switchMusic" prefHeight="50.0" prefWidth="50.0" styleClass="music-button" stylesheets="@../../../../out/production/CS319_Group3B_Catan/com/catan/view/style.css" text=" " />
-            <ImageView fx:id="imageViewMusicButton" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/musicbutton.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
+      <JFXButton fx:id="musicButton" layoutX="1825.0" layoutY="23.0" onAction="#switchMusic" prefHeight="37.0" prefWidth="50.0" styleClass="music-button" stylesheets="@style.css" text=" " />
    </children>
 </AnchorPane>

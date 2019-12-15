@@ -29,11 +29,11 @@
             </JFXButton>
          </children>
       </VBox>
-      <ImageView fitHeight="476.0" fitWidth="582.0" layoutX="1344.0" layoutY="-94.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="476.0" fitWidth="582.0" layoutX="1342.0" layoutY="-93.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icon_catan.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="musicButton" layoutX="1843.0" layoutY="27.0" onAction="#switchMusic" prefHeight="50.0" prefWidth="52.0" styleClass="music-button" stylesheets="@../../../../out/production/CS319_Group3B_Catan/com/catan/view/style.css" text=" " />
+      <JFXButton fx:id="musicButton1" layoutX="1825.0" layoutY="23.0" onAction="#switchMusic" prefHeight="37.0" prefWidth="50.0" styleClass="music-button" stylesheets="@style.css" text=" " />
    </children>
 </AnchorPane>

@@ -39,6 +39,12 @@
     -fx-pref-height: 50;
     -fx-font-size: 20;
 }
+.music-button{
+    -fx-background-image: url("../assets/musicbutton.jpg");
+    -fx-background-size: cover;
+    -fx-pref-width: 50;
+    -fx-pref-height: 37;
+}
 .thresholds{
     -fx-background-color: orange;
     -fx-margin:50px;
