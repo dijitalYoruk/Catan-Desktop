@@ -48,11 +48,11 @@ public class Constants {
     public static final String PATH_CIVILISATION_PURPLE = "./com/catan/assets/civilisation_purple.png";
     public static final String PATH_CIVILISATION_GREEN  = "./com/catan/assets/civilisation_green.png";
 
-    public static final String PATH_RESOURCE_WOOD  = "./com/catan/assets/resource_wood.jpg";
+    public static final String PATH_RESOURCE_LUMBER  = "./com/catan/assets/resource_lumber.jpg";
     public static final String PATH_RESOURCE_BRICK  = "./com/catan/assets/resource_brick.jpg";
     public static final String PATH_RESOURCE_GRAIN  = "./com/catan/assets/resource_grain.jpg";
     public static final String PATH_RESOURCE_ORE  = "./com/catan/assets/resource_ore.jpg";
-    public static final String PATH_RESOURCE_SHEEP  = "./com/catan/assets/resource_sheep.jpg";
+    public static final String PATH_RESOURCE_WOOL  = "./com/catan/assets/resource_wool.jpg";
 
     public static final String PATH_HEX_PASTURE = "./com/catan/assets/pasture.png";
     public static final String PATH_HEX_FOREST = "./com/catan/assets/forest.png";

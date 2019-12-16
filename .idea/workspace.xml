@@ -2,111 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/dev_card_invention.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/dev_card_knight.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/dev_card_monopoly.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/dev_card_profit.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/dev_card_road_destruction.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/dev_card_victory.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/icon_okey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/img_market.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/img_merchant.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/invention_ng.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerDevInvention.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerDevMonopol.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerPlayDevelopmentCard.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTradeOffer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/interfaces/InterfaceDestroyRoad.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/interfaces/InterfaceDevelopmentCard.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/interfaces/InterfaceExchangeTurnProfit.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/interfaces/InterfaceMakeTrade.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/AI.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Thief.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/inventionDevCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/monopolDevCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/playDevelopmentCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/tradeOffer.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/dev_card_invention.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/dev_card_knight.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/dev_card_monopoly.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/dev_card_profit.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/dev_card_road_destruction.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/dev_card_victory.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/icon_okey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/img_market.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/img_merchant.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/assets/invention_ng.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerDevInvention.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerDevMonopol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerPlayDevelopmentCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeOffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/interfaces/InterfaceDestroyRoad.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/interfaces/InterfaceDevelopmentCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/interfaces/InterfaceExchangeTurnProfit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/interfaces/InterfaceMakeTrade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/modal/AI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/modal/Thief.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/view/inventionDevCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/view/monopolDevCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/view/playDevelopmentCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/catan/view/tradeOffer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/resource_sheep.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/resource_wool.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/resource_wood.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/resource_lumber.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerSettings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerThiefPunishment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerThiefPunishment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTrade.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTradeRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTradeRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/interfaces/InterfaceUpdateGameAfterPopUp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Chest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Chest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/DevelopmentCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/DevelopmentCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerAI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerAI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerActual.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PlayerActual.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PriceCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PriceCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Settlement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Settlement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/SourceCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/SourceCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/TerrainHex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/TerrainHex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Trade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Trade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Vertex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Vertex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/thiefCardPunishment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/thiefCardPunishment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/trade.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/tradeRequest.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/tradeRequest.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/resource_sheep.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/assets/resource_wool.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/resource_wood.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/assets/resource_lumber.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerTrade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/interfaces/InterfaceUpdateGameAfterPopUp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Chest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/DevelopmentCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/DevelopmentCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/PlayerAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/PlayerActual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/PlayerActual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/PriceCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/PriceCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Settlement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Settlement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/SourceCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/SourceCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/TerrainHex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Vertex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/thiefCardPunishment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/thiefCardPunishment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/trade.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/tradeRequest.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/tradeRequest.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

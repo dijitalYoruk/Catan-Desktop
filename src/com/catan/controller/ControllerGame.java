@@ -338,9 +338,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         // reason of this map is to update all card panes in a loop
         HashMap<String, Object[]> map = new HashMap<>();
 
-        map.put("wool", new Object[] {woolLabel, woolImages, paneWools, Constants.PATH_RESOURCE_SHEEP});
+        map.put("wool", new Object[] {woolLabel, woolImages, paneWools, Constants.PATH_RESOURCE_WOOL});
         map.put("ore", new Object[] {oreLabel, oreImages, paneOres, Constants.PATH_RESOURCE_ORE});
-        map.put("lumber", new Object[] {lumberLabel, lumberImages, paneLumbers, Constants.PATH_RESOURCE_WOOD});
+        map.put("lumber", new Object[] {lumberLabel, lumberImages, paneLumbers, Constants.PATH_RESOURCE_LUMBER});
         map.put("brick", new Object[] {brickLabel, brickImages, paneBricks, Constants.PATH_RESOURCE_BRICK});
         map.put("grain", new Object[] {grainLabel, grainImages, paneGrains, Constants.PATH_RESOURCE_GRAIN});
 
