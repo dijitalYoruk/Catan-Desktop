@@ -168,6 +168,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     void trade(ActionEvent event) {
         if (isStepActual) {
             openDialog(Constants.PATH_VIEW_TRADE_OFFER, "Trade" , null, null);
+            updateCardsOfActualPlayerInView();
         }
     }
 
@@ -587,13 +588,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         developmentCardExchangeProfit = null;
         developmentCardDestroyRoad = null;
         playerTurn = playerTurn % 4;
-        currentPlayer = getPlayers().get(playerTurn++);
+        currentPlayer = getPlayers().get(playerTurn);
         rollDie();
 
         System.out.println("----------------------------------------------------------------------------------------------");
         System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor() + " | Die Result: " + die.getDieSum());
         System.out.println("----------------------------------------------------------------------------------------------");
         gameLog.add(new String[] {"Player " + playerTurn + ": has rolled " + die.getDieSum() + ".", "" + (playerTurn % 4)});
+        playerTurn++;
         //  doing thief operations.
         if (die.getDieSum() == 7) {
             thiefResourceCardPunishAI();
@@ -602,7 +604,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
 
         getTurnProfit();
-
+        updateGameLogsInView();
+        updateCardsOfActualPlayerInView();
         // AI player
         if (currentPlayer instanceof PlayerAI) {
             playAIActualTurn();
@@ -654,6 +657,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void thiefResourceCardPunishActual() {
         if(playerActual.getTotalCards() > 7){
             openDialog(Constants.PATH_VIEW_PUNISHMENT, "Thief will steal something", null, null);
+            updateCardsOfActualPlayerInView();
         }
     }
 
@@ -725,7 +729,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                         // FIXME: playerTurn is not who it should correspond to
                         // FIXME: ex: when blue constructs city, the color is purple. something wrong with the
                         // FIXME: incrementation of the currentPlayer variable. It works for some players though.
-                        gameLog.add(new String[] {"Player " + playerTurn + ": has built a city.", "" + playerTurn});
+                        gameLog.add(new String[] {"Player " + playerTurn + ": has built a city.", "" + playerTurn % 4});
                         break;
                     case Constants.VILLAGE:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
