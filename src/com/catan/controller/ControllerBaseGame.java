@@ -471,7 +471,7 @@ public class ControllerBaseGame extends ControllerBase {
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
     private ArrayList<Harbour> harbours;
-    private Settings settings;
+    protected Settings settings;
     protected Die die;
     protected Player playerActual;
     protected Thief thief;
@@ -1301,6 +1301,10 @@ public class ControllerBaseGame extends ControllerBase {
 
     public Label getLabelLogs() {
         return labelLogs;
+    }
+
+    public Settings getSettings() {
+        return settings;
     }
 
     public void setLabelLogs(Label labelLogs) {

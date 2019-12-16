@@ -17,7 +17,12 @@ public class Player {
     private String color;
     private String name;
     private int knightCount;
+    private int longestRoad;
     private int victoryPoints;
+    private int pointsFromVictoryPointsCard;
+    private EntitlementCard strongestArmyCard;
+    private EntitlementCard longestArmyCard;
+
 
     // constructor
     public Player(String color, String name) {
@@ -29,6 +34,10 @@ public class Player {
         this.knightCount = 0;
         this.color = color;
         this.name = name;
+        this.strongestArmyCard = null;
+        this.longestArmyCard = null;
+        this.pointsFromVictoryPointsCard = 0;
+        this.longestRoad = 0;
         for (String resourceName: Constants.resourceNames) {
             sourceCards.put(resourceName,  new ArrayList<>());
         }
@@ -48,6 +57,9 @@ public class Player {
 
     public ArrayList<Road> getRoads() {
         return roads;
+    }
+    public void addRoad(Road road) {
+        roads.add(road);
     }
 
     public String getColor() {
@@ -69,9 +81,12 @@ public class Player {
     public int getKnightCount() {
         return knightCount;
     }
+    public int getLongestRoad() {
+        return longestRoad;
+    }
 
     public void incrementVictoryPoints() {
-        victoryPoints++;
+        pointsFromVictoryPointsCard++;
     }
 
     public int getVictoryPoints() {
@@ -222,13 +237,39 @@ public class Player {
     }
 
     public void buyDevelopmentCard(Chest chest) {
-        boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
-        if (hasEnoughResources) {
-            DevelopmentCard card = chest.getDevelopmentCard();
-            addDevelopmentCard(card.getName());
-            System.out.println("==============================================================================================");
-            System.out.println(getName() + " bought " + card.getName());
-            System.out.println("==============================================================================================");
+        try {
+            boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
+            if (hasEnoughResources) {
+                DevelopmentCard card = chest.getDevelopmentCard();
+                addDevelopmentCard(card.getName());
+                System.out.println("==============================================================================================");
+                System.out.println(getName() + " bought " + card.getName());
+                System.out.println("==============================================================================================");
+            }
         }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void setStrongestArmyCard(EntitlementCard strongestArmyCard)
+    {
+         this.strongestArmyCard= strongestArmyCard;
+    }
+    public void setLongestArmyCard(EntitlementCard longestArmyCard)
+    {
+        this.longestArmyCard= longestArmyCard;
+    }
+    public void refreshVictoryPoints()
+    {
+        victoryPoints = 0;
+        for(int i = 0; i < settlements.size(); i++)
+            victoryPoints += settlements.get(i).getSourceCardProfit();
+        if(strongestArmyCard != null)
+            victoryPoints += strongestArmyCard.getVictoryPoints();
+        if(longestArmyCard != null)
+            victoryPoints += longestArmyCard.getVictoryPoints();
+
+        victoryPoints += pointsFromVictoryPointsCard;
     }
 }

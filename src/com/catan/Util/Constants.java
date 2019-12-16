@@ -112,6 +112,7 @@ public class Constants {
     public static String PATH_VIEW_DEV_INVENTION_CARD = "com/catan/view/inventionDevCard.fxml";
     public static String PATH_VIEW_TRADE_OFFER = "com/catan/view/tradeOffer.fxml";
     public static String PATH_VIEW_PUNISHMENT = "com/catan/view/thiefCardPunishment.fxml";
+    public static String PATH_VIEW_ENDGAME = "com/catan/view/endGame.fxml";
     public static final double HARBOUR_NO_RATIO = -1;
 
     public static final ArrayList<String> resourceNames = new ArrayList<>(

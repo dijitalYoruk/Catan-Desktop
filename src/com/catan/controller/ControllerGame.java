@@ -7,6 +7,8 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,6 +18,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -57,7 +60,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         selectConstructionInitial(imgRoad);
         currentPlayer = getPlayers().get(0);
         activateAllVertices();
-        chest = new Chest();
+        chest = new Chest(getPlayers(),getSettings());
     }
 
     @FXML
@@ -206,6 +209,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 controller.setProperties(currentPlayer, this);
             }
 
+            else if (viewPath.equals(Constants.PATH_VIEW_ENDGAME)) {
+                ControllerEndGame controller = fxmlLoader.getController();
+                controller.setProperties(currentPlayer.getName(),getSettings().getVictoryThreshold());
+            }
+
+
             dialog.showAndWait();
             if (developmentCardInvention != null) {
                 DevelopmentCard card = developmentCardInvention;
@@ -253,6 +262,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     @FXML
     public void endTurn(ActionEvent actionEvent) throws IOException {
+
         if(isStepInitial) {
             initialTurn();
         } else if (isStepActual) {
@@ -315,7 +325,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             road.getRoad().setStroke(color);
             road.getRoad().setVisible(true);
             // adding road;
-            currentPlayer.getRoads().add(road);
+            currentPlayer.addRoad(road);
             activatePlayerVertices();
             isRoadBuild = true;
 
@@ -431,6 +441,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                selectedConstruction.equals(Constants.CIVILISATION);
     }
 
+
     // ------------ ACTUAL STEP METHODS ---------------- //
 
     private void actualTurn() {
@@ -444,6 +455,28 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor() + " | Die Result: " + die.getDieSum());
         System.out.println("----------------------------------------------------------------------------------------------");
 
+        chest.refreshStrongestArmyOwner();
+        if(chest.getStrongestArmyOwner().equals(currentPlayer.getName()))
+            currentPlayer.setStrongestArmyCard(chest.getStrongestArmyCard());
+
+        chest.refreshLongestRoadOwner();
+        if(chest.getLongestRoadOwner().equals(currentPlayer.getName()))
+            currentPlayer.setLongestArmyCard(chest.getLongestRoad());
+
+        currentPlayer.refreshVictoryPoints();
+        System.out.println("--------------------------Victory Points:"+currentPlayer.getName()+"  "+currentPlayer.getVictoryPoints() +"---------------------------------------");
+
+        if(currentPlayer.getVictoryPoints() >= getSettings().getVictoryThreshold()) {
+            openDialog(Constants.PATH_VIEW_ENDGAME, "The game end.", null, null);
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
+                Stage window = (Stage) getImgDie1().getScene().getWindow();
+                window.getScene().setRoot(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
         //  doing thief operations.
         if (die.getDieSum() == 7) {
             thiefResourceCardPunishAI();
@@ -466,6 +499,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             constructionUnselect = true;
             unselectConstructions(null);
         }
+
     }
 
     private void playAIActualTurn() {
