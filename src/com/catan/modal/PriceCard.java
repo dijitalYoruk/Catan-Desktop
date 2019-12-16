@@ -5,96 +5,58 @@ import com.catan.Util.Constants;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PriceCard extends Card {
+public class PriceCard {
 
-        private Map<String, Integer> priceOfVillage;
-        private Map<String, Integer> priceOfRoad;
-        private Map<String, Integer> priceOfCity;
-        private Map<String, Integer> priceOfCivilization;
-        private Map<String, Integer> priceOfDevelopmentCard;
+        // properties
+        private HashMap<String, HashMap<String, Integer>> prices;
+        private static PriceCard priceCard = new PriceCard();
 
-
-        public PriceCard(String name) {
-            super(name);
-            priceOfDevelopmentCard = new HashMap<>();
-            priceOfCivilization = new HashMap<>();
-            priceOfVillage = new HashMap<>();
-            priceOfCity = new HashMap<>();
-            priceOfRoad = new HashMap<>();
-
+        // constructor
+        private PriceCard() {
+            prices = new HashMap<>();
+            prices.put(Constants.ROAD, new HashMap<>());
+            prices.put(Constants.CITY, new HashMap<>());
+            prices.put(Constants.VILLAGE, new HashMap<>());
+            prices.put(Constants.CIVILISATION, new HashMap<>());
+            prices.put(Constants.DEVELOPMENT_CARD, new HashMap<>());
             // road price
-            priceOfRoad.put(Constants.CARD_BRICK, 1 );
-            priceOfRoad.put(Constants.CARD_WOOL, 0);
-            priceOfRoad.put(Constants.CARD_ORE, 0);
-            priceOfRoad.put(Constants.CARD_GRAIN, 0);
-            priceOfRoad.put(Constants.CARD_LUMBER, 1);
-
+            prices.get(Constants.ROAD).put(Constants.CARD_BRICK, 1 );
+            prices.get(Constants.ROAD).put(Constants.CARD_WOOL, 0);
+            prices.get(Constants.ROAD).put(Constants.CARD_ORE, 0);
+            prices.get(Constants.ROAD).put(Constants.CARD_GRAIN, 0);
+            prices.get(Constants.ROAD).put(Constants.CARD_LUMBER, 1);
             // village price
-            priceOfVillage.put(Constants.CARD_BRICK, 1 );
-            priceOfVillage.put(Constants.CARD_WOOL, 1);
-            priceOfVillage.put(Constants.CARD_ORE, 0);
-            priceOfVillage.put(Constants.CARD_GRAIN, 1);
-            priceOfVillage.put(Constants.CARD_LUMBER, 1);
-
+            prices.get(Constants.VILLAGE).put(Constants.CARD_BRICK, 1 );
+            prices.get(Constants.VILLAGE).put(Constants.CARD_WOOL, 1);
+            prices.get(Constants.VILLAGE).put(Constants.CARD_ORE, 0);
+            prices.get(Constants.VILLAGE).put(Constants.CARD_GRAIN, 1);
+            prices.get(Constants.VILLAGE).put(Constants.CARD_LUMBER, 1);
             // city price
-            priceOfCity.put(Constants.CARD_BRICK, 0 );
-            priceOfCity.put(Constants.CARD_WOOL, 0);
-            priceOfCity.put(Constants.CARD_ORE, 3);
-            priceOfCity.put(Constants.CARD_GRAIN, 2);
-            priceOfCity.put(Constants.CARD_LUMBER, 0);
-
+            prices.get(Constants.CITY).put(Constants.CARD_BRICK, 0 );
+            prices.get(Constants.CITY).put(Constants.CARD_WOOL, 0);
+            prices.get(Constants.CITY).put(Constants.CARD_ORE, 3);
+            prices.get(Constants.CITY).put(Constants.CARD_GRAIN, 2);
+            prices.get(Constants.CITY).put(Constants.CARD_LUMBER, 0);
             // civilization price
-            priceOfCivilization.put(Constants.CARD_BRICK, 1 );
-            priceOfCivilization.put(Constants.CARD_WOOL, 0);
-            priceOfCivilization.put(Constants.CARD_ORE, 3);
-            priceOfCivilization.put(Constants.CARD_GRAIN, 2);
-            priceOfCivilization.put(Constants.CARD_LUMBER, 1);
-
+            prices.get(Constants.CIVILISATION).put(Constants.CARD_BRICK, 1 );
+            prices.get(Constants.CIVILISATION).put(Constants.CARD_WOOL, 0);
+            prices.get(Constants.CIVILISATION).put(Constants.CARD_ORE, 3);
+            prices.get(Constants.CIVILISATION).put(Constants.CARD_GRAIN, 2);
+            prices.get(Constants.CIVILISATION).put(Constants.CARD_LUMBER, 1);
             // development card price
-            priceOfDevelopmentCard.put(Constants.CARD_BRICK, 0 );
-            priceOfDevelopmentCard.put(Constants.CARD_WOOL, 1);
-            priceOfDevelopmentCard.put(Constants.CARD_ORE, 1);
-            priceOfDevelopmentCard.put(Constants.CARD_GRAIN, 1);
-            priceOfDevelopmentCard.put(Constants.CARD_LUMBER, 0);
+            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_BRICK, 0 );
+            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_WOOL, 0);
+            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_ORE, 0);
+            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_GRAIN, 0);
+            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_LUMBER, 0);
         }
 
-        public Map<String, Integer> getVillagePrice() {
-            return priceOfVillage ;
+        // methods
+        public HashMap<String, Integer> getPrice(String type) {
+            return prices.get(type);
         }
 
-        public void setVillagePrice(Map<String, Integer> villagePrice) {
-            priceOfVillage = villagePrice;
-        }
-
-        public Map<String, Integer> getRoadPrice() {
-            return priceOfRoad;
-        }
-
-        public void setRoadPrice(Map<String, Integer> roadPrice) {
-            priceOfRoad = roadPrice;
-        }
-
-        public Map<String, Integer> getCityPrice() {
-            return priceOfCity;
-        }
-
-        public void setCityPrice(Map<String, Integer> cityPrice) {
-            priceOfCity = cityPrice;
-        }
-
-        public Map<String, Integer> getCivilizationPrice() {
-            return priceOfCivilization;
-        }
-
-        public void setCivilizationPrice(Map<String, Integer> civilizationPrice) {
-            priceOfCivilization = civilizationPrice;
-        }
-
-        public Map<String, Integer> getCardPrice() { //dev card
-            return priceOfDevelopmentCard;
-        }
-
-        public void setCardPrice(Map<String, Integer> cardPrice) { //dev card
-            priceOfDevelopmentCard = cardPrice;
+        public static PriceCard getInstance() {
+            return priceCard;
         }
 }

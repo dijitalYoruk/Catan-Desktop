@@ -75,6 +75,16 @@
     -fx-font-size: 20;
 }
 
+.thief-button {
+    -fx-background-color: #CD853F;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 250;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+
 .trade-button {
     -fx-background-color: orange;
     -fx-margin:50px;
@@ -104,6 +114,7 @@
     -fx-pref-height: 100;
     -fx-font-size: 20;
 }
+
 .card-punishment-screen-resources{
     -fx-alignment: center;
     -fx-background-color: orange;
@@ -112,6 +123,16 @@
     -fx-background-radius: 20;
     -fx-pref-width: 40;
     -fx-pref-height: 30;
+    -fx-font-size: 20;
+}
+
+#trade-label {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-pref-width: 270;
+    -fx-pref-height: 50;
     -fx-font-size: 20;
 }
 
@@ -151,4 +172,72 @@
     -fx-background-position: center;
     -fx-background-image: url("../assets/icon_back.jpg");
     -fx-background-size: 50px;
+}
+
+#selector-bg {
+    -fx-fill: orange;
+    -fx-arc-height:  50;
+    -fx-arc-width:  50;
+    -fx-font-family: "Book Antiqua";
+    -fx-font-size: 20;
+}
+
+Label {
+    -fx-font-family: "Book Antiqua";
+}
+
+.trade-pane {
+    -fx-pref-width: 700;
+    -fx-pref-height: 200;
+}
+
+trade-pane-bg {
+    -fx-pref-width: cover;
+    -fx-pref-height: cover;
+
+}
+
+.trade-pane-button {
+    -fx-background-color: #FF5722;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 100;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+
+#okey-button {
+    -fx-background-image: url("../assets/icon_okey.png");
+    -fx-background-size: 50px;
+}
+
+#invention-pane {
+    -fx-background-image: url("../assets/invention_ng.jpg");
+    -fx-background-size: cover;
+}
+
+#development-card-pane {
+    -fx-background-image: url("../assets/invention_ng.jpg");
+    -fx-background-size: cover;
+}
+
+.invention-label {
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 340;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+    -fx-background-color: #FF5722;
+}
+
+.invention-button {
+    -fx-background-color: #F57C00;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 300;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
 }

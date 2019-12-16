@@ -14,63 +14,31 @@ import java.util.ArrayList;
 
 public class TerrainHex extends Field{
 
+    // properties
+    private ArrayList<Vertex> adjacentVertices;
     private String sourceCardName;
     private Circle circleNumberOnHex;
     private Label labelNumberOnHex;
-    private boolean isThiefHere;
-    private ArrayList<Vertex> verticesNear;
     private Polygon shape;
 
+    // constructor
     public TerrainHex (Polygon shape, String name, Circle circleNumberOnHex, Label labelNumberOnHex) {
         super(name,shape);
         this.shape = shape;
         this.sourceCardName = "";
         this.circleNumberOnHex = circleNumberOnHex;
         this.labelNumberOnHex = labelNumberOnHex;
-        this.isThiefHere = false;
-        verticesNear = new ArrayList<>();
+        adjacentVertices = new ArrayList<>();
     }
 
-    public boolean isThiefHere(){
-        return isThiefHere;
-    }
-
-    public void addVertex(Vertex vertex){
-        verticesNear.add(vertex);
-    }
-
-    public ArrayList<Player> getPlayersAroundHere(){
-        ArrayList<Player> playersAround = new ArrayList<>();
-        for(Vertex vertex: verticesNear){
-            Settlement settlementOfVertex = vertex.getSettlement();
-            if(settlementOfVertex != null){
-                Player playerOfVertex = settlementOfVertex.getPlayer();
-                playersAround.add(playerOfVertex);
-            }
-        }
-        return playersAround;
-    }
-
+    // methods
     public boolean isShapeInside(Shape check){
-        if(shape.getBoundsInParent().intersects(check.getBoundsInParent())){
-            return true;
-        }
-        return false;
+        return shape.getBoundsInParent().intersects(check.getBoundsInParent());
     }
 
     public int getNumberOnHex() {
         String s = labelNumberOnHex.getText();
         return Integer.parseInt(s);
-    }
-
-    public void setThiefHere(boolean status){
-        isThiefHere = status;
-        if(status) {
-            javafx.scene.image.Image imgThief = new Image(Constants.ICON_THIEF);
-            circleNumberOnHex.setFill(new ImagePattern(imgThief));
-        }else{
-            circleNumberOnHex.setFill(Color.WHITE);
-        }
     }
 
     public void setNumberOnHex(int number) {
@@ -100,4 +68,21 @@ public class TerrainHex extends Field{
     public void setLabelOnHex(Label labelNumberOnHex) {
         this.labelNumberOnHex = labelNumberOnHex;
     }
+
+    public void addVertex(Vertex vertex){
+        adjacentVertices.add(vertex);
+    }
+
+    public ArrayList<Player> getPlayersAround(){
+        ArrayList<Player> playersAround = new ArrayList<>();
+        for(Vertex vertex: adjacentVertices){
+            Settlement settlementOfVertex = vertex.getSettlement();
+            if(settlementOfVertex != null){
+                Player playerOfVertex = settlementOfVertex.getPlayer();
+                playersAround.add(playerOfVertex);
+            }
+        }
+        return playersAround;
+    }
+
 }
