@@ -498,6 +498,42 @@ public class ControllerBaseGame extends ControllerBase {
     protected Pane paneGrains;
     @FXML
     protected Pane paneBricks;
+    @FXML
+    protected Label inventionLabel;
+    @FXML
+    protected Label knightLabel;
+    @FXML
+    protected Label monopolyLabel;
+    @FXML
+    protected Label profitLabel;
+    @FXML
+    protected Label victoryLabel;
+    @FXML
+    protected Label roadDestructionLabel;
+    @FXML
+    protected ImageView ImgViewInventionDummy;
+    @FXML
+    protected ImageView ImgViewKnightDummy;
+    @FXML
+    protected ImageView ImgViewMonopolyDummy;
+    @FXML
+    protected ImageView ImgViewProfitDummy;
+    @FXML
+    protected ImageView ImgViewRoadDestructionDummy;
+    @FXML
+    protected ImageView ImgViewVictoryDummy;
+    @FXML
+    protected Pane paneInvention;
+    @FXML
+    protected Pane paneKnight;
+    @FXML
+    protected Pane paneMonopoly;
+    @FXML
+    protected Pane paneProfit;
+    @FXML
+    protected Pane paneRoadDestruction;
+    @FXML
+    protected Pane paneVictory;
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;

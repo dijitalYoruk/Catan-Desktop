@@ -69,8 +69,16 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private ArrayList<ImageView> grainImages = new ArrayList<>();
     private ArrayList<ImageView> oreImages = new ArrayList<>();
     private ArrayList<ImageView> woolImages = new ArrayList<>();
-    private Pane[] cardPanes = new Pane[5];
-    double[][] cardsPaneLocations = new double[5][2];
+    private ArrayList<ImageView> inventionImages = new ArrayList<>();
+    private ArrayList<ImageView> victoryImages = new ArrayList<>();
+    private ArrayList<ImageView> profitImages = new ArrayList<>();
+    private ArrayList<ImageView> monopolyImages = new ArrayList<>();
+    private ArrayList<ImageView> knightImages = new ArrayList<>();
+    private ArrayList<ImageView> roadDestructionImages = new ArrayList<>();
+    private Pane[] resourceCardPanes = new Pane[5];
+    private Pane[] developmentCardPanes = new Pane[6];
+    double[][] resourceCardsPaneLocations = new double[5][2];
+    double[][] developmentCardsPaneLocations = new double[6][2];
     private Road tempRoad;
     private Chest chest;
 
@@ -107,17 +115,47 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         ImgViewWoolDummy.setVisible(false);
         woolImages.add(ImgViewWoolDummy);
 
-        cardPanes[0] = paneLumbers;
-        cardPanes[1] = paneWools;
-        cardPanes[2] = paneOres;
-        cardPanes[3] = paneBricks;
-        cardPanes[4] = paneGrains;
+        resourceCardPanes[0] = paneLumbers;
+        resourceCardPanes[1] = paneWools;
+        resourceCardPanes[2] = paneOres;
+        resourceCardPanes[3] = paneBricks;
+        resourceCardPanes[4] = paneGrains;
 
-        cardsPaneLocations[0] = new double[] {paneLumbers.getLayoutX(), paneLumbers.getLayoutY()};
-        cardsPaneLocations[1] = new double[] {paneWools.getLayoutX(), paneWools.getLayoutY()};
-        cardsPaneLocations[2] = new double[] {paneBricks.getLayoutX(), paneBricks.getLayoutY()};
-        cardsPaneLocations[3] = new double[] {paneOres.getLayoutX(), paneOres.getLayoutY()};
-        cardsPaneLocations[4] = new double[] {paneGrains.getLayoutX(), paneGrains.getLayoutY()};
+        // these has to be in the order as in the FXML file
+        resourceCardsPaneLocations[0] = new double[] {paneLumbers.getLayoutX(), paneLumbers.getLayoutY()};
+        resourceCardsPaneLocations[1] = new double[] {paneWools.getLayoutX(), paneWools.getLayoutY()};
+        resourceCardsPaneLocations[2] = new double[] {paneBricks.getLayoutX(), paneBricks.getLayoutY()};
+        resourceCardsPaneLocations[3] = new double[] {paneOres.getLayoutX(), paneOres.getLayoutY()};
+        resourceCardsPaneLocations[4] = new double[] {paneGrains.getLayoutX(), paneGrains.getLayoutY()};
+
+
+        ImgViewInventionDummy.setVisible(false);
+        inventionImages.add(ImgViewInventionDummy);
+        ImgViewMonopolyDummy.setVisible(false);
+        monopolyImages.add(ImgViewMonopolyDummy);
+        ImgViewKnightDummy.setVisible(false);
+        knightImages.add(ImgViewKnightDummy);
+        ImgViewProfitDummy.setVisible(false);
+        profitImages.add(ImgViewProfitDummy);
+        ImgViewRoadDestructionDummy.setVisible(false);
+        roadDestructionImages.add(ImgViewRoadDestructionDummy);
+        ImgViewVictoryDummy.setVisible(false);
+        victoryImages.add(ImgViewVictoryDummy);
+
+        developmentCardPanes[0] = paneInvention;
+        developmentCardPanes[1] = paneKnight;
+        developmentCardPanes[2] = paneMonopoly;
+        developmentCardPanes[3] = paneProfit;
+        developmentCardPanes[4] = paneRoadDestruction;
+        developmentCardPanes[5] = paneVictory;
+
+        // these has to be in the order as in the FXML file
+        developmentCardsPaneLocations[0] = new double[] {paneInvention.getLayoutX(), paneInvention.getLayoutY()};
+        developmentCardsPaneLocations[1] = new double[] {paneKnight.getLayoutX(), paneKnight.getLayoutY()};
+        developmentCardsPaneLocations[2] = new double[] {paneMonopoly.getLayoutX(), paneMonopoly.getLayoutY()};
+        developmentCardsPaneLocations[3] = new double[] {paneProfit.getLayoutX(), paneProfit.getLayoutY()};
+        developmentCardsPaneLocations[4] = new double[] {paneRoadDestruction.getLayoutX(), paneRoadDestruction.getLayoutY()};
+        developmentCardsPaneLocations[5] = new double[] {paneVictory.getLayoutX(), paneVictory.getLayoutY()};
     }
 
     @FXML
@@ -181,6 +219,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         } else {
             outputNotPossible("No resource");
         }
+        updateCardsOfActualPlayerInView();
+        updateGameLogsInView();
     }
 
     @Override
@@ -335,15 +375,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         int imgHeight = 87;
         int imgWidth = 60;
         int spaceBetweenImages = 6;
-
         // reason of this map is to update all card panes in a loop
-        HashMap<String, Object[]> map = new HashMap<>();
+        HashMap<String, Object[]> resourceCardsMap = new HashMap<>();
 
-        map.put("wool", new Object[] {woolLabel, woolImages, paneWools, Constants.PATH_RESOURCE_WOOL});
-        map.put("ore", new Object[] {oreLabel, oreImages, paneOres, Constants.PATH_RESOURCE_ORE});
-        map.put("lumber", new Object[] {lumberLabel, lumberImages, paneLumbers, Constants.PATH_RESOURCE_LUMBER});
-        map.put("brick", new Object[] {brickLabel, brickImages, paneBricks, Constants.PATH_RESOURCE_BRICK});
-        map.put("grain", new Object[] {grainLabel, grainImages, paneGrains, Constants.PATH_RESOURCE_GRAIN});
+        resourceCardsMap.put(Constants.CARD_WOOL, new Object[] {woolLabel, woolImages, paneWools, Constants.PATH_RESOURCE_WOOL});
+        resourceCardsMap.put(Constants.CARD_ORE, new Object[] {oreLabel, oreImages, paneOres, Constants.PATH_RESOURCE_ORE});
+        resourceCardsMap.put(Constants.CARD_LUMBER, new Object[] {lumberLabel, lumberImages, paneLumbers, Constants.PATH_RESOURCE_LUMBER});
+        resourceCardsMap.put(Constants.CARD_BRICK, new Object[] {brickLabel, brickImages, paneBricks, Constants.PATH_RESOURCE_BRICK});
+        resourceCardsMap.put(Constants.CARD_GRAIN, new Object[] {grainLabel, grainImages, paneGrains, Constants.PATH_RESOURCE_GRAIN});
 
         Player actualPlayer = getPlayers().get(0);
         HashMap<String, ArrayList<SourceCard>> sourceCards = actualPlayer.getSourceCards();
@@ -352,7 +391,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         for (String key: keys) {
             // this object array contains all card related objects in every iteration
             // ex:
-            Object[] currentCardRelated = map.get(key);
+            Object[] currentCardRelated = resourceCardsMap.get(key);
             String noOfCards = sourceCards.get(key).size() == 0 ? "" : sourceCards.get(key).size() + "";
 
             // updates the textual representation of the number of cards
@@ -380,15 +419,64 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 ((ArrayList<ImageView>)currentCardRelated[1]).remove(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1);
             }
         }
+
+        HashMap<String, Object[]> developmentCardsMap = new HashMap<>();
+
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_INVENTION, new Object[] {inventionLabel, inventionImages, paneInvention, Constants.PATH_DEVELOPMENT_CARD_INVENTION});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_KNIGHT, new Object[] {knightLabel, knightImages, paneKnight, Constants.PATH_DEVELOPMENT_CARD_KNIGHT});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_MONOPOL, new Object[] {monopolyLabel, monopolyImages, paneMonopoly, Constants.PATH_DEVELOPMENT_CARD_MONOPOL});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE, new Object[] {profitLabel, profitImages, paneProfit, Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION, new Object[] {roadDestructionLabel, roadDestructionImages, paneRoadDestruction, Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_VICTORY_POINT, new Object[] {victoryLabel, victoryImages, paneVictory, Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT});
+
+        HashMap<String, Integer> developmentCards = actualPlayer.getDevelopmentCards();
+        Set<String> developmentKeys = developmentCards.keySet();
+        for (String key: developmentKeys) {
+// this object array contains all card related objects in every iteration
+            // ex:
+            Object[] currentCardRelated = developmentCardsMap.get(key);
+            String noOfCards = developmentCards.get(key) == 0 ? "" : developmentCards.get(key) + "";
+
+            // updates the textual representation of the number of cards
+            ((Label)currentCardRelated[0]).setText(noOfCards);
+            // if the number of source cards it has is more than what is displayed on the screen,
+            // add more card images to the display
+            while (developmentCards.get(key) > ((ArrayList<ImageView>)currentCardRelated[1]).size() - 1) {
+                ImageView imgToAdd = new ImageView(((String)currentCardRelated[3]));
+                // puts the image right next to its predecessor
+                imgToAdd.setLayoutX(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                imgToAdd.setLayoutY(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutY());
+                imgToAdd.setFitHeight(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitHeight());
+                imgToAdd.setFitWidth(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitWidth());
+                // puts the image into its corresponding list. ex: grainImage -> grainImages
+                ((ArrayList<ImageView>)currentCardRelated[1]).add(imgToAdd);
+                // puts image into its corresponding pane. ex : grainImage -> grainsPane
+                ((Pane)currentCardRelated[2]).getChildren().add(imgToAdd);
+            }
+            // if number of source cards it has is less than what is displayed on the screen,
+            // remove the displayed card images
+            while (developmentCards.get(key) < ((ArrayList<ImageView>)currentCardRelated[1]).size() - 1) {
+                // removes the image from its corresponding pane
+                ((Pane)currentCardRelated[2]).getChildren().remove(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1));
+                // removes the image from its corresponding list
+                ((ArrayList<ImageView>)currentCardRelated[1]).remove(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1);
+            }
+        }
     }
 
     // makes the card panes sorted in descending order
     // ex: 4 lumbers will be presented before 3 wools
     private void updateOrderOfCardPanes() {
-        Arrays.sort(cardPanes, (a, b) -> b.getChildren().size() - a.getChildren().size());
-        for (int i = 0; i < cardPanes.length; i++) {
-            cardPanes[i].setLayoutX(cardsPaneLocations[i][0]);
-            cardPanes[i].setLayoutY(cardsPaneLocations[i][1]);
+        Arrays.sort(resourceCardPanes, (a, b) -> b.getChildren().size() - a.getChildren().size());
+        for (int i = 0; i < resourceCardPanes.length; i++) {
+            resourceCardPanes[i].setLayoutX(resourceCardsPaneLocations[i][0]);
+            resourceCardPanes[i].setLayoutY(resourceCardsPaneLocations[i][1]);
+        }
+
+        Arrays.sort(developmentCardPanes, (a, b) -> b.getChildren().size() - a.getChildren().size());
+        for (int i = 0; i < developmentCardPanes.length; i++) {
+            developmentCardPanes[i].setLayoutX(developmentCardsPaneLocations[i][0]);
+            developmentCardPanes[i].setLayoutY(developmentCardsPaneLocations[i][1]);
         }
     }
 

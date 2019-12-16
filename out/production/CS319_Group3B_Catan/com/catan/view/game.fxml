@@ -357,13 +357,13 @@
             <FlowPane prefHeight="567.0" prefWidth="359.0" />
          </content>
       </ScrollPane>
-      <Pane fx:id="actualPlayerCardsPane" layoutX="1517.0" layoutY="281.0" prefHeight="481.0" prefWidth="359.0" style="-fx-background-color: #FFC41F; -fx-border-color: black;">
+      <Pane fx:id="actualPlayerCardsPane" layoutX="1517.0" layoutY="283.0" prefHeight="563.0" prefWidth="359.0" style="-fx-background-color: #FFC41F; -fx-border-color: black;">
          <children>
             <Pane fx:id="paneLumbers" layoutX="7.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
                   <ImageView fx:id="ImgViewLumberDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/resource_wood.jpg" />
+                        <Image url="@../assets/resource_lumber.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="lumberLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
@@ -377,7 +377,7 @@
                <children>
                   <ImageView fx:id="ImgViewWoolDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/resource_sheep.jpg" />
+                        <Image url="@../assets/resource_wool.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="woolLabel" layoutX="36.0" layoutY="101.0" prefHeight="21.0" prefWidth="32.0">
@@ -423,6 +423,90 @@
                      </image>
                   </ImageView>
                   <Label fx:id="grainLabel" layoutX="39.0" layoutY="101.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneInvention" layoutX="7.0" layoutY="282.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewInventionDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_invention.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="inventionLabel" layoutX="39.0" layoutY="72.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneKnight" layoutX="125.0" layoutY="282.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewKnightDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_knight.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="knightLabel" layoutX="39.0" layoutY="97.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneMonopoly" layoutX="235.0" layoutY="291.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewMonopolyDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_monopoly.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="monopolyLabel" layoutX="39.0" layoutY="90.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneProfit" layoutX="7.0" layoutY="400.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewProfitDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_profit.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="profitLabel" layoutX="39.0" layoutY="80.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneRoadDestruction" layoutX="125.0" layoutY="400.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewRoadDestructionDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_road_destruction.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="roadDestructionLabel" layoutX="39.0" layoutY="86.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneVictory" layoutX="235.0" layoutY="400.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewVictoryDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_victory.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="victoryLabel" layoutX="39.0" layoutY="69.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>

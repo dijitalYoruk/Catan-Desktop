@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,6 +81,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576183291655" />
