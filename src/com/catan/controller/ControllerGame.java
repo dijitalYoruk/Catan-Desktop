@@ -404,8 +404,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 // puts the image right next to its predecessor
                 imgToAdd.setLayoutX(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
                 imgToAdd.setLayoutY(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutY());
-                imgToAdd.setFitHeight(imgHeight);
-                imgToAdd.setFitWidth(imgWidth);
+                imgToAdd.setFitHeight(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitHeight());
+                imgToAdd.setFitWidth(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitWidth());
                 // puts the image into its corresponding list. ex: grainImage -> grainImages
                 ((ArrayList<ImageView>)currentCardRelated[1]).add(imgToAdd);
                 // puts image into its corresponding pane. ex : grainImage -> grainsPane
@@ -420,7 +420,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 ((ArrayList<ImageView>)currentCardRelated[1]).remove(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1);
             }
         }
-
+        
         HashMap<String, Object[]> developmentCardsMap = new HashMap<>();
 
         developmentCardsMap.put(Constants.DEVELOPMENT_CARD_INVENTION, new Object[] {inventionLabel, inventionImages, paneInvention, Constants.PATH_DEVELOPMENT_CARD_INVENTION});
