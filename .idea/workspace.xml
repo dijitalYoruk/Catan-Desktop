@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/catan/modal/GameLog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBaseGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,8 +65,8 @@
       <list>
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -185,6 +182,7 @@
       <workItem from="1576140894063" duration="680000" />
       <workItem from="1576160958294" duration="15994000" />
       <workItem from="1576516982984" duration="548000" />
+      <workItem from="1576596249520" duration="4466000" />
     </task>
     <task id="LOCAL-00001" summary="Thief became functional but card logic is not implemented">
       <created>1573322726673</created>

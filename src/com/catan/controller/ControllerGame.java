@@ -60,7 +60,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int playerTurn = 0;
     private boolean thiefCanMove = false;
     private boolean initialThief = true;
-    private List<String[]> gameLog = new ArrayList<>();
+    private GameLog gameLog;
     int gameLogIterator = 0;
     private int noOfRound = 1;
     FlowPane gameLogsFlowPane;
@@ -98,6 +98,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         activateAllVertices();
         gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
         chest = new Chest();
+        gameLog = GameLog.getInstance();
         initializeComponentsRelatedToActualPlayerCardsPane();
     }
 
@@ -358,7 +359,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             initialTurn();
         } else if (isStepActual) {
             actualTurn();
-            gameLog.add(new String[] {"Round "  + noOfRound + " has ended.", "-1"});
+            gameLog.addLog("Round "  + noOfRound + " has ended.", "gray");
             noOfRound++;
         }
         updateGameLogsInView();
@@ -482,19 +483,15 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     private void updateGameLogsInView() {
         for (; gameLogIterator < gameLog.size(); gameLogIterator++) {
-            String[] log = gameLog.get(gameLogIterator);
-            Label logLabel = new Label("  " + log[0]);
+            String[] log = gameLog.getLog(gameLogIterator);
+            String logText = log[0];
+            String logColor = log[1];
+            Label logLabel = new Label("  " + logText);
             logLabel.setMinWidth(400);
             logLabel.setMinHeight(35);
             logLabel.setCursor(Cursor.DEFAULT);
             String marginProperty = " -fx-padding: 2px;" + "-fx-border-insets: 2px;" + "-fx-background-insets: 2px;";
-            if (log[0].indexOf("has ended") >= 0) {
-                logLabel.setStyle("-fx-background-color: gray; -fx-text-fill: white;" + marginProperty);
-            } else {
-                Player playerOfLog = getPlayers().get(Integer.parseInt(log[1]));
-                String playerColor = playerOfLog.getColor();
-                logLabel.setStyle("-fx-background-color:" + playerColor + ";" + "-fx-text-fill: white;" + marginProperty);
-            }
+            logLabel.setStyle("-fx-background-color:" + logColor + ";" + "-fx-text-fill: white;" + marginProperty);
             gameLogsFlowPane.getChildren().add(0, logLabel);
         }
     }
@@ -682,7 +679,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         System.out.println("----------------------------------------------------------------------------------------------");
         System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor() + " | Die Result: " + die.getDieSum());
         System.out.println("----------------------------------------------------------------------------------------------");
-        gameLog.add(new String[] {"Player " + playerTurn + ": has rolled " + die.getDieSum() + ".", "" + (playerTurn % 4)});
+        gameLog.addLog("Player " + playerTurn + ": has rolled " + die.getDieSum() + ".", currentPlayer.getColor());
         playerTurn++;
         //  doing thief operations.
         if (die.getDieSum() == 7) {
@@ -817,17 +814,17 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                         // FIXME: playerTurn is not who it should correspond to
                         // FIXME: ex: when blue constructs city, the color is purple. something wrong with the
                         // FIXME: incrementation of the currentPlayer variable. It works for some players though.
-                        gameLog.add(new String[] {"Player " + playerTurn + ": has built a city.", "" + playerTurn % 4});
+                        gameLog.addLog("Player " + playerTurn + ": has built a city.", getPlayers().get(playerTurn % 4).getColor());
                         break;
                     case Constants.VILLAGE:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
                         settlement = new Village(imagePath, vertex, currentPlayer);
-                        gameLog.add(new String[] {"Player " + playerTurn + ": has built a village.", "" + (playerTurn % 4)});
+                        gameLog.addLog("Player " + playerTurn + ": has built a village.", getPlayers().get(playerTurn % 4).getColor());
                         break;
                     default:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CIVILISATION);
                         settlement = new Civilisation(imagePath, vertex, currentPlayer);
-                        gameLog.add(new String[] {"Player " + playerTurn + ": has built civilisation.", "" + (playerTurn % 4)});
+                        gameLog.addLog("Player " + playerTurn + ": has built civilisation.", getPlayers().get(playerTurn % 4).getColor());
                         break;
                 }
                 Image img = new Image(settlement.getImagePath());
