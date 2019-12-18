@@ -11,6 +11,7 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Dialog;
@@ -96,7 +97,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         currentPlayer = getPlayers().get(0);
         activateAllVertices();
         gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
-        chest = new Chest();
         gameLog = GameLog.getInstance();
         initializeComponentsRelatedToActualPlayerCardsPane();
     }
