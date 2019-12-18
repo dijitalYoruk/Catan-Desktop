@@ -115,6 +115,7 @@ public class Player {
     public int getKnightCount() {
         return knightCount;
     }
+    
     public int getLongestRoad() {
         return longestRoad;
     }
@@ -286,16 +287,15 @@ public class Player {
         }
     }
 
-    public void setStrongestArmyCard(EntitlementCard strongestArmyCard)
-    {
+    public void setStrongestArmyCard(EntitlementCard strongestArmyCard) {
          this.strongestArmyCard= strongestArmyCard;
     }
-    public void setLongestArmyCard(EntitlementCard longestArmyCard)
-    {
+
+    public void setLongestArmyCard(EntitlementCard longestArmyCard) {
         this.longestArmyCard= longestArmyCard;
     }
-    public void refreshVictoryPoints()
-    {
+    
+    public void refreshVictoryPoints() {
         victoryPoints = 0;
         for(int i = 0; i < settlements.size(); i++)
             victoryPoints += settlements.get(i).getSourceCardProfit();

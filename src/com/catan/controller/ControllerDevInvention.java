@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 public class ControllerDevInvention {
 
@@ -50,7 +51,9 @@ public class ControllerDevInvention {
     private Label labelOre;
     @FXML
     private Polygon incrementOre;
-
+    @FXML
+    ResourceBundle resources;
+    
     // properties
     private int totalCount = 0;
     private ArrayList<Polygon> incrementShapes;
@@ -123,7 +126,7 @@ public class ControllerDevInvention {
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.close();
         } else {
-            labelTitle.setText("You need to choose two resources!!!");
+            labelTitle.setText(resources.getString("inventionDevCardView_ChooseResource"));
             labelTitle.setTextFill(Color.ORANGE);
         }
     }

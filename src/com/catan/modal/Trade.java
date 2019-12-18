@@ -1,7 +1,6 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
-import com.catan.controller.ControllerBaseGame;
 
 import java.util.*;
 

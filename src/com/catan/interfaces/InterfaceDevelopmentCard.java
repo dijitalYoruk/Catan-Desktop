@@ -8,6 +8,6 @@ public interface InterfaceDevelopmentCard {
     void openDialog(String viewPath, String title, DevelopmentCard developmentCard, Trade trade);
     void setDevelopmentCardInvention(DevelopmentCard developmentCardInvention);
     void playDevelopmentCard(DevelopmentCard developmentCard);
-    void outputNotPossible(String warningType);
+    void displayWarning(String warningType);
     void buyDevelopmentCard(ActionEvent event);
 }

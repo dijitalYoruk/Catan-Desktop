@@ -17,7 +17,9 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class ControllerBaseGame extends ControllerBase {
 
@@ -333,6 +335,8 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Rectangle imgDie2;
     @FXML
+    private Label labelPlayer;
+    @FXML
     private Label labelLogs;
     @FXML
     private Label labelWarning;
@@ -344,49 +348,34 @@ public class ControllerBaseGame extends ControllerBase {
     private Circle circleNumberOnHex3;
     @FXML
     private Circle circleNumberOnHex4;
-
     @FXML
     private Circle circleNumberOnHex5;
-
     @FXML
     private Circle circleNumberOnHex6;
-
     @FXML
     private Circle circleNumberOnHex7;
-
     @FXML
     private Circle circleNumberOnHex8;
-
     @FXML
     private Circle circleNumberOnHex9;
-
     @FXML
     private Circle circleNumberOnHex10;
-
     @FXML
     private Circle circleNumberOnHex11;
-
     @FXML
     private Circle circleNumberOnHex12;
-
     @FXML
     private Circle circleNumberOnHex13;
-
     @FXML
     private Circle circleNumberOnHex14;
-
     @FXML
     private Circle circleNumberOnHex15;
-
     @FXML
     private Circle circleNumberOnHex16;
-
     @FXML
     private Circle circleNumberOnHex17;
-
     @FXML
     private Circle circleNumberOnHex18;
-
     @FXML
     private Circle circleNumberOnHex19;
     @FXML
@@ -463,7 +452,6 @@ public class ControllerBaseGame extends ControllerBase {
     private Polygon harbour5;
     @FXML
     private Polygon harbour4;
-
     @FXML
     protected ScrollPane gameLogsScrollPane;
     @FXML
