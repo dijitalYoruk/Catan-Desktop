@@ -373,8 +373,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // updates the card numbers and the number of card images on the cards pane
     private void updateNumbersOfCardsInPanes() {
-        int imgHeight = 87;
-        int imgWidth = 60;
         int spaceBetweenImages = 6;
         // reason of this map is to update all card panes in a loop
         HashMap<String, Object[]> resourceCardsMap = new HashMap<>();
