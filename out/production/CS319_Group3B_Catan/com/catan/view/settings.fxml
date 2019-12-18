@@ -10,10 +10,10 @@
 
 <AnchorPane id="settings-pane" prefHeight="860.0" prefWidth="1583.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerSettings">
    <children>
-      <Label alignment="CENTER" layoutX="402.0" layoutY="35.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text=" Victory Points" />
-      <Label alignment="CENTER" layoutX="402.0" layoutY="91.0" styleClass="thresholds" stylesheets="@style.css" text=" Largest Army" />
-      <Label alignment="CENTER" layoutX="402.0" layoutY="145.0" styleClass="thresholds" stylesheets="@style.css" text=" Longest Road" />
-      <Label alignment="CENTER" layoutX="402.0" layoutY="223.0" styleClass="thresholds" stylesheets="@style.css" text="     Select Theme" />
+      <Label alignment="CENTER" layoutX="402.0" layoutY="35.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_VictoryPoints" />
+      <Label alignment="CENTER" layoutX="402.0" layoutY="91.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_LargestArmy" />
+      <Label alignment="CENTER" layoutX="402.0" layoutY="145.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_LongestRoad" />
+      <Label alignment="CENTER" layoutX="402.0" layoutY="223.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_SelectTheme" />
       <MenuButton fx:id="themes" layoutX="739.0" layoutY="233.0" mnemonicParsing="false" text="Default">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Kurtlar Vadisi" />

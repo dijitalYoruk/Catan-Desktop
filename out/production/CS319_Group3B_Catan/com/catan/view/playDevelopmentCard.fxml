@@ -9,7 +9,7 @@
 <AnchorPane id="development-card-pane" prefHeight="398.0" prefWidth="1143.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerPlayDevelopmentCard">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff991f" height="267.0" layoutX="48.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="1055.0" />
-      <Label alignment="CENTER" layoutX="406.0" layoutY="22.0" styleClass="invention-label" text="Choose Development Card" />
+      <Label alignment="CENTER" layoutX="406.0" layoutY="22.0" styleClass="invention-label" text="%playDevelopmentCardView_ChooseDevCard" />
       <HBox layoutX="71.0" layoutY="119.0" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Rectangle fx:id="imgProfitExchange" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" onMouseClicked="#playDevelopmentCard" stroke="BLACK" strokeType="INSIDE" width="160.0" />

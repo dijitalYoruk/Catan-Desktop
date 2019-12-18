@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 public class ControllerTradeOffer {
 
@@ -75,7 +76,8 @@ public class ControllerTradeOffer {
     private Label labelOutputOfTrade;
     @FXML
     private AnchorPane root;
-
+    @FXML
+    ResourceBundle resources;
     // properties
     private HashMap<String, Integer> offeredResources;
     private HashMap<String, Integer> requestedResources;
@@ -164,7 +166,7 @@ public class ControllerTradeOffer {
 
     private void terminateTrade(Trade trade) {
         if (trade.isTradeCompleted()) {
-            labelOutputOfTrade.setText("Trade is successful.");
+            labelOutputOfTrade.setText(resources.getString("tradeOfferView_TradeSuccesful"));
             labelOutputOfTrade.setOpacity(1);
             new Thread(() -> {
                 try {

@@ -53,7 +53,7 @@
             </ImageView>
          </children>
       </HBox>
-      <Label fx:id="labelTitle" alignment="CENTER" layoutX="160.0" layoutY="24.0" styleClass="invention-label" text="Please Select One Resource">
+      <Label fx:id="labelTitle" alignment="CENTER" layoutX="160.0" layoutY="24.0" styleClass="invention-label" text="%monopolDevCardView_ChoooseResource">
          <font>
             <Font size="18.0" />
          </font>

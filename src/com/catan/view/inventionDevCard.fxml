@@ -55,7 +55,7 @@
             </ImageView>
          </children>
       </HBox>
-      <Label fx:id="labelTitle" alignment="CENTER" layoutX="160.0" layoutY="24.0" styleClass="invention-label" text="Please Select Two Resources">
+      <Label fx:id="labelTitle" alignment="CENTER" layoutX="160.0" layoutY="24.0" styleClass="invention-label" text="%inventionDevCardView_ChooseResource">
          <font>
             <Font size="18.0" />
          </font>
@@ -130,6 +130,6 @@
             <Polygon fx:id="incrementOre" fill="#ff4d21" onMouseClicked="#increment" points="-50.0, 40.0, -30.0, 26.5, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
-      <JFXButton layoutX="181.0" layoutY="325.0" onAction="#complete" styleClass="invention-button" text="SELECT" />
+      <JFXButton layoutX="181.0" layoutY="325.0" onAction="#complete" styleClass="invention-button" text="%inventionDevCardView_Select" />
    </children>
 </AnchorPane>

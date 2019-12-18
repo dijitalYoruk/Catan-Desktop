@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.util.ResourceBundle;
+
 public class ControllerTradeRequest {
 
     // view components
@@ -35,6 +37,8 @@ public class ControllerTradeRequest {
     private Label labelRequestedLumber;
     @FXML
     private Label labelRequestedOre;
+    @FXML
+    ResourceBundle resources;
 
     // properties
     private Trade trade;
@@ -50,8 +54,8 @@ public class ControllerTradeRequest {
 
     @FXML
     void declineOffer(ActionEvent actionEvent) {
-        String errorMessage = "The trade request from " + trade.getPlayerTrader().getName() +
-                " was denied by " + trade.getPlayerToBeTraded().getName() + ".";
+        String errorMessage = resources.getString("tradeRequestView_RequestFrom") + trade.getPlayerTrader().getName() +
+                resources.getString("tradeRequestView_DeniedBy") + trade.getPlayerToBeTraded().getName() + ".";
         trade.setErrorMessage(errorMessage);
         trade.printTradeDetails();
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -61,7 +65,7 @@ public class ControllerTradeRequest {
     public void setProperties(Trade trade) {
         this.trade = trade;
         // Display invitor's name
-        labelTitleOfTradeRequest.setText(trade.getPlayerTrader().getName() + " offers you a Trade!");
+        labelTitleOfTradeRequest.setText(trade.getPlayerTrader().getName() +" " + resources.getString("tradeRequestView_TradeExplanation"));
 
         // Display offered Resource Cards
         labelOfferedBrick.setText(  "x" + trade.getOfferedResourceCards().get(Constants.CARD_BRICK  ));
