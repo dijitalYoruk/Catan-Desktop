@@ -3,9 +3,7 @@ package com.catan.modal;
 import com.catan.Util.Constants;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Player {
 
@@ -59,6 +57,42 @@ public class Player {
         return roads;
     }
     public void addRoad(Road road) {
+
+        ArrayList<Vertex> vertices = new ArrayList<>();
+        for(int i = 0; i < roads.size(); i++)
+            vertices.addAll(roads.get(i).getVertices());
+
+        Set<Vertex> vertexSet = new HashSet<>(vertices);
+        vertices.clear();
+        vertices.addAll(vertexSet);
+        if(vertices.size() == 0)
+            longestRoad++;
+        if(vertices.contains(road.getVertices().get(0)))
+        {
+            ArrayList<Vertex> neigbours = road.getVertices().get(0).getNeighbors();
+            int count = 0;
+            if(vertices.contains(neigbours.get(0)))
+                count++;
+            if(vertices.contains(neigbours.get(1)))
+                count++;
+            if(vertices.contains(neigbours.get(2)))
+                count++;
+            if(count < 2)
+                longestRoad++;
+        }
+        if(vertices.contains(road.getVertices().get(1)))
+        {
+            ArrayList<Vertex> neigbours = road.getVertices().get(1).getNeighbors();
+            int count = 0;
+            if(vertices.contains(neigbours.get(0)))
+                count++;
+            if(vertices.contains(neigbours.get(1)))
+                count++;
+            if(vertices.contains(neigbours.get(2)))
+                count++;
+            if(count < 2)
+                longestRoad++;
+        }
         roads.add(road);
     }
 

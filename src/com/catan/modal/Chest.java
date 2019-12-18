@@ -85,15 +85,15 @@ public class Chest {
     }
     public void refreshLongestRoadOwner() {
         Player cur;
-
+        int roadCount;
         for (int i = 0; i < players.size(); i++) {
             cur = players.get(i);
-            ArrayList<Vertex> allVerticesOfRoads = new ArrayList<>();
-            ArrayList<Road> roads = cur.getRoads();
-            if (longestRoadOwner == null & roads.size() >= longestRoad.getThreshold())
+            roadCount = cur.getLongestRoad();
+            if(longestRoadOwner == null & roadCount >= longestRoad.getThreshold())
                 longestRoadOwner = cur;
-            else if (longestRoadOwner != null) {
-                if (cur.getKnightCount() > longestRoadOwner.getKnightCount())
+            else if(longestRoadOwner != null)
+            {
+                if(cur.getLongestRoad() > longestRoadOwner.getLongestRoad())
                     longestRoadOwner = cur;
             }
         }

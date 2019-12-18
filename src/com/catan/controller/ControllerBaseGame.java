@@ -466,7 +466,7 @@ public class ControllerBaseGame extends ControllerBase {
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;
-    private ArrayList<Vertex> vertices;
+    protected ArrayList<Vertex> vertices;
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
