@@ -2,11 +2,14 @@ package com.catan.controller;
 
 import com.catan.Util.Constants;
 import com.catan.modal.*;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -330,8 +333,6 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Rectangle imgDie2;
     @FXML
-    private Label labelPlayer;
-    @FXML
     private Label labelLogs;
     @FXML
     private Label labelWarning;
@@ -463,6 +464,76 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Polygon harbour4;
 
+    @FXML
+    protected ScrollPane gameLogsScrollPane;
+    @FXML
+    protected Label woolLabel;
+    @FXML
+    protected Label oreLabel;
+    @FXML
+    protected Label lumberLabel;
+    @FXML
+    protected Label brickLabel;
+    @FXML
+    protected Label grainLabel;
+    @FXML
+    protected ImageView ImgViewLumberDummy;
+    @FXML
+    protected ImageView ImgViewWoolDummy;
+    @FXML
+    protected ImageView ImgViewGrainDummy;
+    @FXML
+    protected ImageView ImgViewBrickDummy;
+    @FXML
+    protected ImageView ImgViewOreDummy;
+    @FXML
+    protected Pane actualPlayerCardsPane;
+    @FXML
+    protected Pane paneLumbers;
+    @FXML
+    protected Pane paneWools;
+    @FXML
+    protected Pane paneOres;
+    @FXML
+    protected Pane paneGrains;
+    @FXML
+    protected Pane paneBricks;
+    @FXML
+    protected Label inventionLabel;
+    @FXML
+    protected Label knightLabel;
+    @FXML
+    protected Label monopolyLabel;
+    @FXML
+    protected Label profitLabel;
+    @FXML
+    protected Label victoryLabel;
+    @FXML
+    protected Label roadDestructionLabel;
+    @FXML
+    protected ImageView ImgViewInventionDummy;
+    @FXML
+    protected ImageView ImgViewKnightDummy;
+    @FXML
+    protected ImageView ImgViewMonopolyDummy;
+    @FXML
+    protected ImageView ImgViewProfitDummy;
+    @FXML
+    protected ImageView ImgViewRoadDestructionDummy;
+    @FXML
+    protected ImageView ImgViewVictoryDummy;
+    @FXML
+    protected Pane paneInvention;
+    @FXML
+    protected Pane paneKnight;
+    @FXML
+    protected Pane paneMonopoly;
+    @FXML
+    protected Pane paneProfit;
+    @FXML
+    protected Pane paneRoadDestruction;
+    @FXML
+    protected Pane paneVictory;
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;
@@ -1289,14 +1360,6 @@ public class ControllerBaseGame extends ControllerBase {
 
     public void setImgDie2(Rectangle imgDie2) {
         this.imgDie2 = imgDie2;
-    }
-
-    public Label getLabelPlayer() {
-        return labelPlayer;
-    }
-
-    public void setLabelPlayer(Label labelPlayer) {
-        this.labelPlayer = labelPlayer;
     }
 
     public Label getLabelLogs() {

@@ -3,11 +3,14 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
@@ -300,8 +303,6 @@
             <Image url="@../assets/icon_frame.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffc41f" height="572.0" layoutX="106.0" layoutY="338.0" stroke="BLACK" strokeType="INSIDE" width="367.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffc41f" height="309.0" layoutX="1536.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="313.0" />
       <HBox layoutX="809.0" layoutY="931.0" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Rectangle fx:id="imgRoad" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
@@ -348,11 +349,172 @@
             </JFXButton>
          </children>
       </HBox>
-      <Label fx:id="labelPlayer" alignment="TOP_LEFT" layoutX="1543.0" layoutY="286.0" prefHeight="302.0" prefWidth="300.0" text="lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl lbl " wrapText="true" />
-      <Label fx:id="labelLogs" alignment="TOP_LEFT" layoutX="119.0" layoutY="348.0" prefHeight="546.0" prefWidth="347.0" text="Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs Logs " wrapText="true" />
       <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
       <JFXButton layoutX="14.0" layoutY="35.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
       <Label fx:id="labelWarning" alignment="CENTER" layoutX="1510.0" layoutY="931.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
+      <ScrollPane fx:id="gameLogsScrollPane" hbarPolicy="NEVER" layoutX="106.0" layoutY="340.0" prefHeight="572.0" prefWidth="367.0" style="-fx-background: #FFC41F;">
+         <content>
+            <FlowPane prefHeight="567.0" prefWidth="359.0" />
+         </content>
+      </ScrollPane>
+      <Pane fx:id="actualPlayerCardsPane" layoutX="1517.0" layoutY="283.0" prefHeight="563.0" prefWidth="359.0" style="-fx-background-color: #FFC41F; -fx-border-color: black;">
+         <children>
+            <Pane fx:id="paneLumbers" layoutX="7.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewLumberDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_lumber.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lumberLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneWools" layoutX="125.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewWoolDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_wool.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="woolLabel" layoutX="36.0" layoutY="101.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneOres" layoutX="7.0" layoutY="154.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewOreDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_ore.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="oreLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneBricks" layoutX="235.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewBrickDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_brick.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="brickLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneGrains" layoutX="125.0" layoutY="154.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewGrainDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/resource_grain.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="grainLabel" layoutX="39.0" layoutY="101.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneInvention" layoutX="7.0" layoutY="282.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewInventionDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_invention.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="inventionLabel" layoutX="48.0" layoutY="72.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneKnight" layoutX="125.0" layoutY="282.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewKnightDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_knight.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="knightLabel" layoutX="48.0" layoutY="97.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneMonopoly" layoutX="235.0" layoutY="282.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewMonopolyDummy" fitHeight="76.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_monopoly.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="monopolyLabel" layoutX="48.0" layoutY="90.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneProfit" layoutX="7.0" layoutY="400.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewProfitDummy" fitHeight="70.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_profit.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="profitLabel" layoutX="48.0" layoutY="80.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneRoadDestruction" layoutX="125.0" layoutY="400.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewRoadDestructionDummy" fitHeight="73.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_road_destruction.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="roadDestructionLabel" layoutX="48.0" layoutY="86.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneVictory" layoutX="235.0" layoutY="400.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
+               <children>
+                  <ImageView fx:id="ImgViewVictoryDummy" fitHeight="65.0" fitWidth="70.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dev_card_victory.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="victoryLabel" layoutX="53.0" layoutY="74.0" prefHeight="21.0" prefWidth="32.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
       <Circle fx:id="imgMovingThief" fill="DODGERBLUE" layoutX="100.0" layoutY="158.0" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
 
 

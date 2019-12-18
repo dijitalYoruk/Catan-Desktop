@@ -1,6 +1,7 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
+import com.catan.controller.ControllerBaseGame;
 
 import java.util.*;
 
@@ -106,7 +107,40 @@ public class Trade {
             printTradeDetails();
             printPlayerDetails();
             System.out.println("==============================================================================================");
+            addTradeDetailsToGameLog();
         }
+    }
+
+    private void addTradeDetailsToGameLog() {
+        GameLog gameLog = GameLog.getInstance();
+        String traderColor = playerTrader.getColor();
+        String toBeTradedColor = playerToBeTraded.getColor();
+
+        // capitalize the first letter of the color name
+        traderColor = traderColor.substring(0, 1).toUpperCase() + traderColor.substring(1);
+        toBeTradedColor = toBeTradedColor.substring(0, 1).toUpperCase() + toBeTradedColor.substring(1);
+
+        String offereds = "";
+        String requests = "";
+        for (String resourceName: Constants.resourceNames) {
+            if (offeredResourceCards.get(resourceName) > 0) {
+                offereds += offeredResourceCards.get(resourceName) + " " + resourceName + ", ";
+            }
+            if (requestedResourceCards.get(resourceName) > 0) {
+                requests += requestedResourceCards.get(resourceName) + " " + resourceName + ", ";
+            }
+        }
+        if (!offereds.equals("")) {
+            offereds = offereds.substring(0, offereds.length() - 2);
+        }
+        if (!requests.equals("")) {
+            requests = requests.substring(0, requests.length() - 2);
+        }
+        gameLog.addLog(traderColor + " player has offered " + toBeTradedColor + " player" + "\n" +
+                "  " + offereds + "\n" +
+                "  " + traderColor + " player has requested" + "\n" +
+                "  " + requests,"orange");
+        gameLog.addLog(traderColor + " player has traded with " + toBeTradedColor + " player","orange");
     }
 
     private void exchangeResources(ArrayList<Integer> tradeDifferences, Player player) {

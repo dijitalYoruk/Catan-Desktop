@@ -5,6 +5,11 @@ import com.catan.controller.ControllerGame;
 import com.catan.interfaces.*;
 import javafx.scene.shape.Circle;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.*;
 
 public class PlayerAI extends Player {
