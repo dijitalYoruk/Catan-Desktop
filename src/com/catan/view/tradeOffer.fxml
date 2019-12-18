@@ -11,9 +11,9 @@
 
 <AnchorPane fx:id="root" prefHeight="775.0" prefWidth="1116.0" style="-fx-background-color: #FFD692;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTradeOffer">
    <children>
-      <Button fx:id="requestButton" layoutX="765.0" layoutY="33.0" mnemonicParsing="false" onAction="#requestTrade" prefHeight="52.0" prefWidth="132.0" styleClass="trade-pane-button" text="Request" />
-      <Button fx:id="clearTradeButton" layoutX="878.0" layoutY="33.0" mnemonicParsing="false" onAction="#clearTrade" prefHeight="52.0" prefWidth="153.0" styleClass="trade-pane-button" text="Clear" />
-      <Label fx:id="labelOutputOfTrade" layoutX="758.0" layoutY="629.0" opacity="0.0" prefHeight="56.0" prefWidth="304.0" styleClass="warning-label" text="Output">
+      <Button fx:id="requestButton" layoutX="765.0" layoutY="33.0" mnemonicParsing="false" onAction="#requestTrade" prefHeight="52.0" prefWidth="132.0" styleClass="trade-pane-button" text="%tradeOfferView_Request" />
+      <Button fx:id="clearTradeButton" layoutX="878.0" layoutY="33.0" mnemonicParsing="false" onAction="#clearTrade" prefHeight="52.0" prefWidth="153.0" styleClass="trade-pane-button" text="%tradeOfferView_Clear" />
+      <Label fx:id="labelOutputOfTrade" layoutX="758.0" layoutY="629.0" opacity="0.0" prefHeight="56.0" prefWidth="304.0" styleClass="warning-label" text="%tradeOfferView_Output">
          <font>
             <Font size="39.0" />
          </font>
@@ -21,7 +21,7 @@
       <AnchorPane layoutX="39.0" layoutY="33.0" prefHeight="329.0" prefWidth="732.0" styleClass="trade-pane" stylesheets="@style.css">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eec669" height="200.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" styleClass="trade-pane-bg" width="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Label id="trade-label" alignment="CENTER" layoutX="215.0" layoutY="14.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="Your Resources" />
+            <Label id="trade-label" alignment="CENTER" layoutX="215.0" layoutY="14.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="%tradeOfferView_YourResources" />
             <ImageView fx:id="imgOfferBrick" fitHeight="96.0" fitWidth="73.0" layoutX="24.0" layoutY="79.0" onMouseClicked="#offerResource" pickOnBounds="true" preserveRatio="true" style="-fx-stroke-width: 1px;">
                <image>
                   <Image url="@../assets/resource_brick.jpg" />
@@ -134,7 +134,7 @@
       <AnchorPane layoutX="39.0" layoutY="472.0" prefHeight="280.0" prefWidth="340.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eec669" height="270.0" stroke="BLACK" strokeType="INSIDE" width="340.0" />
-            <Label alignment="CENTER" layoutX="70.0" layoutY="14.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="Offer:" />
+            <Label alignment="CENTER" layoutX="70.0" layoutY="14.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="%tradeOfferView_Offer" />
             <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="29.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/resource_brick.jpg" />
@@ -190,7 +190,7 @@
       <AnchorPane layoutX="399.0" layoutY="472.0" prefHeight="280.0" prefWidth="340.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eec669" height="270.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="340.0" />
-            <Label alignment="CENTER" layoutX="70.0" layoutY="14.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="Request:" />
+            <Label alignment="CENTER" layoutX="70.0" layoutY="14.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="%tradeOfferView_Request" />
             <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="29.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/resource_brick.jpg" />
@@ -253,6 +253,6 @@
             <Image url="@../assets/img_market.png" />
          </image>
       </ImageView>
-      <Button layoutX="990.0" layoutY="33.0" mnemonicParsing="false" onAction="#closeDialog" prefHeight="52.0" prefWidth="153.0" styleClass="trade-pane-button" text="Close" />
+      <Button layoutX="990.0" layoutY="33.0" mnemonicParsing="false" onAction="#closeDialog" prefHeight="52.0" prefWidth="153.0" styleClass="trade-pane-button" text="%tradeOfferView__Close" />
    </children>
 </AnchorPane>
