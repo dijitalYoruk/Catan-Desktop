@@ -11,12 +11,8 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,6 +27,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -39,6 +36,8 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceDevelopmentCard, InterfaceMakeTrade {
 
@@ -157,6 +156,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         developmentCardsPaneLocations[3] = new double[] {paneProfit.getLayoutX(), paneProfit.getLayoutY()};
         developmentCardsPaneLocations[4] = new double[] {paneRoadDestruction.getLayoutX(), paneRoadDestruction.getLayoutY()};
         developmentCardsPaneLocations[5] = new double[] {paneVictory.getLayoutX(), paneVictory.getLayoutY()};
+        chest = new Chest(getPlayers(),getSettings());
     }
 
     @FXML
@@ -308,6 +308,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 controller.setProperties(currentPlayer, this);
             }
 
+            else if (viewPath.equals(Constants.PATH_VIEW_ENDGAME)) {
+                ControllerEndGame controller = fxmlLoader.getController();
+                controller.setProperties(currentPlayer.getName(),getSettings().getVictoryThreshold());
+            }
+
+
             dialog.showAndWait();
             if (developmentCardInvention != null) {
                 DevelopmentCard card = developmentCardInvention;
@@ -355,6 +361,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     @FXML
     public void endTurn(ActionEvent actionEvent) throws IOException {
+
         if(isStepInitial) {
             initialTurn();
         } else if (isStepActual) {
@@ -538,6 +545,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         for (Vertex v: neighbors) {
             if (v.hasConstruction()) { return false; }
         }
+        if(vertex.hasConstruction())
+            return false;
         return true;
     }
 
@@ -549,7 +558,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             road.getRoad().setStroke(color);
             road.getRoad().setVisible(true);
             // adding road;
-            currentPlayer.getRoads().add(road);
+            currentPlayer.addRoad(road);
             activatePlayerVertices();
             isRoadBuild = true;
 
@@ -665,6 +674,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                selectedConstruction.equals(Constants.CIVILISATION);
     }
 
+
     // ------------ ACTUAL STEP METHODS ---------------- //
 
     private void actualTurn() {
@@ -679,6 +689,30 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         System.out.println("----------------------------------------------------------------------------------------------");
         gameLog.addLog("Player " + playerTurn + ": has rolled " + die.getDieSum() + ".", currentPlayer.getColor());
         playerTurn++;
+
+        chest.refreshStrongestArmyOwner();
+        if(chest.getStrongestArmyOwner().equals(currentPlayer.getName()))
+            currentPlayer.setStrongestArmyCard(chest.getStrongestArmyCard());
+
+        chest.refreshLongestRoadOwner();
+        if(chest.getLongestRoadOwner().equals(currentPlayer.getName()))
+            currentPlayer.setLongestArmyCard(chest.getLongestRoad());
+
+        currentPlayer.refreshVictoryPoints();
+        //System.out.println("------------"+currentPlayer.getColor()+" LongestRoad"+ currentPlayer.getLongestRoad()+"----------");
+        System.out.println("--------------------------Victory Points:"+currentPlayer.getColor()+"  "+currentPlayer.getVictoryPoints() +"---------------------------------------");
+
+        if(currentPlayer.getVictoryPoints() >= getSettings().getVictoryThreshold()) {
+            openDialog(Constants.PATH_VIEW_ENDGAME, "The game end.", null, null);
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
+                Stage window = (Stage) getImgDie1().getScene().getWindow();
+                window.getScene().setRoot(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
         //  doing thief operations.
         if (die.getDieSum() == 7) {
             thiefResourceCardPunishAI();
@@ -702,6 +736,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             constructionUnselect = true;
             unselectConstructions(null);
         }
+
     }
 
     private void playAIActualTurn() {
@@ -1002,17 +1037,45 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 tempRoad = null;
             }
 
+
+
+            ArrayList<Vertex> outerVertices = new ArrayList<>();
+            for(int i = 0; i < vertices.size(); i++)
+                if(vertices.get(i).getFields().size() < 3)
+                    outerVertices.add(vertices.get(i));
+
+            ArrayList<Vertex> thiefVertices = thief.getTerrainHex().getVertices();
+
+            Set<Vertex> set = new HashSet<>(outerVertices);
+            set.addAll(thiefVertices);
+            ArrayList<Vertex> undesiredVertices = new ArrayList<>(set);
+
+            ArrayList<Vertex> desiredVertices = new ArrayList<>();
+            for(int i = 0; i < terrainHexes.size(); i++) {
+                int number = terrainHexes.get(i).getNumberOnHex();
+                if (number == 5 || number == 6 || number == 7|| number == 8)
+                {
+                    desiredVertices.addAll(terrainHexes.get(i).getVertices());
+                }
+            }
+
+            Set<Vertex> vertexSet = new HashSet<>(desiredVertices);
+            desiredVertices.clear();
+            desiredVertices.addAll(vertexSet);
+            desiredVertices.removeAll(new HashSet<>(undesiredVertices));
+
             activateAllVertices();
             setSelectedConstruction(Constants.ROAD);
-
             // setting first vertex of road;
-            int index = (int) (Math.random() * getActivatedVertices().size());
-            Vertex vertex = getActivatedVertices().get(index);
+            //int index = (int) (Math.random() * getActivatedVertices().size());
+            Vertex vertex = desiredVertices.get ((int)(Math.random() * desiredVertices.size()));
+            desiredVertices.remove(vertex);
             makeConstructionInitial(vertex.getShape());
 
+
             // setting second vertex of road;
-            index = (int) (Math.random() * vertex.getNeighbors().size());
-            vertex = vertex.getNeighbors().get(index);
+            vertex = desiredVertices.get ((int)(Math.random() * desiredVertices.size()));
+            desiredVertices.remove(vertex);
             makeConstructionInitial(vertex.getShape());
 
             setSelectedConstruction(Constants.VILLAGE);
@@ -1021,12 +1084,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 twoVertex.add(tempRoad.getVertices().get(0));
                 twoVertex.add(tempRoad.getVertices().get(1));
 
-                if (isVertexSuitableForConstruction(twoVertex.get(0))) {
+                if (isVertexSuitableForConstruction(twoVertex.get(0)) & !undesiredVertices.contains(twoVertex.get(0))) {
                     makeConstructionInitial(twoVertex.get(0).getShape());
                 }
-                else if (isVertexSuitableForConstruction(twoVertex.get(1))) {
-                    makeConstructionInitial(twoVertex.get(0).getShape());
+                else if (isVertexSuitableForConstruction(twoVertex.get(1))){
+                    makeConstructionInitial(twoVertex.get(1).getShape());
                 }
+                else
+                    makeConstructionInitial(twoVertex.get(0).getShape());
             }
         }
         tempRoad = null;

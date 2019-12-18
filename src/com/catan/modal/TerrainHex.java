@@ -84,5 +84,5 @@ public class TerrainHex extends Field{
         }
         return playersAround;
     }
-
+    public ArrayList<Vertex> getVertices(){return adjacentVertices;}
 }

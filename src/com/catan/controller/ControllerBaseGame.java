@@ -537,12 +537,12 @@ public class ControllerBaseGame extends ControllerBase {
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;
-    private ArrayList<Vertex> vertices;
+    protected ArrayList<Vertex> vertices;
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
     private ArrayList<Harbour> harbours;
-    private Settings settings;
+    protected Settings settings;
     protected Die die;
     protected Player playerActual;
     protected Thief thief;
@@ -1364,6 +1364,10 @@ public class ControllerBaseGame extends ControllerBase {
 
     public Label getLabelLogs() {
         return labelLogs;
+    }
+
+    public Settings getSettings() {
+        return settings;
     }
 
     public void setLabelLogs(Label labelLogs) {
