@@ -357,7 +357,7 @@
             <FlowPane prefHeight="567.0" prefWidth="359.0" />
          </content>
       </ScrollPane>
-      <Pane fx:id="actualPlayerCardsPane" layoutX="1517.0" layoutY="283.0" prefHeight="563.0" prefWidth="359.0" style="-fx-background-color: #FFC41F; -fx-border-color: black;">
+      <Pane fx:id="actualPlayerCardsPane" layoutX="1517.0" layoutY="283.0" prefHeight="580.0" prefWidth="359.0" style="-fx-background-color: #FFC41F; -fx-border-color: black;">
          <children>
             <Pane fx:id="paneLumbers" layoutX="7.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
@@ -511,6 +511,18 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="21.0" layoutY="510.0" prefHeight="27.0" prefWidth="269.0">
+               <children>
+                  <Label fx:id="longestRoadOwnerLabel" layoutX="220.0" />
+                  <Label prefHeight="21.0" prefWidth="197.0" text="Longest Road Card Owner:" />
+               </children>
+            </Pane>
+            <Pane layoutX="21.0" layoutY="540.0" prefHeight="27.0" prefWidth="269.0">
+               <children>
+                  <Label fx:id="strongestArmyOwnerLabel" layoutX="220.0" />
+                  <Label prefHeight="21.0" prefWidth="197.0" text="Strongest Army Card Owner:" />
                </children>
             </Pane>
          </children>

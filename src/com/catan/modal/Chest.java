@@ -56,6 +56,10 @@ public class Chest {
             return strongestArmyOwner.getName();
     }
 
+    public Player getStrongestArmyOwnerPlayer() {
+        return strongestArmyOwner;
+    }
+
     public EntitlementCard getStrongestArmyCard() {
         return strongestArmy;
     }
@@ -85,6 +89,11 @@ public class Chest {
         else
             return longestRoadOwner.getName();
     }
+
+    public Player getLongestRoadOwnerPlayer() {
+        return longestRoadOwner;
+    }
+
     public void refreshLongestRoadOwner() {
         Player cur;
         int roadCount;

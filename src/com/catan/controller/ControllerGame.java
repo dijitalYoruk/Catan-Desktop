@@ -378,6 +378,18 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void updateCardsOfActualPlayerInView() {
         updateNumbersOfCardsInPanes();
         updateOrderOfCardPanes();
+        Player longestRoadOwner = chest.getLongestRoadOwnerPlayer();
+        Player strongestArmyOwner = chest.getStrongestArmyOwnerPlayer();
+        if (longestRoadOwner != null) {
+            String playerColor = longestRoadOwner.getColor().substring(0, 1).toUpperCase() + longestRoadOwner.getColor().substring(1);
+            longestRoadOwnerLabel.setText(" " + playerColor + " ");
+            longestRoadOwnerLabel.setStyle("-fx-background-color:" + longestRoadOwner.getColor() + ";" + "-fx-text-fill: white;");
+        }
+        if (strongestArmyOwner != null) {
+            String playerColor = strongestArmyOwner.getColor().substring(0, 1).toUpperCase() + strongestArmyOwner.getColor().substring(1);
+            strongestArmyOwnerLabel.setText(" " + playerColor + " ");
+            strongestArmyOwnerLabel.setStyle("-fx-background-color:" + strongestArmyOwner.getColor() + ";" + "-fx-text-fill: white;");
+        }
     }
 
     // updates the card numbers and the number of card images on the cards pane

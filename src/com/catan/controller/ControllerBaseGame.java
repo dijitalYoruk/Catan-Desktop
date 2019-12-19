@@ -522,6 +522,10 @@ public class ControllerBaseGame extends ControllerBase {
     protected Pane paneRoadDestruction;
     @FXML
     protected Pane paneVictory;
+    @FXML
+    protected Label strongestArmyOwnerLabel;
+    @FXML
+    protected Label longestRoadOwnerLabel;
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;
