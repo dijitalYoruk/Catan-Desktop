@@ -3,16 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTradeRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerTradeRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/GameLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/GameLog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PriceCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PriceCard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Trade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Trade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/modal/GameLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/GameLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Trade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,12 +74,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="119" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
   </component>
   <component name="ProjectId" id="1TOBFcVuKbvOq0UQW50kZVSSCjG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -196,7 +186,7 @@
       <workItem from="1576516982984" duration="548000" />
       <workItem from="1576596249520" duration="5668000" />
       <workItem from="1576672917436" duration="94000" />
-      <workItem from="1576767925060" duration="4099000" />
+      <workItem from="1576767925060" duration="7693000" />
     </task>
     <task id="LOCAL-00001" summary="Thief became functional but card logic is not implemented">
       <created>1573322726673</created>

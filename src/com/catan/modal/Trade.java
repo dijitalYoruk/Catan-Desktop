@@ -63,7 +63,7 @@ public class Trade {
             }
         }
 
-        addOfferDetailsToGameLog();
+        addOfferDetailsToGameLog(isTradeWithChest);
         gameLog = GameLog.getInstance();
 
         if (isTradePossible) {
@@ -78,7 +78,7 @@ public class Trade {
                 else {
                     errorMessage = "The trade request from " + playerTrader.getName() +
                             " was denied by " + playerToBeTraded.getName() + ".";
-                    gameLog.addLog(playerToBeTraded.getColor() + " player has declined the trade with " + playerTrader.getColor() + " player", playerToBeTraded.getColor());
+
                 }
             }
             else if (isTradeWithChest) {
@@ -120,14 +120,17 @@ public class Trade {
         }
     }
 
-    private void addOfferDetailsToGameLog() {
+    private void addOfferDetailsToGameLog(boolean isTradeWithChest) {
         gameLog = GameLog.getInstance();
         String traderColor = playerTrader.getColor();
-        String toBeTradedColor = playerToBeTraded.getColor();
+        String toBeTradedColor = "";
+        if (!isTradeWithChest)
+            toBeTradedColor = playerToBeTraded.getColor();
 
         // capitalize the first letter of the color name
         traderColor = traderColor.substring(0, 1).toUpperCase() + traderColor.substring(1);
-        toBeTradedColor = toBeTradedColor.substring(0, 1).toUpperCase() + toBeTradedColor.substring(1);
+        if (!isTradeWithChest)
+            toBeTradedColor = toBeTradedColor.substring(0, 1).toUpperCase() + toBeTradedColor.substring(1);
 
         String offereds = "";
         String requests = "";
@@ -145,11 +148,17 @@ public class Trade {
         if (!requests.equals("")) {
             requests = requests.substring(0, requests.length() - 2);
         }
-        gameLog.addLog(traderColor + " player has offered " + toBeTradedColor + " player" + "\n" +
-                "  " + offereds + "\n" +
-                "  " + traderColor + " player has requested" + "\n" +
-                "  " + requests,playerTrader.getColor());
-
+        if (!isTradeWithChest) {
+            gameLog.addLog(traderColor + " player has offered " + toBeTradedColor + " player" + "\n" +
+                    "  " + offereds + "\n" +
+                    "  " + traderColor + " player has requested" + "\n" +
+                    "  " + requests, playerTrader.getColor());
+        } else {
+            gameLog.addLog(traderColor + " player has offered " + "chest" + "\n" +
+                    "  " + offereds + "\n" +
+                    "  " + "chest has required" + "\n" +
+                    "  " + requests, playerTrader.getColor());
+        }
     }
 
     private void exchangeResources(ArrayList<Integer> tradeDifferences, Player player) {

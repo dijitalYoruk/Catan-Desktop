@@ -363,10 +363,10 @@
                <children>
                   <ImageView fx:id="ImgViewLumberDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/resource_lumber.jpg" />
+                        <Image url="@../assets/resource_lumber_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lumberLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="lumberLabel" layoutX="32.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -377,10 +377,10 @@
                <children>
                   <ImageView fx:id="ImgViewWoolDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/resource_wool.jpg" />
+                        <Image url="@../assets/resource_wool_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="woolLabel" layoutX="36.0" layoutY="101.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="woolLabel" layoutX="32.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -391,10 +391,10 @@
                <children>
                   <ImageView fx:id="ImgViewOreDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/resource_ore.jpg" />
+                        <Image url="@../assets/resource_ore_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="oreLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="oreLabel" layoutX="32.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -405,10 +405,10 @@
                <children>
                   <ImageView fx:id="ImgViewBrickDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/resource_brick.jpg" />
+                        <Image url="@../assets/resource_brick_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="brickLabel" layoutX="39.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="brickLabel" layoutX="32.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -419,10 +419,10 @@
                <children>
                   <ImageView fx:id="ImgViewGrainDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/resource_grain.jpg" />
+                        <Image url="@../assets/resource_grain_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="grainLabel" layoutX="39.0" layoutY="101.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="grainLabel" layoutX="32.0" layoutY="102.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -431,7 +431,7 @@
             </Pane>
             <Pane fx:id="paneInvention" layoutX="7.0" layoutY="282.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="ImgViewInventionDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewInventionDummy" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true">
                      <image>
                         <Image url="@../assets/dev_card_invention.jpg" />
                      </image>
@@ -445,12 +445,12 @@
             </Pane>
             <Pane fx:id="paneKnight" layoutX="125.0" layoutY="282.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="ImgViewKnightDummy" fitHeight="87.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewKnightDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
                         <Image url="@../assets/dev_card_knight.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="knightLabel" layoutX="48.0" layoutY="97.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="knightLabel" layoutX="48.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -459,12 +459,12 @@
             </Pane>
             <Pane fx:id="paneMonopoly" layoutX="235.0" layoutY="282.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="ImgViewMonopolyDummy" fitHeight="76.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewMonopolyDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
                         <Image url="@../assets/dev_card_monopoly.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="monopolyLabel" layoutX="48.0" layoutY="90.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="monopolyLabel" layoutX="48.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -473,7 +473,7 @@
             </Pane>
             <Pane fx:id="paneProfit" layoutX="7.0" layoutY="400.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="ImgViewProfitDummy" fitHeight="70.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewProfitDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
                         <Image url="@../assets/dev_card_profit.jpg" />
                      </image>
@@ -487,7 +487,7 @@
             </Pane>
             <Pane fx:id="paneRoadDestruction" layoutX="125.0" layoutY="400.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="ImgViewRoadDestructionDummy" fitHeight="73.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewRoadDestructionDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
                         <Image url="@../assets/dev_card_road_destruction.jpg" />
                      </image>
@@ -501,7 +501,7 @@
             </Pane>
             <Pane fx:id="paneVictory" layoutX="235.0" layoutY="400.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
-                  <ImageView fx:id="ImgViewVictoryDummy" fitHeight="65.0" fitWidth="70.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgViewVictoryDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
                         <Image url="@../assets/dev_card_victory.jpg" />
                      </image>

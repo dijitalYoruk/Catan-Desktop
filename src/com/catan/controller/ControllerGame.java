@@ -101,15 +101,15 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     // this obnoxiously named function initializes the components related to the
     // section where number of cards of the actual player is shown
     private void initializeComponentsRelatedToActualPlayerCardsPane() {
-        ImgViewLumberDummy.setVisible(false);
+        //ImgViewLumberDummy.setVisible(false);
         lumberImages.add(ImgViewLumberDummy);
-        ImgViewBrickDummy.setVisible(false);
+        //ImgViewBrickDummy.setVisible(false);
         brickImages.add(ImgViewBrickDummy);
-        ImgViewGrainDummy.setVisible(false);
+        //ImgViewGrainDummy.setVisible(false);
         grainImages.add(ImgViewGrainDummy);
-        ImgViewOreDummy.setVisible(false);
+        //ImgViewOreDummy.setVisible(false);
         oreImages.add(ImgViewOreDummy);
-        ImgViewWoolDummy.setVisible(false);
+        //ImgViewWoolDummy.setVisible(false);
         woolImages.add(ImgViewWoolDummy);
 
         resourceCardPanes[0] = paneLumbers;
@@ -406,7 +406,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             while (sourceCards.get(key).size() > ((ArrayList<ImageView>)currentCardRelated[1]).size() - 1) {
                 ImageView imgToAdd = new ImageView(((String)currentCardRelated[3]));
                 // puts the image right next to its predecessor
-                imgToAdd.setLayoutX(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 1) {
+                    imgToAdd.setLayoutX(((ArrayList<ImageView>) currentCardRelated[1]).get(((ArrayList<ImageView>) currentCardRelated[1]).size() - 1).getLayoutX());
+                } else {
+                    imgToAdd.setLayoutX(((ArrayList<ImageView>) currentCardRelated[1]).get(((ArrayList<ImageView>) currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                }
                 imgToAdd.setLayoutY(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutY());
                 imgToAdd.setFitHeight(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitHeight());
                 imgToAdd.setFitWidth(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitWidth());
@@ -423,8 +427,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 // removes the image from its corresponding list
                 ((ArrayList<ImageView>)currentCardRelated[1]).remove(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1);
             }
+
+            if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 2) {
+                ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(true);
+            } else if (((ArrayList<ImageView>)currentCardRelated[1]).size() > 2) {
+                ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(false);
+            }
         }
-        
+
         HashMap<String, Object[]> developmentCardsMap = new HashMap<>();
 
         developmentCardsMap.put(Constants.DEVELOPMENT_CARD_INVENTION, new Object[] {inventionLabel, inventionImages, paneInvention, Constants.PATH_DEVELOPMENT_CARD_INVENTION});
