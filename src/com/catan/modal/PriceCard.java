@@ -45,9 +45,9 @@ public class PriceCard {
             prices.get(Constants.CIVILISATION).put(Constants.CARD_LUMBER, 1);
             // development card price
             prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_BRICK, 0 );
-            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_WOOL, 0);
-            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_ORE, 0);
-            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_GRAIN, 0);
+            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_WOOL, 1);
+            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_ORE, 1);
+            prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_GRAIN, 1);
             prices.get(Constants.DEVELOPMENT_CARD).put(Constants.CARD_LUMBER, 0);
         }
 

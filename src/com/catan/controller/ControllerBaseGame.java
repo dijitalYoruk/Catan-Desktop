@@ -545,9 +545,9 @@ public class ControllerBaseGame extends ControllerBase {
         players = new ArrayList<>();
         harbours = new ArrayList<>();
         playerActual = new PlayerActual(Constants.COLOR_RED, "PlayerActual");
-        players.add(playerActual);
         players.add(new PlayerAI(Constants.COLOR_BLUE, "PlayerArtificial1"));
         players.add(new PlayerAI(Constants.COLOR_PURPLE, "PlayerArtificial2"));
+        players.add(playerActual);
         players.add(new PlayerAI(Constants.COLOR_GREEN, "PlayerArtificial3"));
         die = new Die();
 

@@ -3,20 +3,43 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="program-pane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerInstructions">
    <children>
-      <Button layoutX="69.0" layoutY="663.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
-      <JFXTextArea fx:id="instructions" editable="false" focusColor="#285eff" layoutX="454.0" layoutY="81.0" prefHeight="683.0" prefWidth="593.0" style="-fx-background-color: orange; -fx-opacity: 0.9; -fx-text-fill: white;" text="ASDASDASD&#10;" unFocusColor="BLACK">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font></JFXTextArea>
-      <JFXTextField layoutX="602.0" prefHeight="86.0" prefWidth="297.0" style="-fx-text-fill: white;" text="INSTRUCTIONS" unFocusColor="TRANSPARENT">
+      <Button layoutX="31.0" layoutY="29.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
+      <JFXTextField layoutX="829.0" prefHeight="86.0" prefWidth="297.0" style="-fx-text-fill: white;" text="%instructionView_Header" unFocusColor="TRANSPARENT">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </JFXTextField>
+      <ImageView fx:id="rightRulesPage" fitHeight="1000.0" fitWidth="750.0" layoutX="1373.0" layoutY="75.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/catan_rules_en/catan_rules_page_3.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="currentRulesPage" fitHeight="1000.0" fitWidth="750.0" layoutX="602.0" layoutY="71.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/catan_rules_en/catan_rules_page_2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftRulesPage" fitHeight="1000.0" fitWidth="750.0" layoutX="-172.0" layoutY="71.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/catan_rules_en/catan_rules_page_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrow_left_page" fitHeight="86.0" fitWidth="70.0" layoutY="540.0" onMouseClicked="#goLeftPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/left_arrow_instructions.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrow_right_page" fitHeight="150.0" fitWidth="70.0" layoutX="1850.0" layoutY="540.0" onMouseClicked="#goRightPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/right_arrow_instruction.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

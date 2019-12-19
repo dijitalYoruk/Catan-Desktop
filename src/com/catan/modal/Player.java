@@ -257,6 +257,10 @@ public class Player {
         developmentCards.put(cardType, count - 1);
     }
 
+    public boolean hasDevelopmentCard(DevelopmentCard card) {
+        return developmentCards.get(card.getName()) > 0;
+    }
+
     public HashMap<String, Integer> getDevelopmentCards() {
         return developmentCards;
     }
@@ -272,18 +276,19 @@ public class Player {
     }
 
     public void buyDevelopmentCard(Chest chest) {
-        try {
-            boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
-            if (hasEnoughResources) {
-                DevelopmentCard card = chest.getDevelopmentCard();
+        boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
+        if (hasEnoughResources) {
+            DevelopmentCard card = chest.getDevelopmentCard();
+            if (card != null) {
                 addDevelopmentCard(card.getName());
                 System.out.println("==============================================================================================");
                 System.out.println(getName() + " bought " + card.getName());
                 System.out.println("==============================================================================================");
+            } else {
+                System.out.println("==============================================================================================");
+                System.out.println("No Development Cards are left in the chest.");
+                System.out.println("==============================================================================================");
             }
-        }
-        catch(Exception e){
-            e.printStackTrace();
         }
     }
 
@@ -306,4 +311,5 @@ public class Player {
 
         victoryPoints += pointsFromVictoryPointsCard;
     }
+
 }

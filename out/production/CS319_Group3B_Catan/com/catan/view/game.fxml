@@ -314,13 +314,13 @@
       <Rectangle fx:id="imgPriceCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="187.0" layoutX="144.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="292.0" />
       <VBox layoutX="1546.0" layoutY="82.0" prefHeight="170.0" prefWidth="300.0">
          <children>
-            <JFXButton onAction="#playDevelopmentCard" styleClass="game-button" text="Play Development Card" />
-            <JFXButton onAction="#buyDevelopmentCard" styleClass="game-button" text="Buy Development Card">
+            <JFXButton onAction="#playDevelopmentCard" styleClass="game-button" text="%gameView_playDevelopmentCard" />
+            <JFXButton onAction="#buyDevelopmentCard" styleClass="game-button" text="%gameView_buyDevelopmentCard">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton onAction="#trade" styleClass="trade-button" text="Trade">
+            <JFXButton onAction="#trade" styleClass="trade-button" text="%gameView_tradeButton">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -342,7 +342,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Rectangle>
-            <JFXButton id="end-button" onAction="#endTurn" text="End Turn">
+            <JFXButton id="end-button" onAction="#endTurn" text="%gameView_endTurnButton">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
