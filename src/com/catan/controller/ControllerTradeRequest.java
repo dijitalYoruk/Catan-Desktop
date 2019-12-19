@@ -3,6 +3,7 @@ package com.catan.controller;
 import com.catan.Util.Constants;
 import com.catan.modal.GameLog;
 import com.catan.modal.Trade;
+import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -52,7 +53,7 @@ public class ControllerTradeRequest {
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
         GameLog gameLog = GameLog.getInstance();
-        gameLog.addLog(trade.getPlayerTrader().getColor() + " player has traded with " + trade.getPlayerToBeTraded().getColor() + " player", trade.getPlayerTrader().getColor());
+        gameLog.addLog(StringUtils.capitalize(trade.getPlayerTrader().getColor()) + " player has traded with " + StringUtils.capitalize(trade.getPlayerToBeTraded().getColor()) + " player", trade.getPlayerTrader().getColor());
     }
 
     @FXML
@@ -64,7 +65,7 @@ public class ControllerTradeRequest {
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
         GameLog gameLog = GameLog.getInstance();
-        gameLog.addLog(trade.getPlayerToBeTraded().getColor() + " player has declined the trade with " + trade.getPlayerTrader().getColor() + " player", trade.getPlayerToBeTraded().getColor());
+        gameLog.addLog(StringUtils.capitalize(trade.getPlayerToBeTraded().getColor()) + " player has declined the trade with " + StringUtils.capitalize(trade.getPlayerTrader().getColor()) + " player", trade.getPlayerToBeTraded().getColor());
     }
 
     public void setProperties(Trade trade) {

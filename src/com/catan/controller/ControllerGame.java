@@ -4,6 +4,7 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.*;
 import com.catan.modal.*;
 import com.catan.Util.UTF8Control;
+import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -741,7 +742,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor() + " | Die Result: " +
                 die.getDieSum() + " | Victory Points: " + currentPlayer.getVictoryPoints());
         System.out.println("----------------------------------------------------------------------------------------------");
-        gameLog.addLog("Player " + playerTurn + ": has rolled " + die.getDieSum() + ".", currentPlayer.getColor());
+        gameLog.addLog(StringUtils.capitalize(currentPlayer.getColor()) + " player has rolled " + die.getDieSum() + ".", currentPlayer.getColor());
         playerTurn++;
 
         chest.refreshStrongestArmyOwner();
@@ -898,17 +899,17 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     case Constants.CITY:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
                         settlement = new City(imagePath, vertex, currentPlayer);
-                        gameLog.addLog("Player " + playerTurn + ": has built a city.", getPlayers().get(playerTurn % 4).getColor());
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getColor()) +" player has built a city.", getPlayers().get(playerTurn % 4).getColor());
                         break;
                     case Constants.VILLAGE:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
                         settlement = new Village(imagePath, vertex, currentPlayer);
-                        gameLog.addLog("Player " + playerTurn + ": has built a village.", getPlayers().get(playerTurn % 4).getColor());
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getColor()) + "player has built a village.", getPlayers().get(playerTurn % 4).getColor());
                         break;
                     default:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CIVILISATION);
                         settlement = new Civilisation(imagePath, vertex, currentPlayer);
-                        gameLog.addLog("Player " + playerTurn + ": has built civilisation.", getPlayers().get(playerTurn % 4).getColor());
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getColor()) + " player has built civilisation.", getPlayers().get(playerTurn % 4).getColor());
                         break;
                 }
                 Image img = new Image(settlement.getImagePath());

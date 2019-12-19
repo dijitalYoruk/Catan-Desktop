@@ -1,6 +1,7 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
+import com.sun.xml.internal.ws.util.StringUtils;
 
 import java.util.*;
 
@@ -73,7 +74,7 @@ public class Trade {
 
                 if (aiDecision) {
                     completeTrade();
-                    gameLog.addLog(playerTrader.getColor() + " player has traded with " + playerToBeTraded.getColor() + " player", playerTrader.getColor());
+                    gameLog.addLog(StringUtils.capitalize(playerTrader.getColor()) + " player has traded with " + StringUtils.capitalize(playerToBeTraded.getColor()) + " player.", playerTrader.getColor());
                 }
                 else {
                     errorMessage = "The trade request from " + playerTrader.getName() +
@@ -83,7 +84,7 @@ public class Trade {
             }
             else if (isTradeWithChest) {
                 completeTrade();
-                gameLog.addLog(playerTrader.getColor() + " player has traded with " + "the chest", playerTrader.getColor());
+                gameLog.addLog(StringUtils.capitalize(playerTrader.getColor()) + " player has traded with " + "the chest.", playerTrader.getColor());
             }
         }
         else { printTradeDetails(); }
@@ -122,15 +123,11 @@ public class Trade {
 
     private void addOfferDetailsToGameLog(boolean isTradeWithChest) {
         gameLog = GameLog.getInstance();
-        String traderColor = playerTrader.getColor();
+        String traderColor = StringUtils.capitalize(playerTrader.getColor());
         String toBeTradedColor = "";
         if (!isTradeWithChest)
-            toBeTradedColor = playerToBeTraded.getColor();
+            toBeTradedColor = StringUtils.capitalize(playerToBeTraded.getColor());
 
-        // capitalize the first letter of the color name
-        traderColor = traderColor.substring(0, 1).toUpperCase() + traderColor.substring(1);
-        if (!isTradeWithChest)
-            toBeTradedColor = toBeTradedColor.substring(0, 1).toUpperCase() + toBeTradedColor.substring(1);
 
         String offereds = "";
         String requests = "";
@@ -149,15 +146,15 @@ public class Trade {
             requests = requests.substring(0, requests.length() - 2);
         }
         if (!isTradeWithChest) {
-            gameLog.addLog(traderColor + " player has offered " + toBeTradedColor + " player" + "\n" +
-                    "  " + offereds + "\n" +
-                    "  " + traderColor + " player has requested" + "\n" +
-                    "  " + requests, playerTrader.getColor());
+            gameLog.addLog(traderColor + " player has offered " + toBeTradedColor + " player:" + "\n" +
+                    "  " + offereds + "." + "\n" +
+                    "  " + traderColor + " player has requested:" + "\n" +
+                    "  " + requests + ".", playerTrader.getColor());
         } else {
-            gameLog.addLog(traderColor + " player has offered " + "chest" + "\n" +
-                    "  " + offereds + "\n" +
-                    "  " + "chest has required" + "\n" +
-                    "  " + requests, playerTrader.getColor());
+            gameLog.addLog(traderColor + " player has offered Chest:" + "\n" +
+                    "  " + offereds + "." + "\n" +
+                    "  " + "Chest has required:" + "\n" +
+                    "  " + requests + ".", playerTrader.getColor());
         }
     }
 

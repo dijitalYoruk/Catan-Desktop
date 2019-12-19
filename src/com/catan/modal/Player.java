@@ -1,6 +1,7 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
+import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.scene.paint.Color;
 
 import java.util.*;
@@ -285,7 +286,7 @@ public class Player {
                 System.out.println("==============================================================================================");
                 System.out.println(getName() + " bought " + card.getName());
                 System.out.println("==============================================================================================");
-                gameLog.addLog(getColor() + " player bought " + card.getName(), getColor());
+                gameLog.addLog(StringUtils.capitalize(getColor()) + " player bought " + card.getName(), getColor());
             } else {
                 System.out.println("==============================================================================================");
                 System.out.println("No Development Cards are left in the chest.");
