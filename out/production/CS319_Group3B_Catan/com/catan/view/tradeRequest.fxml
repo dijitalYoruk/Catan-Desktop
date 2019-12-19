@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="472.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTradeRequest">
    <children>
-      <Label fx:id="labelTitleOfTradeRequest" layoutX="113.0" layoutY="24.0" text="Player x wants to trade with you!">
+      <Label fx:id="labelTitleOfTradeRequest" layoutX="113.0" layoutY="24.0" text="%tradeRequestView_TradeExplanation">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="39.0" layoutY="80.0" prefWidth="137.0" styleClass="thresholds" stylesheets="@style.css" text="Offers:" />
+      <Label alignment="CENTER" layoutX="39.0" layoutY="80.0" prefWidth="137.0" styleClass="thresholds" stylesheets="@style.css" text="%tradeRequestView_Offer" />
       <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="46.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_brick.jpg" />
@@ -65,7 +65,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="362.0" layoutY="80.0" prefWidth="137.0" styleClass="thresholds" stylesheets="@style.css" text="Requests:" />
+      <Label alignment="CENTER" layoutX="362.0" layoutY="80.0" prefWidth="137.0" styleClass="thresholds" stylesheets="@style.css" text="%tradeRequestView_Request" />
       <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="370.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_brick.jpg" />
@@ -116,17 +116,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="acceptOfferButton" layoutX="150.0" layoutY="396.0" onAction="#acceptTradeOffer" text="Accept Offer">
+      <JFXButton fx:id="acceptOfferButton" layoutX="150.0" layoutY="396.0" onAction="#acceptTradeOffer" text="%tradeRequestView_Accept">
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="declineOfferButton" layoutX="298.0" layoutY="396.0" onAction="#declineOffer" text="Decline Offer">
+      <JFXButton fx:id="declineOfferButton" layoutX="298.0" layoutY="396.0" onAction="#declineOffer" text="%tradeRequestView_Decline">
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <Label fx:id="outputOfTradeOffer" layoutX="201.0" layoutY="333.0" opacity="0.0" text="Output" textFill="RED">
+      <Label fx:id="outputOfTradeOffer" layoutX="201.0" layoutY="333.0" opacity="0.0" text="%tradeRequestView_Output" textFill="RED">
          <font>
             <Font size="24.0" />
          </font>

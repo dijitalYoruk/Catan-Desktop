@@ -1,6 +1,7 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.modal.Harbour;
 import com.catan.modal.Player;
 import com.catan.modal.Trade;
 import javafx.application.Platform;
@@ -154,6 +155,19 @@ public class ControllerTradeOffer {
     }
 
     @FXML
+    public int checkTradeWithChestRatio(String resourceType) {
+        if (actualPlayer.getHarbours() != null) {
+            for (Harbour harbour : actualPlayer.getHarbours()) {
+                if (harbour.getAssociatedResourceType().equals(resourceType)) {
+                    int tradeWithChestRatioWithHarbour = harbour.getTradeRatio();
+                    return tradeWithChestRatioWithHarbour;
+                }
+            }
+        }
+        return 4;
+    }
+
+    @FXML
     void requestTrade(ActionEvent event) {
         if (isTradeWithChest) {
             Trade trade = new Trade(actualPlayer, null, requestedResources, offeredResources, true);
@@ -229,12 +243,14 @@ public class ControllerTradeOffer {
 
             for (int i = 0; i < Constants.resourceNames.size(); i++) {
                 String resourceName = Constants.resourceNames.get(i);
-                if (mouseEvent.getSource() == imgOffers.get(i) && actualPlayerResources.get(resourceName) >= 4){
-                    labelsOffer.get(i).setText("x4");
-                    offeredResources.put(resourceName, 4);
-                    int playerResourceCount = actualPlayerResources.get(resourceName) - 4;
+                int tradeRatio = checkTradeWithChestRatio(resourceName);
+                if (mouseEvent.getSource() == imgOffers.get(i) && actualPlayerResources.get(resourceName) >= tradeRatio) {
+                    System.out.println(tradeRatio);
+                    labelsOffer.get(i).setText("x"+tradeRatio);
+                    offeredResources.put(resourceName, tradeRatio);
+                    int playerResourceCount = actualPlayerResources.get(resourceName) - tradeRatio;
                     actualPlayerResources.put(resourceName, playerResourceCount);
-                    labelsActualPlayer.get(i).setText("x" + playerResourceCount);
+                    labelsActualPlayer.get(i).setText("x" + playerResourceCount );
                     break;
                 }
             }
