@@ -1,6 +1,7 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.modal.GameLog;
 import com.catan.modal.Trade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,6 +51,8 @@ public class ControllerTradeRequest {
         trade.completeTrade();
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
+        GameLog gameLog = GameLog.getInstance();
+        gameLog.addLog(trade.getPlayerTrader().getColor() + " player has traded with " + trade.getPlayerToBeTraded().getColor() + " player", trade.getPlayerTrader().getColor());
     }
 
     @FXML
@@ -60,6 +63,8 @@ public class ControllerTradeRequest {
         trade.printTradeDetails();
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
+        GameLog gameLog = GameLog.getInstance();
+        gameLog.addLog(trade.getPlayerToBeTraded().getColor() + " player has declined the trade with " + trade.getPlayerTrader().getColor() + " player", trade.getPlayerToBeTraded().getColor());
     }
 
     public void setProperties(Trade trade) {

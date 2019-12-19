@@ -2,6 +2,7 @@ package com.catan.controller;
 
 import com.catan.Util.Constants;
 import com.catan.Util.UTF8Control;
+import com.catan.modal.GameLog;
 import com.catan.modal.Settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +26,8 @@ public class ControllerBase {
             Parent root = fxmlLoader.load(getClass().getResource("../view/program.fxml"), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
+            GameLog gameLog = GameLog.getInstance();
+            gameLog.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }

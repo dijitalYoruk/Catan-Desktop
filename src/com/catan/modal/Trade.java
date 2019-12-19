@@ -15,6 +15,7 @@ public class Trade {
     private boolean isTradePossible;
     private boolean isTradeCompleted;
     private String errorMessage;
+    private GameLog gameLog = GameLog.getInstance();
 
     // constructor
     public Trade(Player trader, Player playerToBeTraded, HashMap<String, Integer> reqCards,
@@ -62,18 +63,28 @@ public class Trade {
             }
         }
 
+        addOfferDetailsToGameLog();
+        gameLog = GameLog.getInstance();
+
         if (isTradePossible) {
             if (playerToBeTraded instanceof PlayerAI) {
                 boolean aiDecision = ((PlayerAI) playerToBeTraded).respondToTradeRequest(
                         requestedResourceCards, offeredResourceCards);
 
-                if (aiDecision) { completeTrade(); }
+                if (aiDecision) {
+                    completeTrade();
+                    gameLog.addLog(playerTrader.getColor() + " player has traded with " + playerToBeTraded.getColor() + " player", playerTrader.getColor());
+                }
                 else {
                     errorMessage = "The trade request from " + playerTrader.getName() +
                             " was denied by " + playerToBeTraded.getName() + ".";
+                    gameLog.addLog(playerToBeTraded.getColor() + " player has declined the trade with " + playerTrader.getColor() + " player", playerToBeTraded.getColor());
                 }
             }
-            else if (isTradeWithChest) { completeTrade(); }
+            else if (isTradeWithChest) {
+                completeTrade();
+                gameLog.addLog(playerTrader.getColor() + " player has traded with " + "the chest", playerTrader.getColor());
+            }
         }
         else { printTradeDetails(); }
     }
@@ -106,12 +117,11 @@ public class Trade {
             printTradeDetails();
             printPlayerDetails();
             System.out.println("==============================================================================================");
-            addTradeDetailsToGameLog();
         }
     }
 
-    private void addTradeDetailsToGameLog() {
-        GameLog gameLog = GameLog.getInstance();
+    private void addOfferDetailsToGameLog() {
+        gameLog = GameLog.getInstance();
         String traderColor = playerTrader.getColor();
         String toBeTradedColor = playerToBeTraded.getColor();
 
@@ -138,8 +148,8 @@ public class Trade {
         gameLog.addLog(traderColor + " player has offered " + toBeTradedColor + " player" + "\n" +
                 "  " + offereds + "\n" +
                 "  " + traderColor + " player has requested" + "\n" +
-                "  " + requests,"orange");
-        gameLog.addLog(traderColor + " player has traded with " + toBeTradedColor + " player","orange");
+                "  " + requests,playerTrader.getColor());
+
     }
 
     private void exchangeResources(ArrayList<Integer> tradeDifferences, Player player) {
