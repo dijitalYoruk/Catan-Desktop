@@ -96,7 +96,8 @@ public class ControllerPlayDevelopmentCard {
         }
 
         // close window
-        if (card != null) {
+        if (card != null && player.hasDevelopmentCard(card)) {
+            player.removeDevelopmentCard(card.getName());
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.close();
             interfaceCard.setDevelopmentCardInvention(card);
