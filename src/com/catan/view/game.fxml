@@ -436,7 +436,7 @@
                         <Image url="@../assets/dev_card_invention_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="inventionLabel" layoutX="48.0" layoutY="72.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="inventionLabel" layoutX="28.0" layoutY="74.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -450,7 +450,7 @@
                         <Image url="@../assets/dev_card_knight_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="knightLabel" layoutX="48.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="knightLabel" layoutX="32.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -464,7 +464,7 @@
                         <Image url="@../assets/dev_card_monopoly_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="monopolyLabel" layoutX="48.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="monopolyLabel" layoutX="32.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -478,7 +478,7 @@
                         <Image url="@../assets/dev_card_profit_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="profitLabel" layoutX="48.0" layoutY="80.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="profitLabel" layoutX="32.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -492,7 +492,7 @@
                         <Image url="@../assets/dev_card_road_destruction_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="roadDestructionLabel" layoutX="48.0" layoutY="86.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="roadDestructionLabel" layoutX="32.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -506,7 +506,7 @@
                         <Image url="@../assets/dev_card_victory_grayscale.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="victoryLabel" layoutX="53.0" layoutY="74.0" prefHeight="21.0" prefWidth="32.0">
+                  <Label fx:id="victoryLabel" layoutX="32.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
                      <font>
                         <Font size="24.0" />
                      </font>

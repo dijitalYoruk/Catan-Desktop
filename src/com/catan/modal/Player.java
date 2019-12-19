@@ -276,6 +276,7 @@ public class Player {
     }
 
     public void buyDevelopmentCard(Chest chest) {
+        GameLog gameLog = GameLog.getInstance();
         boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
         if (hasEnoughResources) {
             DevelopmentCard card = chest.getDevelopmentCard();
@@ -284,6 +285,7 @@ public class Player {
                 System.out.println("==============================================================================================");
                 System.out.println(getName() + " bought " + card.getName());
                 System.out.println("==============================================================================================");
+                gameLog.addLog(getColor() + " player bought " + card.getName(), getColor());
             } else {
                 System.out.println("==============================================================================================");
                 System.out.println("No Development Cards are left in the chest.");

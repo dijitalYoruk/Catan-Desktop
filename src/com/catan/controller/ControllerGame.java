@@ -126,17 +126,17 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         resourceCardsPaneLocations[4] = new double[] {paneGrains.getLayoutX(), paneGrains.getLayoutY()};
 
 
-        ImgViewInventionDummy.setVisible(false);
+        //ImgViewInventionDummy.setVisible(false);
         inventionImages.add(ImgViewInventionDummy);
-        ImgViewMonopolyDummy.setVisible(false);
+        //ImgViewMonopolyDummy.setVisible(false);
         monopolyImages.add(ImgViewMonopolyDummy);
-        ImgViewKnightDummy.setVisible(false);
+        //ImgViewKnightDummy.setVisible(false);
         knightImages.add(ImgViewKnightDummy);
-        ImgViewProfitDummy.setVisible(false);
+        //ImgViewProfitDummy.setVisible(false);
         profitImages.add(ImgViewProfitDummy);
-        ImgViewRoadDestructionDummy.setVisible(false);
+        //ImgViewRoadDestructionDummy.setVisible(false);
         roadDestructionImages.add(ImgViewRoadDestructionDummy);
-        ImgViewVictoryDummy.setVisible(false);
+        //ImgViewVictoryDummy.setVisible(false);
         victoryImages.add(ImgViewVictoryDummy);
 
         developmentCardPanes[0] = paneInvention;
@@ -334,6 +334,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             boolean hasEnoughResources = currentPlayer.hasEnoughResources(Constants.DEVELOPMENT_CARD);
             if (hasEnoughResources) {
                 currentPlayer.buyDevelopmentCard(chest);
+                updateGameLogsInView();
+                updateCardsOfActualPlayerInView();
             } else {
                 displayWarning("Poor to buy dev card");
             }
@@ -459,7 +461,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             while (developmentCards.get(key) > ((ArrayList<ImageView>)currentCardRelated[1]).size() - 1) {
                 ImageView imgToAdd = new ImageView(((String)currentCardRelated[3]));
                 // puts the image right next to its predecessor
-                imgToAdd.setLayoutX(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 1) {
+                    imgToAdd.setLayoutX(((ArrayList<ImageView>) currentCardRelated[1]).get(((ArrayList<ImageView>) currentCardRelated[1]).size() - 1).getLayoutX());
+                } else {
+                    imgToAdd.setLayoutX(((ArrayList<ImageView>) currentCardRelated[1]).get(((ArrayList<ImageView>) currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                }
                 imgToAdd.setLayoutY(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutY());
                 imgToAdd.setFitHeight(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitHeight());
                 imgToAdd.setFitWidth(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitWidth());
@@ -475,6 +481,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 ((Pane)currentCardRelated[2]).getChildren().remove(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1));
                 // removes the image from its corresponding list
                 ((ArrayList<ImageView>)currentCardRelated[1]).remove(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1);
+            }
+
+            if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 1) {
+                ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(true);
+            } else if (((ArrayList<ImageView>)currentCardRelated[1]).size() > 1) {
+                ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(false);
             }
         }
     }
