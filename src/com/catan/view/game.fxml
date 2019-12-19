@@ -433,7 +433,7 @@
                <children>
                   <ImageView fx:id="ImgViewInventionDummy" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../assets/dev_card_invention.jpg" />
+                        <Image url="@../assets/dev_card_invention_grayscale.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="inventionLabel" layoutX="48.0" layoutY="72.0" prefHeight="21.0" prefWidth="32.0">
@@ -447,7 +447,7 @@
                <children>
                   <ImageView fx:id="ImgViewKnightDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../assets/dev_card_knight.jpg" />
+                        <Image url="@../assets/dev_card_knight_grayscale.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="knightLabel" layoutX="48.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
@@ -461,7 +461,7 @@
                <children>
                   <ImageView fx:id="ImgViewMonopolyDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../assets/dev_card_monopoly.jpg" />
+                        <Image url="@../assets/dev_card_monopoly_grayscale.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="monopolyLabel" layoutX="48.0" layoutY="75.0" prefHeight="21.0" prefWidth="32.0">
@@ -475,7 +475,7 @@
                <children>
                   <ImageView fx:id="ImgViewProfitDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../assets/dev_card_profit.jpg" />
+                        <Image url="@../assets/dev_card_profit_grayscale.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="profitLabel" layoutX="48.0" layoutY="80.0" prefHeight="21.0" prefWidth="32.0">
@@ -489,7 +489,7 @@
                <children>
                   <ImageView fx:id="ImgViewRoadDestructionDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../assets/dev_card_road_destruction.jpg" />
+                        <Image url="@../assets/dev_card_road_destruction_grayscale.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="roadDestructionLabel" layoutX="48.0" layoutY="86.0" prefHeight="21.0" prefWidth="32.0">
@@ -503,7 +503,7 @@
                <children>
                   <ImageView fx:id="ImgViewVictoryDummy" fitHeight="60.0" fitWidth="60.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../assets/dev_card_victory.jpg" />
+                        <Image url="@../assets/dev_card_victory_grayscale.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="victoryLabel" layoutX="53.0" layoutY="74.0" prefHeight="21.0" prefWidth="32.0">
