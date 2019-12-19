@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ControllerBase {
+public class ControllerBase extends ControllerMusic{
 
     @FXML
     public void returnToProgram(ActionEvent actionEvent) {

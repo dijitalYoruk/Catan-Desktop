@@ -223,6 +223,12 @@ trade-pane-bg {
     -fx-background-size: cover;
 }
 
+.music-button {
+    -fx-background-image: url("../assets/music-button.jpg");
+    -fx-pref-width: 37;
+    -fx-pref-height: 50;
+}
+
 .invention-label {
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";

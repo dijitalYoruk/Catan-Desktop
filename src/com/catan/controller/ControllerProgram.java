@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ControllerProgram {
+public class ControllerProgram extends ControllerMusic{
 
     @FXML
     public void gotoPlayGame(ActionEvent actionEvent) {

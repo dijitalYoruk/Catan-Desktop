@@ -117,19 +117,19 @@
       <Polygon fx:id="harbour16" fill="DODGERBLUE" layoutX="622.0" layoutY="544.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Polygon fx:id="harbour15" fill="DODGERBLUE" layoutX="686.0" layoutY="649.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Polygon fx:id="harbour14" fill="DODGERBLUE" layoutX="750.0" layoutY="757.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour13" fill="DODGERBLUE" layoutX="817.0" layoutY="858.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="harbour5" fill="DODGERBLUE" layoutX="817.0" layoutY="858.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Polygon fx:id="harbour1" fill="DODGERBLUE" layoutX="815.0" layoutY="240.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour2" fill="DODGERBLUE" layoutX="945.0" layoutY="240.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour3" fill="DODGERBLUE" layoutX="1075.0" layoutY="240.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour12" fill="DODGERBLUE" layoutX="945.0" layoutY="858.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour11" fill="DODGERBLUE" layoutX="1076.0" layoutY="858.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour10" fill="DODGERBLUE" layoutX="1207.0" layoutY="858.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour9" fill="DODGERBLUE" layoutX="1271.0" layoutY="757.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour8" fill="DODGERBLUE" layoutX="1335.0" layoutY="651.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour7" fill="DODGERBLUE" layoutX="1400.0" layoutY="546.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour6" fill="DODGERBLUE" layoutX="1336.0" layoutY="443.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour5" fill="DODGERBLUE" layoutX="1271.0" layoutY="341.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Polygon fx:id="harbour4" fill="DODGERBLUE" layoutX="1207.0" layoutY="241.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fill="DODGERBLUE" layoutX="945.0" layoutY="240.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fill="DODGERBLUE" layoutX="1075.0" layoutY="240.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fill="DODGERBLUE" layoutX="945.0" layoutY="858.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fill="DODGERBLUE" layoutX="1076.0" layoutY="858.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="harbour4" fill="DODGERBLUE" layoutX="1207.0" layoutY="858.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fill="DODGERBLUE" layoutX="1271.0" layoutY="757.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fill="DODGERBLUE" layoutX="1335.0" layoutY="651.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="harbour3" fill="DODGERBLUE" layoutX="1400.0" layoutY="546.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fill="DODGERBLUE" layoutX="1336.0" layoutY="443.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fill="DODGERBLUE" layoutX="1271.0" layoutY="341.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polygon fx:id="harbour2" fill="DODGERBLUE" layoutX="1207.0" layoutY="241.0" points="-63.0, -38.0, -7.5, -10.0, 47.5, -38.0, 47.5, -98.0, -7.5, -126.0, -63.0, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Circle fx:id="vertex40" fill="#ffde2173" layoutX="810.0" layoutY="651.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Circle fx:id="vertex11" fill="#ffde2173" layoutX="938.0" layoutY="308.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Circle fx:id="vertex12" fill="#ffde2173" layoutX="1002.0" layoutY="341.0" onMouseClicked="#makeConstruction" onMouseEntered="#blendVertex" onMouseExited="#blurVertex" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
@@ -320,6 +320,14 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </JFXButton>
+            <JFXButton onAction="#trade" styleClass="trade-button" text="%gameView_tradeButton">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </JFXButton>
          </children>
       </VBox>
       <HBox layoutX="119.0" layoutY="960.0" prefHeight="70.0" prefWidth="280.0">
@@ -334,6 +342,11 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Rectangle>
+            <JFXButton id="end-button" onAction="#endTurn" text="%gameView_endTurnButton">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </JFXButton>
          </children>
       </HBox>
       <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
@@ -503,12 +516,62 @@
          </children>
       </Pane>
       <Circle fx:id="imgMovingThief" fill="DODGERBLUE" layoutX="100.0" layoutY="158.0" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-      <JFXButton id="end-button" layoutX="427.0" layoutY="476.0" onAction="#endTurn" text="%gameView_endTurnButton" />
-      <JFXButton layoutX="502.0" layoutY="152.0" onAction="#trade" styleClass="trade-button" text="%gameView_tradeButton">
-         <effect>
-            <DropShadow />
-         </effect>
-      </JFXButton>
+      <JFXButton fx:id="musicButton" layoutX="1824.0" layoutY="35.0" onAction="#switchMusic" styleClass="music-button" stylesheets="@style.css" text="MUSIC" />
+      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="790.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_brick.jpg" />
+         </image>
+      </ImageView>
+      <Circle fx:id="circleNumberOnHex110" fill="WHITE" layoutX="807.0" layoutY="192.0" onMouseClicked="#exchangeTurnProfit" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="labelHexNum110" layoutX="795.0" layoutY="179.0" text="2:1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="1181.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_lumber.jpg" />
+         </image>
+      </ImageView>
+      <Circle fx:id="circleNumberOnHex1101" fill="WHITE" layoutX="1198.0" layoutY="193.0" onMouseClicked="#exchangeTurnProfit" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="labelHexNum1101" layoutX="1186.0" layoutY="180.0" text="3:1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="1375.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_ore.jpg" />
+         </image>
+      </ImageView>
+      <Circle fx:id="circleNumberOnHex11011" fill="WHITE" layoutX="1392.0" layoutY="499.0" onMouseClicked="#exchangeTurnProfit" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="labelHexNum11011" layoutX="1380.0" layoutY="486.0" text="3:1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="1183.0" layoutY="751.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_wool.jpg" />
+         </image>
+      </ImageView>
+      <Circle fx:id="circleNumberOnHex110111" fill="WHITE" layoutX="1200.0" layoutY="810.0" onMouseClicked="#exchangeTurnProfit" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="labelHexNum110111" layoutX="1188.0" layoutY="797.0" text="2:1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="793.0" layoutY="751.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_grain.jpg" />
+         </image>
+      </ImageView>
+      <Circle fx:id="circleNumberOnHex1101111" fill="WHITE" layoutX="810.0" layoutY="810.0" onMouseClicked="#exchangeTurnProfit" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="labelHexNum1101111" layoutX="798.0" layoutY="797.0" text="2:1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
 
 
 

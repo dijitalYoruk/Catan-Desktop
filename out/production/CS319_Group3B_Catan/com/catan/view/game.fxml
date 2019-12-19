@@ -320,6 +320,14 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </JFXButton>
+            <JFXButton onAction="#trade" styleClass="trade-button" text="%gameView_tradeButton">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </JFXButton>
          </children>
       </VBox>
       <HBox layoutX="119.0" layoutY="960.0" prefHeight="70.0" prefWidth="280.0">
@@ -334,6 +342,11 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Rectangle>
+            <JFXButton id="end-button" onAction="#endTurn" text="%gameView_endTurnButton">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </JFXButton>
          </children>
       </HBox>
       <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
@@ -503,12 +516,7 @@
          </children>
       </Pane>
       <Circle fx:id="imgMovingThief" fill="DODGERBLUE" layoutX="100.0" layoutY="158.0" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-      <JFXButton id="end-button" layoutX="427.0" layoutY="476.0" onAction="#endTurn" text="%gameView_endTurnButton" />
-      <JFXButton layoutX="502.0" layoutY="152.0" onAction="#trade" styleClass="trade-button" text="%gameView_tradeButton">
-         <effect>
-            <DropShadow />
-         </effect>
-      </JFXButton>
+      <JFXButton fx:id="musicButton" layoutX="1824.0" layoutY="35.0" onAction="#switchMusic" styleClass="music-button" stylesheets="@style.css" text="MUSIC" />
 
 
 
