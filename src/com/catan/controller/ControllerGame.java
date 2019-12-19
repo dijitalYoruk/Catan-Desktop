@@ -428,9 +428,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 ((ArrayList<ImageView>)currentCardRelated[1]).remove(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1);
             }
 
-            if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 2) {
+            if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 1) {
                 ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(true);
-            } else if (((ArrayList<ImageView>)currentCardRelated[1]).size() > 2) {
+            } else if (((ArrayList<ImageView>)currentCardRelated[1]).size() > 1) {
                 ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(false);
             }
         }
