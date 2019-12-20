@@ -85,6 +85,16 @@ public class ControllerSettings extends ControllerBase {
     public void changeTheme(ActionEvent actionEvent){
         settingTemp.setCurrentTheme(((MenuItem)actionEvent.getTarget()).getText());
         themes.setText(settingTemp.getCurrentTheme());
+        //change music
+        if(settingTemp.getCurrentTheme().equals("CatanDefault")){
+            settingsMusic(new File("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\music\\catan_theme.wav"));
+        }
+        else if(settingTemp.getCurrentTheme().equals("Space")){
+            settingsMusic(new File("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\music\\space_theme.wav"));
+        }
+        else if(settingTemp.getCurrentTheme().equals("Karadeniz")){
+            settingsMusic(new File("C:\\Users\\Cerag\\Documents\\GitHub\\CS319-3B-CA\\src\\com\\catan\\music\\karadeniz_theme.wav"));
+        }
     }
 
     @FXML

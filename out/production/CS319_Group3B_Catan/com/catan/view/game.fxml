@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="game-pane" fx:id="root" onMouseClicked="#unselectConstructions" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerGame">
+<AnchorPane id="game-pane" fx:id="root" onMouseClicked="#unselectConstructions" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerGame">
    <children>
       <Polygon fx:id="harbour19" fill="#ffb500" layoutX="622.0" layoutY="206.0" points="-101.0, 269.0, 123.0, 666.0, 646.0, 666.0, 868.0, 269.0, 646.0, -116.99998474121094, 123.0, -117.0" stroke="RED" strokeType="INSIDE" strokeWidth="3.0" />
       <Line fx:id="road8" endX="1043.0" endY="-373.0" layoutX="-106.0" layoutY="612.0" onMouseClicked="#destroyRoad" startX="1044.0" startY="-304.0" strokeWidth="7.0" />
@@ -516,6 +516,7 @@
          </children>
       </Pane>
       <Circle fx:id="imgMovingThief" fill="DODGERBLUE" layoutX="100.0" layoutY="158.0" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <JFXButton fx:id="musicButton" layoutX="1824.0" layoutY="35.0" onAction="#switchMusic" styleClass="music-button" stylesheets="@style.css" text="MUSIC" />
 
 
 

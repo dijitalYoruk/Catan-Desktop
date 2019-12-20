@@ -4,11 +4,13 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceDevelopmentCard;
 import com.catan.modal.DevelopmentCard;
 import com.catan.modal.Player;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -39,6 +41,9 @@ public class ControllerPlayDevelopmentCard {
     private Label labelKnight;
     @FXML
     private Label labelMonopoly;
+
+    @FXML
+    private AnchorPane root;
 
     // properties
     private Player player;
@@ -102,5 +107,10 @@ public class ControllerPlayDevelopmentCard {
             window.close();
             interfaceCard.setDevelopmentCardInvention(card);
         }
+    }
+    @FXML
+    public void closeDialog(ActionEvent actionEvent) {
+        Stage window = (Stage) root.getScene().getWindow();
+        window.close();
     }
 }

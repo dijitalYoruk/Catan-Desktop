@@ -25,6 +25,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.ArrayList;
@@ -887,6 +888,24 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 getSettlements().add(settlement);
                 currentPlayer.getSettlements().add(settlement);
                 vertex.setSettlement(settlement);
+                //harbour
+                String vertexID = vertex.getShape().getId();
+                if (vertexID.equals("vertex1") || vertexID.equals("vertex2")) {
+                    currentPlayer.getHarbours().add(harbours.get(0));
+                }
+                else if (vertexID.equals("vertex6") || vertexID.equals("vertex7")) {
+                    currentPlayer.getHarbours().add(harbours.get(1));
+                }
+                else if (vertexID.equals("vertex27") || vertexID.equals("vertex38")) {
+                    currentPlayer.getHarbours().add(harbours.get(2));
+                }
+                else if (vertexID.equals("vertex53") || vertexID.equals("vertex54")) {
+                    currentPlayer.getHarbours().add(harbours.get(3));
+                }
+                else if (vertexID.equals("vertex17") || vertexID.equals("vertex18")) {
+                    currentPlayer.getHarbours().add(harbours.get(4));
+                }
+                //
                 currentPlayer.subtractPriceOfConstruction(selectedConstruction);
                 currentPlayer.showSourceCards();
                 unselectConstructions(null);
@@ -1141,6 +1160,24 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 getSettlements().add(settlement);
                 currentPlayer.getSettlements().add(settlement);
                 vertex.setSettlement(settlement);
+                //harbour
+                String vertexID = vertex.getShape().getId();
+                if (vertexID.equals("vertex1") || vertexID.equals("vertex2")) {
+                    currentPlayer.getHarbours().add(harbours.get(0));
+                }
+                else if (vertexID.equals("vertex6") || vertexID.equals("vertex7")) {
+                    currentPlayer.getHarbours().add(harbours.get(1));
+                }
+                else if (vertexID.equals("vertex27") || vertexID.equals("vertex38")) {
+                    currentPlayer.getHarbours().add(harbours.get(2));
+                }
+                else if (vertexID.equals("vertex53") || vertexID.equals("vertex54")) {
+                    currentPlayer.getHarbours().add(harbours.get(3));
+                }
+                else if (vertexID.equals("vertex17") || vertexID.equals("vertex18")) {
+                    currentPlayer.getHarbours().add(harbours.get(4));
+                }
+                //
                 unselectConstructions(null);
                 activatePlayerVertices();
                 tempSettlement = settlement;
