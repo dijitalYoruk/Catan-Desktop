@@ -22,7 +22,7 @@ public class ControllerBase {
     public void returnToProgram(ActionEvent actionEvent) {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.language),  new UTF8Control());
             Parent root = fxmlLoader.load(getClass().getResource("../view/program.fxml"), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);

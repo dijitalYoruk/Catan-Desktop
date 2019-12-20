@@ -269,7 +269,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             dialog.initOwner(root.getScene().getWindow());
             dialog.setTitle(title);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.language),  new UTF8Control());
             fxmlLoader.setLocation(getClass().getClassLoader().getResource(viewPath));
             fxmlLoader.setResources(bundle);
             dialog.getDialogPane().setContent(fxmlLoader.load());

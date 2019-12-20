@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.file.Paths;
 
 public class Settings {
-    public static final String languauge = "en";
+    public static String language = "tr";
     private String currentTheme;
     private int victoryThreshold;
     private int armyThreshold;
@@ -48,6 +48,12 @@ public class Settings {
         currentTheme = theme;
         writeToLocal();
     }
+
+    public void setCurrentLanguage(String language){
+        this.language = language;
+        writeToLocal();
+    }
+
     public void setVictoryThreshold(int victoryTh){
         victoryThreshold = victoryTh;
         writeToLocal();
@@ -64,8 +70,12 @@ public class Settings {
     public String getCurrentTheme(){
         return currentTheme;
     }
+
     public int getVictoryThreshold(){
         return victoryThreshold;
+    }
+    public String getCurrentLanguage(){
+        return language;
     }
     public int getArmyThreshold(){
         return armyThreshold;

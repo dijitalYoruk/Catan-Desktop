@@ -5,16 +5,17 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="settings-pane" prefHeight="860.0" prefWidth="1583.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerSettings">
    <children>
-      <Label alignment="CENTER" layoutX="402.0" layoutY="35.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_VictoryPoints" />
-      <Label alignment="CENTER" layoutX="402.0" layoutY="91.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_LargestArmy" />
-      <Label alignment="CENTER" layoutX="402.0" layoutY="145.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_LongestRoad" />
-      <Label alignment="CENTER" layoutX="402.0" layoutY="223.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_SelectTheme" />
-      <MenuButton fx:id="themes" layoutX="739.0" layoutY="233.0" mnemonicParsing="false" text="Default">
+      <Label alignment="CENTER" layoutX="723.0" layoutY="421.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_VictoryPoints" />
+      <Label alignment="CENTER" layoutX="723.0" layoutY="479.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_LargestArmy" />
+      <Label alignment="CENTER" layoutX="723.0" layoutY="535.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_LongestRoad" />
+      <Label alignment="CENTER" layoutX="723.0" layoutY="594.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_SelectTheme" />
+      <MenuButton fx:id="themesDropdown" layoutX="1074.0" layoutY="601.0" mnemonicParsing="false" text="Default">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Kurtlar Vadisi" />
             <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Bilkent University" />
@@ -24,15 +25,37 @@
             <Font size="16.0" />
          </font>
       </MenuButton>
-      <Rectangle fx:id="right1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="847.0" layoutY="45.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="left1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="720.0" layoutY="45.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="left2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="720.0" layoutY="101.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="right2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="847.0" layoutY="101.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="left3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="720.0" layoutY="155.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="right3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="847.0" layoutY="159.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Label fx:id="victoryPointTh" alignment="CENTER" layoutX="767.0" layoutY="47.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
-      <Label fx:id="largestArmyTh" alignment="CENTER" layoutX="767.0" layoutY="103.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
-      <Label fx:id="longestRoadTh" alignment="CENTER" layoutX="767.0" layoutY="157.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
-      <Button layoutX="79.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
+      <Button layoutX="31.0" layoutY="29.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
+      <Pane layoutX="1022.0" layoutY="421.0" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Rectangle fx:id="right1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="148.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Rectangle fx:id="left1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="25.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Label fx:id="victoryPointTh" alignment="CENTER" layoutX="67.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+         </children>
+      </Pane>
+      <Pane layoutX="1022.0" layoutY="479.0" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Rectangle fx:id="left2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="25.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Rectangle fx:id="right2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="148.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Label fx:id="largestArmyTh" alignment="CENTER" layoutX="67.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+         </children>
+      </Pane>
+      <Pane layoutX="1022.0" layoutY="535.0" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Rectangle fx:id="left3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="25.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Rectangle fx:id="right3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="148.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Label fx:id="longestRoadTh" alignment="CENTER" layoutX="67.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+         </children>
+      </Pane>
+      <Label alignment="CENTER" layoutX="723.0" layoutY="653.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_ChangeLanguage" />
+      <MenuButton fx:id="languagesDropdown" layoutX="1074.0" layoutY="660.0" mnemonicParsing="false" text="Default">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#changeLanguage" text="English" />
+            <MenuItem mnemonicParsing="false" onAction="#changeLanguage" text="Turkish" />
+         </items>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </MenuButton>
    </children>
 </AnchorPane>

@@ -41,10 +41,12 @@ public class ControllerSettings extends ControllerBase {
     @FXML
     private Rectangle left3;
     @FXML
-    private MenuButton themes;
+    private MenuButton themesDropdown;
+    @FXML
+    private MenuButton languagesDropdown;
 
     // properties
-    private Settings settingTemp;
+    private Settings settings;
 
     @FXML
     public void initialize() {
@@ -74,53 +76,59 @@ public class ControllerSettings extends ControllerBase {
         left3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
         left3.setStrokeWidth(1);
 
-        settingTemp = new Settings();
-        largestArmyTh.setText(settingTemp.getArmyThreshold()+"");
-        victoryPointTh.setText(settingTemp.getVictoryThreshold()+"");
-        longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
-        themes.setText(settingTemp.getCurrentTheme());
+        settings = new Settings();
+        largestArmyTh.setText(settings.getArmyThreshold() + "");
+        victoryPointTh.setText(settings.getVictoryThreshold() + "");
+        longestRoadTh.setText(settings.getRoadThreshold() + "");
+        themesDropdown.setText(settings.getCurrentTheme());
+        languagesDropdown.setText(settings.getCurrentLanguage());
     }
 
     @FXML
     public void changeTheme(ActionEvent actionEvent){
-        settingTemp.setCurrentTheme(((MenuItem)actionEvent.getTarget()).getText());
-        themes.setText(settingTemp.getCurrentTheme());
+        settings.setCurrentTheme(((MenuItem)actionEvent.getTarget()).getText());
+        themesDropdown.setText(settings.getCurrentTheme());
     }
 
     @FXML
-    public void changeTh(MouseEvent mouseEvent){
+    public void changeLanguage(ActionEvent actionEvent){
+        settings.setCurrentLanguage(((MenuItem)actionEvent.getTarget()).getText());
+        languagesDropdown.setText(settings.getCurrentLanguage());
+    }
+
+    @FXML
+    public void changeThreshold(MouseEvent mouseEvent){
         String id = (((Rectangle)mouseEvent.getSource()).getId()).toString();
 
         if(id.substring(0, 1).equals("r"))
         {
-
             if(id.substring(5, 6).equals("1")){
 
-                settingTemp.setVictoryThreshold(settingTemp.getVictoryThreshold()+1);
+                settings.setVictoryThreshold(settings.getVictoryThreshold()+1);
             }
             if(id.substring(5, 6).equals("2")){
-                settingTemp.setArmyThreshold(settingTemp.getArmyThreshold()+1);
+                settings.setArmyThreshold(settings.getArmyThreshold()+1);
             }
             if(id.substring(5, 6).equals("3")){
-                settingTemp.setRoadThreshold(settingTemp.getRoadThreshold()+1);
+                settings.setRoadThreshold(settings.getRoadThreshold()+1);
             }
         }else{
             if(id.substring(4, 5).equals("1")){
-                if(settingTemp.getVictoryThreshold() > 0)
-                    settingTemp.setVictoryThreshold(settingTemp.getVictoryThreshold()-1);
+                if(settings.getVictoryThreshold() > 0)
+                    settings.setVictoryThreshold(settings.getVictoryThreshold()-1);
             }
             if(id.substring(4, 5).equals("2")){
-                if (settingTemp.getArmyThreshold() > 0)
-                    settingTemp.setArmyThreshold(settingTemp.getArmyThreshold()-1);
+                if (settings.getArmyThreshold() > 0)
+                    settings.setArmyThreshold(settings.getArmyThreshold()-1);
             }
             if(id.substring(4, 5).equals("3")){
-                if (settingTemp.getRoadThreshold() > 0)
-                    settingTemp.setRoadThreshold(settingTemp.getRoadThreshold()-1);
+                if (settings.getRoadThreshold() > 0)
+                    settings.setRoadThreshold(settings.getRoadThreshold()-1);
             }
         }
-        largestArmyTh.setText(settingTemp.getArmyThreshold()+"");
-        victoryPointTh.setText(settingTemp.getVictoryThreshold()+"");
-        longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
+        largestArmyTh.setText(settings.getArmyThreshold() + "");
+        victoryPointTh.setText(settings.getVictoryThreshold() + "");
+        longestRoadTh.setText(settings.getRoadThreshold() + "");
     }
 
 

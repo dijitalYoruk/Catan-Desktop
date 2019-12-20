@@ -17,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
-        ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
+        ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.language),  new UTF8Control());
         Parent root = fxmlLoader.load(getClass().getResource("view/program.fxml"), bundle);
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, Constants.PANE_WIDTH, Constants.PANE_HEIGHT));
