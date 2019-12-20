@@ -30,21 +30,21 @@
          <children>
             <Rectangle fx:id="right1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="148.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
             <Rectangle fx:id="left1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="25.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-            <Label fx:id="victoryPointTh" alignment="CENTER" layoutX="67.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+            <Label fx:id="victoryPointThreshold" alignment="CENTER" layoutX="67.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
          </children>
       </Pane>
       <Pane layoutX="1022.0" layoutY="479.0" prefHeight="50.0" prefWidth="200.0">
          <children>
             <Rectangle fx:id="left2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="25.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
             <Rectangle fx:id="right2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="148.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-            <Label fx:id="largestArmyTh" alignment="CENTER" layoutX="67.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+            <Label fx:id="largestArmyThreshold" alignment="CENTER" layoutX="67.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
          </children>
       </Pane>
       <Pane layoutX="1022.0" layoutY="535.0" prefHeight="50.0" prefWidth="200.0">
          <children>
             <Rectangle fx:id="left3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="25.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
             <Rectangle fx:id="right3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="148.0" layoutY="10.0" onMouseClicked="#changeThreshold" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-            <Label fx:id="longestRoadTh" alignment="CENTER" layoutX="67.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
+            <Label fx:id="longestRoadThreshold" alignment="CENTER" layoutX="67.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
          </children>
       </Pane>
       <Label alignment="CENTER" layoutX="723.0" layoutY="653.0" styleClass="thresholds" stylesheets="@style.css" text="%settingView_ChangeLanguage" />

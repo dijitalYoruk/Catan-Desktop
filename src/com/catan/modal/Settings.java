@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.file.Paths;
 
 public class Settings {
-    public static String language = "tr";
+    public static String language = "en";
     private String currentTheme;
     private int victoryThreshold;
     private int armyThreshold;

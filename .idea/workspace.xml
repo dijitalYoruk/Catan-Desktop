@@ -3,22 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerSettings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/persistent_data/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/persistent_data/settings.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/resources/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/resources/language_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/resources/language_tr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/resources/language_tr.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/modal/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/modal/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/persistent_data/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/persistent_data/settings.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/resources/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/resources/language_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/resources/language_tr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/resources/language_tr.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/settings.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -198,7 +186,7 @@
       <workItem from="1576596249520" duration="5668000" />
       <workItem from="1576672917436" duration="94000" />
       <workItem from="1576767925060" duration="17103000" />
-      <workItem from="1576829619339" duration="3113000" />
+      <workItem from="1576829619339" duration="3249000" />
     </task>
     <task id="LOCAL-00001" summary="Thief became functional but card logic is not implemented">
       <created>1573322726673</created>

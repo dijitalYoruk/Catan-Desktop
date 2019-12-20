@@ -23,11 +23,11 @@ import java.util.ResourceBundle;
 
 public class ControllerSettings extends ControllerBase {
     @FXML
-    private Label largestArmyTh;
+    private Label largestArmyThreshold;
     @FXML
-    private Label longestRoadTh;
+    private Label longestRoadThreshold;
     @FXML
-    private Label victoryPointTh;
+    private Label victoryPointThreshold;
     @FXML
     private Rectangle right1;
     @FXML
@@ -77,9 +77,9 @@ public class ControllerSettings extends ControllerBase {
         left3.setStrokeWidth(1);
 
         settings = new Settings();
-        largestArmyTh.setText(settings.getArmyThreshold() + "");
-        victoryPointTh.setText(settings.getVictoryThreshold() + "");
-        longestRoadTh.setText(settings.getRoadThreshold() + "");
+        largestArmyThreshold.setText(settings.getArmyThreshold() + "");
+        victoryPointThreshold.setText(settings.getVictoryThreshold() + "");
+        longestRoadThreshold.setText(settings.getRoadThreshold() + "");
         themesDropdown.setText(settings.getCurrentTheme());
         languagesDropdown.setText(settings.getCurrentLanguage());
     }
@@ -126,9 +126,9 @@ public class ControllerSettings extends ControllerBase {
                     settings.setRoadThreshold(settings.getRoadThreshold()-1);
             }
         }
-        largestArmyTh.setText(settings.getArmyThreshold() + "");
-        victoryPointTh.setText(settings.getVictoryThreshold() + "");
-        longestRoadTh.setText(settings.getRoadThreshold() + "");
+        largestArmyThreshold.setText(settings.getArmyThreshold() + "");
+        victoryPointThreshold.setText(settings.getVictoryThreshold() + "");
+        longestRoadThreshold.setText(settings.getRoadThreshold() + "");
     }
 
 
