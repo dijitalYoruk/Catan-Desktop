@@ -542,13 +542,7 @@ public class ControllerBaseGame extends ControllerBase {
         vertices = new ArrayList<>();
         roads = new ArrayList<>();
         settlements = new ArrayList<>();
-        players = new ArrayList<>();
         harbours = new ArrayList<>();
-        playerActual = new PlayerActual(Constants.COLOR_RED, "PlayerActual");
-        players.add(new PlayerAI(Constants.COLOR_BLUE, "PlayerArtificial1"));
-        players.add(new PlayerAI(Constants.COLOR_PURPLE, "PlayerArtificial2"));
-        players.add(playerActual);
-        players.add(new PlayerAI(Constants.COLOR_GREEN, "PlayerArtificial3"));
         die = new Die();
 
         settings = new Settings();
@@ -1227,7 +1221,6 @@ public class ControllerBaseGame extends ControllerBase {
 
         while (placedFields != 19) {
             TerrainHex hex = terrainHexes.get(placedFields);
-
             int tmp = (int)(Math.random() * 6) + 1;
             Image img = null;
             Color color = null;

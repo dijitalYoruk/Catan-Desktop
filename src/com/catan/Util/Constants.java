@@ -19,7 +19,7 @@ public class Constants {
     public static final String HARBOUR = "harbour";
     public static final String DEVELOPMENT_CARD = "development_card";
     public static final int CONSTRUCTION_RADIUS = 22;
-
+    public static final String PATH_DIE_GIF  = "./com/catan/assets/gif_die.gif";
     public static final Color COLOR_CONSTRUCTION_UNSELECTED = Color.color(0.4,0.4,0.4);
     public static final Color COLOR_CONSTRUCTION_SELECTED = Color.color(1,0,0);
     public static final Color COLOR_BLUR_VERTEX = Color.valueOf("#ffde2173");

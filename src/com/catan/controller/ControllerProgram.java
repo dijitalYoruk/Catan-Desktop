@@ -20,7 +20,7 @@ public class ControllerProgram {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
-            Parent root = fxmlLoader.load(getClass().getResource("../view/game.fxml"), bundle);
+            Parent root = fxmlLoader.load(getClass().getResource("../view/gameEntrance.fxml"), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
         } catch (IOException e) {
@@ -31,7 +31,6 @@ public class ControllerProgram {
     @FXML
     public void goToSettings(ActionEvent actionEvent){
         try {
-
             FXMLLoader fxmlLoader = new FXMLLoader();
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
             Parent root = fxmlLoader.load(getClass().getResource("../view/settings.fxml"), bundle);

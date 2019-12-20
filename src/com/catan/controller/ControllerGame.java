@@ -83,9 +83,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         this.developmentCardInvention = developmentCardInvention;
     }
 
-    @Override
-    public void initialize() {
-        super.initialize();
+    public void init(ArrayList<Player> players) {
+        setPlayers(players);
         developmentCardExchangeProfit = null;
         developmentCardDestroyRoad = null;
         developmentCardInvention = null;
@@ -95,6 +94,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
         gameLog = GameLog.getInstance();
         initializeComponentsRelatedToActualPlayerCardsPane();
+        for (Player player: getPlayers()) {
+            if (player instanceof PlayerActual) {
+                playerActual = player;
+            }
+        }
         endTurn(null);
     }
 
