@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class ControllerSettings extends ControllerBase {
@@ -47,9 +48,12 @@ public class ControllerSettings extends ControllerBase {
 
     // properties
     private Settings settings;
+    private HashMap<String, String> languageMappings;
 
     @FXML
     public void initialize() {
+        initializeLanguageMappings();
+
         Image right = new Image("./com/catan/assets/right-arrow.png");
         Image left = new Image("./com/catan/assets/left-arrow.png");
         right1.setFill(new ImagePattern(right));
@@ -81,7 +85,15 @@ public class ControllerSettings extends ControllerBase {
         victoryPointThreshold.setText(settings.getVictoryThreshold() + "");
         longestRoadThreshold.setText(settings.getRoadThreshold() + "");
         themesDropdown.setText(settings.getCurrentTheme());
-        languagesDropdown.setText(settings.getCurrentLanguage());
+        languagesDropdown.setText(languageMappings.get(settings.getCurrentLanguage()));
+    }
+
+    private void initializeLanguageMappings() {
+        languageMappings = new HashMap<>();
+        languageMappings.put("English", "en");
+        languageMappings.put("Turkish", "tr");
+        languageMappings.put("en", "English");
+        languageMappings.put("tr", "Turkish");
     }
 
     @FXML
@@ -92,8 +104,10 @@ public class ControllerSettings extends ControllerBase {
 
     @FXML
     public void changeLanguage(ActionEvent actionEvent){
-        settings.setCurrentLanguage(((MenuItem)actionEvent.getTarget()).getText());
-        languagesDropdown.setText(settings.getCurrentLanguage());
+        settings.setCurrentLanguage(languageMappings.get(((MenuItem)actionEvent.getTarget()).getText()));
+
+        languagesDropdown.setText(((MenuItem)actionEvent.getTarget()).getText());
+        System.out.println(settings.getCurrentLanguage());
     }
 
     @FXML
