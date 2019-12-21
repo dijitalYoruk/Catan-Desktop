@@ -74,7 +74,7 @@ public class Trade {
 
                 if (aiDecision) {
                     completeTrade();
-                    gameLog.addLog(StringUtils.capitalize(playerTrader.getColor()) + " player has traded with " + StringUtils.capitalize(playerToBeTraded.getColor()) + " player.", playerTrader.getColor());
+                    gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " has traded with " + StringUtils.capitalize(playerToBeTraded.getColor()) + " player.", playerTrader.getColor());
                 }
                 else {
                     errorMessage = "The trade request from " + playerTrader.getName() +
@@ -84,7 +84,7 @@ public class Trade {
             }
             else if (isTradeWithChest) {
                 completeTrade();
-                gameLog.addLog(StringUtils.capitalize(playerTrader.getColor()) + " player has traded with " + "the chest.", playerTrader.getColor());
+                gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " has traded with " + "the Chest.", playerTrader.getColor());
             }
         }
         else { printTradeDetails(); }
@@ -123,12 +123,6 @@ public class Trade {
 
     private void addOfferDetailsToGameLog(boolean isTradeWithChest) {
         gameLog = GameLog.getInstance();
-        String traderColor = StringUtils.capitalize(playerTrader.getColor());
-        String toBeTradedColor = "";
-        if (!isTradeWithChest)
-            toBeTradedColor = StringUtils.capitalize(playerToBeTraded.getColor());
-
-
         String offereds = "";
         String requests = "";
         for (String resourceName: Constants.resourceNames) {
@@ -146,12 +140,12 @@ public class Trade {
             requests = requests.substring(0, requests.length() - 2);
         }
         if (!isTradeWithChest) {
-            gameLog.addLog(traderColor + " player has offered " + toBeTradedColor + " player:" + "\n" +
+            gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " has offered " + StringUtils.capitalize(playerToBeTraded.getName()) + ":" + "\n" +
                     "  " + offereds + "." + "\n" +
-                    "  " + traderColor + " player has requested:" + "\n" +
+                    "  " + StringUtils.capitalize(playerTrader.getName()) + " has requested:" + "\n" +
                     "  " + requests + ".", playerTrader.getColor());
         } else {
-            gameLog.addLog(traderColor + " player has offered Chest:" + "\n" +
+            gameLog.addLog(playerTrader.getName() + " has offered Chest:" + "\n" +
                     "  " + offereds + "." + "\n" +
                     "  " + "Chest has required:" + "\n" +
                     "  " + requests + ".", playerTrader.getColor());

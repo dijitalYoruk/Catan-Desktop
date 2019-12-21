@@ -296,7 +296,7 @@ public class Player {
                 System.out.println("==============================================================================================");
                 System.out.println(getName() + " bought " + card.getName());
                 System.out.println("==============================================================================================");
-                gameLog.addLog(StringUtils.capitalize(getColor()) + " player bought " + card.getName(), getColor());
+                gameLog.addLog(StringUtils.capitalize(getName()) + " bought " + card.getName(), getColor());
             } else {
                 System.out.println("==============================================================================================");
                 System.out.println("No Development Cards are left in the chest.");

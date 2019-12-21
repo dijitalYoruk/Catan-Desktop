@@ -65,7 +65,7 @@ public class ControllerTradeRequest {
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
         GameLog gameLog = GameLog.getInstance();
-        gameLog.addLog(StringUtils.capitalize(trade.getPlayerToBeTraded().getColor()) + " player has declined the trade with " + StringUtils.capitalize(trade.getPlayerTrader().getColor()) + " player", trade.getPlayerToBeTraded().getColor());
+        gameLog.addLog(StringUtils.capitalize(trade.getPlayerToBeTraded().getName()) + " has declined the trade with " + StringUtils.capitalize(trade.getPlayerTrader().getName()), trade.getPlayerToBeTraded().getColor());
     }
 
     public void setProperties(Trade trade) {
