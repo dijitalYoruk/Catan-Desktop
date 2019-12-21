@@ -234,7 +234,8 @@ public class ControllerTradeOffer {
 
     private void terminateTrade(Trade trade) {
         if (trade.isTradeCompleted()) {
-            labelOutputOfTrade.setText(resources.getString("tradeOfferView_TradeSuccesful"));
+            labelOutputOfTrade.setText(resources.getString("success_tradeSuccesful"));
+            labelOutputOfTrade.setStyle("-fx-background-color: orange; -fx-text-fill: black");
             labelOutputOfTrade.setOpacity(1);
             new Thread(() -> {
                 try {
@@ -249,6 +250,7 @@ public class ControllerTradeOffer {
         } else {
             String errorMessage = trade.getErrorMessage();
             if (!errorMessage.isEmpty()) {
+                labelOutputOfTrade.setStyle("-fx-background-color: red; -fx-text-fill: white");
                 labelOutputOfTrade.setText(errorMessage);
                 labelOutputOfTrade.setOpacity(1);
             }

@@ -19,6 +19,10 @@ public class GameLog {
         return GameLogInstance;
     }
 
+    public void clear() {
+        gameLog.clear();
+    }
+
     public void addLog(String log, String color) {
         gameLog.add(new String[] {log, color});
     }

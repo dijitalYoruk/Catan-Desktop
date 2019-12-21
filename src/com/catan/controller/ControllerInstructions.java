@@ -43,6 +43,7 @@ public class ControllerInstructions extends ControllerBase {
         arrow_left_page.setImage(imageLeft);
         arrow_right_page.setImage(imageRight);
 
+        updateSoundImg();
         leftRulesPage.setVisible(false);
         currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
                 Settings.getInstance().getCurrentLanguage() +"/catan_rules_page_"+currentPageNumber+".jpg"));

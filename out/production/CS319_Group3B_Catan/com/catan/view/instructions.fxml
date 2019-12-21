@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane id="program-pane" fx:id="root" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerInstructions">
    <children>
-      <Button layoutX="31.0" layoutY="29.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
-      <JFXTextField layoutX="829.0" prefHeight="86.0" prefWidth="297.0" style="-fx-text-fill: white;" text="%instructionView_Header" unFocusColor="TRANSPARENT">
-         <font>
-            <Font name="System Bold" size="40.0" />
-         </font>
-      </JFXTextField>
       <ImageView fx:id="rightRulesPage" fitHeight="1000.0" fitWidth="750.0" layoutX="1373.0" layoutY="75.0" pickOnBounds="true">
          <image>
             <Image url="@../assets/catan_rules_en/catan_rules_page_3.jpg" />
@@ -41,7 +34,7 @@
             <Image url="@../assets/right_arrow_instruction.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="1997.0" layoutY="29.0" prefHeight="70.0" prefWidth="70.0">
+      <AnchorPane layoutX="1815.0" layoutY="14.0" prefHeight="70.0" prefWidth="70.0">
          <children>
             <Circle fill="#ffca1f" layoutX="35.0" layoutY="36.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
             <ImageView fx:id="imgSound" fitHeight="38.0" fitWidth="52.0" layoutX="16.0" layoutY="17.0" onMouseClicked="#arrangeSound" pickOnBounds="true" preserveRatio="true">
@@ -51,5 +44,7 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <JFXButton layoutX="24.0" layoutY="24.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
+      <Label layoutX="685.0" layoutY="21.0" prefHeight="58.0" prefWidth="585.0" styleClass="page-header" text="%instructionView_Header" textFill="WHITE" />
    </children>
 </AnchorPane>

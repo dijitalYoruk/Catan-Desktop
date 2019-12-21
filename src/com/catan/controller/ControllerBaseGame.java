@@ -339,6 +339,8 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Label labelWarning;
     @FXML
+    private Label labelSuccess;
+    @FXML
     private Circle circleNumberOnHex1;
     @FXML
     private Circle circleNumberOnHex2;
@@ -530,6 +532,9 @@ public class ControllerBaseGame extends ControllerBase {
     private ImageView cardHarbour4;
     @FXML
     private ImageView cardHarbour5;
+    protected Label strongestArmyOwnerLabel;
+    @FXML
+    protected Label longestRoadOwnerLabel;
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;
@@ -543,6 +548,21 @@ public class ControllerBaseGame extends ControllerBase {
     protected Thief thief;
     protected ArrayList<Harbour> harbours;
     protected Player currentPlayer;
+    protected ArrayList<ImageView> lumberImages = new ArrayList<>();
+    protected ArrayList<ImageView> brickImages = new ArrayList<>();
+    protected ArrayList<ImageView> grainImages = new ArrayList<>();
+    protected ArrayList<ImageView> oreImages = new ArrayList<>();
+    protected ArrayList<ImageView> woolImages = new ArrayList<>();
+    protected ArrayList<ImageView> inventionImages = new ArrayList<>();
+    protected ArrayList<ImageView> victoryImages = new ArrayList<>();
+    protected ArrayList<ImageView> profitImages = new ArrayList<>();
+    protected ArrayList<ImageView> monopolyImages = new ArrayList<>();
+    protected ArrayList<ImageView> knightImages = new ArrayList<>();
+    protected ArrayList<ImageView> roadDestructionImages = new ArrayList<>();
+    protected Pane[] resourceCardPanes = new Pane[5];
+    protected Pane[] developmentCardPanes = new Pane[6];
+    protected double[][] resourceCardsPaneLocations = new double[5][2];
+    protected double[][] developmentCardsPaneLocations = new double[6][2];
 
     @FXML
     public void initialize() {
@@ -561,6 +581,7 @@ public class ControllerBaseGame extends ControllerBase {
         assignNumbersToHexes();
         initializeConstructionBox();
         initializeHarbours();
+        initializeComponentsRelatedToActualPlayerCardsPane();
 
         Image imgForDice1 = new Image(Constants.PATH_DIES().get(6));
         imgDie1.setFill(new ImagePattern(imgForDice1));
@@ -1335,6 +1356,63 @@ public class ControllerBaseGame extends ControllerBase {
         }
     }
 
+    // this obnoxiously named function initializes the components related to the
+    // section where number of cards of the actual player is shown
+    private void initializeComponentsRelatedToActualPlayerCardsPane() {
+        //ImgViewLumberDummy.setVisible(false);
+        lumberImages.add(ImgViewLumberDummy);
+        //ImgViewBrickDummy.setVisible(false);
+        brickImages.add(ImgViewBrickDummy);
+        //ImgViewGrainDummy.setVisible(false);
+        grainImages.add(ImgViewGrainDummy);
+        //ImgViewOreDummy.setVisible(false);
+        oreImages.add(ImgViewOreDummy);
+        //ImgViewWoolDummy.setVisible(false);
+        woolImages.add(ImgViewWoolDummy);
+
+        resourceCardPanes[0] = paneLumbers;
+        resourceCardPanes[1] = paneWools;
+        resourceCardPanes[2] = paneOres;
+        resourceCardPanes[3] = paneBricks;
+        resourceCardPanes[4] = paneGrains;
+
+        // these has to be in the order as in the FXML file
+        resourceCardsPaneLocations[0] = new double[] {paneLumbers.getLayoutX(), paneLumbers.getLayoutY()};
+        resourceCardsPaneLocations[1] = new double[] {paneWools.getLayoutX(), paneWools.getLayoutY()};
+        resourceCardsPaneLocations[2] = new double[] {paneBricks.getLayoutX(), paneBricks.getLayoutY()};
+        resourceCardsPaneLocations[3] = new double[] {paneOres.getLayoutX(), paneOres.getLayoutY()};
+        resourceCardsPaneLocations[4] = new double[] {paneGrains.getLayoutX(), paneGrains.getLayoutY()};
+
+
+        //ImgViewInventionDummy.setVisible(false);
+        inventionImages.add(ImgViewInventionDummy);
+        //ImgViewMonopolyDummy.setVisible(false);
+        monopolyImages.add(ImgViewMonopolyDummy);
+        //ImgViewKnightDummy.setVisible(false);
+        knightImages.add(ImgViewKnightDummy);
+        //ImgViewProfitDummy.setVisible(false);
+        profitImages.add(ImgViewProfitDummy);
+        //ImgViewRoadDestructionDummy.setVisible(false);
+        roadDestructionImages.add(ImgViewRoadDestructionDummy);
+        //ImgViewVictoryDummy.setVisible(false);
+        victoryImages.add(ImgViewVictoryDummy);
+
+        developmentCardPanes[0] = paneInvention;
+        developmentCardPanes[1] = paneKnight;
+        developmentCardPanes[2] = paneMonopoly;
+        developmentCardPanes[3] = paneProfit;
+        developmentCardPanes[4] = paneRoadDestruction;
+        developmentCardPanes[5] = paneVictory;
+
+        // these has to be in the order as in the FXML file
+        developmentCardsPaneLocations[0] = new double[] {paneInvention.getLayoutX(), paneInvention.getLayoutY()};
+        developmentCardsPaneLocations[1] = new double[] {paneKnight.getLayoutX(), paneKnight.getLayoutY()};
+        developmentCardsPaneLocations[2] = new double[] {paneMonopoly.getLayoutX(), paneMonopoly.getLayoutY()};
+        developmentCardsPaneLocations[3] = new double[] {paneProfit.getLayoutX(), paneProfit.getLayoutY()};
+        developmentCardsPaneLocations[4] = new double[] {paneRoadDestruction.getLayoutX(), paneRoadDestruction.getLayoutY()};
+        developmentCardsPaneLocations[5] = new double[] {paneVictory.getLayoutX(), paneVictory.getLayoutY()};
+    }
+
     private void constructHexesArray() {
 
         terrainHexes.add(new TerrainHex(terrainHex1,"hex1", circleNumberOnHex1, labelHexNum1));
@@ -1360,6 +1438,11 @@ public class ControllerBaseGame extends ControllerBase {
     public Label getWarningLabel(){
         return labelWarning;
     }
+
+    public Label getSuccessLabel(){
+        return labelSuccess;
+    }
+
     public ArrayList<Vertex> getVertices() {
         return vertices;
     }

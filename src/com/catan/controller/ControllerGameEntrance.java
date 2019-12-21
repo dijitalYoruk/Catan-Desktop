@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ControllerGameEntrance extends ControllerBase{
+public class ControllerGameEntrance extends ControllerBase {
 
     @FXML
     private JFXTextField labelActualPlayerName;
@@ -96,6 +96,7 @@ public class ControllerGameEntrance extends ControllerBase{
                 "-fx-pref-height: 1080;"
         );
 
+        updateSoundImg();
         colorShapes = new ArrayList<>(Arrays.asList(
                         colorRed, colorGreen,
                         colorBlue, colorPurple));
@@ -193,7 +194,7 @@ public class ControllerGameEntrance extends ControllerBase{
         }
 
         for (int j = 0; j < players.size(); j++) {
-            resultLabels.get(j).setStyle("-fx-background-color: " + players.get(j).getColor());
+            resultLabels.get(j).setStyle("-fx-text-fill: white;" + "-fx-background-color: " + players.get(j).getColor());
             resultLabels.get(j).setText(players.get(j).getName());
         }
 
@@ -242,4 +243,5 @@ public class ControllerGameEntrance extends ControllerBase{
         chosenColor.setStroke(Color.BLACK);
         chosenColor.setStrokeWidth(3);
     }
+
 }
