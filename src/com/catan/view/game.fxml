@@ -303,14 +303,7 @@
             <Image url="@../assets/icon_frame.png" />
          </image>
       </ImageView>
-      <HBox layoutX="809.0" layoutY="931.0" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Rectangle fx:id="imgRoad" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
-            <Rectangle fx:id="imgVillage" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
-            <Rectangle fx:id="imgCity" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
-            <Rectangle fx:id="imgCivilisation" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="101.0" onMouseClicked="#selectConstruction" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="97.0" />
-         </children>
-      </HBox>
+      <HBox layoutX="809.0" layoutY="931.0" prefHeight="100.0" prefWidth="200.0" />
       <Rectangle fx:id="imgPriceCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="187.0" layoutX="144.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="292.0" />
       <VBox layoutX="1547.0" layoutY="98.0" prefHeight="170.0" prefWidth="300.0">
          <children>
@@ -581,6 +574,14 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <HBox layoutX="773.0" layoutY="926.0" prefHeight="137.0" prefWidth="501.0">
+         <children>
+            <Circle fx:id="imgRoad" fill="DODGERBLUE" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
+            <Circle fx:id="imgVillage" fill="DODGERBLUE" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
+            <Circle fx:id="imgCity" fill="DODGERBLUE" layoutX="61.0" layoutY="61.0" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
+            <Circle fx:id="imgCivilisation" fill="DODGERBLUE" layoutX="162.0" layoutY="60.0" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
+         </children>
+      </HBox>
 
 
 
