@@ -172,11 +172,6 @@
     -fx-background-color: orange;
 }
 
-.game-back-button {
-    -fx-background-image: url("../assets/icon_back.jpg");
-    -fx-background-size: 50px;
-}
-
 #end-button {
     -fx-background-color: orange;
     -fx-margin:50px;
@@ -186,14 +181,24 @@
     -fx-pref-height: 70;
     -fx-font-size: 20;
 }
-.instructions-back-button {
+.back-button {
     -fx-background-color: orange;
     -fx-font-family: "Book Antiqua";
-    -fx-background-radius: 30;
+    -fx-background-radius: 100;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-image: url("../assets/icon_back.jpg");
+    -fx-background-image: url("../assets/backbutton.png");
+    -fx-pref-height: 60px;
+    -fx-pref-width: 60px;
     -fx-background-size: 50px;
+}
+
+.page-header {
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+    -fx-text-fill: orange;
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
 }
 
 #selector-bg {

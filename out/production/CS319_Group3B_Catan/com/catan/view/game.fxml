@@ -342,8 +342,7 @@
             </JFXButton>
          </children>
       </HBox>
-      <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
-      <JFXButton layoutX="14.0" layoutY="35.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
+      <JFXButton layoutX="24.0" layoutY="24.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
       <Label fx:id="labelWarning" alignment="CENTER" layoutX="1510.0" layoutY="931.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
       <ScrollPane fx:id="gameLogsScrollPane" hbarPolicy="NEVER" layoutX="1514.0" layoutY="297.0" prefHeight="314.0" prefWidth="367.0" style="-fx-background: #FFC41F;">
          <content>
