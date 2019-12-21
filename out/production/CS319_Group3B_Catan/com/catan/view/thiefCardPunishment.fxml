@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane fx:id="thiefAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerThiefPunishment">
+   <children>
+      <ImageView fx:id="imgBrick" fitHeight="50.0" fitWidth="40.0" layoutX="15.0" layoutY="100.0" onMouseClicked="#incrementResource" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_brick.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgGrain" fitHeight="50.0" fitWidth="40.0" layoutX="15.0" layoutY="160.0" onMouseClicked="#incrementResource" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_grain.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgOre" fitHeight="50.0" fitWidth="40.0" layoutX="15.0" layoutY="220.0" onMouseClicked="#incrementResource" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_ore.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgWool" fitHeight="50.0" fitWidth="40.0" layoutX="15.0" layoutY="280.0" onMouseClicked="#incrementResource" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_wool.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgLumber" fitHeight="50.0" fitWidth="40.0" layoutX="15.0" layoutY="340.0" onMouseClicked="#incrementResource" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/resource_lumber.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelBrick" layoutX="67.0" layoutY="115.0" styleClass="card-punishment-screen-resources" stylesheets="@style.css" text="x 8" />
+      <Label fx:id="labelGrain" layoutX="67.0" layoutY="175.0" styleClass="card-punishment-screen-resources" stylesheets="@style.css" text="x 8" />
+      <Label fx:id="labelOre" layoutX="67.0" layoutY="235.0" styleClass="card-punishment-screen-resources" stylesheets="@style.css" text="x 8" />
+      <Label fx:id="labelWool" layoutX="67.0" layoutY="295.0" styleClass="card-punishment-screen-resources" stylesheets="@style.css" text="x 8" />
+      <Label fx:id="labelLumber" layoutX="67.0" layoutY="355.0" styleClass="card-punishment-screen-resources" stylesheets="@style.css" text="x 8" />
+      <Label fx:id="labelInformation" layoutX="16.0" layoutY="22.0" prefWidth="196.0" style="-fx-background-color: #CD853F; -fx-margin: 50px; -fx-font-family: 'Book Antiqua'; -fx-background-radius: 40; -fx-pref-width: 350; -fx-pref-height: 50; -fx-font-size: 20; -fx-alignment: center;" text="Default Value" textOverrun="CLIP" wrapText="true" />
+      <JFXButton layoutX="118.0" layoutY="403.0" onAction="#confirmPunish" styleClass="thief-button" stylesheets="@style.css" text="%thiefCardPunishmentView_Confirm" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="277.0" layoutX="128.0" layoutY="105.0" stroke="#d37171" strokeType="INSIDE" strokeWidth="5.0" width="231.0" />
+      <ImageView fitHeight="259.0" fitWidth="214.0" layoutX="137.0" layoutY="115.0" opacity="0.22" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/icon_thief.gif" />
+         </image>
+      </ImageView>
+      <VBox layoutX="138.0" layoutY="120.0" prefHeight="260.0" prefWidth="210.0" style="-fx-spacing: 5px;">
+         <children>
+            <HBox fx:id="horizontalBox1" prefHeight="60.0" prefWidth="200.0" style="-fx-spacing: 5px; -fx-padding: 5px;" />
+            <HBox fx:id="horizontalBox2" prefHeight="60.0" prefWidth="200.0" style="-fx-spacing: 5px; -fx-padding: 5px;" />
+            <HBox fx:id="horizontalBox3" prefHeight="60.0" prefWidth="200.0" style="-fx-spacing: 5px; -fx-padding: 5px;" />
+            <HBox fx:id="horizontalBox4" prefHeight="60.0" prefWidth="200.0" style="-fx-spacing: 5px; -fx-padding: 5px;" />
+         </children></VBox>
+   </children>
+</AnchorPane>

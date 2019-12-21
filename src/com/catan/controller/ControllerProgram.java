@@ -1,52 +1,64 @@
 package com.catan.controller;
 
+import com.catan.Util.UTF8Control;
+import com.catan.modal.Settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class ControllerProgram {
+public class ControllerProgram extends ControllerBase{
 
     @FXML
     public void gotoPlayGame(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../view/game.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+            Parent root = fxmlLoader.load(getClass().getResource("../view/gameEntrance.fxml"), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-
+            window.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @FXML
     public void goToSettings(ActionEvent actionEvent){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../view/settings.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+            Parent root = fxmlLoader.load(getClass().getResource("../view/settings.fxml"), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-
+            window.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void gotoInstructions(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../view/instructions.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+            Parent root = fxmlLoader.load(getClass().getResource("../view/instructions.fxml"), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root, 1500, 800));
-            System.out.println(window);
-
+            window.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void exitGame(){
+        System.exit(0);
     }
 }

@@ -1,126 +1,88 @@
 package com.catan.controller;
 
+import com.catan.Util.Constants;
+import com.catan.modal.MusicPlayer;
 import com.catan.modal.Settings;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Polygon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.ImagePattern;
-import javafx.stage.Stage;
-
-import java.io.*;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class ControllerSettings extends ControllerBase {
-    @FXML
-    private Label largestArmyTh;
-    @FXML
-    private Label longestRoadTh;
-    @FXML
-    private Label victoryPointTh;
-    @FXML
-    private Rectangle right1;
-    @FXML
-    private Rectangle right2;
-    @FXML
-    private Rectangle right3;
-    @FXML
-    private Rectangle left1;
-    @FXML
-    private Rectangle left2;
-    @FXML
-    private Rectangle left3;
-    @FXML
-    private MenuButton themes;
 
-    // properties
-    private Settings settingTemp;
+    @FXML
+    private Polygon decrementVictory;
+    @FXML
+    private Label labelVictory;
+    @FXML
+    private Polygon incrementVictory;
+    @FXML
+    private Polygon decrementArmy;
+    @FXML
+    private Label labelArmy;
+    @FXML
+    private Polygon incrementArmy;
+    @FXML
+    private Polygon decrementRoad;
+    @FXML
+    private Label labelRoad;
+    @FXML
+    private Polygon incrementRoad;
+    @FXML
+    private ComboBox<String> selectorTheme;
 
     @FXML
     public void initialize() {
-        Image right = new Image("./com/catan/assets/right-arrow.png");
-        Image left = new Image("./com/catan/assets/left-arrow.png");
-        right1.setFill(new ImagePattern(right));
-        right1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        right1.setStrokeWidth(1);
-
-        right2.setFill(new ImagePattern(right));
-        right2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        right2.setStrokeWidth(1);
-
-        right3.setFill(new ImagePattern(right));
-        right3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        right3.setStrokeWidth(1);
-
-        left1.setFill(new ImagePattern(left));
-        left1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        left1.setStrokeWidth(1);
-
-        left2.setFill(new ImagePattern(left));
-        left2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        left2.setStrokeWidth(1);
-
-        left3.setFill(new ImagePattern(left));
-        left3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        left3.setStrokeWidth(1);
-
-        settingTemp = new Settings();
-        largestArmyTh.setText(settingTemp.getArmyThreshold()+"");
-        victoryPointTh.setText(settingTemp.getVictoryThreshold()+"");
-        longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
-        themes.setText(settingTemp.getCurrentTheme());
+        super.initialize();
+        labelVictory.setText(Settings.getInstance().getVictoryThreshold() + "");
+        labelArmy.setText(Settings.getInstance().getArmyThreshold() + "");
+        labelRoad.setText(Settings.getInstance().getRoadThreshold() + "");
+        String currentTheme = Settings.getInstance().getCurrentTheme();
+        selectorTheme.getItems().add("Default");
+        selectorTheme.getItems().add("Space");
+        selectorTheme.getItems().add("Karadeniz");
+        selectorTheme.setPromptText(currentTheme);
+        selectorTheme.setStyle("-fx-font: 20px \"Book " +
+                "Antiqua\"; -fx-background-color: orange");
     }
 
     @FXML
-    public void changeTheme(ActionEvent actionEvent){
-        settingTemp.setCurrentTheme(((MenuItem)actionEvent.getTarget()).getText());
-        themes.setText(settingTemp.getCurrentTheme());
-    }
-    @FXML
-    public void changeTh(MouseEvent mouseEvent){
-        String id = (((Rectangle)mouseEvent.getSource()).getId()).toString();
-
-        if(id.substring(0, 1).equals("r"))
-        {
-
-            if(id.substring(5, 6).equals("1")){
-
-                settingTemp.setVictoryThreshold(settingTemp.getVictoryThreshold()+1);
-            }
-            if(id.substring(5, 6).equals("2")){
-                settingTemp.setArmyThreshold(settingTemp.getArmyThreshold()+1);
-            }
-            if(id.substring(5, 6).equals("3")){
-                settingTemp.setRoadThreshold(settingTemp.getRoadThreshold()+1);
-            }
-        }else{
-            if(id.substring(4, 5).equals("1")){
-                if(settingTemp.getVictoryThreshold() > 0)
-                    settingTemp.setVictoryThreshold(settingTemp.getVictoryThreshold()-1);
-            }
-            if(id.substring(4, 5).equals("2")){
-                if (settingTemp.getArmyThreshold() > 0)
-                    settingTemp.setArmyThreshold(settingTemp.getArmyThreshold()-1);
-            }
-            if(id.substring(4, 5).equals("3")){
-                if (settingTemp.getRoadThreshold() > 0)
-                    settingTemp.setRoadThreshold(settingTemp.getRoadThreshold()-1);
-            }
+    void decrementThreshold(MouseEvent event) {
+        Polygon polygon = (Polygon)event.getSource();
+        if (polygon == decrementVictory && Settings.getInstance().getVictoryThreshold() > 0) {
+            Settings.getInstance().decrementThreshold(Constants.THRESHOLD_VICTORY);
+            labelVictory.setText(Settings.getInstance().getVictoryThreshold() + "");
+        } else if (polygon == decrementArmy && Settings.getInstance().getArmyThreshold() > 0) {
+            Settings.getInstance().decrementThreshold(Constants.THRESHOLD_ARMY);
+            labelArmy.setText(Settings.getInstance().getArmyThreshold() + "");
+        } else if (polygon == decrementRoad && Settings.getInstance().getRoadThreshold() > 0) {
+            Settings.getInstance().decrementThreshold(Constants.THRESHOLD_ROAD);
+            labelRoad.setText(Settings.getInstance().getRoadThreshold() + "");
         }
-        largestArmyTh.setText(settingTemp.getArmyThreshold()+"");
-        victoryPointTh.setText(settingTemp.getVictoryThreshold()+"");
-        longestRoadTh.setText(settingTemp.getRoadThreshold()+"");
     }
 
+    @FXML
+    void incrementThreshold(MouseEvent event) {
+        Polygon polygon = (Polygon)event.getSource();
+        if (polygon == incrementVictory ) {
+            Settings.getInstance().incrementThreshold(Constants.THRESHOLD_VICTORY);
+            labelVictory.setText(Settings.getInstance().getVictoryThreshold() + "");
+        } else if (polygon == incrementArmy) {
+            Settings.getInstance().incrementThreshold(Constants.THRESHOLD_ARMY);
+            labelArmy.setText(Settings.getInstance().getArmyThreshold() + "");
+        } else if (polygon == incrementRoad) {
+            Settings.getInstance().incrementThreshold(Constants.THRESHOLD_ROAD);
+            labelRoad.setText(Settings.getInstance().getRoadThreshold() + "");
+        }
+    }
+
+    @FXML
+    public void selectTheme(ActionEvent event) {
+        String theme = selectorTheme.getValue();
+        Settings.getInstance().setCurrentTheme(theme);
+        MusicPlayer.getMusicPlayer().changeMusic(theme);
+    }
 
 }

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="invention-pane" prefHeight="396.0" prefWidth="656.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerDevInvention">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa31f" height="174.0" layoutX="34.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="592.0" />
+      <HBox layoutX="51.0" layoutY="103.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/resource_brick.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/resource_grain.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/resource_lumber.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/resource_wool.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/resource_ore.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <Label fx:id="labelTitle" alignment="CENTER" layoutX="160.0" layoutY="24.0" styleClass="invention-label" text="%inventionDevCardView_ChooseResource">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="68.0" layoutY="279.0" prefHeight="27.0" prefWidth="60.0">
+         <children>
+            <Polygon fx:id="decrementBrick" fill="#ff4d21" onMouseClicked="#decrement" points="-50.0, 40.0, -71.0, 27.0, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="labelBrick" text="0">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Polygon fx:id="incrementBrick" fill="#ff4d21" onMouseClicked="#increment" points="-50.0, 40.0, -30.0, 26.5, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <HBox layoutX="189.0" layoutY="279.0" prefHeight="27.0" prefWidth="60.0">
+         <children>
+            <Polygon fx:id="decrementGrain" fill="#ff4d21" onMouseClicked="#decrement" points="-50.0, 40.0, -71.0, 27.0, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="labelGrain" text="0">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Polygon fx:id="incrementGrain" fill="#ff4d21" onMouseClicked="#increment" points="-50.0, 40.0, -30.0, 26.5, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <HBox layoutX="299.0" layoutY="279.0" prefHeight="27.0" prefWidth="60.0">
+         <children>
+            <Polygon fx:id="decrementLumber" fill="#ff4d21" onMouseClicked="#decrement" points="-50.0, 40.0, -71.0, 27.0, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="labelLumber" text="0">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Polygon fx:id="incrementLumber" fill="#ff4d21" onMouseClicked="#increment" points="-50.0, 40.0, -30.0, 26.5, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <HBox layoutX="410.0" layoutY="279.0" prefHeight="27.0" prefWidth="60.0">
+         <children>
+            <Polygon fx:id="decrementWool" fill="#ff4d21" onMouseClicked="#decrement" points="-50.0, 40.0, -71.0, 27.0, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="labelWool" text="0">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Polygon fx:id="incrementWool" fill="#ff4d21" onMouseClicked="#increment" points="-50.0, 40.0, -30.0, 26.5, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <HBox layoutX="528.0" layoutY="279.0" prefHeight="27.0" prefWidth="60.0">
+         <children>
+            <Polygon fx:id="decrementOre" fill="#ff4d21" onMouseClicked="#decrement" points="-50.0, 40.0, -71.0, 27.0, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="labelOre" text="0">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Polygon fx:id="incrementOre" fill="#ff4d21" onMouseClicked="#increment" points="-50.0, 40.0, -30.0, 26.5, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <JFXButton layoutX="181.0" layoutY="325.0" onAction="#complete" styleClass="invention-button" text="%inventionDevCardView_Select" />
+   </children>
+</AnchorPane>

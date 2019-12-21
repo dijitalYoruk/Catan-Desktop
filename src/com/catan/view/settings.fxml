@@ -1,38 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane id="settings-pane" prefHeight="860.0" prefWidth="1583.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerSettings">
    <children>
-      <Label alignment="CENTER" layoutX="402.0" layoutY="35.0" prefWidth="213.0" styleClass="thresholds" stylesheets="@style.css" text=" Victory Points" />
-      <Label alignment="CENTER" layoutX="402.0" layoutY="91.0" styleClass="thresholds" stylesheets="@style.css" text=" Largest Army" />
-      <Label alignment="CENTER" layoutX="402.0" layoutY="145.0" styleClass="thresholds" stylesheets="@style.css" text=" Longest Road" />
-      <Label alignment="CENTER" layoutX="402.0" layoutY="223.0" styleClass="thresholds" stylesheets="@style.css" text="     Select Theme" />
-      <MenuButton fx:id="themes" layoutX="739.0" layoutY="233.0" mnemonicParsing="false" text="Default">
-         <items>
-            <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Kurtlar Vadisi" />
-            <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Bilkent University" />
-            <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="CatanDefault" />
-         </items>
-         <font>
-            <Font size="16.0" />
-         </font>
-      </MenuButton>
-      <Rectangle fx:id="right1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="847.0" layoutY="45.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="left1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="720.0" layoutY="45.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="left2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="720.0" layoutY="101.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="right2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="847.0" layoutY="101.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="left3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="720.0" layoutY="155.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Rectangle fx:id="right3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="847.0" layoutY="159.0" onMouseClicked="#changeTh" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-      <Label fx:id="victoryPointTh" alignment="CENTER" layoutX="767.0" layoutY="47.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
-      <Label fx:id="largestArmyTh" alignment="CENTER" layoutX="767.0" layoutY="103.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
-      <Label fx:id="longestRoadTh" alignment="CENTER" layoutX="767.0" layoutY="157.0" prefHeight="26.0" prefWidth="67.0" styleClass="thresholds_numbers" stylesheets="@style.css" text="10" />
-      <Button layoutX="79.0" layoutY="673.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc200" height="433.0" layoutX="689.0" layoutY="93.0" stroke="#ff6200" strokeType="INSIDE" strokeWidth="4.0" width="543.0" />
+      <Button layoutX="45.0" layoutY="31.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
+      <VBox layoutX="749.0" layoutY="120.0" prefHeight="379.0" prefWidth="424.0">
+         <children>
+            <HBox prefHeight="75.0" prefWidth="380.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_VictoryPoints">
+                     <HBox.margin>
+                        <Insets right="70.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Polygon fx:id="decrementVictory" fill="#f57c00" onMouseClicked="#decrementThreshold" points="-50.0, 40.0, -76.0, 21.0, -50.0, 2.0" stroke="BLACK" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Polygon>
+                  <AnchorPane prefHeight="70.0" prefWidth="28.0">
+                     <children>
+                        <Circle fill="#f57c00" layoutX="35.0" layoutY="35.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fill="WHITE" layoutX="35.0" layoutY="35.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label fx:id="labelVictory" layoutX="30.0" layoutY="22.0" styleClass="threshold-label" text="5" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <Polygon fx:id="incrementVictory" fill="#f57c00" onMouseClicked="#incrementThreshold" points="-50.0, 40.0, -22.0, 22.0, -50.0, 2.0" stroke="BLACK" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Polygon>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="420.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Rectangle>
+            <HBox prefHeight="75.0" prefWidth="380.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_LargestArmy">
+                     <HBox.margin>
+                        <Insets right="70.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Polygon fx:id="decrementArmy" fill="#f57c00" onMouseClicked="#decrementThreshold" points="-50.0, 40.0, -76.0, 21.0, -50.0, 2.0" stroke="BLACK" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Polygon>
+                  <AnchorPane prefHeight="70.0" prefWidth="28.0">
+                     <children>
+                        <Circle fill="#f57c00" layoutX="35.0" layoutY="35.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fill="WHITE" layoutX="35.0" layoutY="35.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label fx:id="labelArmy" layoutX="30.0" layoutY="22.0" styleClass="threshold-label" text="5" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <Polygon fx:id="incrementArmy" fill="#f57c00" onMouseClicked="#incrementThreshold" points="-50.0, 40.0, -22.0, 22.0, -50.0, 2.0" stroke="BLACK" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Polygon>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="420.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Rectangle>
+            <HBox prefHeight="75.0" prefWidth="380.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_LongestRoad">
+                     <HBox.margin>
+                        <Insets right="70.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Polygon fx:id="decrementRoad" fill="#f57c00" onMouseClicked="#decrementThreshold" points="-50.0, 40.0, -76.0, 21.0, -50.0, 2.0" stroke="BLACK" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Polygon>
+                  <AnchorPane prefHeight="70.0" prefWidth="28.0">
+                     <children>
+                        <Circle fill="#f57c00" layoutX="35.0" layoutY="35.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fill="WHITE" layoutX="35.0" layoutY="35.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label fx:id="labelRoad" layoutX="30.0" layoutY="22.0" styleClass="threshold-label" text="5" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <Polygon fx:id="incrementRoad" fill="#f57c00" onMouseClicked="#incrementThreshold" points="-50.0, 40.0, -22.0, 22.0, -50.0, 2.0" stroke="BLACK" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Polygon>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="420.0" />
+            <HBox prefHeight="75.0" prefWidth="420.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_SelectTheme">
+                     <HBox.margin>
+                        <Insets right="20.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <ComboBox fx:id="selectorTheme" onAction="#selectTheme" prefHeight="49.0" prefWidth="204.0" promptText="aaaaaa" style="-fx-font: 20;">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="1803.0" layoutY="31.0" prefHeight="70.0" prefWidth="70.0">
+         <children>
+            <Circle fill="#ffca1f" layoutX="35.0" layoutY="36.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fx:id="imgSound" fitHeight="38.0" fitWidth="52.0" layoutX="16.0" layoutY="17.0" onMouseClicked="#arrangeSound" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/music-button.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
