@@ -57,7 +57,6 @@ public class Trade {
             HashMap<String, ArrayList<SourceCard>> resourceCards = playerToBeTraded.getSourceCards();
             for (String resourceName: Constants.resourceNames) {
                 if (resourceCards.get(resourceName).size() < requestedResourceCards.get(resourceName)) {
-                    errorMessage = "The player does not have all requested resources.";
                     isTradePossible = false;
                     break;
                 }

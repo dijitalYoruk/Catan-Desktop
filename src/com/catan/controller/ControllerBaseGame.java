@@ -338,6 +338,8 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Label labelWarning;
     @FXML
+    private Label labelSuccess;
+    @FXML
     private Circle circleNumberOnHex1;
     @FXML
     private Circle circleNumberOnHex2;
@@ -1409,6 +1411,11 @@ public class ControllerBaseGame extends ControllerBase {
     public Label getWarningLabel(){
         return labelWarning;
     }
+
+    public Label getSuccessLabel(){
+        return labelSuccess;
+    }
+
     public ArrayList<Vertex> getVertices() {
         return vertices;
     }

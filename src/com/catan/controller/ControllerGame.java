@@ -9,6 +9,7 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Dialog;
@@ -139,6 +140,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if (isStepActual) {
             openDialog(Constants.PATH_VIEW_TRADE_OFFER, "Trade" , null, null);
             updateCardsOfActualPlayerInView();
+            updateGameLogsInView();
         }
     }
 
@@ -270,6 +272,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 currentPlayer.buyDevelopmentCard(chest);
                 updateGameLogsInView();
                 updateCardsOfActualPlayerInView();
+                if (currentPlayer instanceof PlayerActual) {
+                    displaySuccess("bought dev card");
+                }
             } else {
                 displayWarning("Poor to buy dev card");
             }
@@ -462,7 +467,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             logLabel.setMinWidth(400);
             logLabel.setMinHeight(35);
             logLabel.setCursor(Cursor.DEFAULT);
-            String marginProperty = " -fx-padding: 2px;" + "-fx-border-insets: 2px;" + "-fx-background-insets: 2px;";
+            String marginProperty = "-fx-padding: 5px 2px 5px 2px;" + "-fx-border-insets: 2px;" + "-fx-background-insets: 2px;";
             logLabel.setStyle("-fx-background-color:" + logColor + ";" + "-fx-text-fill: white;" + marginProperty);
             gameLogsFlowPane.getChildren().add(0, logLabel);
         }
@@ -515,6 +520,27 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             default:
                 warning.setText(resources.getString("warning_defaultErrorMessage"));
                 warning.setOpacity(1);
+                break;
+        }
+        fadeTransition.play();
+    }
+
+    @Override
+    public void displaySuccess(String successType) {
+        Label success = getSuccessLabel();
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(4.0), success);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+
+        switch (successType) {
+            case "bought dev card":
+                success.setText(resources.getString("success_boughtDevCard"));
+                success.setOpacity(1);
+                break;
+            default:
+                success.setText(resources.getString("success_defaultMessage"));
+                success.setOpacity(1);
                 break;
         }
         fadeTransition.play();

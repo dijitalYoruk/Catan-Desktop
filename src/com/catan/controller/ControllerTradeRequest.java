@@ -53,7 +53,7 @@ public class ControllerTradeRequest {
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
         GameLog gameLog = GameLog.getInstance();
-        gameLog.addLog(StringUtils.capitalize(trade.getPlayerTrader().getColor()) + " player has traded with " + StringUtils.capitalize(trade.getPlayerToBeTraded().getColor()) + " player", trade.getPlayerTrader().getColor());
+        gameLog.addLog(StringUtils.capitalize(trade.getPlayerTrader().getName()) + " has traded with " + StringUtils.capitalize(trade.getPlayerToBeTraded().getName()), trade.getPlayerTrader().getColor());
     }
 
     @FXML

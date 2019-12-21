@@ -115,6 +115,19 @@
 .warning-label{
     -fx-padding: 20px;
     -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-font-color:orange;
+    -fx-background-radius: 40;
+    -fx-pref-width: 340;
+    -fx-pref-height: 100;
+    -fx-font-size: 20;
+}
+
+.success-label{
+    -fx-padding: 20px;
+    -fx-background-color: orange;
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-font-color:orange;
