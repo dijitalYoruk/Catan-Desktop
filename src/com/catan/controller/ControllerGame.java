@@ -25,6 +25,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.ArrayList;
@@ -48,14 +49,13 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private boolean isRoadBuild = false;
     private int initialStepCount = 0;
     private Settlement tempSettlement;
-    private Player currentPlayer;
     private int playerTurn = 0;
     private boolean thiefCanMove = false;
     private boolean initialThief = true;
     private GameLog gameLog;
-    int gameLogIterator = 0;
+    private int gameLogIterator = 0;
     private int noOfRound = 1;
-    FlowPane gameLogsFlowPane;
+    private FlowPane gameLogsFlowPane;
     private ArrayList<ImageView> lumberImages = new ArrayList<>();
     private ArrayList<ImageView> brickImages = new ArrayList<>();
     private ArrayList<ImageView> grainImages = new ArrayList<>();
@@ -69,8 +69,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private ArrayList<ImageView> roadDestructionImages = new ArrayList<>();
     private Pane[] resourceCardPanes = new Pane[5];
     private Pane[] developmentCardPanes = new Pane[6];
-    double[][] resourceCardsPaneLocations = new double[5][2];
-    double[][] developmentCardsPaneLocations = new double[6][2];
+    private double[][] resourceCardsPaneLocations = new double[5][2];
+    private double[][] developmentCardsPaneLocations = new double[6][2];
     private Road tempRoad;
     private Chest chest;
 
@@ -272,7 +272,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             dialog.initOwner(root.getScene().getWindow());
             dialog.setTitle(title);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
             fxmlLoader.setLocation(getClass().getClassLoader().getResource(viewPath));
             fxmlLoader.setResources(bundle);
             dialog.getDialogPane().setContent(fxmlLoader.load());
@@ -887,6 +887,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 getSettlements().add(settlement);
                 currentPlayer.getSettlements().add(settlement);
                 vertex.setSettlement(settlement);
+                //harbour
+                String vertexID = vertex.getShape().getId();
+                addHarboursToPlayer(circle);
+                //
                 currentPlayer.subtractPriceOfConstruction(selectedConstruction);
                 currentPlayer.showSourceCards();
                 unselectConstructions(null);
@@ -1141,6 +1145,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 getSettlements().add(settlement);
                 currentPlayer.getSettlements().add(settlement);
                 vertex.setSettlement(settlement);
+                //harbour
+                String vertexID = vertex.getShape().getId();
+                addHarboursToPlayer(circle);
+
                 unselectConstructions(null);
                 activatePlayerVertices();
                 tempSettlement = settlement;

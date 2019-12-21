@@ -13,13 +13,14 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ControllerProgram {
+public class ControllerProgram extends ControllerBase{
 
     @FXML
     public void gotoPlayGame(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
             Parent root = fxmlLoader.load(getClass().getResource("../view/gameEntrance.fxml"), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
@@ -32,7 +33,8 @@ public class ControllerProgram {
     public void goToSettings(ActionEvent actionEvent){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
             Parent root = fxmlLoader.load(getClass().getResource("../view/settings.fxml"), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
@@ -45,7 +47,8 @@ public class ControllerProgram {
     public void gotoInstructions(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
             Parent root = fxmlLoader.load(getClass().getResource("../view/instructions.fxml"), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);

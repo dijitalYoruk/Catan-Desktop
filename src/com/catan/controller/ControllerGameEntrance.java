@@ -13,8 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -27,7 +25,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ControllerGameEntrance {
+public class ControllerGameEntrance extends ControllerBase{
 
     @FXML
     private JFXTextField labelActualPlayerName;
@@ -86,6 +84,7 @@ public class ControllerGameEntrance {
 
     @FXML
     public void initialize() {
+        super.initialize();
         colorShapes = new ArrayList<>(Arrays.asList(
                         colorRed, colorGreen,
                         colorBlue, colorPurple));
@@ -206,7 +205,7 @@ public class ControllerGameEntrance {
     private void initGame(ActionEvent event) {
         try {
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
-                    new Locale(Settings.languauge),  new UTF8Control());
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/game.fxml"),bundle);
             Parent root = fxmlLoader.load();
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
