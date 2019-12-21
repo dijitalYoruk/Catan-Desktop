@@ -10,6 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
+import java.util.HashMap;
+
 public class ControllerSettings extends ControllerBase {
 
     @FXML
@@ -32,10 +34,19 @@ public class ControllerSettings extends ControllerBase {
     private Polygon incrementRoad;
     @FXML
     private ComboBox<String> selectorTheme;
+    @FXML
+    private ComboBox<String> selectorLanguage;
+
+    private final static HashMap<String, String> languageMappings = new HashMap<>();
 
     @FXML
     public void initialize() {
         super.initialize();
+        languageMappings.put("English", "en");
+        languageMappings.put("Turkce", "tr");
+        languageMappings.put("en", "English");
+        languageMappings.put("tr", "Turkce");
+
         labelVictory.setText(Settings.getInstance().getVictoryThreshold() + "");
         labelArmy.setText(Settings.getInstance().getArmyThreshold() + "");
         labelRoad.setText(Settings.getInstance().getRoadThreshold() + "");
@@ -46,6 +57,15 @@ public class ControllerSettings extends ControllerBase {
         selectorTheme.setPromptText(currentTheme);
         selectorTheme.setStyle("-fx-font: 20px \"Book " +
                 "Antiqua\"; -fx-background-color: orange");
+
+        String currentLanguage = Settings.getInstance().getCurrentLanguage();
+        selectorLanguage.getItems().add("English");
+        selectorLanguage.getItems().add("Turkce");
+        selectorLanguage.setPromptText(languageMappings.get(currentLanguage));
+        selectorLanguage.setStyle("-fx-font: 20px \"Book " +
+                "Antiqua\"; -fx-background-color: orange");
+
+
     }
 
     @FXML
@@ -83,6 +103,13 @@ public class ControllerSettings extends ControllerBase {
         String theme = selectorTheme.getValue();
         Settings.getInstance().setCurrentTheme(theme);
         MusicPlayer.getMusicPlayer().changeMusic(theme);
+    }
+
+    @FXML
+    public void selectLanguage(ActionEvent event) {
+        String language = selectorLanguage.getValue();
+        System.out.println(language);
+        Settings.getInstance().setCurrentLanguage(languageMappings.get(language));
     }
 
 }
