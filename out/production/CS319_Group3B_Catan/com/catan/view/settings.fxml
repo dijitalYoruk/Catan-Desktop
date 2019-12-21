@@ -23,11 +23,8 @@
                <children>
                   <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_VictoryPoints">
                      <HBox.margin>
-                        <Insets right="70.0" top="10.0" />
+                        <Insets right="30.0" top="10.0" />
                      </HBox.margin>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
                   </Label>
                   <Polygon fx:id="decrementVictory" fill="#f57c00" onMouseClicked="#decrementThreshold" points="-50.0, 40.0, -76.0, 21.0, -50.0, 2.0" stroke="BLACK" strokeType="INSIDE">
                      <HBox.margin>
@@ -63,11 +60,8 @@
                <children>
                   <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_LargestArmy">
                      <HBox.margin>
-                        <Insets right="70.0" top="10.0" />
+                        <Insets right="30.0" top="10.0" />
                      </HBox.margin>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
                   </Label>
                   <Polygon fx:id="decrementArmy" fill="#f57c00" onMouseClicked="#decrementThreshold" points="-50.0, 40.0, -76.0, 21.0, -50.0, 2.0" stroke="BLACK" strokeType="INSIDE">
                      <HBox.margin>
@@ -103,11 +97,8 @@
                <children>
                   <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_LongestRoad">
                      <HBox.margin>
-                        <Insets right="70.0" top="10.0" />
+                        <Insets right="30.0" top="10.0" />
                      </HBox.margin>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
                   </Label>
                   <Polygon fx:id="decrementRoad" fill="#f57c00" onMouseClicked="#decrementThreshold" points="-50.0, 40.0, -76.0, 21.0, -50.0, 2.0" stroke="BLACK" strokeType="INSIDE">
                      <HBox.margin>
@@ -142,11 +133,8 @@
                <children>
                   <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_SelectTheme">
                      <HBox.margin>
-                        <Insets right="20.0" top="10.0" />
+                        <Insets right="50.0" top="10.0" />
                      </HBox.margin>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
                   </Label>
                   <ComboBox fx:id="selectorTheme" onAction="#selectTheme" prefHeight="49.0" prefWidth="204.0" promptText="aaaaaa" style="-fx-font: 20;">
                      <HBox.margin>
@@ -167,11 +155,8 @@
                <children>
                   <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_SelectLanguage">
                      <HBox.margin>
-                        <Insets right="20.0" top="10.0" />
+                        <Insets right="50.0" top="10.0" />
                      </HBox.margin>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
                   </Label>
                   <ComboBox fx:id="selectorLanguage" onAction="#selectLanguage" prefHeight="49.0" prefWidth="204.0" promptText="aaaaaa" style="-fx-font: 20;">
                      <HBox.margin>
