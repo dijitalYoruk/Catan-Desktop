@@ -182,7 +182,7 @@ public class ControllerGameEntrance extends ControllerBase{
         }
 
         for (int j = 0; j < players.size(); j++) {
-            resultLabels.get(j).setStyle("-fx-background-color: " + players.get(j).getColor());
+            resultLabels.get(j).setStyle("-fx-text-fill: white;" + "-fx-background-color: " + players.get(j).getColor());
             resultLabels.get(j).setText(players.get(j).getName());
         }
 

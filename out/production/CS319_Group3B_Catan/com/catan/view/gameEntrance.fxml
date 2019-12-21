@@ -149,7 +149,7 @@
       </HBox>
       <VBox fx:id="resultBox" layoutX="891.0" layoutY="618.0" prefHeight="245.0" prefWidth="150.0">
          <children>
-            <Label alignment="CENTER" styleClass="labelEntrance" text="%game_entrance_view_turn_order" />
+            <Label alignment="CENTER" style="-fx-background-radius: 0;" styleClass="labelEntrance" text="%game_entrance_view_turn_order" />
             <Label fx:id="resultPlayer1" alignment="CENTER" styleClass="labelEntrance">
                <VBox.margin>
                   <Insets top="10.0" />
