@@ -24,8 +24,10 @@ public class ControllerInstructions extends ControllerBase {
     public void initialize() {
 
         leftRulesPage.setVisible(false);
-        currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+ Settings.language +"/catan_rules_page_"+currentPageNumber+".jpg"));
-        rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+ Settings.language +"/catan_rules_page_"+(currentPageNumber+1)+".jpg"));
+        currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+                Settings.getInstance().getCurrentLanguage() +"/catan_rules_page_"+currentPageNumber+".jpg"));
+        rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+                Settings.getInstance().getCurrentLanguage() +"/catan_rules_page_"+(currentPageNumber+1)+".jpg"));
         // the adjustment of perspective of right page
         rightPerspectiveTransform.setUlx(0.0); //10
         rightPerspectiveTransform.setUly(0.0); //10
@@ -60,36 +62,45 @@ public class ControllerInstructions extends ControllerBase {
         if(currentPageNumber == 2)
             leftRulesPage.setVisible(false);
         else
-            leftRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+ Settings.language +"/catan_rules_page_"+(currentPageNumber-2)+".jpg"));
+            leftRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+ Settings.getInstance().getCurrentLanguage()
+                    +"/catan_rules_page_"+(currentPageNumber-2)+".jpg"));
 
         // if current page is 16, and user wants to 15'th page, there will be 16'th page on right
         // but it was unvisible since we make it unvisible when we reach 16'th page. So we need to make it visible again.
-        if((Settings.language == "en" && currentPageNumber == 16) || (Settings.language == "tr" && currentPageNumber == 11))
+        if((Settings.getInstance().getCurrentLanguage().equals("en") && currentPageNumber == 16) ||
+                (Settings.getInstance().getCurrentLanguage().equals("tr") && currentPageNumber == 11))
             rightRulesPage.setVisible(true);
-        currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+ Settings.language +"/catan_rules_page_"+(currentPageNumber-1)+".jpg"));
-        rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+ Settings.language +"/catan_rules_page_"+currentPageNumber+".jpg"));
+        currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_" +
+                Settings.getInstance().getCurrentLanguage() + "/catan_rules_page_"+(currentPageNumber-1)+".jpg"));
+        rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_" +
+                Settings.getInstance().getCurrentLanguage() + "/catan_rules_page_"+currentPageNumber+".jpg"));
         currentPageNumber--;
 
     }
 
     @FXML
     public void goRightPage(MouseEvent event){
-        if((Settings.language == "en" &&  currentPageNumber == 16) || (Settings.language == "tr" && currentPageNumber == 11))
+        if((Settings.getInstance().getCurrentLanguage().equals("en") &&  currentPageNumber == 16) ||
+                (Settings.getInstance().getCurrentLanguage().equals("tr") && currentPageNumber == 11))
             return;
         // if current page is 15'th page, and user wants to go 16'th page which is last page
         // the right imageview must be empty, so we make it unvisible
-        if((Settings.language == "en" && currentPageNumber == 15) || (Settings.language == "tr" && currentPageNumber == 10))
+        if((Settings.getInstance().getCurrentLanguage().equals("en") && currentPageNumber == 15) ||
+                (Settings.getInstance().getCurrentLanguage().equals("tr") && currentPageNumber == 10))
             rightRulesPage.setVisible(false);
         else{
-            rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+Settings.language+"/catan_rules_page_"+(currentPageNumber+2)+".jpg"));
+            rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+                    Settings.getInstance().getCurrentLanguage()+"/catan_rules_page_"+(currentPageNumber+2)+".jpg"));
         }
         // current page number is not incremented yet, if it is 1 now, user wants to go 2'nd page,
         // so there will be another page in left image view, so we need to make it visible
         if(currentPageNumber == 1)
             leftRulesPage.setVisible(true);
 
-        leftRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+Settings.language+"/catan_rules_page_"+currentPageNumber+".jpg"));
-        currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+Settings.language+"/catan_rules_page_"+(currentPageNumber+1)+".jpg"));
+        leftRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+                Settings.getInstance().getCurrentLanguage()+"/catan_rules_page_"+currentPageNumber+".jpg"));
+        currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+                Settings.getInstance().getCurrentLanguage()+"/catan_rules_page_"+(currentPageNumber+1)+".jpg"));
         currentPageNumber++;
     }
 }

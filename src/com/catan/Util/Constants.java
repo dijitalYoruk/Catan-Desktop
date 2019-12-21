@@ -2,6 +2,7 @@ package com.catan.Util;
 
 import javafx.scene.paint.Color;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -19,7 +20,7 @@ public class Constants {
     public static final String HARBOUR = "harbour";
     public static final String DEVELOPMENT_CARD = "development_card";
     public static final int CONSTRUCTION_RADIUS = 22;
-
+    public static final String PATH_DIE_GIF  = "./com/catan/assets/gif_die.gif";
     public static final Color COLOR_CONSTRUCTION_UNSELECTED = Color.color(0.4,0.4,0.4);
     public static final Color COLOR_CONSTRUCTION_SELECTED = Color.color(1,0,0);
     public static final Color COLOR_BLUR_VERTEX = Color.valueOf("#ffde2173");
@@ -27,9 +28,9 @@ public class Constants {
     public static final Color COLOR_ROAD_SELECTION_VERTEX = Color.valueOf("#FF9800");
 
     public static final String PATH_ROAD = "./com/catan/assets/road.png";
-    public static final String PATH_VILLAGE = "./com/catan/assets/village.jpg";
+    public static final String PATH_VILLAGE = "./com/catan/assets/village.png";
     public static final String PATH_CITY = "./com/catan/assets/city.png";
-    public static final String PATH_CIVILISATION = "./com/catan/assets/civilisation.jpg";
+    public static final String PATH_CIVILISATION = "./com/catan/assets/civilisation.png";
     public static final String PATH_CARD_PRICE = "./com/catan/assets/price_card.png";
     public static final String PATH_HARBOUR = "./com/catan/assets/harbour.gif";
 
@@ -68,7 +69,7 @@ public class Constants {
 
     public static final Color COLOR_RGB_RED = Color.valueOf("#ff0000");
     public static final Color COLOR_RGB_GREEN = Color.valueOf("#00ff00");
-    public static final Color COLOR_RGB_PURPLE = Color.valueOf("#ff00f7");
+    public static final Color COLOR_RGB_PURPLE = Color.valueOf("#9013FE");
     public static final Color COLOR_RGB_BLUE = Color.valueOf("#0000ff");
     public static final String ICON_THIEF =  "./com/catan/assets/icon_thief.gif";
 
@@ -141,4 +142,21 @@ public class Constants {
                           Constants.CIVILISATION)
     );
 
+    public static final String PATH_DIRECTORY = Paths.get(".").toAbsolutePath().normalize().toString();
+    public static final String THEME_DEFAULT = "Default";
+    public static final String THEME_SPACE = "Space";
+    public static final String THEME_KARADENIZ = "Karadeniz";
+    public static final String PATH_SETTINGS_TEXT_FILE = PATH_DIRECTORY + "/src/com/catan/persistentData/settings.txt";
+
+    public static final String CURRENT_THEME = "CURRENT_THEME";
+    public static final String CURRENT_LANGUAGE = "CURRENT_LANGUAGE";
+    public static final String THRESHOLD_VICTORY = "THRESHOLD_VICTORY";
+    public static final String THRESHOLD_ROAD = "THRESHOLD_ROAD";
+    public static final String THRESHOLD_ARMY = "THRESHOLD_ARMY";
+
+    public static final String AUDIO_DEFAULT = PATH_DIRECTORY +  "\\src\\com\\catan\\music\\catan_theme.mp3";
+    public static final String AUDIO_SPACE = PATH_DIRECTORY + "\\src\\com\\catan\\music\\space_theme.mp3";
+    public static final String AUDIO_KARADENIZ = PATH_DIRECTORY + "\\src\\com\\catan\\music\\karadeniz_theme.mp3";
+    public static final String IMG_SOUND_MUTE = "com/catan/assets/music-button.jpg";
+    public static final String IMG_SOUND_UNMUTED = "com/catan/assets/music-button-muted.jpg";
 }

@@ -1,149 +1,88 @@
 package com.catan.controller;
 
+import com.catan.Util.Constants;
+import com.catan.modal.MusicPlayer;
 import com.catan.modal.Settings;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Polygon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.ImagePattern;
-import javafx.stage.Stage;
-
-import java.io.*;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.ResourceBundle;
 
 public class ControllerSettings extends ControllerBase {
-    @FXML
-    private Label largestArmyThreshold;
-    @FXML
-    private Label longestRoadThreshold;
-    @FXML
-    private Label victoryPointThreshold;
-    @FXML
-    private Rectangle right1;
-    @FXML
-    private Rectangle right2;
-    @FXML
-    private Rectangle right3;
-    @FXML
-    private Rectangle left1;
-    @FXML
-    private Rectangle left2;
-    @FXML
-    private Rectangle left3;
-    @FXML
-    private MenuButton themesDropdown;
-    @FXML
-    private MenuButton languagesDropdown;
 
-    // properties
-    private Settings settings;
-    private HashMap<String, String> languageMappings;
+    @FXML
+    private Polygon decrementVictory;
+    @FXML
+    private Label labelVictory;
+    @FXML
+    private Polygon incrementVictory;
+    @FXML
+    private Polygon decrementArmy;
+    @FXML
+    private Label labelArmy;
+    @FXML
+    private Polygon incrementArmy;
+    @FXML
+    private Polygon decrementRoad;
+    @FXML
+    private Label labelRoad;
+    @FXML
+    private Polygon incrementRoad;
+    @FXML
+    private ComboBox<String> selectorTheme;
 
     @FXML
     public void initialize() {
-        initializeLanguageMappings();
-
-        Image right = new Image("./com/catan/assets/right-arrow.png");
-        Image left = new Image("./com/catan/assets/left-arrow.png");
-        right1.setFill(new ImagePattern(right));
-        right1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        right1.setStrokeWidth(1);
-
-        right2.setFill(new ImagePattern(right));
-        right2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        right2.setStrokeWidth(1);
-
-        right3.setFill(new ImagePattern(right));
-        right3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        right3.setStrokeWidth(1);
-
-        left1.setFill(new ImagePattern(left));
-        left1.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        left1.setStrokeWidth(1);
-
-        left2.setFill(new ImagePattern(left));
-        left2.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        left2.setStrokeWidth(1);
-
-        left3.setFill(new ImagePattern(left));
-        left3.setStroke(javafx.scene.paint.Color.color(0.4,0.4,0.4));
-        left3.setStrokeWidth(1);
-
-        settings = new Settings();
-        largestArmyThreshold.setText(settings.getArmyThreshold() + "");
-        victoryPointThreshold.setText(settings.getVictoryThreshold() + "");
-        longestRoadThreshold.setText(settings.getRoadThreshold() + "");
-        themesDropdown.setText(settings.getCurrentTheme());
-        languagesDropdown.setText(languageMappings.get(settings.getCurrentLanguage()));
-    }
-
-    private void initializeLanguageMappings() {
-        languageMappings = new HashMap<>();
-        languageMappings.put("English", "en");
-        languageMappings.put("Turkish", "tr");
-        languageMappings.put("en", "English");
-        languageMappings.put("tr", "Turkish");
+        super.initialize();
+        labelVictory.setText(Settings.getInstance().getVictoryThreshold() + "");
+        labelArmy.setText(Settings.getInstance().getArmyThreshold() + "");
+        labelRoad.setText(Settings.getInstance().getRoadThreshold() + "");
+        String currentTheme = Settings.getInstance().getCurrentTheme();
+        selectorTheme.getItems().add("Default");
+        selectorTheme.getItems().add("Space");
+        selectorTheme.getItems().add("Karadeniz");
+        selectorTheme.setPromptText(currentTheme);
+        selectorTheme.setStyle("-fx-font: 20px \"Book " +
+                "Antiqua\"; -fx-background-color: orange");
     }
 
     @FXML
-    public void changeTheme(ActionEvent actionEvent){
-        settings.setCurrentTheme(((MenuItem)actionEvent.getTarget()).getText());
-        themesDropdown.setText(settings.getCurrentTheme());
-    }
-
-    @FXML
-    public void changeLanguage(ActionEvent actionEvent){
-        settings.setCurrentLanguage(languageMappings.get(((MenuItem)actionEvent.getTarget()).getText()));
-
-        languagesDropdown.setText(((MenuItem)actionEvent.getTarget()).getText());
-        System.out.println(settings.getCurrentLanguage());
-    }
-
-    @FXML
-    public void changeThreshold(MouseEvent mouseEvent){
-        String id = (((Rectangle)mouseEvent.getSource()).getId()).toString();
-
-        if(id.substring(0, 1).equals("r"))
-        {
-            if(id.substring(5, 6).equals("1")){
-
-                settings.setVictoryThreshold(settings.getVictoryThreshold()+1);
-            }
-            if(id.substring(5, 6).equals("2")){
-                settings.setArmyThreshold(settings.getArmyThreshold()+1);
-            }
-            if(id.substring(5, 6).equals("3")){
-                settings.setRoadThreshold(settings.getRoadThreshold()+1);
-            }
-        }else{
-            if(id.substring(4, 5).equals("1")){
-                if(settings.getVictoryThreshold() > 0)
-                    settings.setVictoryThreshold(settings.getVictoryThreshold()-1);
-            }
-            if(id.substring(4, 5).equals("2")){
-                if (settings.getArmyThreshold() > 0)
-                    settings.setArmyThreshold(settings.getArmyThreshold()-1);
-            }
-            if(id.substring(4, 5).equals("3")){
-                if (settings.getRoadThreshold() > 0)
-                    settings.setRoadThreshold(settings.getRoadThreshold()-1);
-            }
+    void decrementThreshold(MouseEvent event) {
+        Polygon polygon = (Polygon)event.getSource();
+        if (polygon == decrementVictory && Settings.getInstance().getVictoryThreshold() > 0) {
+            Settings.getInstance().decrementThreshold(Constants.THRESHOLD_VICTORY);
+            labelVictory.setText(Settings.getInstance().getVictoryThreshold() + "");
+        } else if (polygon == decrementArmy && Settings.getInstance().getArmyThreshold() > 0) {
+            Settings.getInstance().decrementThreshold(Constants.THRESHOLD_ARMY);
+            labelArmy.setText(Settings.getInstance().getArmyThreshold() + "");
+        } else if (polygon == decrementRoad && Settings.getInstance().getRoadThreshold() > 0) {
+            Settings.getInstance().decrementThreshold(Constants.THRESHOLD_ROAD);
+            labelRoad.setText(Settings.getInstance().getRoadThreshold() + "");
         }
-        largestArmyThreshold.setText(settings.getArmyThreshold() + "");
-        victoryPointThreshold.setText(settings.getVictoryThreshold() + "");
-        longestRoadThreshold.setText(settings.getRoadThreshold() + "");
     }
 
+    @FXML
+    void incrementThreshold(MouseEvent event) {
+        Polygon polygon = (Polygon)event.getSource();
+        if (polygon == incrementVictory ) {
+            Settings.getInstance().incrementThreshold(Constants.THRESHOLD_VICTORY);
+            labelVictory.setText(Settings.getInstance().getVictoryThreshold() + "");
+        } else if (polygon == incrementArmy) {
+            Settings.getInstance().incrementThreshold(Constants.THRESHOLD_ARMY);
+            labelArmy.setText(Settings.getInstance().getArmyThreshold() + "");
+        } else if (polygon == incrementRoad) {
+            Settings.getInstance().incrementThreshold(Constants.THRESHOLD_ROAD);
+            labelRoad.setText(Settings.getInstance().getRoadThreshold() + "");
+        }
+    }
+
+    @FXML
+    public void selectTheme(ActionEvent event) {
+        String theme = selectorTheme.getValue();
+        Settings.getInstance().setCurrentTheme(theme);
+        MusicPlayer.getMusicPlayer().changeMusic(theme);
+    }
 
 }
