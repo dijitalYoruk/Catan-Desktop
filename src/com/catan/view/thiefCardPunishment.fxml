@@ -46,7 +46,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="277.0" layoutX="128.0" layoutY="105.0" stroke="#d37171" strokeType="INSIDE" strokeWidth="5.0" width="231.0" />
       <ImageView fitHeight="259.0" fitWidth="214.0" layoutX="137.0" layoutY="115.0" opacity="0.22" pickOnBounds="true">
          <image>
-            <Image url="@../assets/icon_thief.gif" />
+            <Image url="@../assets/default/icon_thief.gif" />
          </image>
       </ImageView>
       <VBox layoutX="138.0" layoutY="120.0" prefHeight="260.0" prefWidth="210.0" style="-fx-spacing: 5px;">

@@ -19,6 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        Constants.THEME_FOLDER = Settings.getInstance().getCurrentTheme().toLowerCase();
         MusicPlayer.getMusicPlayer().playMusic(Settings.getInstance().getCurrentTheme());
         FXMLLoader fxmlLoader = new FXMLLoader();
         ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());

@@ -7,8 +7,10 @@ import com.catan.modal.Player;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -28,6 +30,8 @@ public class ControllerDevMonopol {
     private ImageView imgOre;
     @FXML
     private Label labelTitle;
+    @FXML
+    private AnchorPane root;
 
     // properties
     private Player currentPlayer;
@@ -37,7 +41,14 @@ public class ControllerDevMonopol {
 
     @FXML
     public void initialize() {
+        root.setStyle("-fx-background-image: url("+ Constants.PATH_BG_INVENTION() +");\n" +
+                "-fx-background-size: cover;\n");
         imageViews = new ArrayList<>(Arrays.asList(imgOre, imgBrick, imgLumber, imgGrain, imgWool));
+        for (int i = 0; i < Constants.getResourcePaths().size(); i++) {
+            String resourcePath = Constants.getResourcePaths().get(i);
+            Image image = new Image(resourcePath);
+            imageViews.get(i).setImage(image);
+        }
     }
 
     // methods

@@ -5,6 +5,7 @@ import com.catan.modal.MusicPlayer;
 import com.catan.modal.Settings;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Polygon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,10 +33,19 @@ public class ControllerSettings extends ControllerBase {
     private Polygon incrementRoad;
     @FXML
     private ComboBox<String> selectorTheme;
+    @FXML
+    private AnchorPane root;
 
     @FXML
     public void initialize() {
         super.initialize();
+        root.setStyle(
+                "-fx-background-image: url("+ Constants.PATH_BG_SETTINGS() +");\n" +
+                "-fx-background-size: cover;\n" +
+                "-fx-pref-width: 1920;\n" +
+                "-fx-pref-height: 1080;"
+        );
+
         labelVictory.setText(Settings.getInstance().getVictoryThreshold() + "");
         labelArmy.setText(Settings.getInstance().getArmyThreshold() + "");
         labelRoad.setText(Settings.getInstance().getRoadThreshold() + "");
@@ -83,6 +93,7 @@ public class ControllerSettings extends ControllerBase {
         String theme = selectorTheme.getValue();
         Settings.getInstance().setCurrentTheme(theme);
         MusicPlayer.getMusicPlayer().changeMusic(theme);
+        Constants.THEME_FOLDER = theme.toLowerCase();
     }
 
 }

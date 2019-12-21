@@ -2,43 +2,22 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="development-card-pane" prefHeight="483.0" prefWidth="576.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTradeRequest">
+<AnchorPane id="development-card-pane" fx:id="root" prefHeight="483.0" prefWidth="576.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTradeRequest">
    <children>
       <AnchorPane layoutX="34.0" layoutY="79.0" prefHeight="325.0" prefWidth="240.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eec669" height="325.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
-            <Label alignment="CENTER" layoutX="11.0" layoutY="12.0" prefWidth="137.0" styleClass="thresholds" stylesheets="@style.css" text="Offers:" />
-            <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="11.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_brick.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="11.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_grain.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="72.0" fitWidth="50.0" layoutX="73.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_ore.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="136.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_wool.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="136.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_lumber.jpg" />
-               </image>
-            </ImageView>
+            <Label alignment="CENTER" layoutX="23.0" layoutY="14.0" prefWidth="137.0" styleClass="thresholds" stylesheets="@style.css" text="Offers:" />
+            <ImageView fx:id="imgOfferBrick" fitHeight="73.0" fitWidth="66.0" layoutX="11.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgOfferGrain" fitHeight="73.0" fitWidth="50.0" layoutX="11.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgOfferOre" fitHeight="72.0" fitWidth="50.0" layoutX="73.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgOfferWool" fitHeight="73.0" fitWidth="50.0" layoutX="136.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgOfferLumber" fitHeight="73.0" fitWidth="50.0" layoutX="136.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="labelOfferedBrick" layoutX="74.0" layoutY="92.0" text="x0">
                <font>
                   <Font size="24.0" />
@@ -66,7 +45,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label id="invention-label" fx:id="labelTitleOfTradeRequest" layoutX="88.0" layoutY="14.0" styleClass="title" stylesheets="@style.css" text="     PlayerArtificial3 wants to trade with you!">
+      <Label id="invention-label" fx:id="labelTitleOfTradeRequest" alignment="CENTER" layoutX="88.0" layoutY="14.0" prefHeight="34.0" prefWidth="423.0" styleClass="trade-request-label" stylesheets="@style.css" text="PlayerArtificial3 wants to trade with you!">
          <font>
             <Font size="26.0" />
          </font>
@@ -75,31 +54,11 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eec669" height="325.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
             <Label alignment="CENTER" layoutX="20.0" layoutY="10.0" prefWidth="137.0" styleClass="thresholds" stylesheets="@style.css" text="Requests:" />
-            <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="14.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_brick.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="14.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_grain.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="72.0" fitWidth="50.0" layoutX="73.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_ore.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="137.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_wool.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="137.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_lumber.jpg" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="imgRequestBrick" fitHeight="73.0" fitWidth="66.0" layoutX="14.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgRequestGrain" fitHeight="73.0" fitWidth="50.0" layoutX="14.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgRequestOre" fitHeight="72.0" fitWidth="50.0" layoutX="73.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgRequestWool" fitHeight="73.0" fitWidth="50.0" layoutX="137.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgRequestLumber" fitHeight="73.0" fitWidth="50.0" layoutX="137.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="labelRequestedBrick" layoutX="74.0" layoutY="91.0" text="x0">
                <font>
                   <Font size="24.0" />

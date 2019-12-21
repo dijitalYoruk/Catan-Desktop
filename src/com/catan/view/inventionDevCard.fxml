@@ -11,43 +11,43 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="invention-pane" prefHeight="396.0" prefWidth="656.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerDevInvention">
+<AnchorPane id="invention-pane" fx:id="root" prefHeight="396.0" prefWidth="669.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerDevInvention">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa31f" height="174.0" layoutX="34.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="592.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa31f" height="174.0" layoutX="34.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="597.0" />
       <HBox layoutX="51.0" layoutY="103.0" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgBrick" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_brick.jpg" />
+                  <Image url="@../assets/default/resource_brick.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgGrain" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_grain.jpg" />
-               </image>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/resource_lumber.jpg" />
+                  <Image url="@../assets/default/resource_grain.jpg" />
                </image>
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgLumber" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_wool.jpg" />
+                  <Image url="@../assets/default/resource_lumber.jpg" />
                </image>
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgWool" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/resource_ore.jpg" />
+                  <Image url="@../assets/default/resource_wool.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="imgOre" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/default/resource_ore.jpg" />
                </image>
                <HBox.margin>
                   <Insets left="10.0" />
@@ -55,7 +55,7 @@
             </ImageView>
          </children>
       </HBox>
-      <Label fx:id="labelTitle" alignment="CENTER" layoutX="160.0" layoutY="24.0" styleClass="invention-label" text="%inventionDevCardView_ChooseResource">
+      <Label fx:id="labelTitle" alignment="CENTER" layoutX="165.0" layoutY="24.0" styleClass="invention-label" text="%inventionDevCardView_ChooseResource">
          <font>
             <Font size="18.0" />
          </font>
@@ -130,6 +130,6 @@
             <Polygon fx:id="incrementOre" fill="#ff4d21" onMouseClicked="#increment" points="-50.0, 40.0, -30.0, 26.5, -50.0, 13.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
-      <JFXButton layoutX="181.0" layoutY="325.0" onAction="#complete" styleClass="invention-button" text="%inventionDevCardView_Select" />
+      <JFXButton layoutX="179.0" layoutY="324.0" onAction="#complete" styleClass="invention-button" text="%inventionDevCardView_Select" />
    </children>
 </AnchorPane>

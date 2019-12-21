@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -519,6 +520,16 @@ public class ControllerBaseGame extends ControllerBase {
     protected Pane paneRoadDestruction;
     @FXML
     protected Pane paneVictory;
+    @FXML
+    private ImageView cardHarbour1;
+    @FXML
+    private ImageView cardHarbour2;
+    @FXML
+    private ImageView cardHarbour3;
+    @FXML
+    private ImageView cardHarbour4;
+    @FXML
+    private ImageView cardHarbour5;
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;
@@ -535,6 +546,7 @@ public class ControllerBaseGame extends ControllerBase {
 
     @FXML
     public void initialize() {
+        super.initialize();
         terrainHexes = new ArrayList<>();
         vertices = new ArrayList<>();
         roads = new ArrayList<>();
@@ -550,12 +562,19 @@ public class ControllerBaseGame extends ControllerBase {
         initializeConstructionBox();
         initializeHarbours();
 
-        Image imgForDice1 = new Image("./com/catan/assets/die6.png");
+        Image imgForDice1 = new Image(Constants.PATH_DIES().get(6));
         imgDie1.setFill(new ImagePattern(imgForDice1));
-        Image img2ForDice2 = new Image("./com/catan/assets/die6.png");
+        Image img2ForDice2 = new Image(Constants.PATH_DIES().get(6));
         imgDie2.setFill(new ImagePattern(img2ForDice2));
-        Image img = new Image(Constants.PATH_CARD_PRICE);
+        Image img = new Image(Constants.PATH_CARD_PRICE());
         imgPriceCard.setFill(new ImagePattern(img));
+
+        root.setStyle(
+                "-fx-background-image: url("+ Constants.PATH_BG_GAME() +");\n" +
+                "-fx-background-size: cover;\n" +
+                "-fx-pref-width: 1920;\n" +
+                "-fx-pref-height: 1080;"
+        );
     }
 
     private void initializeHarbours() {
@@ -564,14 +583,12 @@ public class ControllerBaseGame extends ControllerBase {
         harbours.add( new Harbour(Constants.HARBOUR, harbour3, 3 , Constants.CARD_ORE));
         harbours.add( new Harbour(Constants.HARBOUR, harbour4, 2 , Constants.CARD_WOOL));
         harbours.add( new Harbour(Constants.HARBOUR, harbour5, 2 , Constants.CARD_GRAIN));
-        Image img = new Image(Constants.PATH_HARBOUR);
+        Image img = new Image(Constants.PATH_HARBOUR());
         for (Harbour harbour: harbours) {
-
             harbour.getShape().setFill(new ImagePattern(img));
             harbour.getShape().setStroke(Color.color(0,0.3,1));
             harbour.getShape().setStrokeWidth(1);
         }
-
 
         hexSea1.setFill(new ImagePattern(img));
         hexSea1.setStroke(Color.color(0,0.3,1));
@@ -624,6 +641,17 @@ public class ControllerBaseGame extends ControllerBase {
         hexSea13.setFill(new ImagePattern(img));
         hexSea13.setStroke(Color.color(0,0.3,1));
         hexSea13.setStrokeWidth(1);
+
+        img = new Image(Constants.PATH_RESOURCE_BRICK());
+        cardHarbour1.setImage(img);
+        img = new Image(Constants.PATH_RESOURCE_LUMBER());
+        cardHarbour2.setImage(img);
+        img = new Image(Constants.PATH_RESOURCE_ORE());
+        cardHarbour3.setImage(img);
+        img = new Image(Constants.PATH_RESOURCE_WOOL());
+        cardHarbour4.setImage(img);
+        img = new Image(Constants.PATH_RESOURCE_GRAIN());
+        cardHarbour5.setImage(img);
     }
 
     private void assignNumbersToHexes() {
@@ -653,22 +681,22 @@ public class ControllerBaseGame extends ControllerBase {
     }
 
     private void initializeConstructionBox() {
-        Image img = new Image(Constants.PATH_ROAD);
+        Image img = new Image(Constants.PATH_ROAD());
         imgRoad.setFill(new ImagePattern(img));
         imgRoad.setStroke(Color.color(0.4,0.4,0.4));
         imgRoad.setStrokeWidth(1);
 
-        Image img2 = new Image(Constants.PATH_VILLAGE);
+        Image img2 = new Image(Constants.PATH_VILLAGE());
         imgVillage.setFill(new ImagePattern(img2));
         imgVillage.setStroke(Color.color(0.4,0.4,0.4));
         imgVillage.setStrokeWidth(1);
 
-        Image img3 = new Image(Constants.PATH_CITY);
+        Image img3 = new Image(Constants.PATH_CITY());
         imgCity.setFill(new ImagePattern(img3));
         imgCity.setStroke(Color.color(0.4,0.4,0.4));
         imgCity.setStrokeWidth(1);
 
-        Image img4 = new Image(Constants.PATH_CIVILISATION);
+        Image img4 = new Image(Constants.PATH_CIVILIZATION());
         imgCivilisation.setFill(new ImagePattern(img4));
         imgCivilisation.setStroke(Color.color(0.4,0.4,0.4));
         imgCivilisation.setStrokeWidth(1);
@@ -1264,37 +1292,37 @@ public class ControllerBaseGame extends ControllerBase {
 
             if (tmp == 1 && countOfPasture > 0) {
                 countOfPasture--;
-                img = new Image(Constants.PATH_HEX_PASTURE);
+                img = new Image(Constants.PATH_HEX_PASTURE());
                 color = Color.color(0.2,1,0.2);
                 hex.setSourceCardName(Constants.CARD_WOOL);
             }
             else if (tmp == 2 && countOfForest > 0) {
                 countOfForest--;
-                img = new Image(Constants.PATH_HEX_FOREST);
+                img = new Image(Constants.PATH_HEX_FOREST());
                 color = Color.color(0.3,1,0.2);
                 hex.setSourceCardName(Constants.CARD_LUMBER);
             }
             else if (tmp == 3 && countOfDesert > 0) {
                 countOfDesert--;
-                img = new Image(Constants.PATH_HEX_DESERT);
+                img = new Image(Constants.PATH_HEX_DESERT());
                 color = Color.color(0.4,0.3,0.2);
                 thief = new Thief(hex, imgMovingThief);
             }
             else if (tmp == 4 && countOfMountain > 0) {
                 countOfMountain--;
-                img = new Image(Constants.PATH_HEX_MOUNTAINS);
+                img = new Image(Constants.PATH_HEX_MOUNTAINS());
                 color = Color.color(0.4,0.4,0.4);
                 hex.setSourceCardName(Constants.CARD_ORE);
             }
             else if (tmp == 5 && countOfFields > 0) {
                 countOfFields--;
-                img = new Image(Constants.PATH_HEX_FIELDS);
+                img = new Image(Constants.PATH_HEX_FIELDS());
                 color = Color.color(1,0.5,0);
                 hex.setSourceCardName(Constants.CARD_GRAIN);
             }
             else if (tmp == 6 && countOfHill > 0) {
                 countOfHill--;
-                img = new Image(Constants.PATH_HEX_HILL);
+                img = new Image(Constants.PATH_HEX_HILL());
                 color = Color.color(1,0,0);
                 hex.setSourceCardName(Constants.CARD_BRICK);
             }

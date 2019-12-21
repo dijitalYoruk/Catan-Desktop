@@ -41,7 +41,6 @@ public class ControllerPlayDevelopmentCard {
     private Label labelKnight;
     @FXML
     private Label labelMonopoly;
-
     @FXML
     private AnchorPane root;
 
@@ -51,12 +50,14 @@ public class ControllerPlayDevelopmentCard {
 
     @FXML
     public void initialize() {
-        Image imgForRoadDestruction = new Image(Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION);
-        Image imgForProfitExchange = new Image(Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE);
-        Image imgForVictory = new Image(Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT);
-        Image imgForInvention = new Image(Constants.PATH_DEVELOPMENT_CARD_INVENTION);
-        Image imgForMonopoly = new Image(Constants.PATH_DEVELOPMENT_CARD_MONOPOL);
-        Image imgForKnight = new Image(Constants.PATH_DEVELOPMENT_CARD_KNIGHT);
+        root.setStyle("-fx-background-image: url("+ Constants.PATH_BG_INVENTION() +");\n" +
+                "-fx-background-size: cover;\n");
+        Image imgForRoadDestruction = new Image(Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION());
+        Image imgForProfitExchange = new Image(Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE());
+        Image imgForVictory = new Image(Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT());
+        Image imgForInvention = new Image(Constants.PATH_DEVELOPMENT_CARD_INVENTION());
+        Image imgForMonopoly = new Image(Constants.PATH_DEVELOPMENT_CARD_MONOPOL());
+        Image imgForKnight = new Image(Constants.PATH_DEVELOPMENT_CARD_KNIGHT());
         imgRoadDestruction.setFill(new ImagePattern(imgForRoadDestruction));
         imgProfitExchange.setFill(new ImagePattern(imgForProfitExchange));
         imgInvention.setFill(new ImagePattern(imgForInvention));

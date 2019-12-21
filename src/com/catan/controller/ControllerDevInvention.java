@@ -7,7 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
@@ -52,6 +55,18 @@ public class ControllerDevInvention {
     @FXML
     private Polygon incrementOre;
     @FXML
+    private AnchorPane root;
+    @FXML
+    private ImageView imgBrick;
+    @FXML
+    private ImageView imgGrain;
+    @FXML
+    private ImageView imgLumber;
+    @FXML
+    private ImageView imgWool;
+    @FXML
+    private ImageView imgOre;
+    @FXML
     ResourceBundle resources;
     
     // properties
@@ -65,6 +80,13 @@ public class ControllerDevInvention {
 
     @FXML
     public void initialize() {
+        root.setStyle("-fx-background-image: url("+ Constants.PATH_BG_INVENTION() +");\n" +
+                      "-fx-background-size: cover;\n");
+
+        ArrayList<ImageView> imgResources = new ArrayList<>(Arrays.asList(
+                imgOre, imgBrick, imgLumber,
+                imgGrain, imgWool));
+
         incrementShapes = new ArrayList<>(Arrays.asList(
                 incrementOre, incrementBrick,
                 incrementLumber, incrementGrain,
@@ -81,8 +103,12 @@ public class ControllerDevInvention {
                 labelWool));
 
         desiredResources = new HashMap<>();
-        for (String resourceName: Constants.resourceNames) {
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
+            String resourcePath = Constants.getResourcePaths().get(i);
             desiredResources.put(resourceName, 0);
+            Image image = new Image(resourcePath);
+            imgResources.get(i).setImage(image);
         }
     }
 

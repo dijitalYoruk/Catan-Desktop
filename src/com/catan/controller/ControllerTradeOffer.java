@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -22,15 +23,35 @@ import java.util.ResourceBundle;
 public class ControllerTradeOffer {
 
     @FXML
-    private ImageView imgOfferLumber;
+    private AnchorPane root;
     @FXML
-    private ImageView imgOfferWool;
+    private Button requestButton;
     @FXML
-    private ImageView imgOfferOre;
+    private Button clearTradeButton;
+    @FXML
+    private Label labelOutputOfTrade;
+    @FXML
+    private ImageView imgOfferBrick;
+    @FXML
+    private Label labelActualPlayerBrick;
     @FXML
     private ImageView imgOfferGrain;
     @FXML
-    private ImageView imgOfferBrick;
+    private Label labelActualPlayerGrain;
+    @FXML
+    private ImageView imgOfferOre;
+    @FXML
+    private Label labelActualPlayerOre;
+    @FXML
+    private ImageView imgOfferWool;
+    @FXML
+    private Label labelActualPlayerWool;
+    @FXML
+    private ImageView imgOfferLumber;
+    @FXML
+    private Label labelActualPlayerLumber;
+    @FXML
+    private ComboBox<String> selectorTrade;
     @FXML
     private ImageView imgRequestBrick;
     @FXML
@@ -42,41 +63,49 @@ public class ControllerTradeOffer {
     @FXML
     private ImageView imgRequestLumber;
     @FXML
-    private ComboBox<String> selectorTrade;
+    private ImageView imgOfferResultBrick;
     @FXML
     private Label labelOfferedBrick;
     @FXML
-    private Label labelOfferedGrain;
+    private ImageView imgOfferResultWool;
     @FXML
     private Label labelOfferedWool;
     @FXML
+    private ImageView imgOfferResultGrain;
+    @FXML
+    private Label labelOfferedGrain;
+    @FXML
+    private ImageView imgOfferResultLumber;
+    @FXML
     private Label labelOfferedLumber;
+    @FXML
+    private ImageView imgOfferResultOre;
     @FXML
     private Label labelOfferedOre;
     @FXML
+    private ImageView imgRequestResultBrick;
+    @FXML
     private Label labelRequestedBrick;
     @FXML
-    private Label labelRequestedGrain;
+    private ImageView imgRequestResultWool;
     @FXML
     private Label labelRequestedWool;
     @FXML
+    private ImageView imgRequestResultGrain;
+    @FXML
+    private Label labelRequestedGrain;
+    @FXML
+    private ImageView imgRequestResultLumber;
+    @FXML
     private Label labelRequestedLumber;
+    @FXML
+    private ImageView imgRequestResultOre;
     @FXML
     private Label labelRequestedOre;
     @FXML
-    private Label labelActualPlayerBrick;
+    private ImageView imgTrade1;
     @FXML
-    private Label labelActualPlayerGrain;
-    @FXML
-    private Label labelActualPlayerOre;
-    @FXML
-    private Label labelActualPlayerWool;
-    @FXML
-    private Label labelActualPlayerLumber;
-    @FXML
-    private Label labelOutputOfTrade;
-    @FXML
-    private AnchorPane root;
+    private ImageView imgTrade2;
     @FXML
     ResourceBundle resources;
 
@@ -94,12 +123,13 @@ public class ControllerTradeOffer {
     private Player actualPlayer;
     private Player playerToBeTraded;
 
-
     @FXML
     public void initialize() {
         requestedResources = new HashMap<>();
         actualPlayerResources = new HashMap<>();
         offeredResources = new HashMap<>();
+        ArrayList<ImageView> imgOffersResult;
+        ArrayList<ImageView> imgRequestsResult;
 
         labelsRequests = new ArrayList<>(Arrays.asList(
                 labelRequestedOre, labelRequestedBrick,
@@ -121,15 +151,38 @@ public class ControllerTradeOffer {
                 imgOfferLumber, imgOfferGrain,
                 imgOfferWool));
 
+        imgOffersResult = new ArrayList<>(Arrays.asList(
+                imgOfferResultOre, imgOfferResultBrick,
+                imgOfferResultLumber, imgOfferResultGrain,
+                imgOfferResultWool));
+
         imgRequests = new ArrayList<>(Arrays.asList(
                 imgRequestOre, imgRequestBrick,
                 imgRequestLumber, imgRequestGrain,
                 imgRequestWool));
 
-        for (String resourceName: Constants.resourceNames) {
+        imgRequestsResult = new ArrayList<>(Arrays.asList(
+                imgRequestResultOre, imgRequestResultBrick,
+                imgRequestResultLumber, imgRequestResultGrain,
+                imgRequestResultWool));
+
+        for (int i = 0; i < Constants.resourceNames.size(); i++) {
+            String resourceName = Constants.resourceNames.get(i);
+            String resourcePath = Constants.getResourcePaths().get(i);
             offeredResources.put(resourceName, 0);
             requestedResources.put(resourceName, 0);
+            Image image = new Image(resourcePath);
+            imgOffers.get(i).setImage(image);
+            imgRequests.get(i).setImage(image);
+            imgOffersResult.get(i).setImage(image);
+            imgRequestsResult.get(i).setImage(image);
         }
+
+        Image image1 = new Image(Constants.PATH_TRADE_1());
+        Image image2 = new Image(Constants.PATH_TRADE_2());
+        imgTrade1.setImage(image1);
+        imgTrade2.setImage(image2);
+
         selectorTrade.setStyle("-fx-font: 20px \"Book " +
                 "Antiqua\"; -fx-background-color: orange");
     }
@@ -209,9 +262,7 @@ public class ControllerTradeOffer {
         playerToBeTraded = null;
         if (!nameToBeTraded.equals("Chest")) {
             for (Player player: allPlayers) {
-                if (player.getName().equals(nameToBeTraded)) {
-                    playerToBeTraded = player;
-                }
+                if (player.getName().equals(nameToBeTraded)) { playerToBeTraded = player; }
             }
         } else {
             isTradeWithChest = true;

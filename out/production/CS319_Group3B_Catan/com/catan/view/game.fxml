@@ -300,7 +300,7 @@
       </Label>
       <ImageView fitHeight="277.0" fitWidth="388.0" layoutX="99.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/icon_frame.png" />
+            <Image url="@../assets/default/icon_frame.png" />
          </image>
       </ImageView>
       <HBox layoutX="809.0" layoutY="931.0" prefHeight="100.0" prefWidth="200.0" />
@@ -509,7 +509,7 @@
          </children>
       </Pane>
       <Circle fx:id="imgMovingThief" fill="DODGERBLUE" layoutX="100.0" layoutY="158.0" onMouseDragged="#moveThief" onMouseReleased="#thiefMoved" radius="20.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="790.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardHarbour1" fitHeight="50.0" fitWidth="40.0" layoutX="790.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_brick.jpg" />
          </image>
@@ -520,7 +520,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="1181.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardHarbour2" fitHeight="50.0" fitWidth="40.0" layoutX="1181.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_lumber.jpg" />
          </image>
@@ -531,7 +531,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="1375.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardHarbour3" fitHeight="50.0" fitWidth="40.0" layoutX="1375.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_ore.jpg" />
          </image>
@@ -542,7 +542,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="1183.0" layoutY="751.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardHarbour4" fitHeight="50.0" fitWidth="40.0" layoutX="1183.0" layoutY="751.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_wool.jpg" />
          </image>
@@ -553,7 +553,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="793.0" layoutY="751.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cardHarbour5" fitHeight="50.0" fitWidth="40.0" layoutX="793.0" layoutY="751.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/resource_grain.jpg" />
          </image>

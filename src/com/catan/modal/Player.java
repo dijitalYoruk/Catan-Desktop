@@ -142,30 +142,30 @@ public class Player {
         switch (construction) {
             case Constants.VILLAGE:
                 switch (color) {
-                    case Constants.COLOR_RED:    return Constants.PATH_VILLAGE_RED;
-                    case Constants.COLOR_PURPLE: return Constants.PATH_VILLAGE_PURPLE;
-                    case Constants.COLOR_GREEN:  return Constants.PATH_VILLAGE_GREEN;
-                    case Constants.COLOR_BLUE:   return Constants.PATH_VILLAGE_BLUE;
+                    case Constants.COLOR_RED:    return Constants.PATH_VILLAGE_RED();
+                    case Constants.COLOR_PURPLE: return Constants.PATH_VILLAGE_PURPLE();
+                    case Constants.COLOR_GREEN:  return Constants.PATH_VILLAGE_GREEN();
+                    case Constants.COLOR_BLUE:   return Constants.PATH_VILLAGE_BLUE();
                 }
                 break;
             case Constants.CITY:
                 switch (color) {
-                    case Constants.COLOR_RED:    return Constants.PATH_CITY_RED;
-                    case Constants.COLOR_PURPLE: return Constants.PATH_CITY_PURPLE;
-                    case Constants.COLOR_GREEN:  return Constants.PATH_CITY_GREEN;
-                    case Constants.COLOR_BLUE:   return Constants.PATH_CITY_BLUE;
+                    case Constants.COLOR_RED:    return Constants.PATH_CITY_RED();
+                    case Constants.COLOR_PURPLE: return Constants.PATH_CITY_PURPLE();
+                    case Constants.COLOR_GREEN:  return Constants.PATH_CITY_GREEN();
+                    case Constants.COLOR_BLUE:   return Constants.PATH_CITY_BLUE();
                 }
                 break;
             case Constants.CIVILISATION:
                 switch (color) {
-                    case Constants.COLOR_RED:    return Constants.PATH_CIVILISATION_RED;
-                    case Constants.COLOR_PURPLE: return Constants.PATH_CIVILISATION_PURPLE;
-                    case Constants.COLOR_GREEN:  return Constants.PATH_CIVILISATION_GREEN;
-                    case Constants.COLOR_BLUE:   return Constants.PATH_CIVILISATION_BLUE;
+                    case Constants.COLOR_RED:    return Constants.PATH_CIVILISATION_RED();
+                    case Constants.COLOR_PURPLE: return Constants.PATH_CIVILISATION_PURPLE();
+                    case Constants.COLOR_GREEN:  return Constants.PATH_CIVILISATION_GREEN();
+                    case Constants.COLOR_BLUE:   return Constants.PATH_CIVILISATION_BLUE();
                 }
                 break;
         }
-        return Constants.PATH_CIVILISATION_BLUE;
+        return Constants.PATH_CIVILISATION_BLUE();
     }
 
     public Color getRoadColor() {
@@ -289,6 +289,7 @@ public class Player {
         boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
         if (hasEnoughResources) {
             DevelopmentCard card = chest.getDevelopmentCard();
+            subtractPriceOfConstruction(Constants.DEVELOPMENT_CARD);
             if (card != null) {
                 addDevelopmentCard(card.getName());
                 System.out.println("==============================================================================================");

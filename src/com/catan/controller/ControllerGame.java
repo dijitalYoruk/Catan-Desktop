@@ -347,9 +347,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void rollDie() {
         if (isStepActual) {
             die.rollDie();
-            Image img = new Image("./com/catan/assets/die"+die.getDice1()+".png");
+            Image img = new Image(Constants.PATH_DIES().get(die.getDice1()));
             getImgDie1().setFill(new ImagePattern(img));
-            Image img2 = new Image("./com/catan/assets/die"+die.getDice2()+".png");
+            Image img2 = new Image(Constants.PATH_DIES().get(die.getDice2()));
             getImgDie2().setFill(new ImagePattern(img2));
         }
     }
@@ -388,11 +388,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         // reason of this map is to update all card panes in a loop
         HashMap<String, Object[]> resourceCardsMap = new HashMap<>();
 
-        resourceCardsMap.put(Constants.CARD_WOOL, new Object[] {woolLabel, woolImages, paneWools, Constants.PATH_RESOURCE_WOOL});
-        resourceCardsMap.put(Constants.CARD_ORE, new Object[] {oreLabel, oreImages, paneOres, Constants.PATH_RESOURCE_ORE});
-        resourceCardsMap.put(Constants.CARD_LUMBER, new Object[] {lumberLabel, lumberImages, paneLumbers, Constants.PATH_RESOURCE_LUMBER});
-        resourceCardsMap.put(Constants.CARD_BRICK, new Object[] {brickLabel, brickImages, paneBricks, Constants.PATH_RESOURCE_BRICK});
-        resourceCardsMap.put(Constants.CARD_GRAIN, new Object[] {grainLabel, grainImages, paneGrains, Constants.PATH_RESOURCE_GRAIN});
+        resourceCardsMap.put(Constants.CARD_WOOL, new Object[] {woolLabel, woolImages, paneWools, Constants.PATH_RESOURCE_WOOL()});
+        resourceCardsMap.put(Constants.CARD_ORE, new Object[] {oreLabel, oreImages, paneOres, Constants.PATH_RESOURCE_ORE()});
+        resourceCardsMap.put(Constants.CARD_LUMBER, new Object[] {lumberLabel, lumberImages, paneLumbers, Constants.PATH_RESOURCE_LUMBER()});
+        resourceCardsMap.put(Constants.CARD_BRICK, new Object[] {brickLabel, brickImages, paneBricks, Constants.PATH_RESOURCE_BRICK()});
+        resourceCardsMap.put(Constants.CARD_GRAIN, new Object[] {grainLabel, grainImages, paneGrains, Constants.PATH_RESOURCE_GRAIN()});
 
         HashMap<String, ArrayList<SourceCard>> sourceCards = playerActual.getSourceCards();
         Set<String> keys = sourceCards.keySet();
@@ -431,12 +431,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         
         HashMap<String, Object[]> developmentCardsMap = new HashMap<>();
 
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_INVENTION, new Object[] {inventionLabel, inventionImages, paneInvention, Constants.PATH_DEVELOPMENT_CARD_INVENTION});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_KNIGHT, new Object[] {knightLabel, knightImages, paneKnight, Constants.PATH_DEVELOPMENT_CARD_KNIGHT});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_MONOPOL, new Object[] {monopolyLabel, monopolyImages, paneMonopoly, Constants.PATH_DEVELOPMENT_CARD_MONOPOL});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE, new Object[] {profitLabel, profitImages, paneProfit, Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION, new Object[] {roadDestructionLabel, roadDestructionImages, paneRoadDestruction, Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_VICTORY_POINT, new Object[] {victoryLabel, victoryImages, paneVictory, Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_INVENTION, new Object[] {inventionLabel, inventionImages, paneInvention, Constants.PATH_DEVELOPMENT_CARD_INVENTION()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_KNIGHT, new Object[] {knightLabel, knightImages, paneKnight, Constants.PATH_DEVELOPMENT_CARD_KNIGHT()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_MONOPOL, new Object[] {monopolyLabel, monopolyImages, paneMonopoly, Constants.PATH_DEVELOPMENT_CARD_MONOPOL()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE, new Object[] {profitLabel, profitImages, paneProfit, Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION, new Object[] {roadDestructionLabel, roadDestructionImages, paneRoadDestruction, Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_VICTORY_POINT, new Object[] {victoryLabel, victoryImages, paneVictory, Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT()});
 
         HashMap<String, Integer> developmentCards = playerActual.getDevelopmentCards();
         Set<String> developmentKeys = developmentCards.keySet();

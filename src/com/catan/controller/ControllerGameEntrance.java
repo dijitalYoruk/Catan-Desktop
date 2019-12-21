@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -71,6 +72,8 @@ public class ControllerGameEntrance extends ControllerBase{
     private VBox resultBox;
     @FXML
     private Rectangle resultShape;
+    @FXML
+    private AnchorPane root;
 
     // properties
     private ArrayList<String> colorsName;
@@ -85,6 +88,14 @@ public class ControllerGameEntrance extends ControllerBase{
     @FXML
     public void initialize() {
         super.initialize();
+
+        root.setStyle(
+                "-fx-background-image: url("+ Constants.PATH_BG_GAME_ENTRANCE() +");\n" +
+                "-fx-background-size: cover;\n" +
+                "-fx-pref-width: 1920;\n" +
+                "-fx-pref-height: 1080;"
+        );
+
         colorShapes = new ArrayList<>(Arrays.asList(
                         colorRed, colorGreen,
                         colorBlue, colorPurple));
@@ -161,9 +172,9 @@ public class ControllerGameEntrance extends ControllerBase{
         int imgIndex = 0;
         for (int i = 0; i < 4; i++) {
             die.rollDie();
-            img = new Image("./com/catan/assets/die" + die.getDice1() +  ".png");
+            img = new Image(Constants.PATH_DIES().get(die.getDice1()));
             dieImages.get(imgIndex++).setFill(new ImagePattern(img));
-            img = new Image("./com/catan/assets/die" + die.getDice2() +  ".png");
+            img = new Image(Constants.PATH_DIES().get(die.getDice2()));
             dieImages.get(imgIndex++).setFill(new ImagePattern(img));
             dieResults.add(die.getDieSum());
         }

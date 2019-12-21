@@ -1,5 +1,6 @@
 package com.catan.controller;
 
+import com.catan.Util.Constants;
 import com.catan.modal.Instruction;
 import com.catan.modal.Settings;
 import com.jfoenix.controls.JFXTextArea;
@@ -9,19 +10,38 @@ import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.Set;
 
 public class ControllerInstructions extends ControllerBase {
+
     @FXML
     ImageView currentRulesPage, leftRulesPage, rightRulesPage;
+    @FXML
+    private ImageView arrow_left_page;
+    @FXML
+    private ImageView arrow_right_page;
+    @FXML
+    private AnchorPane root;
 
     PerspectiveTransform rightPerspectiveTransform = new PerspectiveTransform();
     PerspectiveTransform leftPerspectiveTransform = new PerspectiveTransform();
-
     int currentPageNumber = 1;
+
     @FXML
     public void initialize() {
+        super.initialize();
+
+        root.setStyle("-fx-background-image: url("+ Constants.PATH_BG_INFORMATION() +");\n" +
+                      "-fx-background-size: cover;\n" +
+                      "-fx-pref-width: 1920;\n" +
+                      "-fx-pref-height: 1080;");
+
+        Image imageLeft = new Image(Constants.PATH_ARROW_LEFT());
+        Image imageRight = new Image(Constants.PATH_ARROW_RIGHT());
+        arrow_left_page.setImage(imageLeft);
+        arrow_right_page.setImage(imageRight);
 
         leftRulesPage.setVisible(false);
         currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
@@ -37,7 +57,6 @@ public class ControllerInstructions extends ControllerBase {
         rightPerspectiveTransform.setLry(700); //60
         rightPerspectiveTransform.setLlx(0.0); //10
         rightPerspectiveTransform.setLly(1000); //90
-
 
         // the adjustment of perspective of left page
         leftPerspectiveTransform.setUlx(375); //10
