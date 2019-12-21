@@ -15,7 +15,7 @@
 
 <AnchorPane id="settings-pane" prefHeight="860.0" prefWidth="1583.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerSettings">
    <children>
-      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc200" height="492.0" layoutX="689.0" layoutY="93.0" stroke="#ff6200" strokeType="INSIDE" strokeWidth="4.0" width="543.0" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc200" height="512.0" layoutX="689.0" layoutY="97.0" stroke="#ff6200" strokeType="INSIDE" strokeWidth="4.0" width="543.0" />
       <Button layoutX="45.0" layoutY="31.0" mnemonicParsing="false" onAction="#returnToProgram" prefHeight="52.0" prefWidth="153.0" styleClass="instructions-back-button" />
       <VBox layoutX="749.0" layoutY="120.0" prefHeight="451.0" prefWidth="424.0">
          <children>
@@ -134,7 +134,10 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="420.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="420.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Rectangle>
             <HBox prefHeight="75.0" prefWidth="424.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_SelectTheme">
@@ -155,7 +158,11 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="420.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="420.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Rectangle>
             <HBox prefHeight="75.0" prefWidth="424.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="311.0" styleClass="settings-label" text="%settingView_SelectLanguage">
@@ -172,6 +179,9 @@
                      </HBox.margin>
                   </ComboBox>
                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>

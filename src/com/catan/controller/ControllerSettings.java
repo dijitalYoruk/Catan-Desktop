@@ -108,7 +108,6 @@ public class ControllerSettings extends ControllerBase {
     @FXML
     public void selectLanguage(ActionEvent event) {
         String language = selectorLanguage.getValue();
-        System.out.println(language);
         Settings.getInstance().setCurrentLanguage(languageMappings.get(language));
     }
 
