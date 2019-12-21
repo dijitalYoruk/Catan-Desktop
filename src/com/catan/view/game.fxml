@@ -508,13 +508,13 @@
             <Pane layoutX="21.0" layoutY="510.0" prefHeight="27.0" prefWidth="269.0">
                <children>
                   <Label fx:id="longestRoadOwnerLabel" layoutX="220.0" />
-                  <Label prefHeight="21.0" prefWidth="197.0" text="Longest Road Card Owner:" />
+                  <Label prefHeight="21.0" prefWidth="197.0" style="-fx-font-size: 14px;" text="Longest Road Card Owner:" />
                </children>
             </Pane>
             <Pane layoutX="21.0" layoutY="540.0" prefHeight="27.0" prefWidth="269.0">
                <children>
                   <Label fx:id="strongestArmyOwnerLabel" layoutX="220.0" />
-                  <Label prefHeight="21.0" prefWidth="197.0" text="Strongest Army Card Owner:" />
+                  <Label layoutY="2.0" prefHeight="21.0" prefWidth="197.0" style="-fx-font-size: 14px;" text="Strongest Army Card Owner:" />
                </children>
             </Pane>
          </children>
