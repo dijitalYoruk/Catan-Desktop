@@ -57,21 +57,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int gameLogIterator = 0;
     private int noOfRound = 1;
     private FlowPane gameLogsFlowPane;
-    private ArrayList<ImageView> lumberImages = new ArrayList<>();
-    private ArrayList<ImageView> brickImages = new ArrayList<>();
-    private ArrayList<ImageView> grainImages = new ArrayList<>();
-    private ArrayList<ImageView> oreImages = new ArrayList<>();
-    private ArrayList<ImageView> woolImages = new ArrayList<>();
-    private ArrayList<ImageView> inventionImages = new ArrayList<>();
-    private ArrayList<ImageView> victoryImages = new ArrayList<>();
-    private ArrayList<ImageView> profitImages = new ArrayList<>();
-    private ArrayList<ImageView> monopolyImages = new ArrayList<>();
-    private ArrayList<ImageView> knightImages = new ArrayList<>();
-    private ArrayList<ImageView> roadDestructionImages = new ArrayList<>();
-    private Pane[] resourceCardPanes = new Pane[5];
-    private Pane[] developmentCardPanes = new Pane[6];
-    private double[][] resourceCardsPaneLocations = new double[5][2];
-    private double[][] developmentCardsPaneLocations = new double[6][2];
+
     private Road tempRoad;
     private Chest chest;
 
@@ -94,71 +80,14 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         activateAllVertices();
         gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
         gameLog = GameLog.getInstance();
-        initializeComponentsRelatedToActualPlayerCardsPane();
+        chest = new Chest(getPlayers(), getSettings());
+
         for (Player player: getPlayers()) {
             if (player instanceof PlayerActual) {
                 playerActual = player;
             }
         }
         endTurn(null);
-    }
-
-    // this obnoxiously named function initializes the components related to the
-    // section where number of cards of the actual player is shown
-    private void initializeComponentsRelatedToActualPlayerCardsPane() {
-        //ImgViewLumberDummy.setVisible(false);
-        lumberImages.add(ImgViewLumberDummy);
-        //ImgViewBrickDummy.setVisible(false);
-        brickImages.add(ImgViewBrickDummy);
-        //ImgViewGrainDummy.setVisible(false);
-        grainImages.add(ImgViewGrainDummy);
-        //ImgViewOreDummy.setVisible(false);
-        oreImages.add(ImgViewOreDummy);
-        //ImgViewWoolDummy.setVisible(false);
-        woolImages.add(ImgViewWoolDummy);
-
-        resourceCardPanes[0] = paneLumbers;
-        resourceCardPanes[1] = paneWools;
-        resourceCardPanes[2] = paneOres;
-        resourceCardPanes[3] = paneBricks;
-        resourceCardPanes[4] = paneGrains;
-
-        // these has to be in the order as in the FXML file
-        resourceCardsPaneLocations[0] = new double[] {paneLumbers.getLayoutX(), paneLumbers.getLayoutY()};
-        resourceCardsPaneLocations[1] = new double[] {paneWools.getLayoutX(), paneWools.getLayoutY()};
-        resourceCardsPaneLocations[2] = new double[] {paneBricks.getLayoutX(), paneBricks.getLayoutY()};
-        resourceCardsPaneLocations[3] = new double[] {paneOres.getLayoutX(), paneOres.getLayoutY()};
-        resourceCardsPaneLocations[4] = new double[] {paneGrains.getLayoutX(), paneGrains.getLayoutY()};
-
-
-        //ImgViewInventionDummy.setVisible(false);
-        inventionImages.add(ImgViewInventionDummy);
-        //ImgViewMonopolyDummy.setVisible(false);
-        monopolyImages.add(ImgViewMonopolyDummy);
-        //ImgViewKnightDummy.setVisible(false);
-        knightImages.add(ImgViewKnightDummy);
-        //ImgViewProfitDummy.setVisible(false);
-        profitImages.add(ImgViewProfitDummy);
-        //ImgViewRoadDestructionDummy.setVisible(false);
-        roadDestructionImages.add(ImgViewRoadDestructionDummy);
-        //ImgViewVictoryDummy.setVisible(false);
-        victoryImages.add(ImgViewVictoryDummy);
-
-        developmentCardPanes[0] = paneInvention;
-        developmentCardPanes[1] = paneKnight;
-        developmentCardPanes[2] = paneMonopoly;
-        developmentCardPanes[3] = paneProfit;
-        developmentCardPanes[4] = paneRoadDestruction;
-        developmentCardPanes[5] = paneVictory;
-
-        // these has to be in the order as in the FXML file
-        developmentCardsPaneLocations[0] = new double[] {paneInvention.getLayoutX(), paneInvention.getLayoutY()};
-        developmentCardsPaneLocations[1] = new double[] {paneKnight.getLayoutX(), paneKnight.getLayoutY()};
-        developmentCardsPaneLocations[2] = new double[] {paneMonopoly.getLayoutX(), paneMonopoly.getLayoutY()};
-        developmentCardsPaneLocations[3] = new double[] {paneProfit.getLayoutX(), paneProfit.getLayoutY()};
-        developmentCardsPaneLocations[4] = new double[] {paneRoadDestruction.getLayoutX(), paneRoadDestruction.getLayoutY()};
-        developmentCardsPaneLocations[5] = new double[] {paneVictory.getLayoutX(), paneVictory.getLayoutY()};
-        chest = new Chest(getPlayers(),getSettings());
     }
 
     @FXML

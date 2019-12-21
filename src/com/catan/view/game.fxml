@@ -345,12 +345,12 @@
       <JFXButton layoutX="14.0" layoutY="14.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
       <JFXButton layoutX="14.0" layoutY="35.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="game-back-button" text=" " />
       <Label fx:id="labelWarning" alignment="CENTER" layoutX="1510.0" layoutY="931.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
-      <ScrollPane fx:id="gameLogsScrollPane" hbarPolicy="NEVER" layoutX="106.0" layoutY="340.0" prefHeight="572.0" prefWidth="367.0" style="-fx-background: #FFC41F;">
+      <ScrollPane fx:id="gameLogsScrollPane" hbarPolicy="NEVER" layoutX="1514.0" layoutY="297.0" prefHeight="314.0" prefWidth="367.0" style="-fx-background: #FFC41F;">
          <content>
-            <FlowPane prefHeight="567.0" prefWidth="359.0" />
+            <FlowPane prefHeight="307.0" prefWidth="359.0" />
          </content>
       </ScrollPane>
-      <Pane fx:id="actualPlayerCardsPane" layoutX="1517.0" layoutY="283.0" prefHeight="580.0" prefWidth="359.0" style="-fx-background-color: #FFC41F; -fx-border-color: black;">
+      <Pane fx:id="actualPlayerCardsPane" layoutX="111.0" layoutY="331.0" prefHeight="580.0" prefWidth="359.0" style="-fx-background-color: #FFC41F; -fx-border-color: black;">
          <children>
             <Pane fx:id="paneLumbers" layoutX="7.0" layoutY="18.0" prefHeight="137.0" prefWidth="110.0" style="-fx-background-color: #FFC41F;">
                <children>
