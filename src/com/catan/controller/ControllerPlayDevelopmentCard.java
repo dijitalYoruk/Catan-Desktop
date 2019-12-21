@@ -4,10 +4,13 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceDevelopmentCard;
 import com.catan.modal.DevelopmentCard;
 import com.catan.modal.Player;
+import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -39,6 +42,10 @@ public class ControllerPlayDevelopmentCard {
     private Label labelKnight;
     @FXML
     private Label labelMonopoly;
+    @FXML
+    private JFXButton buttonClose;
+    @FXML
+    private ImageView imgCloseButton;
 
     // properties
     private Player player;
@@ -46,6 +53,8 @@ public class ControllerPlayDevelopmentCard {
 
     @FXML
     public void initialize() {
+        Image image = new Image(Constants.DEVELOPMENT_CARD_VIEW_CLOSE_ICON);
+        imgCloseButton.setImage(image);
         Image imgForRoadDestruction = new Image(Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION);
         Image imgForProfitExchange = new Image(Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE);
         Image imgForVictory = new Image(Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT);
@@ -101,5 +110,11 @@ public class ControllerPlayDevelopmentCard {
             window.close();
             interfaceCard.setDevelopmentCardInvention(card);
         }
+    }
+
+    @FXML
+    public void closeDevelopmentCardInterface(ActionEvent event){
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.close();
     }
 }

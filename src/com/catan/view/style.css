@@ -23,6 +23,9 @@
     -fx-color: orange;
 }
 
+.endGame-pane{
+    -fx-background-image: url("../assets/endGameBackground.gif");
+}
 .settings{
     -fx-background-image: url("../assets/background.jpg");
     -fx-background-size: cover;
@@ -115,7 +118,25 @@
     -fx-pref-height: 100;
     -fx-font-size: 20;
 }
+.endGame-Title-label{
+    -fx-background-color: #cc4e21;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-alignment: center;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-font-size: 48;
+}
 
+.endGame-Nontitle-label{
+    -fx-background-color: #cc4e21;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-alignment: center;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-font-size: 30;
+}
 .card-punishment-screen-resources{
     -fx-alignment: center;
     -fx-background-color: orange;
@@ -222,6 +243,15 @@ trade-pane-bg {
     -fx-background-image: url("../assets/invention_ng.jpg");
     -fx-background-size: cover;
 }
+.development-card-names-label{
+    -fx-background-color: #cc4e21;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-alignment: center;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-font-size: 15;
+}
 
 .invention-label {
     -fx-margin:50px;
@@ -241,4 +271,10 @@ trade-pane-bg {
     -fx-pref-width: 300;
     -fx-pref-height: 50;
     -fx-font-size: 20;
+}
+.credentials-pane{
+    -fx-background-image: url("../assets/background_game.jpg");
+    -fx-background-size: cover;
+    -fx-pref-width: 1920;
+    -fx-pref-height: 1080;
 }

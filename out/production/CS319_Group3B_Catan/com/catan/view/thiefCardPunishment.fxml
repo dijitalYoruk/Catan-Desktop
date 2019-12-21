@@ -41,8 +41,8 @@
       <Label fx:id="labelOre" layoutX="67.0" layoutY="235.0" styleClass="card-punishment-screen-resources" stylesheets="@style.css" text="x 8" />
       <Label fx:id="labelWool" layoutX="67.0" layoutY="295.0" styleClass="card-punishment-screen-resources" stylesheets="@style.css" text="x 8" />
       <Label fx:id="labelLumber" layoutX="67.0" layoutY="355.0" styleClass="card-punishment-screen-resources" stylesheets="@style.css" text="x 8" />
-      <Label fx:id="labelInformation" layoutX="16.0" layoutY="22.0" prefWidth="196.0" style="-fx-background-color: #CD853F; -fx-margin: 50px; -fx-font-family: 'Book Antiqua'; -fx-background-radius: 40; -fx-pref-width: 350; -fx-pref-height: 50; -fx-font-size: 20; -fx-alignment: center;" text="You need to choose 7 cards" textOverrun="CLIP" wrapText="true" />
-      <JFXButton layoutX="118.0" layoutY="403.0" onAction="#confirmPunish" styleClass="thief-button" stylesheets="@style.css" text="Confirm" />
+      <Label fx:id="labelInformation" layoutX="16.0" layoutY="22.0" prefWidth="196.0" style="-fx-background-color: #CD853F; -fx-margin: 50px; -fx-font-family: 'Book Antiqua'; -fx-background-radius: 40; -fx-pref-width: 350; -fx-pref-height: 50; -fx-font-size: 20; -fx-alignment: center;" text="Default Value" textOverrun="CLIP" wrapText="true" />
+      <JFXButton layoutX="118.0" layoutY="403.0" onAction="#confirmPunish" styleClass="thief-button" stylesheets="@style.css" text="%thiefCardPunishmentView_Confirm" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="277.0" layoutX="128.0" layoutY="105.0" stroke="#d37171" strokeType="INSIDE" strokeWidth="5.0" width="231.0" />
       <ImageView fitHeight="259.0" fitWidth="214.0" layoutX="137.0" layoutY="115.0" opacity="0.22" pickOnBounds="true">
          <image>

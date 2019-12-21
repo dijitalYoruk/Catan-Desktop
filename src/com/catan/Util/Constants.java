@@ -101,6 +101,8 @@ public class Constants {
     public static final String DEVELOPMENT_CARD_KNIGHT  = "Knight Development Card";
     public static final String DEVELOPMENT_CARD_MONOPOL = "Monopoly Development Card";
 
+    public static final String DEVELOPMENT_CARD_VIEW_CLOSE_ICON = "./com/catan/assets/closeIcon.png";
+
     public static final ArrayList<String> developmentCardNames = new ArrayList<>(
             Arrays.asList(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE,
                           Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION,
