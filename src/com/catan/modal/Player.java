@@ -11,6 +11,7 @@ public class Player {
     private HashMap<String, ArrayList<SourceCard>> sourceCards;
     private HashMap<String, Integer> developmentCards;
     private ArrayList<Settlement> settlements;
+    private ArrayList<Harbour> harbours;
     private ArrayList<Road> roads;
     private String color;
     private String name;
@@ -28,6 +29,7 @@ public class Player {
         settlements = new ArrayList<>();
         sourceCards = new HashMap<>();
         roads = new ArrayList<>();
+        harbours = new ArrayList<>();
         this.victoryPoints = 0;
         this.knightCount = 0;
         this.color = color;
@@ -106,6 +108,14 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Harbour> getHarbours() { 
+        return harbours; 
     }
 
     public void incrementKnightCount() {
@@ -257,6 +267,10 @@ public class Player {
         developmentCards.put(cardType, count - 1);
     }
 
+    public boolean hasDevelopmentCard(DevelopmentCard card) {
+        return developmentCards.get(card.getName()) > 0;
+    }
+
     public HashMap<String, Integer> getDevelopmentCards() {
         return developmentCards;
     }
@@ -272,18 +286,19 @@ public class Player {
     }
 
     public void buyDevelopmentCard(Chest chest) {
-        try {
-            boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
-            if (hasEnoughResources) {
-                DevelopmentCard card = chest.getDevelopmentCard();
+        boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
+        if (hasEnoughResources) {
+            DevelopmentCard card = chest.getDevelopmentCard();
+            if (card != null) {
                 addDevelopmentCard(card.getName());
                 System.out.println("==============================================================================================");
                 System.out.println(getName() + " bought " + card.getName());
                 System.out.println("==============================================================================================");
+            } else {
+                System.out.println("==============================================================================================");
+                System.out.println("No Development Cards are left in the chest.");
+                System.out.println("==============================================================================================");
             }
-        }
-        catch(Exception e){
-            e.printStackTrace();
         }
     }
 
@@ -306,4 +321,5 @@ public class Player {
 
         victoryPoints += pointsFromVictoryPointsCard;
     }
+
 }

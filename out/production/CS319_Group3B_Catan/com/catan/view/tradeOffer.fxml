@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="775.0" prefWidth="1116.0" style="-fx-background-color: #FFD692;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTradeOffer">
+<AnchorPane fx:id="root" prefHeight="775.0" prefWidth="1116.0" style="-fx-background-color: #FFD692;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTradeOffer">
    <children>
       <Button fx:id="requestButton" layoutX="765.0" layoutY="33.0" mnemonicParsing="false" onAction="#requestTrade" prefHeight="52.0" prefWidth="132.0" styleClass="trade-pane-button" text="%tradeOfferView_Request" />
       <Button fx:id="clearTradeButton" layoutX="878.0" layoutY="33.0" mnemonicParsing="false" onAction="#clearTrade" prefHeight="52.0" prefWidth="153.0" styleClass="trade-pane-button" text="%tradeOfferView_Clear" />
@@ -78,7 +78,7 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eec669" height="200.0" stroke="BLACK" strokeType="INSIDE" width="700.0" />
             <Rectangle id="selector-bg" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="215.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="270.0" />
-            <ComboBox fx:id="selectorTrade" layoutX="231.0" layoutY="22.0" onAction="#selectPlayerToBeTraded" prefHeight="25.0" prefWidth="238.0" promptText="aaaaaa" style="-fx-font: 20;" />
+            <ComboBox fx:id="selectorTrade" layoutX="231.0" layoutY="18.0" onAction="#selectPlayerToBeTraded" prefHeight="25.0" prefWidth="238.0" promptText="aaaaaa" style="-fx-font: 20;" />
             <ImageView fx:id="imgRequestBrick" fitHeight="96.0" fitWidth="73.0" layoutX="26.0" layoutY="79.0" onMouseClicked="#requestResource" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/resource_brick.jpg" />

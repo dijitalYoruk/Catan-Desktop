@@ -12,10 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -417,41 +414,41 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     private Label labelHexNum19;
     @FXML
-    private Polygon harbour18;
-    @FXML
-    private Polygon harbour17;
-    @FXML
-    private Polygon harbour16;
-    @FXML
-    private Polygon harbour15;
-    @FXML
-    private Polygon harbour14;
-    @FXML
-    private Polygon harbour13;
-    @FXML
     private Polygon harbour1;
     @FXML
     private Polygon harbour2;
     @FXML
     private Polygon harbour3;
     @FXML
-    private Polygon harbour12;
-    @FXML
-    private Polygon harbour11;
-    @FXML
-    private Polygon harbour10;
-    @FXML
-    private Polygon harbour9;
-    @FXML
-    private Polygon harbour8;
-    @FXML
-    private Polygon harbour7;
-    @FXML
-    private Polygon harbour6;
+    private Polygon harbour4;
     @FXML
     private Polygon harbour5;
     @FXML
-    private Polygon harbour4;
+    private Polygon hexSea13;
+    @FXML
+    private Polygon hexSea12;
+    @FXML
+    private Polygon hexSea11;
+    @FXML
+    private Polygon hexSea10;
+    @FXML
+    private Polygon hexSea9;
+    @FXML
+    private Polygon hexSea1;
+    @FXML
+    private Polygon hexSea2;
+    @FXML
+    private Polygon hexSea8;
+    @FXML
+    private Polygon hexSea7;
+    @FXML
+    private Polygon hexSea6;
+    @FXML
+    private Polygon hexSea5;
+    @FXML
+    private Polygon hexSea4;
+    @FXML
+    private Polygon hexSea3;
     @FXML
     protected ScrollPane gameLogsScrollPane;
     @FXML
@@ -529,12 +526,12 @@ public class ControllerBaseGame extends ControllerBase {
     private ArrayList<Road> roads;
     private ArrayList<Settlement> settlements;
     private ArrayList<Player> players;
-    private ArrayList<Harbour> harbours;
     protected Settings settings;
     protected Die die;
     protected Player playerActual;
     protected Thief thief;
-
+    protected ArrayList<Harbour> harbours;
+    protected Player currentPlayer;
 
     @FXML
     public void initialize() {
@@ -542,13 +539,7 @@ public class ControllerBaseGame extends ControllerBase {
         vertices = new ArrayList<>();
         roads = new ArrayList<>();
         settlements = new ArrayList<>();
-        players = new ArrayList<>();
         harbours = new ArrayList<>();
-        playerActual = new PlayerActual(Constants.COLOR_RED, "PlayerActual");
-        players.add(playerActual);
-        players.add(new PlayerAI(Constants.COLOR_BLUE, "PlayerArtificial1"));
-        players.add(new PlayerAI(Constants.COLOR_PURPLE, "PlayerArtificial2"));
-        players.add(new PlayerAI(Constants.COLOR_GREEN, "PlayerArtificial3"));
         die = new Die();
 
         settings = new Settings();
@@ -568,24 +559,11 @@ public class ControllerBaseGame extends ControllerBase {
     }
 
     private void initializeHarbours() {
-        harbours.add( new Harbour(Constants.HARBOUR, harbour1, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour2, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour3, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour4, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour5, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour6, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour7, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour8, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour9, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour10, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour11, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour12, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour13, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour14, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour15, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour16, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour17, Constants.HARBOUR_NO_RATIO) );
-        harbours.add( new Harbour(Constants.HARBOUR, harbour18, Constants.HARBOUR_NO_RATIO) );
+        harbours.add( new Harbour(Constants.HARBOUR, harbour1, 2 , Constants.CARD_BRICK));
+        harbours.add( new Harbour(Constants.HARBOUR, harbour2, 3 , Constants.CARD_LUMBER));
+        harbours.add( new Harbour(Constants.HARBOUR, harbour3, 3 , Constants.CARD_ORE));
+        harbours.add( new Harbour(Constants.HARBOUR, harbour4, 2 , Constants.CARD_WOOL));
+        harbours.add( new Harbour(Constants.HARBOUR, harbour5, 2 , Constants.CARD_GRAIN));
 
         for (Harbour harbour: harbours) {
             Image img = new Image(Constants.PATH_HARBOUR);
@@ -593,6 +571,59 @@ public class ControllerBaseGame extends ControllerBase {
             harbour.getShape().setStroke(Color.color(0,0.3,1));
             harbour.getShape().setStrokeWidth(1);
         }
+
+        Image img = new Image(Constants.PATH_HARBOUR);
+        hexSea1.setFill(new ImagePattern(img));
+        hexSea1.setStroke(Color.color(0,0.3,1));
+        hexSea1.setStrokeWidth(1);
+
+        hexSea2.setFill(new ImagePattern(img));
+        hexSea2.setStroke(Color.color(0,0.3,1));
+        hexSea2.setStrokeWidth(1);
+
+        hexSea3.setFill(new ImagePattern(img));
+        hexSea3.setStroke(Color.color(0,0.3,1));
+        hexSea3.setStrokeWidth(1);
+
+        hexSea4.setFill(new ImagePattern(img));
+        hexSea4.setStroke(Color.color(0,0.3,1));
+        hexSea4.setStrokeWidth(1);
+
+        hexSea5.setFill(new ImagePattern(img));
+        hexSea5.setStroke(Color.color(0,0.3,1));
+        hexSea5.setStrokeWidth(1);
+
+        hexSea6.setFill(new ImagePattern(img));
+        hexSea6.setStroke(Color.color(0,0.3,1));
+        hexSea6.setStrokeWidth(1);hexSea1.setFill(new ImagePattern(img));
+
+        hexSea7.setFill(new ImagePattern(img));
+        hexSea7.setStroke(Color.color(0,0.3,1));
+        hexSea7.setStrokeWidth(1);
+
+        hexSea8.setFill(new ImagePattern(img));
+        hexSea8.setStroke(Color.color(0,0.3,1));
+        hexSea8.setStrokeWidth(1);
+
+        hexSea9.setFill(new ImagePattern(img));
+        hexSea9.setStroke(Color.color(0,0.3,1));
+        hexSea9.setStrokeWidth(1);
+
+        hexSea10.setFill(new ImagePattern(img));
+        hexSea10.setStroke(Color.color(0,0.3,1));
+        hexSea10.setStrokeWidth(1);
+
+        hexSea11.setFill(new ImagePattern(img));
+        hexSea11.setStroke(Color.color(0,0.3,1));
+        hexSea11.setStrokeWidth(1);
+
+        hexSea12.setFill(new ImagePattern(img));
+        hexSea12.setStroke(Color.color(0,0.3,1));
+        hexSea12.setStrokeWidth(1);
+
+        hexSea13.setFill(new ImagePattern(img));
+        hexSea13.setStroke(Color.color(0,0.3,1));
+        hexSea13.setStrokeWidth(1);
     }
 
     private void assignNumbersToHexes() {
@@ -1227,7 +1258,6 @@ public class ControllerBaseGame extends ControllerBase {
 
         while (placedFields != 19) {
             TerrainHex hex = terrainHexes.get(placedFields);
-
             int tmp = (int)(Math.random() * 6) + 1;
             Image img = null;
             Color color = null;
@@ -1379,4 +1409,17 @@ public class ControllerBaseGame extends ControllerBase {
         return null;
     }
 
+    protected void addHarboursToPlayer(Circle vertexShape) {
+        if (vertexShape == vertex1 || vertexShape == vertex2) {
+            currentPlayer.getHarbours().add(harbours.get(0));
+        } else if (vertexShape == vertex6 || vertexShape == vertex7) {
+            currentPlayer.getHarbours().add(harbours.get(1));
+        } else if (vertexShape == vertex27 || vertexShape == vertex38) {
+            currentPlayer.getHarbours().add(harbours.get(2));
+        } else if (vertexShape == vertex53 || vertexShape == vertex54) {
+            currentPlayer.getHarbours().add(harbours.get(3));
+        } else if (vertexShape == vertex17 || vertexShape == vertex18) {
+            currentPlayer.getHarbours().add(harbours.get(4));
+        }
+    }
 }

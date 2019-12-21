@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -46,6 +47,9 @@ public class ControllerPlayDevelopmentCard {
     private JFXButton buttonClose;
     @FXML
     private ImageView imgCloseButton;
+
+    @FXML
+    private AnchorPane root;
 
     // properties
     private Player player;
@@ -105,16 +109,16 @@ public class ControllerPlayDevelopmentCard {
         }
 
         // close window
-        if (card != null) {
+        if (card != null && player.hasDevelopmentCard(card)) {
+            player.removeDevelopmentCard(card.getName());
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.close();
             interfaceCard.setDevelopmentCardInvention(card);
         }
     }
-
     @FXML
-    public void closeDevelopmentCardInterface(ActionEvent event){
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    public void closeDialog(ActionEvent actionEvent) {
+        Stage window = (Stage) root.getScene().getWindow();
         window.close();
     }
 }

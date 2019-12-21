@@ -10,7 +10,7 @@ public class Instruction {
     public Instruction() {
         generalInstruction = "";
         try {
-            File file = new File("./src/com/catan/persistent_data/instructions.txt");
+            File file = new File("./src/com/catan/com.catan.persistentData/instructions.txt");
             Scanner sc = new Scanner(file);
             while (sc.hasNextLine()) {
                 generalInstruction += " • " + sc.nextLine() + "\n";

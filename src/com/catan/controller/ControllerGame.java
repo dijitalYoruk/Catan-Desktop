@@ -3,29 +3,20 @@ package com.catan.controller;
 import com.catan.Util.Constants;
 import com.catan.interfaces.*;
 import com.catan.modal.*;
-import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
-import com.sun.deploy.security.SelectableSecurityManager;
-import javafx.animation.Animation;
 import com.catan.Util.UTF8Control;
-import com.catan.interfaces.*;
-import com.catan.modal.*;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -34,17 +25,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.*;
-import java.util.stream.Collectors;
-import javafx.util.Duration;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
@@ -66,14 +49,13 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private boolean isRoadBuild = false;
     private int initialStepCount = 0;
     private Settlement tempSettlement;
-    private Player currentPlayer;
     private int playerTurn = 0;
     private boolean thiefCanMove = false;
     private boolean initialThief = true;
     private GameLog gameLog;
-    int gameLogIterator = 0;
+    private int gameLogIterator = 0;
     private int noOfRound = 1;
-    FlowPane gameLogsFlowPane;
+    private FlowPane gameLogsFlowPane;
     private ArrayList<ImageView> lumberImages = new ArrayList<>();
     private ArrayList<ImageView> brickImages = new ArrayList<>();
     private ArrayList<ImageView> grainImages = new ArrayList<>();
@@ -87,8 +69,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private ArrayList<ImageView> roadDestructionImages = new ArrayList<>();
     private Pane[] resourceCardPanes = new Pane[5];
     private Pane[] developmentCardPanes = new Pane[6];
-    double[][] resourceCardsPaneLocations = new double[5][2];
-    double[][] developmentCardsPaneLocations = new double[6][2];
+    private double[][] resourceCardsPaneLocations = new double[5][2];
+    private double[][] developmentCardsPaneLocations = new double[6][2];
     private Road tempRoad;
     private Chest chest;
 
@@ -101,9 +83,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         this.developmentCardInvention = developmentCardInvention;
     }
 
-    @Override
-    public void initialize() {
-        super.initialize();
+    public void init(ArrayList<Player> players) {
+        setPlayers(players);
         developmentCardExchangeProfit = null;
         developmentCardDestroyRoad = null;
         developmentCardInvention = null;
@@ -113,6 +94,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
         gameLog = GameLog.getInstance();
         initializeComponentsRelatedToActualPlayerCardsPane();
+        for (Player player: getPlayers()) {
+            if (player instanceof PlayerActual) {
+                playerActual = player;
+            }
+        }
+        endTurn(null);
     }
 
     // this obnoxiously named function initializes the components related to the
@@ -285,7 +272,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             dialog.initOwner(root.getScene().getWindow());
             dialog.setTitle(title);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
             fxmlLoader.setLocation(getClass().getClassLoader().getResource(viewPath));
             fxmlLoader.setResources(bundle);
             dialog.getDialogPane().setContent(fxmlLoader.load());
@@ -305,7 +292,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             // Trade offer dialog.
             else if (viewPath.equals(Constants.PATH_VIEW_TRADE_OFFER)) {
                 ControllerTradeOffer tradeController = fxmlLoader.getController();
-                // TODO actual player needs to be passed here afterwards.
                 tradeController.setActualPlayerAndLabels(playerActual);
                 tradeController.setAllPlayers(getPlayers());
             }
@@ -379,7 +365,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     @FXML
-    public void endTurn(ActionEvent actionEvent) throws IOException {
+    public void endTurn(ActionEvent actionEvent) {
         if(isStepInitial) {
             initialTurn();
         } else if (isStepActual) {
@@ -408,8 +394,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         resourceCardsMap.put(Constants.CARD_BRICK, new Object[] {brickLabel, brickImages, paneBricks, Constants.PATH_RESOURCE_BRICK});
         resourceCardsMap.put(Constants.CARD_GRAIN, new Object[] {grainLabel, grainImages, paneGrains, Constants.PATH_RESOURCE_GRAIN});
 
-        Player actualPlayer = getPlayers().get(0);
-        HashMap<String, ArrayList<SourceCard>> sourceCards = actualPlayer.getSourceCards();
+        HashMap<String, ArrayList<SourceCard>> sourceCards = playerActual.getSourceCards();
         Set<String> keys = sourceCards.keySet();
 
         for (String key: keys) {
@@ -453,7 +438,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         developmentCardsMap.put(Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION, new Object[] {roadDestructionLabel, roadDestructionImages, paneRoadDestruction, Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION});
         developmentCardsMap.put(Constants.DEVELOPMENT_CARD_VICTORY_POINT, new Object[] {victoryLabel, victoryImages, paneVictory, Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT});
 
-        HashMap<String, Integer> developmentCards = actualPlayer.getDevelopmentCards();
+        HashMap<String, Integer> developmentCards = playerActual.getDevelopmentCards();
         Set<String> developmentKeys = developmentCards.keySet();
         for (String key: developmentKeys) {
             // this object array contains all card related objects in every iteration
@@ -723,7 +708,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         rollDie();
 
         System.out.println("----------------------------------------------------------------------------------------------");
-        System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor() + " | Die Result: " + die.getDieSum());
+        System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor() + " | Die Result: " +
+                die.getDieSum() + " | Victory Points: " + currentPlayer.getVictoryPoints());
         System.out.println("----------------------------------------------------------------------------------------------");
         gameLog.addLog("Player " + playerTurn + ": has rolled " + die.getDieSum() + ".", currentPlayer.getColor());
         playerTurn++;
@@ -737,8 +723,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             currentPlayer.setLongestArmyCard(chest.getLongestRoad());
 
         currentPlayer.refreshVictoryPoints();
-        //System.out.println("------------"+currentPlayer.getColor()+" LongestRoad"+ currentPlayer.getLongestRoad()+"----------");
-        System.out.println("--------------------------Victory Points:"+currentPlayer.getColor()+"  "+currentPlayer.getVictoryPoints() +"---------------------------------------");
 
         if(currentPlayer.getVictoryPoints() >= getSettings().getVictoryThreshold()) {
             openDialog(Constants.PATH_VIEW_ENDGAME, "The game end.", null, null);
@@ -868,6 +852,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     @Override
     public void makeConstructionActual(Circle circle) {
+        if (selectedConstruction == null) return;
+
         if (!currentPlayer.hasEnoughResources(selectedConstruction)) {
             if(currentPlayer instanceof PlayerActual)
                 displayWarning(Constants.CONSTRUCTION_STRING);
@@ -882,9 +868,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     case Constants.CITY:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
                         settlement = new City(imagePath, vertex, currentPlayer);
-                        // FIXME: playerTurn is not who it should correspond to
-                        // FIXME: ex: when blue constructs city, the color is purple. something wrong with the
-                        // FIXME: incrementation of the currentPlayer variable. It works for some players though.
                         gameLog.addLog("Player " + playerTurn + ": has built a city.", getPlayers().get(playerTurn % 4).getColor());
                         break;
                     case Constants.VILLAGE:
@@ -904,6 +887,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 getSettlements().add(settlement);
                 currentPlayer.getSettlements().add(settlement);
                 vertex.setSettlement(settlement);
+                //harbour
+                String vertexID = vertex.getShape().getId();
+                addHarboursToPlayer(circle);
+                //
                 currentPlayer.subtractPriceOfConstruction(selectedConstruction);
                 currentPlayer.showSourceCards();
                 unselectConstructions(null);
@@ -1025,7 +1012,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     // ------------ INITIAL STEP METHODS ---------------- //
 
-    private void initialTurn() throws IOException {
+    private void initialTurn()  {
         while (true) {
             playerTurn = playerTurn % 4;
             Player player = getPlayers().get(playerTurn);
@@ -1158,6 +1145,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 getSettlements().add(settlement);
                 currentPlayer.getSettlements().add(settlement);
                 vertex.setSettlement(settlement);
+                //harbour
+                String vertexID = vertex.getShape().getId();
+                addHarboursToPlayer(circle);
+
                 unselectConstructions(null);
                 activatePlayerVertices();
                 tempSettlement = settlement;
