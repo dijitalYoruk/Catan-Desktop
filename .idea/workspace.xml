@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/gameEntrance.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/gameEntrance.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/catan/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/settings.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
