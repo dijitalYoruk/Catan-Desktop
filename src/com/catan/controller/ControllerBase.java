@@ -66,4 +66,13 @@ public class ControllerBase {
         }
     }
 
+    void updateSoundImg() {
+        if (!MusicPlayer.getMusicPlayer().isPlaying()) {
+            Image image = new Image(Constants.IMG_SOUND_UNMUTED);
+            imgSound.setImage(image);
+        } else {
+            Image image = new Image(Constants.IMG_SOUND_MUTE);
+            imgSound.setImage(image);
+        }
+    }
 }

@@ -72,6 +72,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     public void init(ArrayList<Player> players) {
+        updateSoundImg();
         setPlayers(players);
         developmentCardExchangeProfit = null;
         developmentCardDestroyRoad = null;

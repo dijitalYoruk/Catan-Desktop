@@ -42,6 +42,7 @@ public class ControllerSettings extends ControllerBase {
     @FXML
     public void initialize() {
         super.initialize();
+        updateSoundImg();
         languageMappings.put("English", "en");
         languageMappings.put("Turkce", "tr");
         languageMappings.put("en", "English");

@@ -22,7 +22,7 @@ public class ControllerInstructions extends ControllerBase {
     int currentPageNumber = 1;
     @FXML
     public void initialize() {
-
+        updateSoundImg();
         leftRulesPage.setVisible(false);
         currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
                 Settings.getInstance().getCurrentLanguage() +"/catan_rules_page_"+currentPageNumber+".jpg"));

@@ -85,6 +85,7 @@ public class ControllerGameEntrance extends ControllerBase{
     @FXML
     public void initialize() {
         super.initialize();
+        updateSoundImg();
         colorShapes = new ArrayList<>(Arrays.asList(
                         colorRed, colorGreen,
                         colorBlue, colorPurple));
@@ -232,19 +233,4 @@ public class ControllerGameEntrance extends ControllerBase{
         chosenColor.setStrokeWidth(3);
     }
 
-    @FXML
-    public void returnToProgram(ActionEvent actionEvent) {
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
-                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-            Parent root = fxmlLoader.load(getClass().getResource("../view/program.fxml"), bundle);
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.getScene().setRoot(root);
-            GameLog gameLog = GameLog.getInstance();
-            gameLog.clear();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
