@@ -35,7 +35,12 @@
             </JFXButton>
          </children>
       </VBox>
-      <AnchorPane layoutX="1813.0" layoutY="41.0" prefHeight="70.0" prefWidth="70.0">
+      <ImageView fitHeight="476.0" fitWidth="582.0" layoutX="1265.0" layoutY="-64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icon_catan.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="1815.0" layoutY="14.0" prefHeight="70.0" prefWidth="70.0">
          <children>
             <Circle fill="#ffca1f" layoutX="35.0" layoutY="36.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
             <ImageView fx:id="imgSound" fitHeight="38.0" fitWidth="52.0" layoutX="16.0" layoutY="17.0" onMouseClicked="#arrangeSound" pickOnBounds="true" preserveRatio="true">
@@ -45,10 +50,5 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="397.0" fitWidth="265.0" layoutX="1520.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/karadeniz/figure1.gif" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

@@ -52,13 +52,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int initialStepCount = 0;
     private Settlement tempSettlement;
     private int playerTurn = 0;
-    private boolean thiefCanMove = false;
-    private boolean initialThief = true;
     private GameLog gameLog;
     private int gameLogIterator = 0;
     private int noOfRound = 1;
     private FlowPane gameLogsFlowPane;
-
     private Road tempRoad;
     private Chest chest;
 
@@ -205,7 +202,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             dialog.initOwner(root.getScene().getWindow());
             dialog.setTitle(title);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
             fxmlLoader.setLocation(getClass().getClassLoader().getResource(viewPath));
             fxmlLoader.setResources(bundle);
             dialog.getDialogPane().setContent(fxmlLoader.load());
@@ -322,11 +320,13 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         Player strongestArmyOwner = chest.getStrongestArmyOwnerPlayer();
         if (longestRoadOwner != null) {
             longestRoadOwnerLabel.setText("  " + StringUtils.capitalize(longestRoadOwner.getName()) + "  ");
-            longestRoadOwnerLabel.setStyle("-fx-background-color:" + longestRoadOwner.getColor() + ";" + "-fx-text-fill: white;" + "-fx-font-size: 18px;");
+            longestRoadOwnerLabel.setStyle("-fx-background-color:" + longestRoadOwner.getColor() + ";" +
+                    "-fx-text-fill: white;" + "-fx-font-size: 18px;");
         }
         if (strongestArmyOwner != null) {
             strongestArmyOwnerLabel.setText("  " + StringUtils.capitalize(strongestArmyOwner.getName()) + "  ");
-            strongestArmyOwnerLabel.setStyle("-fx-background-color:" + strongestArmyOwner.getColor() + ";" + "-fx-text-fill: white;" + "-fx-font-size: 18px;");
+            strongestArmyOwnerLabel.setStyle("-fx-background-color:" + strongestArmyOwner.getColor() + ";" +
+                    "-fx-text-fill: white;" + "-fx-font-size: 18px;");
         }
     }
 
@@ -717,7 +717,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             openDialog(Constants.PATH_VIEW_ENDGAME, "The game end.", null, null);
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+                ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                        new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
                 Parent root = fxmlLoader.load(getClass().getResource("../view/program.fxml"),bundle);
                 Stage window = (Stage) getImgDie1().getScene().getWindow();
                 window.getScene().setRoot(root);
@@ -859,17 +860,20 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     case Constants.CITY:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
                         settlement = new City(imagePath, vertex, currentPlayer);
-                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) +" has built a city.", getPlayers().get(playerTurn % 4).getColor());
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) +" has built a city.",
+                                getPlayers().get(playerTurn % 4).getColor());
                         break;
                     case Constants.VILLAGE:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
                         settlement = new Village(imagePath, vertex, currentPlayer);
-                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has built a village.", getPlayers().get(playerTurn % 4).getColor());
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has built a village.",
+                                getPlayers().get(playerTurn % 4).getColor());
                         break;
                     default:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CIVILISATION);
                         settlement = new Civilisation(imagePath, vertex, currentPlayer);
-                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has built civilisation.", getPlayers().get(playerTurn % 4).getColor());
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has built civilisation.",
+                                getPlayers().get(playerTurn % 4).getColor());
                         break;
                 }
                 Image img = new Image(settlement.getImagePath());

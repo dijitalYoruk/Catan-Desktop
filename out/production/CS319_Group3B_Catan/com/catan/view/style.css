@@ -117,7 +117,19 @@
 .warning-label{
     -fx-padding: 20px;
     -fx-background-color: red;
+    -fx-text-fill: white;
     -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-font-color:orange;
+    -fx-background-radius: 40;
+    -fx-pref-width: 340;
+    -fx-pref-height: 100;
+    -fx-font-size: 20;
+}
+
+.success-label{
+    -fx-padding: 20px;
+    -fx-background-color: orange;
     -fx-font-family: "Book Antiqua";
     -fx-font-color:orange;
     -fx-background-radius: 40;
@@ -175,14 +187,25 @@
     -fx-pref-height: 70;
     -fx-font-size: 20;
 }
-.instructions-back-button {
+
+.back-button {
     -fx-background-color: orange;
     -fx-font-family: "Book Antiqua";
-    -fx-background-radius: 30;
+    -fx-background-radius: 100;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-image: url("../assets/default/icon_back.jpg");
+    -fx-background-image: url("../assets/backbutton.png");
+    -fx-pref-height: 60px;
+    -fx-pref-width: 60px;
     -fx-background-size: 50px;
+}
+
+.page-header {
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+    -fx-text-fill: orange;
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
 }
 
 #selector-bg {
@@ -277,9 +300,10 @@ trade-pane-bg {
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-background-radius: 40;
-    -fx-pref-width: 200;
+    -fx-pref-width: 250;
     -fx-pref-height: 50;
     -fx-font-size: 20;
+    -fx-alignment: center;
 }
 
 #selector-bg-setings {

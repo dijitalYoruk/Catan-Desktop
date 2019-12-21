@@ -303,9 +303,33 @@
             <Image url="@../assets/default/icon_frame.png" />
          </image>
       </ImageView>
-      <HBox layoutX="809.0" layoutY="931.0" prefHeight="100.0" prefWidth="200.0" />
+      <HBox fx:id="horonBox" layoutX="1548.0" layoutY="630.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="380.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/karadeniz/figure1.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="380.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/karadeniz/figure1.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutX="762.0" layoutY="900.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <HBox prefHeight="116.0" prefWidth="480.0">
+               <children>
+                  <Circle fx:id="imgRoad" fill="DODGERBLUE" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Circle fx:id="imgVillage" fill="DODGERBLUE" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Circle fx:id="imgCity" fill="DODGERBLUE" layoutX="61.0" layoutY="61.0" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Circle fx:id="imgCivilisation" fill="DODGERBLUE" layoutX="162.0" layoutY="60.0" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
+               </children>
+            </HBox>
+         </children></HBox>
       <Rectangle fx:id="imgPriceCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="187.0" layoutX="144.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="292.0" />
-      <VBox layoutX="1547.0" layoutY="98.0" prefHeight="170.0" prefWidth="300.0">
+      <VBox layoutX="1571.0" layoutY="106.0" prefHeight="170.0" prefWidth="300.0">
          <children>
             <JFXButton onAction="#playDevelopmentCard" styleClass="game-button" text="%gameView_playDevelopmentCard" />
             <JFXButton onAction="#buyDevelopmentCard" styleClass="game-button" text="%gameView_buyDevelopmentCard">
@@ -343,8 +367,8 @@
          </children>
       </HBox>
       <JFXButton layoutX="24.0" layoutY="24.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
-      <Label fx:id="labelWarning" alignment="CENTER" layoutX="1510.0" layoutY="931.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
-      <ScrollPane fx:id="gameLogsScrollPane" hbarPolicy="NEVER" layoutX="1514.0" layoutY="297.0" prefHeight="314.0" prefWidth="367.0" style="-fx-background: #FFC41F;">
+      <Label fx:id="labelWarning" alignment="CENTER" layoutX="1546.0" layoutY="931.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="warning-label" text="You do not have enough resource for road" wrapText="true" />
+      <ScrollPane fx:id="gameLogsScrollPane" hbarPolicy="NEVER" layoutX="1527.0" layoutY="297.0" prefHeight="314.0" prefWidth="367.0" style="-fx-background: #FFC41F;">
          <content>
             <FlowPane prefHeight="307.0" prefWidth="359.0" />
          </content>
@@ -585,15 +609,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <HBox layoutX="773.0" layoutY="926.0" prefHeight="137.0" prefWidth="501.0">
-         <children>
-            <Circle fx:id="imgRoad" fill="DODGERBLUE" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
-            <Circle fx:id="imgVillage" fill="DODGERBLUE" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
-            <Circle fx:id="imgCity" fill="DODGERBLUE" layoutX="61.0" layoutY="61.0" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
-            <Circle fx:id="imgCivilisation" fill="DODGERBLUE" layoutX="162.0" layoutY="60.0" onMouseClicked="#selectConstruction" radius="60.0" stroke="#ffdd21" strokeType="INSIDE" strokeWidth="5.0" />
-         </children>
-      </HBox>
-      <Label fx:id="labelSuccess" alignment="CENTER" layoutX="1510.0" layoutY="931.0" opacity="0.0" prefHeight="80.0" prefWidth="388.0" styleClass="success-label" text="You do not have enough resource for road" wrapText="true" />
+      <Label fx:id="labelSuccess" alignment="CENTER" layoutX="1546.0" layoutY="931.0" opacity="0.0" prefHeight="80.0" prefWidth="320.0" styleClass="success-label" text="You do not have enough resource for road" wrapText="true" />
 
 
 

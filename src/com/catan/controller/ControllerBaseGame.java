@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -532,9 +533,13 @@ public class ControllerBaseGame extends ControllerBase {
     private ImageView cardHarbour4;
     @FXML
     private ImageView cardHarbour5;
+    @FXML
     protected Label strongestArmyOwnerLabel;
     @FXML
     protected Label longestRoadOwnerLabel;
+    @FXML
+    private HBox horonBox;
+
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;
@@ -589,6 +594,10 @@ public class ControllerBaseGame extends ControllerBase {
         imgDie2.setFill(new ImagePattern(img2ForDice2));
         Image img = new Image(Constants.PATH_CARD_PRICE());
         imgPriceCard.setFill(new ImagePattern(img));
+
+        if (!Settings.getInstance().getCurrentTheme().equals(Constants.THEME_KARADENIZ)) {
+            horonBox.setVisible(false);
+        }
 
         root.setStyle(
                 "-fx-background-image: url("+ Constants.PATH_BG_GAME() +");\n" +
