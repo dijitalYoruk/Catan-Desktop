@@ -28,9 +28,9 @@ public class Constants {
     public static final Color COLOR_ROAD_SELECTION_VERTEX = Color.valueOf("#FF9800");
 
     public static final String PATH_ROAD = "./com/catan/assets/road.png";
-    public static final String PATH_VILLAGE = "./com/catan/assets/village.jpg";
+    public static final String PATH_VILLAGE = "./com/catan/assets/village.png";
     public static final String PATH_CITY = "./com/catan/assets/city.png";
-    public static final String PATH_CIVILISATION = "./com/catan/assets/civilisation.jpg";
+    public static final String PATH_CIVILISATION = "./com/catan/assets/civilisation.png";
     public static final String PATH_CARD_PRICE = "./com/catan/assets/price_card.png";
     public static final String PATH_HARBOUR = "./com/catan/assets/harbour.gif";
 
@@ -69,7 +69,7 @@ public class Constants {
 
     public static final Color COLOR_RGB_RED = Color.valueOf("#ff0000");
     public static final Color COLOR_RGB_GREEN = Color.valueOf("#00ff00");
-    public static final Color COLOR_RGB_PURPLE = Color.valueOf("#ff00f7");
+    public static final Color COLOR_RGB_PURPLE = Color.valueOf("#9013FE");
     public static final Color COLOR_RGB_BLUE = Color.valueOf("#0000ff");
     public static final String ICON_THIEF =  "./com/catan/assets/icon_thief.gif";
 

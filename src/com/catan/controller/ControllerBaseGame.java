@@ -316,13 +316,13 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     protected Circle imgMovingThief;
     @FXML
-    protected Rectangle imgRoad;
+    protected Circle imgRoad;
     @FXML
-    protected Rectangle imgVillage;
+    protected Circle imgVillage;
     @FXML
-    protected Rectangle imgCity;
+    protected Circle imgCity;
     @FXML
-    protected Rectangle imgCivilisation;
+    protected Circle imgCivilisation;
     @FXML
     protected Rectangle imgPriceCard;
     @FXML
@@ -564,15 +564,15 @@ public class ControllerBaseGame extends ControllerBase {
         harbours.add( new Harbour(Constants.HARBOUR, harbour3, 3 , Constants.CARD_ORE));
         harbours.add( new Harbour(Constants.HARBOUR, harbour4, 2 , Constants.CARD_WOOL));
         harbours.add( new Harbour(Constants.HARBOUR, harbour5, 2 , Constants.CARD_GRAIN));
-
+        Image img = new Image(Constants.PATH_HARBOUR);
         for (Harbour harbour: harbours) {
-            Image img = new Image(Constants.PATH_HARBOUR);
+
             harbour.getShape().setFill(new ImagePattern(img));
             harbour.getShape().setStroke(Color.color(0,0.3,1));
             harbour.getShape().setStrokeWidth(1);
         }
 
-        Image img = new Image(Constants.PATH_HARBOUR);
+
         hexSea1.setFill(new ImagePattern(img));
         hexSea1.setStroke(Color.color(0,0.3,1));
         hexSea1.setStrokeWidth(1);

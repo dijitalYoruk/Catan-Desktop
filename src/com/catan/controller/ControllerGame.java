@@ -24,7 +24,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import java.util.Locale;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -162,7 +162,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
     @FXML
     public void selectConstruction(MouseEvent mouseEvent) {
-        Rectangle rectangle = (Rectangle) mouseEvent.getSource();
+        Circle rectangle = (Circle) mouseEvent.getSource();
         if (isStepInitial) {
             selectConstructionInitial(rectangle);
         } else {
@@ -358,7 +358,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     public void makeConstruction(MouseEvent mouseEvent) {
         Circle circle = (Circle) mouseEvent.getSource();
         if (isStepInitial) {
-            makeConstructionInitial(circle);
+            makeConstructionInitial(getCorrespondingVertex(circle));
         } else if (isStepActual) {
             makeConstructionActual(circle);
         }
@@ -727,7 +727,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if(currentPlayer.getVictoryPoints() >= getSettings().getVictoryThreshold()) {
             openDialog(Constants.PATH_VIEW_ENDGAME, "The game end.", null, null);
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+                Parent root = fxmlLoader.load(getClass().getResource("../view/program.fxml"),bundle);
                 Stage window = (Stage) getImgDie1().getScene().getWindow();
                 window.getScene().setRoot(root);
             } catch (IOException e) {
@@ -976,12 +978,16 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    private void selectConstructionActual(Rectangle rectangle) {
+    private void selectConstructionActual(Circle rectangle) {
         // setting all of the pane as unselected
         imgRoad.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgRoad.setStrokeWidth(5);
         imgCity.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCity.setStrokeWidth(5);
         imgVillage.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgVillage.setStrokeWidth(5);
         imgCivilisation.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCivilisation.setStrokeWidth(5);
 
         // setting selected construction
         if (rectangle == imgRoad) {
@@ -1004,6 +1010,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
         // setting the color of selected construction.
         rectangle.setStroke(Constants.COLOR_CONSTRUCTION_SELECTED);
+        rectangle.setStrokeWidth(5);
 
         // disabling road selection
         refreshRoadSelectionVertices();
@@ -1053,8 +1060,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void playAIInitialTurn() {
         tempRoad = null;
         tempSettlement = null;
-
-        while (tempSettlement == null || tempRoad == null) {
+        int count = 0;
+        while ((tempSettlement == null || tempRoad == null)&count<400) {
+            count++;
             if ((tempRoad != null)) {
                 tempRoad.getRoad().setStroke(Color.BLACK);
                 tempRoad.getRoad().setVisible(false);
@@ -1063,23 +1071,27 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             }
 
             ArrayList<Vertex> outerVertices = new ArrayList<>();
-            for(int i = 0; i < vertices.size(); i++)
-                if(vertices.get(i).getFields().size() < 3)
+            for (int i = 0; i < vertices.size(); i++)
+                if (vertices.get(i).getFields().size() < 3)
                     outerVertices.add(vertices.get(i));
 
             ArrayList<Vertex> thiefVertices = thief.getTerrainHex().getVertices();
-
             Set<Vertex> set = new HashSet<>(outerVertices);
-            set.addAll(thiefVertices);
+            if(count < 180)
+                set.addAll(thiefVertices);
             ArrayList<Vertex> undesiredVertices = new ArrayList<>(set);
-
             ArrayList<Vertex> desiredVertices = new ArrayList<>();
-            for(int i = 0; i < terrainHexes.size(); i++) {
+
+
+            for (int i = 0; i < terrainHexes.size(); i++) {
                 int number = terrainHexes.get(i).getNumberOnHex();
-                if (number == 5 || number == 6 || number == 7|| number == 8)
-                {
+                if (number == 5 || number == 6 || number == 7 || number == 8) {
                     desiredVertices.addAll(terrainHexes.get(i).getVertices());
                 }
+                if(count > 110) {
+                    desiredVertices.addAll(terrainHexes.get(i).getVertices());
+                }
+
             }
 
             Set<Vertex> vertexSet = new HashSet<>(desiredVertices);
@@ -1087,19 +1099,34 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             desiredVertices.addAll(vertexSet);
             desiredVertices.removeAll(new HashSet<>(undesiredVertices));
 
+            for (int i = 0; i < vertices.size(); i++){
+                for (int j = 0; j < desiredVertices.size(); j++) {
+                    if (vertices.get(i).hasConstruction() & vertices.get(i).getShape() == desiredVertices.get(j).getShape())
+                        desiredVertices.remove(desiredVertices.get(j));
+                }
+            }
             activateAllVertices();
             setSelectedConstruction(Constants.ROAD);
             // setting first vertex of road;
             //int index = (int) (Math.random() * getActivatedVertices().size());
             Vertex vertex = desiredVertices.get ((int)(Math.random() * desiredVertices.size()));
-            desiredVertices.remove(vertex);
-            makeConstructionInitial(vertex.getShape());
+            if(isVertexSuitableForConstruction(vertex))
+                desiredVertices.remove(vertex);
 
 
             // setting second vertex of road;
-            vertex = desiredVertices.get ((int)(Math.random() * desiredVertices.size()));
-            desiredVertices.remove(vertex);
-            makeConstructionInitial(vertex.getShape());
+            Vertex vertex2 = desiredVertices.get ((int)(Math.random() * desiredVertices.size()));
+            if(isVertexSuitableForConstruction(vertex2))
+                desiredVertices.remove(vertex2);
+
+            if(isVertexSuitableForConstruction(vertex) || isVertexSuitableForConstruction(vertex2)) {
+                makeConstructionInitial(vertex);
+                makeConstructionInitial(vertex2);
+                if(!isVertexSuitableForConstruction(vertex))
+                    desiredVertices.remove(vertex);
+                if(!isVertexSuitableForConstruction(vertex2))
+                    desiredVertices.remove(vertex2);
+            }
 
             setSelectedConstruction(Constants.VILLAGE);
             if (tempRoad != null) {
@@ -1108,20 +1135,19 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 twoVertex.add(tempRoad.getVertices().get(1));
 
                 if (isVertexSuitableForConstruction(twoVertex.get(0)) & !undesiredVertices.contains(twoVertex.get(0))) {
-                    makeConstructionInitial(twoVertex.get(0).getShape());
+                    makeConstructionInitial(twoVertex.get(0));
                 }
-                else if (isVertexSuitableForConstruction(twoVertex.get(1))){
-                    makeConstructionInitial(twoVertex.get(1).getShape());
+                else if (isVertexSuitableForConstruction(twoVertex.get(1)) & !undesiredVertices.contains(twoVertex.get(1))){
+                    makeConstructionInitial(twoVertex.get(1));
                 }
-                else
-                    makeConstructionInitial(twoVertex.get(0).getShape());
+
             }
         }
         tempRoad = null;
         tempSettlement = null;
     }
 
-    private void makeConstructionInitial(Circle circle) {
+    private void makeConstructionInitial(Vertex vertex) {
         if (selectedConstruction.equals(Constants.CITY)   ||
             selectedConstruction.equals(Constants.VILLAGE)||
             selectedConstruction.equals(Constants.CIVILISATION)) {
@@ -1130,7 +1156,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 selectConstructionInitial(imgVillage);
             }
 
-            Vertex vertex = getCorrespondingVertex(circle);
+            //Vertex vertex = getCorrespondingVertex(circle);
             if (vertex != null && isVertexSuitableForConstruction(vertex) && vertex.isActive()) {
                 isConstructionBuild = true;
                 String imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
@@ -1147,7 +1173,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 vertex.setSettlement(settlement);
                 //harbour
                 String vertexID = vertex.getShape().getId();
-                addHarboursToPlayer(circle);
+                addHarboursToPlayer(vertex.getShape());
 
                 unselectConstructions(null);
                 activatePlayerVertices();
@@ -1165,7 +1191,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 }
 
                 constructionUnselect = false;
-                Vertex vertex = getCorrespondingVertex(circle);
+                //Vertex vertex = getCorrespondingVertex(circle);
                 if (vertex != null && !vertex.hasConstruction()) {
                     roadVertex1 = vertex;
                     Color color = Constants.COLOR_ROAD_SELECTION_VERTEX;
@@ -1174,7 +1200,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             }
             else {
                 constructionUnselect = true;
-                Vertex vertex = getCorrespondingVertex(circle);
+                //Vertex vertex = getCorrespondingVertex(circle);
                 if (vertex != null && !vertex.hasConstruction()) {
                     roadVertex2 = vertex;
                     constructRoad();
@@ -1187,12 +1213,16 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    private void selectConstructionInitial(Rectangle rectangle) {
+    private void selectConstructionInitial(Circle rectangle) {
         // setting all of the pane as unselected
         imgRoad.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgRoad.setStrokeWidth(5);
         imgCity.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCity.setStrokeWidth(5);
         imgVillage.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgVillage.setStrokeWidth(5);
         imgCivilisation.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCivilisation.setStrokeWidth(5);
 
         // setting selected construction
         if (rectangle == imgRoad) {
@@ -1217,7 +1247,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
         // setting the color of selected construction.
         rectangle.setStroke(Constants.COLOR_CONSTRUCTION_SELECTED);
-
+        rectangle.setStrokeWidth(5);
         // disabling road selection
         refreshRoadSelectionVertices();
         constructionUnselect = false;
