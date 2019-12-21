@@ -182,5 +182,6 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <JFXButton layoutX="34.0" layoutY="34.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
    </children>
 </AnchorPane>

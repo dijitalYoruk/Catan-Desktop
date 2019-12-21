@@ -15,8 +15,8 @@
 
 <AnchorPane id="settings-pane" prefHeight="860.0" prefWidth="1583.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerSettings">
    <children>
-      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc200" height="512.0" layoutX="689.0" layoutY="251.0" stroke="#ff6200" strokeType="INSIDE" strokeWidth="4.0" width="543.0" />
-      <VBox layoutX="749.0" layoutY="274.0" prefHeight="451.0" prefWidth="424.0">
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc200" height="512.0" layoutX="689.0" layoutY="217.0" stroke="#ff6200" strokeType="INSIDE" strokeWidth="4.0" width="543.0" />
+      <VBox layoutX="749.0" layoutY="240.0" prefHeight="451.0" prefWidth="424.0">
          <children>
             <HBox prefHeight="75.0" prefWidth="380.0">
                <children>
