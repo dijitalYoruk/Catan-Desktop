@@ -13,7 +13,6 @@ public class Vertex {
     private ArrayList<Vertex> neighbors;
     private Settlement settlement;
     private boolean isActive;
-    private String name;
     private Circle shape;
 
     // constructor

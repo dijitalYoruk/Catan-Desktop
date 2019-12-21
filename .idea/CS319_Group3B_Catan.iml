@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/jfoenix-8.0.8.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/jfoenix-8.0.8.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

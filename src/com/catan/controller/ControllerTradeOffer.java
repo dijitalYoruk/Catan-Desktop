@@ -79,6 +79,7 @@ public class ControllerTradeOffer {
     private AnchorPane root;
     @FXML
     ResourceBundle resources;
+
     // properties
     private HashMap<String, Integer> offeredResources;
     private HashMap<String, Integer> requestedResources;

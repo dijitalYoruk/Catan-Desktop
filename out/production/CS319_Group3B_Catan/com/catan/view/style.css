@@ -231,12 +231,6 @@ trade-pane-bg {
     -fx-background-size: cover;
 }
 
-.music-button {
-    -fx-background-image: url("../assets/music-button.jpg");
-    -fx-pref-width: 37;
-    -fx-pref-height: 50;
-}
-
 .invention-label {
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
@@ -273,5 +267,28 @@ trade-pane-bg {
     -fx-background-radius: 40;
     -fx-pref-width: 200;
     -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+
+.settings-label {
+    -fx-background-color: #F57C00;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 200;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+
+#selector-bg-setings {
+    -fx-fill: #F57C00;
+    -fx-arc-height:  50;
+    -fx-arc-width:  50;
+    -fx-font-family: "Book Antiqua";
+    -fx-font-size: 20;
+}
+
+.threshold-label {
+    -fx-font-family: "Book Antiqua";
     -fx-font-size: 20;
 }

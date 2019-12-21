@@ -49,14 +49,13 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private boolean isRoadBuild = false;
     private int initialStepCount = 0;
     private Settlement tempSettlement;
-    private Player currentPlayer;
     private int playerTurn = 0;
     private boolean thiefCanMove = false;
     private boolean initialThief = true;
     private GameLog gameLog;
-    int gameLogIterator = 0;
+    private int gameLogIterator = 0;
     private int noOfRound = 1;
-    FlowPane gameLogsFlowPane;
+    private FlowPane gameLogsFlowPane;
     private ArrayList<ImageView> lumberImages = new ArrayList<>();
     private ArrayList<ImageView> brickImages = new ArrayList<>();
     private ArrayList<ImageView> grainImages = new ArrayList<>();
@@ -70,8 +69,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private ArrayList<ImageView> roadDestructionImages = new ArrayList<>();
     private Pane[] resourceCardPanes = new Pane[5];
     private Pane[] developmentCardPanes = new Pane[6];
-    double[][] resourceCardsPaneLocations = new double[5][2];
-    double[][] developmentCardsPaneLocations = new double[6][2];
+    private double[][] resourceCardsPaneLocations = new double[5][2];
+    private double[][] developmentCardsPaneLocations = new double[6][2];
     private Road tempRoad;
     private Chest chest;
 
@@ -273,7 +272,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             dialog.initOwner(root.getScene().getWindow());
             dialog.setTitle(title);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.languauge),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
             fxmlLoader.setLocation(getClass().getClassLoader().getResource(viewPath));
             fxmlLoader.setResources(bundle);
             dialog.getDialogPane().setContent(fxmlLoader.load());
@@ -890,21 +889,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 vertex.setSettlement(settlement);
                 //harbour
                 String vertexID = vertex.getShape().getId();
-                if (vertexID.equals("vertex1") || vertexID.equals("vertex2")) {
-                    currentPlayer.getHarbours().add(harbours.get(0));
-                }
-                else if (vertexID.equals("vertex6") || vertexID.equals("vertex7")) {
-                    currentPlayer.getHarbours().add(harbours.get(1));
-                }
-                else if (vertexID.equals("vertex27") || vertexID.equals("vertex38")) {
-                    currentPlayer.getHarbours().add(harbours.get(2));
-                }
-                else if (vertexID.equals("vertex53") || vertexID.equals("vertex54")) {
-                    currentPlayer.getHarbours().add(harbours.get(3));
-                }
-                else if (vertexID.equals("vertex17") || vertexID.equals("vertex18")) {
-                    currentPlayer.getHarbours().add(harbours.get(4));
-                }
+                addHarboursToPlayer(circle);
                 //
                 currentPlayer.subtractPriceOfConstruction(selectedConstruction);
                 currentPlayer.showSourceCards();
@@ -1162,22 +1147,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 vertex.setSettlement(settlement);
                 //harbour
                 String vertexID = vertex.getShape().getId();
-                if (vertexID.equals("vertex1") || vertexID.equals("vertex2")) {
-                    currentPlayer.getHarbours().add(harbours.get(0));
-                }
-                else if (vertexID.equals("vertex6") || vertexID.equals("vertex7")) {
-                    currentPlayer.getHarbours().add(harbours.get(1));
-                }
-                else if (vertexID.equals("vertex27") || vertexID.equals("vertex38")) {
-                    currentPlayer.getHarbours().add(harbours.get(2));
-                }
-                else if (vertexID.equals("vertex53") || vertexID.equals("vertex54")) {
-                    currentPlayer.getHarbours().add(harbours.get(3));
-                }
-                else if (vertexID.equals("vertex17") || vertexID.equals("vertex18")) {
-                    currentPlayer.getHarbours().add(harbours.get(4));
-                }
-                //
+                addHarboursToPlayer(circle);
+
                 unselectConstructions(null);
                 activatePlayerVertices();
                 tempSettlement = settlement;
