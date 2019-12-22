@@ -3,22 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/dev_card_invention_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/dev_card_knight_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/dev_card_monopoly_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/dev_card_profit_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/dev_card_road_destruction_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/dev_card_victory_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/resource_brick_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/resource_grain_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/resource_lumber_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/resource_ore_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/resource_wool_grayscale.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBaseGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/persistentData/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/persistentData/settings.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/game.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,12 +65,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1994" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
   </component>
   <component name="ProjectId" id="1TOBFcVuKbvOq0UQW50kZVSSCjG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
