@@ -33,7 +33,7 @@
       </ImageView>
       <ImageView fx:id="arrow_left_page" fitHeight="86.0" fitWidth="70.0" layoutY="540.0" onMouseClicked="#goLeftPage" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/left_arrow_instructions.png" />
+            <Image url="@../assets/left_arrow_instruction.png" />
          </image>
       </ImageView>
       <ImageView fx:id="arrow_right_page" fitHeight="150.0" fitWidth="70.0" layoutX="1850.0" layoutY="540.0" onMouseClicked="#goRightPage" pickOnBounds="true" preserveRatio="true">

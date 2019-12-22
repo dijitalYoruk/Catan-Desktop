@@ -10,7 +10,7 @@
 
 <AnchorPane id="program-pane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerProgram">
    <children>
-      <VBox layoutX="34.0" layoutY="57.0" prefHeight="300.0" prefWidth="250.0">
+      <VBox layoutX="34.0" layoutY="57.0" prefHeight="443.0" prefWidth="250.0">
          <children>
             <JFXButton id="btnPlayGame" onAction="#gotoPlayGame" styleClass="program-button" text="%programView_PlayGame" />
             <JFXButton id="btnInstructions" onAction="#gotoInstructions" styleClass="program-button" text="%programView_Instructions">
@@ -19,6 +19,11 @@
                </VBox.margin>
             </JFXButton>
             <JFXButton id="btnSettings" onAction="#goToSettings" styleClass="program-button" text="%programView_Settings">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton id="btnSettings" onAction="#goToCredentials" styleClass="program-button" text="%programView_Credentials">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
