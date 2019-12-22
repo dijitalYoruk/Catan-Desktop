@@ -1,30 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a1599f0-55ef-4531-ae70-3012ed0e94ff" name="Default Changelist" comment="">
+    <list default="true" id="2a1599f0-55ef-4531-ae70-3012ed0e94ff" name="Default Changelist" comment="credentials is added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/space/right_arrow_instruction.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/space/right_arrow_instruction.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerEndGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerEndGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerInstructions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerInstructions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerPlayDevelopmentCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerPlayDevelopmentCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/persistentData/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/persistentData/settings.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/resources/language_tr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/resources/language_tr.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/playDevelopmentCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/playDevelopmentCard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/program.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/program.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/default/right_arrow_instruction.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/assets/default/right_arrow_instruction.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/karadeniz/right_arrow_instruction.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/assets/karadeniz/right_arrow_instruction.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/space/right_arrow_instruction.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/assets/space/right_arrow_instruction.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerCredentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerCredentials.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerEndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerEndGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerPlayDevelopmentCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerPlayDevelopmentCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/persistentData/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/persistentData/settings.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerCredentials.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerCredentials.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/credentials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/view/credentials.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/view/credentials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/credentials.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/view/playDevelopmentCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/playDevelopmentCard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/view/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -264,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577002923617</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="credentials is added">
+      <created>1577041490871</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1577041490871</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -293,7 +281,8 @@
     <MESSAGE value="some bugs found in thief functions, need more care." />
     <MESSAGE value="everything is okay, tried as much case as possible." />
     <MESSAGE value="intro is added" />
-    <option name="LAST_COMMIT_MESSAGE" value="intro is added" />
+    <MESSAGE value="credentials is added" />
+    <option name="LAST_COMMIT_MESSAGE" value="credentials is added" />
   </component>
   <component name="masterDetails">
     <states>

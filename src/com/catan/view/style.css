@@ -371,9 +371,6 @@ trade-pane-bg {
     -fx-font-size: 45;
     -fx-wrapping-width: 600;
 }
-.credentials-vbox{
-    -fx-spacing: 50;
-}
 .credentials-back-button{
     -fx-background-color: orange;
     -fx-font-family: "Book Antiqua";
@@ -382,4 +379,15 @@ trade-pane-bg {
     -fx-background-position: center;
     -fx-background-image: url("../assets/icon_back.jpg");
     -fx-background-size: 50px;
+}
+
+.credentials-label{
+    -fx-background-color: #F57C00;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 40;
+    -fx-pref-width: 250;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+    -fx-alignment: center;
 }
