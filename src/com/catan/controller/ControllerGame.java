@@ -931,7 +931,15 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             int index = (int) (Math.random() * vertices.size());
             Vertex vertex1 = vertices.get(index);
             // setting second vertex of road;
-            index = (int) (Math.random() * vertex1.getNeighbors().size());
+
+            ArrayList<Vertex> neighbours = new ArrayList<>();
+            for (Vertex vertex: vertex1.getNeighbors()) {
+                if (!vertex.hasConstruction()) {
+                    neighbours.add(vertex);
+                }
+            }
+
+            index = (int) (Math.random() * neighbours.size());
             Vertex vertex2 = vertex1.getNeighbors().get(index);
             Road road = getCorrespondingRoad(vertex1, vertex2);
 
