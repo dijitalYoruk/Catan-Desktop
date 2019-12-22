@@ -230,6 +230,7 @@ public class Constants {
     }
 
     public static String PATH_HEX_HILL() {
+        System.out.println("./com/catan/assets/" + THEME_FOLDER + "/hill.png");
         return "./com/catan/assets/" + THEME_FOLDER + "/hill.png";
     }
 
