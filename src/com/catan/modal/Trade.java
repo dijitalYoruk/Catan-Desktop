@@ -58,6 +58,8 @@ public class Trade {
             HashMap<String, ArrayList<SourceCard>> resourceCards = playerToBeTraded.getSourceCards();
             for (String resourceName: Constants.resourceNames) {
                 if (resourceCards.get(resourceName).size() < requestedResourceCards.get(resourceName)) {
+                    errorMessage = "The trade request from " + playerTrader.getName() +
+                            " was denied by " + playerToBeTraded.getName() + ".";
                     isTradePossible = false;
                     break;
                 }

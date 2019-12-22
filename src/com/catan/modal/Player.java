@@ -235,7 +235,7 @@ public class Player {
     public boolean hasEnoughResources(String selectedItem) {
         Map<String, Integer> price = getPrice(selectedItem);;
         for (String resourceName: Constants.resourceNames) {
-            if (sourceCards.get(resourceName).size() < price.get(resourceName)) { return false; }
+            if (!selectedItem.isEmpty() && sourceCards.get(resourceName).size() < price.get(resourceName)) { return false; }
         }
         return true;
     }

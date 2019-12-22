@@ -1,5 +1,5 @@
-Karadeniz
-2
-2
+Default
+10
+4
 4
 tr
