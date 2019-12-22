@@ -1,7 +1,9 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.Util.UTF8Control;
 import com.catan.modal.GameLog;
+import com.catan.modal.Settings;
 import com.catan.modal.Trade;
 import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.event.ActionEvent;
@@ -16,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ControllerTradeRequest {
@@ -96,15 +99,17 @@ public class ControllerTradeRequest {
 
     @FXML
     void acceptTradeOffer(ActionEvent actionEvent) {
+        ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
         trade.completeTrade();
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
         GameLog gameLog = GameLog.getInstance();
-        gameLog.addLog(StringUtils.capitalize(trade.getPlayerTrader().getName()) + " has traded with " + StringUtils.capitalize(trade.getPlayerToBeTraded().getName()), trade.getPlayerTrader().getColor());
+        gameLog.addLog(StringUtils.capitalize(trade.getPlayerTrader().getName()) + " " + bundle.getString("gamelogs_hasTradedWith") + " " + StringUtils.capitalize(trade.getPlayerToBeTraded().getName()), trade.getPlayerTrader().getColor());
     }
 
     @FXML
     void declineOffer(ActionEvent actionEvent) {
+        ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
         String errorMessage = resources.getString("tradeRequestView_RequestFrom") + trade.getPlayerTrader().getName() +
                 resources.getString("tradeRequestView_DeniedBy") + trade.getPlayerToBeTraded().getName() + ".";
         trade.setErrorMessage(errorMessage);
@@ -112,7 +117,7 @@ public class ControllerTradeRequest {
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
         GameLog gameLog = GameLog.getInstance();
-        gameLog.addLog(StringUtils.capitalize(trade.getPlayerToBeTraded().getName()) + " has declined the trade with " + StringUtils.capitalize(trade.getPlayerTrader().getName()), trade.getPlayerToBeTraded().getColor());
+        gameLog.addLog(StringUtils.capitalize(trade.getPlayerToBeTraded().getName()) + " " + bundle.getString("gamelogs_hasDeclinedTradedWith") + " " + StringUtils.capitalize(trade.getPlayerTrader().getName()), trade.getPlayerToBeTraded().getColor());
     }
 
     public void setProperties(Trade trade) {

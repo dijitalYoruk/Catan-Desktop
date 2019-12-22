@@ -306,7 +306,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             initialTurn();
         } else if (isStepActual) {
             actualTurn();
-            gameLog.addLog("Round "  + noOfRound + " has ended.", "gray");
+            gameLog.addLog(resources.getString("gamelogs_round") + " " + noOfRound + " " + resources.getString("gamelogs_hasEnded") + ".", "gray");
             noOfRound++;
         }
         updateGameLogsInView();
@@ -700,7 +700,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor() + " | Die Result: " +
                 die.getDieSum() + " | Victory Points: " + currentPlayer.getVictoryPoints());
         System.out.println("----------------------------------------------------------------------------------------------");
-        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has rolled " + die.getDieSum() + ".", currentPlayer.getColor());
+        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " " + resources.getString("gamelogs_rolled") + " " + die.getDieSum() + ".", currentPlayer.getColor());
+
         playerTurn++;
 
         chest.refreshStrongestArmyOwner();
@@ -860,19 +861,19 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     case Constants.CITY:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
                         settlement = new City(imagePath, vertex, currentPlayer);
-                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) +" has built a city.",
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " " + resources.getString("gamelogs_builtCity") + ".",
                                 getPlayers().get(playerTurn % 4).getColor());
                         break;
                     case Constants.VILLAGE:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
                         settlement = new Village(imagePath, vertex, currentPlayer);
-                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has built a village.",
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " " + resources.getString("gamelogs_builtVillage") + ".",
                                 getPlayers().get(playerTurn % 4).getColor());
                         break;
                     default:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CIVILISATION);
                         settlement = new Civilisation(imagePath, vertex, currentPlayer);
-                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has built civilisation.",
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " " + resources.getString("gamelogs_builtCivilization") + ".",
                                 getPlayers().get(playerTurn % 4).getColor());
                         break;
                 }

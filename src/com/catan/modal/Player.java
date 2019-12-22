@@ -1,7 +1,11 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
+import com.catan.Util.UTF8Control;
+import com.catan.controller.ControllerBase;
+import com.catan.controller.ControllerGame;
 import com.sun.xml.internal.ws.util.StringUtils;
+import javafx.fxml.FXML;
 import javafx.scene.paint.Color;
 
 import java.util.*;
@@ -22,7 +26,6 @@ public class Player {
     private int pointsFromVictoryPointsCard;
     private EntitlementCard strongestArmyCard;
     private EntitlementCard longestArmyCard;
-
 
     // constructor
     public Player(String color, String name) {
@@ -297,7 +300,8 @@ public class Player {
                 System.out.println("==============================================================================================");
                 System.out.println(getName() + " bought " + card.getName());
                 System.out.println("==============================================================================================");
-                gameLog.addLog(StringUtils.capitalize(getName()) + " bought " + card.getName(), getColor());
+                ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+                gameLog.addLog(StringUtils.capitalize(getName()) + " " + bundle.getString("gamelogs_hasBought") + " " + card.getName(), getColor());
             } else {
                 System.out.println("==============================================================================================");
                 System.out.println("No Development Cards are left in the chest.");
