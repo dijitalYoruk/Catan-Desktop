@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="invention-pane" prefHeight="396.0" prefWidth="656.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerDevInvention">
+<AnchorPane id="invention-pane" prefHeight="396.0" prefWidth="656.0" stylesheets="@/com/catan/view/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerDevInvention">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa31f" height="174.0" layoutX="34.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="592.0" />
       <HBox layoutX="51.0" layoutY="103.0" prefHeight="100.0" prefWidth="200.0">

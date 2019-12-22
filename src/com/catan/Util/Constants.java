@@ -161,4 +161,7 @@ public class Constants {
     public static final String AUDIO_KARADENIZ = PATH_DIRECTORY + "\\src\\com\\catan\\music\\karadeniz_theme.mp3";
     public static final String IMG_SOUND_MUTE = "com/catan/assets/music-button.jpg";
     public static final String IMG_SOUND_UNMUTED = "com/catan/assets/music-button-muted.jpg";
+
+    public static final String INTRO = "src/com/catan/assets/CatanIntro.mp4";
+
 }

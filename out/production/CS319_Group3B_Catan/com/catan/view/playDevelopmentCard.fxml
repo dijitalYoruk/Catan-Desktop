@@ -48,36 +48,36 @@
       <Label fx:id="labelVictory" layoutX="653.0" layoutY="347.0" style="-fx-font-size: 25;" text="0" />
       <Label fx:id="labelKnight" layoutX="828.0" layoutY="347.0" style="-fx-font-size: 25;" text="0" />
       <Label fx:id="labelMonopoly" layoutX="997.0" layoutY="347.0" style="-fx-font-size: 25;" text="0" />
-      <Label id="development-card-label" layoutX="88.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="Profit Exchange">
+      <Label id="development-card-label" layoutX="88.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="%playDevelopmentCardView_ProfitExchange">
          <font>
             <Font name="Leelawadee UI" size="19.0" />
          </font>
       </Label>
-      <Label id="development-card-label" layoutX="251.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="Road Destruction">
+      <Label id="development-card-label" layoutX="251.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="%playDevelopmentCardView_RoadDestruction">
          <font>
             <Font name="Leelawadee UI" size="19.0" />
          </font>
       </Label>
-      <Label id="development-card-label" layoutX="452.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="Invention">
+      <Label id="development-card-label" layoutX="452.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="%playDevelopmentCardView_Invention">
          <font>
             <Font name="Leelawadee UI" size="19.0" />
          </font>
       </Label>
-      <Label id="development-card-label" layoutX="606.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="Victory Point">
+      <Label id="development-card-label" layoutX="606.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="%playDevelopmentCardView_Victory">
          <font>
             <Font name="Leelawadee UI" size="19.0" />
          </font>
       </Label>
-      <Label id="development-card-label" layoutX="808.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="Knight">
+      <Label id="development-card-label" layoutX="808.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="%playDevelopmentCardView_Knight">
          <font>
             <Font name="Leelawadee UI" size="19.0" />
          </font>
       </Label>
-      <Label id="development-card-label" layoutX="961.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="Monopoly">
+      <Label id="development-card-label" layoutX="961.0" layoutY="113.0" styleClass="development-card-label" stylesheets="@style.css" text="%playDevelopmentCardView_Monopoly">
          <font>
             <Font name="Leelawadee UI" size="19.0" />
          </font>
       </Label>
-      <Button layoutX="1004.0" layoutY="22.0" mnemonicParsing="false" onAction="#closeDialog" prefHeight="52.0" prefWidth="87.0" styleClass="trade-pane-button" text="Close" />
+      <Button layoutX="1004.0" layoutY="22.0" mnemonicParsing="false" onAction="#closeDialog" prefHeight="52.0" prefWidth="87.0" styleClass="trade-pane-button" text="%playDevelopmentCardView_CloseButton" />
    </children>
 </AnchorPane>

@@ -10,9 +10,6 @@
 
 <AnchorPane id="development-card-pane" prefHeight="483.0" prefWidth="576.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerTradeRequest">
    <children>
-<<<<<<< HEAD
-      <Label fx:id="labelTitleOfTradeRequest" layoutX="113.0" layoutY="24.0" text="%tradeRequestView_TradeExplanation">
-=======
       <AnchorPane layoutX="34.0" layoutY="79.0" prefHeight="325.0" prefWidth="240.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eec669" height="325.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
@@ -70,116 +67,10 @@
          </children>
       </AnchorPane>
       <Label id="invention-label" fx:id="labelTitleOfTradeRequest" layoutX="88.0" layoutY="14.0" styleClass="title" stylesheets="@style.css" text="     PlayerArtificial3 wants to trade with you!">
->>>>>>> 42efc51ff03d0523eba330affb0d2800a1ab73d0
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-<<<<<<< HEAD
-      <Label alignment="CENTER" layoutX="39.0" layoutY="80.0" prefWidth="137.0" styleClass="thresholds" stylesheets="@style.css" text="%tradeRequestView_Offer" />
-      <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="46.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_brick.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="46.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_grain.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="72.0" fitWidth="50.0" layoutX="96.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_ore.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="145.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_wool.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="145.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_lumber.jpg" />
-         </image>
-      </ImageView>
-      <Label fx:id="labelOfferedBrick" layoutX="108.0" layoutY="165.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelOfferedGrain" layoutX="108.0" layoutY="253.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelOfferedWool" layoutX="207.0" layoutY="165.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelOfferedLumber" layoutX="207.0" layoutY="253.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelOfferedOre" layoutX="158.0" layoutY="333.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="362.0" layoutY="80.0" prefWidth="137.0" styleClass="thresholds" stylesheets="@style.css" text="%tradeRequestView_Request" />
-      <ImageView fitHeight="73.0" fitWidth="66.0" layoutX="370.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_brick.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="370.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_grain.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="72.0" fitWidth="50.0" layoutX="419.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_ore.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="469.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_wool.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="50.0" layoutX="469.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/resource_lumber.jpg" />
-         </image>
-      </ImageView>
-      <Label fx:id="labelRequestedBrick" layoutX="432.0" layoutY="166.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelRequestedWheat" layoutX="432.0" layoutY="254.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelRequestedWool" layoutX="531.0" layoutY="166.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelRequestedLumber" layoutX="531.0" layoutY="254.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelRequestedOre" layoutX="482.0" layoutY="334.0" text="x0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <JFXButton fx:id="acceptOfferButton" layoutX="150.0" layoutY="396.0" onAction="#acceptTradeOffer" text="%tradeRequestView_Accept">
-=======
       <AnchorPane layoutX="300.0" layoutY="79.0" prefHeight="200.0" prefWidth="200.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eec669" height="325.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
@@ -237,25 +128,16 @@
          </children>
       </AnchorPane>
       <JFXButton fx:id="acceptOfferButton" layoutX="177.0" layoutY="419.0" onAction="#acceptTradeOffer" styleClass="trade-pane-button" stylesheets="@style.css" text="Accept">
->>>>>>> 42efc51ff03d0523eba330affb0d2800a1ab73d0
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
-<<<<<<< HEAD
-      <JFXButton fx:id="declineOfferButton" layoutX="298.0" layoutY="396.0" onAction="#declineOffer" text="%tradeRequestView_Decline">
-=======
       <JFXButton fx:id="declineOfferButton" layoutX="300.0" layoutY="419.0" onAction="#declineOffer" styleClass="trade-pane-button" stylesheets="@style.css" text="Decline">
->>>>>>> 42efc51ff03d0523eba330affb0d2800a1ab73d0
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
-<<<<<<< HEAD
-      <Label fx:id="outputOfTradeOffer" layoutX="201.0" layoutY="333.0" opacity="0.0" text="%tradeRequestView_Output" textFill="RED">
-=======
       <Label fx:id="outputOfTradeOffer" layoutX="34.0" layoutY="427.0" opacity="0.0" text="Output" textFill="RED">
->>>>>>> 42efc51ff03d0523eba330affb0d2800a1ab73d0
          <font>
             <Font size="24.0" />
          </font>

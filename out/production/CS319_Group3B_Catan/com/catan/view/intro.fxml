@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.media.MediaView?>
+
+<AnchorPane focusTraversable="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerIntro">
+   <children>
+      <MediaView fx:id="mediaView" fitHeight="1080.0" fitWidth="1920.0" focusTraversable="true" onKeyPressed="#skipIntroWithKeyboard" onMouseClicked="#skipIntroWithMouse" />
+   </children>
+</AnchorPane>
