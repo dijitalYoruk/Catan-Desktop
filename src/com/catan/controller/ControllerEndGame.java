@@ -19,8 +19,11 @@ import java.util.ResourceBundle;
 
 public class ControllerEndGame{
 
+<<<<<<< HEAD
     @FXML
     private AnchorPane root;
+=======
+>>>>>>> origin/ibrahimm-development
     @FXML
     ResourceBundle resources;
     @FXML

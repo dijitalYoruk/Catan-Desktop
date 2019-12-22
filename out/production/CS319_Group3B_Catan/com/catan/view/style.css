@@ -25,7 +25,7 @@
     -fx-pref-height: 1080;
 }
 .credentials-pane {
-    -fx-background-image: url("../assets/background_game.jpg");
+
     -fx-background-size: cover;
     -fx-pref-width: 1920;
     -fx-pref-height: 1080;
@@ -363,7 +363,23 @@ trade-pane-bg {
     -fx-font-size: 25;
     -fx-padding: 20;
 }
-
-.text-area .scroll-bar:vertical:disabled {
-    -fx-opacity: 0;
+.credentials-text{
+    -fx-background-color: #F57C00;
+    -fx-color: orange;
+    -fx-font-family: "Book Antiqua";
+    -fx-pref-height: 50;
+    -fx-font-size: 45;
+    -fx-wrapping-width: 600;
+}
+.credentials-vbox{
+    -fx-spacing: 50;
+}
+.credentials-back-button{
+    -fx-background-color: orange;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-image: url("../assets/icon_back.jpg");
+    -fx-background-size: 50px;
 }

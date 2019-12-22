@@ -313,7 +313,7 @@ public class Constants {
     }
 
     public static String PATH_ARROW_LEFT() {
-        return "com/catan/assets/" + THEME_FOLDER + "/left_arrow_instructions.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/left_arrow_instruction.png";
     }
 
     public static String PATH_ARROW_RIGHT() {
@@ -335,6 +335,8 @@ public class Constants {
     public static String PATH_BG_SETTINGS() {
         return "com/catan/assets/" + THEME_FOLDER + "/background_settings.jpg";
     }
+
+    public static String PATH_BG_CREDENTIALS(){ return "com/catan/assets/" + THEME_FOLDER + "/credentials.jpg";}
 
     public static String PATH_BG_INFORMATION() {
         return "com/catan/assets/" + THEME_FOLDER + "/background_information.jpg";

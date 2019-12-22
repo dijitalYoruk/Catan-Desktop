@@ -27,8 +27,8 @@ public class ControllerInstructions extends ControllerBase {
 
     PerspectiveTransform rightPerspectiveTransform = new PerspectiveTransform();
     PerspectiveTransform leftPerspectiveTransform = new PerspectiveTransform();
-    int currentPageNumber = 1;
 
+    int currentPageNumber = 2;
     @FXML
     public void initialize() {
         super.initialize();
@@ -44,7 +44,8 @@ public class ControllerInstructions extends ControllerBase {
         arrow_right_page.setImage(imageRight);
 
         updateSoundImg();
-        leftRulesPage.setVisible(false);
+        leftRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+                Settings.getInstance().getCurrentLanguage() +"/catan_rules_page_"+(currentPageNumber-1)+".jpg"));
         currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
                 Settings.getInstance().getCurrentLanguage() +"/catan_rules_page_"+currentPageNumber+".jpg"));
         rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+

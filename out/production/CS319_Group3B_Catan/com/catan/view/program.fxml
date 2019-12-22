@@ -28,6 +28,11 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </JFXButton>
+            <JFXButton id="btnSettings" onAction="#goToCredentials" styleClass="program-button" text="%programView_Credentials">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </JFXButton>
             <JFXButton id="btnExit" cache="true" onAction="#exitGame" styleClass="program-button" text="%programView_EXIT">
                <VBox.margin>
                   <Insets top="10.0" />
