@@ -18,12 +18,9 @@ import java.util.ResourceBundle;
 
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Constants.THEME_FOLDER = Settings.getInstance().getCurrentTheme().toLowerCase();
-        MusicPlayer.getMusicPlayer().playMusic(Settings.getInstance().getCurrentTheme());
+    public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-        //Parent root = fxmlLoader.load(getClass().getResource("view/program.fxml"), bundle);
         Parent root = fxmlLoader.load(getClass().getResource("view/intro.fxml"), bundle);
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, Constants.PANE_WIDTH, Constants.PANE_HEIGHT));

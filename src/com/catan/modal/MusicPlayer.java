@@ -31,6 +31,7 @@ public class MusicPlayer {
             case Constants.THEME_KARADENIZ: { path = Constants.AUDIO_KARADENIZ; break; }
         }
         currentMusic = theme;
+        System.out.println(">>>>" + path + "<<<<<<<");
         Media media = new Media(new File(path).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));

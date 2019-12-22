@@ -1,8 +1,12 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.Util.UTF8Control;
 import com.catan.modal.MusicPlayer;
 import com.catan.modal.Settings;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -10,8 +14,12 @@ import javafx.scene.shape.Polygon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class ControllerSettings extends ControllerBase {
 
@@ -75,8 +83,6 @@ public class ControllerSettings extends ControllerBase {
         selectorLanguage.setPromptText(languageMappings.get(currentLanguage));
         selectorLanguage.setStyle("-fx-font: 20px \"Book " +
                 "Antiqua\"; -fx-background-color: orange");
-
-
     }
 
     @FXML
@@ -112,15 +118,32 @@ public class ControllerSettings extends ControllerBase {
     @FXML
     public void selectTheme(ActionEvent event) {
         String theme = selectorTheme.getValue();
+        if (theme.toLowerCase().equals(Constants.THEME_FOLDER)) return;
         Settings.getInstance().setCurrentTheme(theme);
-        MusicPlayer.getMusicPlayer().changeMusic(theme);
         Constants.THEME_FOLDER = theme.toLowerCase();
+        if (MusicPlayer.getMusicPlayer().isPlaying()) {
+            MusicPlayer.getMusicPlayer().changeMusic(theme);
+        }
+        root.setStyle("-fx-background-image: url("+ Constants.PATH_BG_SETTINGS() +");\n" +
+                      "-fx-background-size: cover;\n" +
+                      "-fx-pref-width: 1920;\n" +
+                      "-fx-pref-height: 1080;"
+        );
     }
 
     @FXML
     public void selectLanguage(ActionEvent event) {
         String language = selectorLanguage.getValue();
         Settings.getInstance().setCurrentLanguage(languageMappings.get(language));
+        try {
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+            Parent root = FXMLLoader.load(getClass().getResource("../view/settings.fxml"), bundle);
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -14,6 +14,7 @@ public class Constants {
     public static final String VIEW_THIEF = "../view/thiefCardPunishment.fxml";
     public static final String CONSTRUCTION_STRING = "Construction";
     public static final String THIEF_STRING = "Thief";
+    public static final String INTRO = "src/com/catan/assets/CatanIntro.mp4";
 
     public static final String ROAD = "road";
     public static final String VILLAGE = "village";
