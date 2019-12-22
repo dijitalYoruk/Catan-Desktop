@@ -1,6 +1,7 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
+import com.catan.Util.UTF8Control;
 import com.sun.xml.internal.ws.util.StringUtils;
 
 import java.util.*;
@@ -65,6 +66,7 @@ public class Trade {
 
         addOfferDetailsToGameLog(isTradeWithChest);
         gameLog = GameLog.getInstance();
+        ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
 
         if (isTradePossible) {
             if (playerToBeTraded instanceof PlayerAI) {
@@ -73,7 +75,7 @@ public class Trade {
 
                 if (aiDecision) {
                     completeTrade();
-                    gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " has traded with " + StringUtils.capitalize(playerToBeTraded.getColor()) + " player.", playerTrader.getColor());
+                    gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " " + bundle.getString("gamelogs_hasTradedWith") + " " + StringUtils.capitalize(playerToBeTraded.getName()) + ".", playerTrader.getColor());
                 }
                 else {
                     errorMessage = "The trade request from " + playerTrader.getName() +
@@ -83,7 +85,7 @@ public class Trade {
             }
             else if (isTradeWithChest) {
                 completeTrade();
-                gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " has traded with " + "the Chest.", playerTrader.getColor());
+                gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " " + bundle.getString("gamelogs_hasTradedWithChest") + ".", playerTrader.getColor());
             }
         }
         else { printTradeDetails(); }
@@ -121,6 +123,7 @@ public class Trade {
     }
 
     private void addOfferDetailsToGameLog(boolean isTradeWithChest) {
+        ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
         gameLog = GameLog.getInstance();
         String offereds = "";
         String requests = "";
@@ -139,14 +142,14 @@ public class Trade {
             requests = requests.substring(0, requests.length() - 2);
         }
         if (!isTradeWithChest) {
-            gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " has offered " + StringUtils.capitalize(playerToBeTraded.getName()) + ":" + "\n" +
+            gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " " + bundle.getString("gamelogs_hasOffered") + " " + StringUtils.capitalize(playerToBeTraded.getName()) + ":" + "\n" +
                     "  " + offereds + "." + "\n" +
-                    "  " + StringUtils.capitalize(playerTrader.getName()) + " has requested:" + "\n" +
+                    "  " + StringUtils.capitalize(playerTrader.getName()) + " " + bundle.getString("gamelogs_hasRequested") + ":" + "\n" +
                     "  " + requests + ".", playerTrader.getColor());
         } else {
-            gameLog.addLog(playerTrader.getName() + " has offered Chest:" + "\n" +
+            gameLog.addLog(playerTrader.getName() + " " + bundle.getString("gamelogs_hasOfferedChest") + ":" + "\n" +
                     "  " + offereds + "." + "\n" +
-                    "  " + "Chest has required:" + "\n" +
+                    "  " + bundle.getString("gamelogs_chestHasRequired") + ":" + "\n" +
                     "  " + requests + ".", playerTrader.getColor());
         }
     }
