@@ -1,12 +1,13 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
-import com.catan.interfaces.InterfaceMakeConstruction;
-import com.catan.interfaces.InterfaceMakeTrade;
+import com.catan.interfaces.*;
+import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class AI {
 
@@ -179,6 +180,125 @@ public class AI {
         }
     }
 
+    public HashMap<String, Integer> getInventionResourceCardSelection(HashMap<String, ArrayList<SourceCard>> resourceCards) {
+        HashMap<String, Integer> desiredResources = new HashMap<>();
 
+        String minKey2 = null;
+        Integer minValue2 = null;
+        String minKey1 = Constants.resourceNames.get(0);
+        Integer minValue1 = resourceCards.get(Constants.resourceNames.get(0)).size();
+
+
+        for (String resourceName: Constants.resourceNames) {
+            desiredResources.put(resourceName, 0);
+            if (resourceCards.get(resourceName).size() <= minValue1 && !minKey1.equals(resourceName)) {
+                minKey2 = minKey1;
+                minValue2 = minValue1;
+                minKey1 = resourceName;
+                minValue1 = resourceCards.get(resourceName).size();
+            }
+        }
+
+        if (minKey2 != null && minValue1.equals(minValue2)) {
+            desiredResources.put(minKey1, 1);
+            desiredResources.put(minKey2, 1);
+        } else {
+            desiredResources.put(minKey1, 2);
+        }
+
+        return desiredResources;
+    }
+
+    public void decideToPlayDevelopmentCard(InterfaceDevelopmentCard interfaceDevelopmentCard, Player player) {
+        if (player.getTotalDevelopmentCards() > 0) {
+            boolean decision = Math.random() < 0.9;
+            if (decision) {
+                Set<String> keySet = player.getDevelopmentCards().keySet();
+                ArrayList<String> keys = new ArrayList<>(keySet);
+
+                for (int i = 0; i < keys.size(); i++) {
+                    if (player.getDevelopmentCards().get(keys.get(i)) == 0) { keys.remove(i--); }
+                }
+
+                int randomIndex = (int)(Math.random() * keys.size());
+                String key = keys.get(randomIndex);
+                player.removeDevelopmentCard(key);
+                DevelopmentCard developmentCard = new DevelopmentCard(key);
+                interfaceDevelopmentCard.playDevelopmentCard(developmentCard);
+            }
+        }
+    }
+
+    public void decideForHexesToExchangeProfit(ArrayList<TerrainHex> terrainHexes, InterfaceExchangeTurnProfit exchangeTurnProfit, Player player) {
+        ArrayList<TerrainHex> playerHexes = new ArrayList<>();
+        ArrayList<TerrainHex> filteredHexes = new ArrayList<>();
+
+        for (Settlement settlement: player.getSettlements()) {
+            for (TerrainHex hex: settlement.getVertex().getFields()) {
+                if (!playerHexes.contains(hex) &&
+                        hex.getNumberOnHex() != 6  &&
+                        hex.getNumberOnHex() != 8  &&
+                        hex.getNumberOnHex() != 0) {
+                    playerHexes.add(hex);
+                }
+            }
+        }
+        for (TerrainHex hex: terrainHexes) {
+            if (!playerHexes.contains(hex) && (
+                    hex.getNumberOnHex() == 5 ||
+                            hex.getNumberOnHex() == 6 ||
+                            hex.getNumberOnHex() == 8 ||
+                            hex.getNumberOnHex() == 9)) {
+                filteredHexes.add(hex);
+            }
+        }
+
+        int randomIndex1 = (int) (Math.random() * playerHexes.size());
+        int randomIndex2 = (int) (Math.random() * filteredHexes.size());
+        Circle circle1 = playerHexes.get(randomIndex1).getCircleNumberOnHex();
+        Circle circle2 = filteredHexes.get(randomIndex2).getCircleNumberOnHex();
+        exchangeTurnProfit.exchangeTurnProfit(circle1, player);
+        exchangeTurnProfit.exchangeTurnProfit(circle2, player);
+    }
+
+    public void decideForDestroyingRoad(ArrayList<Player> players, InterfaceDestroyRoad destroyRoad, Player currentPlayer) {
+        ArrayList<Road> roadsToBeDestroyed = new ArrayList<>();
+
+        for (Player player: players) {
+            if (player != currentPlayer) { roadsToBeDestroyed.addAll(player.getRoads()); }
+        }
+
+        if (!roadsToBeDestroyed.isEmpty()) {
+            int randomIndex = (int) (Math.random() * roadsToBeDestroyed.size());
+            destroyRoad.destroyRoad(roadsToBeDestroyed.get(randomIndex), currentPlayer, players);
+        }
+    }
+
+    public void decideToBuyDevelopmentCard(InterfaceDevelopmentCard interfaceDevelopmentCard, Player player) {
+        if (!player.hasEnoughResources(Constants.DEVELOPMENT_CARD)) return;
+        boolean decision = Math.random() < 1;
+        if (decision) { interfaceDevelopmentCard.buyDevelopmentCard(null); }
+    }
+
+    public String getMonopolResourceCardDecision(HashMap<String, ArrayList<SourceCard>> resourceCards) {
+        String minKey1 = Constants.resourceNames.get(0);
+        int minValue1 = resourceCards.get(Constants.resourceNames.get(0)).size();
+
+        for (String resourceName: Constants.resourceNames) {
+            if (resourceCards.get(resourceName).size() <= minValue1 && !minKey1.equals(resourceName)) {
+                minKey1 = resourceName;
+            }
+        }
+        return minKey1;
+    }
+
+    public void makeSettlement(ArrayList<Settlement> settlements, InterfaceMakeConstruction makeConstruction) {
+        int index = (int) (Math.random() * settlements.size());
+        Settlement civilisation = settlements.get(index);
+        if (civilisation != null) {
+            Vertex vertex = civilisation.getVertex();
+            makeConstruction.makeConstructionActual(vertex.getShape());
+        }
+    }
 
 }

@@ -55,12 +55,7 @@ public class PlayerAI extends Player {
     }
 
     public void makeSettlement(ArrayList<Settlement> settlements, InterfaceMakeConstruction makeConstruction) {
-        int index = (int) (Math.random() * settlements.size());
-        Settlement civilisation = settlements.get(index);
-        if (civilisation != null) {
-            Vertex vertex = civilisation.getVertex();
-            makeConstruction.makeConstructionActual(vertex.getShape());
-        }
+        ai.makeSettlement(settlements, makeConstruction);
     }
 
     public void decideToMakeConstruction(InterfaceMakeConstruction makeConstruction) {
@@ -92,114 +87,26 @@ public class PlayerAI extends Player {
     }
 
     public HashMap<String, Integer> getInventionResourceCardSelection() {
-        HashMap<String, Integer> desiredResources = new HashMap<>();
-
-        String minKey2 = null;
-        Integer minValue2 = null;
-        String minKey1 = Constants.resourceNames.get(0);
-        Integer minValue1 = getSourceCards().get(Constants.resourceNames.get(0)).size();
-
-
-        for (String resourceName: Constants.resourceNames) {
-            desiredResources.put(resourceName, 0);
-            if (getSourceCards().get(resourceName).size() <= minValue1 && !minKey1.equals(resourceName)) {
-                minKey2 = minKey1;
-                minValue2 = minValue1;
-                minKey1 = resourceName;
-                minValue1 = getSourceCards().get(resourceName).size();
-            }
-        }
-
-        if (minKey2 != null && minValue1.equals(minValue2)) {
-            desiredResources.put(minKey1, 1);
-            desiredResources.put(minKey2, 1);
-        } else {
-            desiredResources.put(minKey1, 2);
-        }
-
-        return desiredResources;
+        return ai.getInventionResourceCardSelection(getSourceCards());
     }
 
     public void decideToPlayDevelopmentCard(InterfaceDevelopmentCard interfaceDevelopmentCard) {
-        if (getTotalDevelopmentCards() > 0) {
-            boolean decision = Math.random() < 0.9;
-            if (decision) {
-                Set<String> keySet = getDevelopmentCards().keySet();
-                ArrayList<String> keys = new ArrayList<>(keySet);
-
-                for (int i = 0; i < keys.size(); i++) {
-                    if (getDevelopmentCards().get(keys.get(i)) == 0) { keys.remove(i--); }
-                }
-
-                int randomIndex = (int)(Math.random() * keys.size());
-                String key = keys.get(randomIndex);
-                removeDevelopmentCard(key);
-                DevelopmentCard developmentCard = new DevelopmentCard(key);
-                interfaceDevelopmentCard.playDevelopmentCard(developmentCard);
-            }
-        }
+        ai.decideToPlayDevelopmentCard(interfaceDevelopmentCard, this);
     }
 
     public String getMonopolResourceCardDecision() {
-        String minKey1 = Constants.resourceNames.get(0);
-        int minValue1 = getSourceCards().get(Constants.resourceNames.get(0)).size();
-
-        for (String resourceName: Constants.resourceNames) {
-            if (getSourceCards().get(resourceName).size() <= minValue1 && !minKey1.equals(resourceName)) {
-                minKey1 = resourceName;
-            }
-        }
-        return minKey1;
+        return ai.getMonopolResourceCardDecision(getSourceCards());
     }
 
     public void decideForHexesToExchangeProfit(ArrayList<TerrainHex> terrainHexes, InterfaceExchangeTurnProfit exchangeTurnProfit) {
-        ArrayList<TerrainHex> playerHexes = new ArrayList<>();
-        ArrayList<TerrainHex> filteredHexes = new ArrayList<>();
-
-        for (Settlement settlement: getSettlements()) {
-            for (TerrainHex hex: settlement.getVertex().getFields()) {
-                if (!playerHexes.contains(hex) &&
-                    hex.getNumberOnHex() != 6  &&
-                    hex.getNumberOnHex() != 8  &&
-                    hex.getNumberOnHex() != 0) {
-                    playerHexes.add(hex);
-                }
-            }
-        }
-        for (TerrainHex hex: terrainHexes) {
-            if (!playerHexes.contains(hex) && (
-                hex.getNumberOnHex() == 5 ||
-                hex.getNumberOnHex() == 6 ||
-                hex.getNumberOnHex() == 8 ||
-                hex.getNumberOnHex() == 9)) {
-                filteredHexes.add(hex);
-            }
-        }
-
-        int randomIndex1 = (int) (Math.random() * playerHexes.size());
-        int randomIndex2 = (int) (Math.random() * filteredHexes.size());
-        Circle circle1 = playerHexes.get(randomIndex1).getCircleNumberOnHex();
-        Circle circle2 = filteredHexes.get(randomIndex2).getCircleNumberOnHex();
-        exchangeTurnProfit.exchangeTurnProfit(circle1, this);
-        exchangeTurnProfit.exchangeTurnProfit(circle2, this);
+        ai.decideForHexesToExchangeProfit(terrainHexes, exchangeTurnProfit, this);
     }
 
     public void decideForDestroyingRoad(ArrayList<Player> players, InterfaceDestroyRoad destroyRoad) {
-        ArrayList<Road> roadsToBeDestroyed = new ArrayList<>();
-
-        for (Player player: players) {
-            if (player != this) { roadsToBeDestroyed.addAll(player.getRoads()); }
-        }
-
-        if (!roadsToBeDestroyed.isEmpty()) {
-            int randomIndex = (int) (Math.random() * roadsToBeDestroyed.size());
-            destroyRoad.destroyRoad(roadsToBeDestroyed.get(randomIndex), this, players);
-        }
+        ai.decideForDestroyingRoad(players, destroyRoad, this);
     }
 
     public void decideToBuyDevelopmentCard(InterfaceDevelopmentCard interfaceDevelopmentCard) {
-        if (!hasEnoughResources(Constants.DEVELOPMENT_CARD)) return;
-        boolean decision = Math.random() < 1;
-        if (decision) { interfaceDevelopmentCard.buyDevelopmentCard(null); }
+        ai.decideToBuyDevelopmentCard(interfaceDevelopmentCard, this);
     }
 }

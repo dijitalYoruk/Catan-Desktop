@@ -1040,7 +1040,6 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     isConstructionBuild = false;
                 } else {
                     if(currentPlayer instanceof PlayerActual)
-                        displayWarning("Not possible");
                     selectConstructionInitial(imgRoad);
                     return;
                 }
@@ -1172,6 +1171,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 getSettlements().add(settlement);
                 currentPlayer.getSettlements().add(settlement);
                 vertex.setSettlement(settlement);
+
                 //harbour
                 String vertexID = vertex.getShape().getId();
                 addHarboursToPlayer(vertex.getShape());
