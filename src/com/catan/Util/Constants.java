@@ -212,6 +212,26 @@ public class Constants {
         return "./com/catan/assets/" + THEME_FOLDER + "/resource_wool.jpg";
     }
 
+    public static String PATH_RESOURCE_LUMBER_GRAYSCALE() {
+        return "./com/catan/assets/" + THEME_FOLDER + "/resource_lumber_grayscale.jpg";
+    }
+
+    public static String PATH_RESOURCE_BRICK_GRAYSCALE() {
+        return "./com/catan/assets/" + THEME_FOLDER + "/resource_brick_grayscale.jpg";
+    }
+
+    public static String PATH_RESOURCE_GRAIN_GRAYSCALE() {
+        return  "./com/catan/assets/" + THEME_FOLDER + "/resource_grain_grayscale.jpg";
+    }
+
+    public static String PATH_RESOURCE_ORE_GRAYSCALE() {
+        return "./com/catan/assets/" + THEME_FOLDER + "/resource_ore_grayscale.jpg";
+    }
+
+    public static String PATH_RESOURCE_WOOL_GRAYSCALE() {
+        return "./com/catan/assets/" + THEME_FOLDER + "/resource_wool_grayscale.jpg";
+    }
+
     public static String PATH_HEX_PASTURE() {
         return "./com/catan/assets/" + THEME_FOLDER + "/pasture.png";
     }
@@ -259,6 +279,30 @@ public class Constants {
 
     public static String PATH_DEVELOPMENT_CARD_MONOPOL() {
         return "com/catan/assets/" + THEME_FOLDER + "/dev_card_monopoly.jpg";
+    }
+
+    public static String PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE_GRAYSCALE() {
+        return "com/catan/assets/" + THEME_FOLDER + "/dev_card_profit_grayscale.jpg";
+    }
+
+    public static String PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION_GRAYSCALE() {
+        return "com/catan/assets/" + THEME_FOLDER + "/dev_card_road_destruction_grayscale.jpg";
+    }
+
+    public static String PATH_DEVELOPMENT_CARD_INVENTION_GRAYSCALE() {
+        return "com/catan/assets/" + THEME_FOLDER + "/dev_card_invention_grayscale.jpg";
+    }
+
+    public static String PATH_DEVELOPMENT_CARD_VICTORY_POINT_GRAYSCALE() {
+        return "com/catan/assets/" + THEME_FOLDER + "/dev_card_victory_grayscale.jpg";
+    }
+
+    public static String PATH_DEVELOPMENT_CARD_KNIGHT_GRAYSCALE() {
+        return "com/catan/assets/" + THEME_FOLDER + "/dev_card_knight_grayscale.jpg";
+    }
+
+    public static String PATH_DEVELOPMENT_CARD_MONOPOL_GRAYSCALE() {
+        return "com/catan/assets/" + THEME_FOLDER + "/dev_card_monopoly_grayscale.jpg";
     }
 
     public static String PATH_TRADE_1() {
