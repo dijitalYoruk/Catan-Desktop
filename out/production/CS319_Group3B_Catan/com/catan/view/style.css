@@ -25,7 +25,7 @@
     -fx-pref-height: 1080;
 }
 .credentials-pane {
-    -fx-background-image: url("../assets/background.jpg");
+
     -fx-background-size: cover;
     -fx-pref-width: 1920;
     -fx-pref-height: 1080;
@@ -363,7 +363,6 @@ trade-pane-bg {
     -fx-font-size: 25;
     -fx-padding: 20;
 }
-<<<<<<< HEAD
 .credentials-text{
     -fx-background-color: #F57C00;
     -fx-color: orange;
@@ -383,9 +382,4 @@ trade-pane-bg {
     -fx-background-position: center;
     -fx-background-image: url("../assets/icon_back.jpg");
     -fx-background-size: 50px;
-=======
-
-.text-area .scroll-bar:vertical:disabled {
-    -fx-opacity: 0;
->>>>>>> b28d32a34cd3326a2dc970d0dee1e013cdf4c0d7
 }

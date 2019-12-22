@@ -16,14 +16,17 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 
 public class ControllerEndGame{
+
     @FXML
     ResourceBundle resources;
     @FXML
     private JFXButton btnExit;
     @FXML
     private Label labelWon;
+
     private String playerName;
     private int victoryThreshold;
+
     public void initialize() {
 
         System.out.println(resources.getLocale());

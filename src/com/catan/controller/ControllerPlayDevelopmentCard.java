@@ -56,8 +56,6 @@ public class ControllerPlayDevelopmentCard {
 
     @FXML
     public void initialize() {
-        Image image = new Image(Constants.DEVELOPMENT_CARD_VIEW_CLOSE_ICON);
-        imgCloseButton.setImage(image);
         root.setStyle("-fx-background-image: url("+ Constants.PATH_BG_INVENTION() +");\n" +
                 "-fx-background-size: cover;\n");
         Image imgForRoadDestruction = new Image(Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION());

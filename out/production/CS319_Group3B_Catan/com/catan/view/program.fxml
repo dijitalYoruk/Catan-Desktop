@@ -10,16 +10,12 @@
 
 <AnchorPane id="program-pane" fx:id="root" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerProgram">
    <children>
-<<<<<<< HEAD
-      <VBox layoutX="34.0" layoutY="57.0" prefHeight="443.0" prefWidth="250.0">
-=======
       <ImageView fitHeight="476.0" fitWidth="582.0" layoutX="14.0" layoutY="-133.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/default/icon_catan.png" />
          </image>
       </ImageView>
       <VBox layoutX="35.0" layoutY="211.0" prefHeight="300.0" prefWidth="250.0">
->>>>>>> b28d32a34cd3326a2dc970d0dee1e013cdf4c0d7
          <children>
             <JFXButton id="btnPlayGame" onAction="#gotoPlayGame" styleClass="program-button" text="%programView_PlayGame" />
             <JFXButton id="btnInstructions" onAction="#gotoInstructions" styleClass="program-button" text="%programView_Instructions">

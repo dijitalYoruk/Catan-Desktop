@@ -25,7 +25,7 @@
     -fx-pref-height: 1080;
 }
 .credentials-pane {
-    -fx-background-image: url("../assets/background.jpg");
+
     -fx-background-size: cover;
     -fx-pref-width: 1920;
     -fx-pref-height: 1080;
@@ -382,7 +382,4 @@ trade-pane-bg {
     -fx-background-position: center;
     -fx-background-image: url("../assets/icon_back.jpg");
     -fx-background-size: 50px;
-
-.text-area .scroll-bar:vertical:disabled {
-    -fx-opacity: 0;
 }
