@@ -4,11 +4,13 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceDevelopmentCard;
 import com.catan.modal.DevelopmentCard;
 import com.catan.modal.Player;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
@@ -42,6 +44,10 @@ public class ControllerPlayDevelopmentCard {
     @FXML
     private Label labelMonopoly;
     @FXML
+    private JFXButton buttonClose;
+    @FXML
+    private ImageView imgCloseButton;
+    @FXML
     private AnchorPane root;
 
     // properties
@@ -50,6 +56,8 @@ public class ControllerPlayDevelopmentCard {
 
     @FXML
     public void initialize() {
+        Image image = new Image(Constants.DEVELOPMENT_CARD_VIEW_CLOSE_ICON);
+        imgCloseButton.setImage(image);
         root.setStyle("-fx-background-image: url("+ Constants.PATH_BG_INVENTION() +");\n" +
                 "-fx-background-size: cover;\n");
         Image imgForRoadDestruction = new Image(Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION());

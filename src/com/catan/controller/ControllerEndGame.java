@@ -1,5 +1,6 @@
 package com.catan.controller;
 
+
 import com.catan.modal.Player;
 import com.catan.modal.Settings;
 import com.jfoenix.controls.JFXButton;
@@ -12,9 +13,11 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class ControllerEndGame{
-
+    @FXML
+    ResourceBundle resources;
     @FXML
     private JFXButton btnExit;
     @FXML
@@ -22,8 +25,9 @@ public class ControllerEndGame{
     private String playerName;
     private int victoryThreshold;
     public void initialize() {
-        labelWon.setText(playerName+" has reached the "+ victoryThreshold +" victory points.");
 
+        System.out.println(resources.getLocale());
+        labelWon.setText(playerName+" "+resources.getString("endGameView_PlayerInfoPart1")+" " + victoryThreshold +" "+resources.getString("endGameView_PlayerInfoPart2"));
     }
     public void setProperties(String playerName,int victoryThreshold) {
         this.playerName = playerName;
