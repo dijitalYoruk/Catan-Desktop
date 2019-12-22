@@ -1368,6 +1368,28 @@ public class ControllerBaseGame extends ControllerBase {
     // this obnoxiously named function initializes the components related to the
     // section where number of cards of the actual player is shown
     private void initializeComponentsRelatedToActualPlayerCardsPane() {
+        int resourceHeight = 87;
+        int resourceWidth = 60;
+        ImgViewLumberDummy.setImage(new Image(Constants.PATH_RESOURCE_LUMBER_GRAYSCALE()));
+        ImgViewLumberDummy.setFitHeight(resourceHeight);
+        ImgViewLumberDummy.setFitWidth(resourceWidth);
+
+        ImgViewWoolDummy.setImage(new Image(Constants.PATH_RESOURCE_WOOL_GRAYSCALE()));
+        ImgViewWoolDummy.setFitHeight(resourceHeight);
+        ImgViewWoolDummy.setFitWidth(resourceWidth);
+
+        ImgViewBrickDummy.setImage(new Image(Constants.PATH_RESOURCE_BRICK_GRAYSCALE()));
+        ImgViewBrickDummy.setFitHeight(resourceHeight);
+        ImgViewBrickDummy.setFitWidth(resourceWidth);
+
+        ImgViewOreDummy.setImage(new Image(Constants.PATH_RESOURCE_ORE_GRAYSCALE()));
+        ImgViewOreDummy.setFitHeight(resourceHeight);
+        ImgViewOreDummy.setFitWidth(resourceWidth);
+
+        ImgViewGrainDummy.setImage(new Image(Constants.PATH_RESOURCE_GRAIN_GRAYSCALE()));
+        ImgViewGrainDummy.setFitHeight(resourceHeight);
+        ImgViewGrainDummy.setFitWidth(resourceWidth);
+
         //ImgViewLumberDummy.setVisible(false);
         lumberImages.add(ImgViewLumberDummy);
         //ImgViewBrickDummy.setVisible(false);
@@ -1392,6 +1414,33 @@ public class ControllerBaseGame extends ControllerBase {
         resourceCardsPaneLocations[3] = new double[] {paneOres.getLayoutX(), paneOres.getLayoutY()};
         resourceCardsPaneLocations[4] = new double[] {paneGrains.getLayoutX(), paneGrains.getLayoutY()};
 
+        // same initilizations but for the development cards
+
+        int devHeight = 60;
+        int devWidth = 60;
+        ImgViewInventionDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_INVENTION_GRAYSCALE()));
+        ImgViewInventionDummy.setFitHeight(devHeight);
+        ImgViewInventionDummy.setFitWidth(devWidth);
+
+        ImgViewKnightDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_KNIGHT_GRAYSCALE()));
+        ImgViewKnightDummy.setFitHeight(devHeight);
+        ImgViewKnightDummy.setFitWidth(devWidth);
+
+        ImgViewVictoryDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT_GRAYSCALE()));
+        ImgViewVictoryDummy.setFitHeight(devHeight);
+        ImgViewVictoryDummy.setFitWidth(devWidth);
+
+        ImgViewProfitDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE_GRAYSCALE()));
+        ImgViewProfitDummy.setFitHeight(devHeight);
+        ImgViewProfitDummy.setFitWidth(devWidth);
+
+        ImgViewRoadDestructionDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION_GRAYSCALE()));
+        ImgViewRoadDestructionDummy.setFitHeight(devHeight);
+        ImgViewRoadDestructionDummy.setFitWidth(devWidth);
+
+        ImgViewMonopolyDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_MONOPOL_GRAYSCALE()));
+        ImgViewMonopolyDummy.setFitHeight(devHeight);
+        ImgViewMonopolyDummy.setFitWidth(devWidth);
 
         //ImgViewInventionDummy.setVisible(false);
         inventionImages.add(ImgViewInventionDummy);
