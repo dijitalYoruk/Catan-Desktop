@@ -4,10 +4,12 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.*;
 import com.catan.modal.*;
 import com.catan.Util.UTF8Control;
+import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Dialog;
@@ -24,7 +26,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import java.util.Locale;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -50,27 +52,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private int initialStepCount = 0;
     private Settlement tempSettlement;
     private int playerTurn = 0;
-    private boolean thiefCanMove = false;
-    private boolean initialThief = true;
     private GameLog gameLog;
     private int gameLogIterator = 0;
     private int noOfRound = 1;
     private FlowPane gameLogsFlowPane;
-    private ArrayList<ImageView> lumberImages = new ArrayList<>();
-    private ArrayList<ImageView> brickImages = new ArrayList<>();
-    private ArrayList<ImageView> grainImages = new ArrayList<>();
-    private ArrayList<ImageView> oreImages = new ArrayList<>();
-    private ArrayList<ImageView> woolImages = new ArrayList<>();
-    private ArrayList<ImageView> inventionImages = new ArrayList<>();
-    private ArrayList<ImageView> victoryImages = new ArrayList<>();
-    private ArrayList<ImageView> profitImages = new ArrayList<>();
-    private ArrayList<ImageView> monopolyImages = new ArrayList<>();
-    private ArrayList<ImageView> knightImages = new ArrayList<>();
-    private ArrayList<ImageView> roadDestructionImages = new ArrayList<>();
-    private Pane[] resourceCardPanes = new Pane[5];
-    private Pane[] developmentCardPanes = new Pane[6];
-    private double[][] resourceCardsPaneLocations = new double[5][2];
-    private double[][] developmentCardsPaneLocations = new double[6][2];
     private Road tempRoad;
     private Chest chest;
 
@@ -84,6 +69,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     }
 
     public void init(ArrayList<Player> players) {
+        updateSoundImg();
         setPlayers(players);
         developmentCardExchangeProfit = null;
         developmentCardDestroyRoad = null;
@@ -93,7 +79,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         activateAllVertices();
         gameLogsFlowPane = (FlowPane)gameLogsScrollPane.getContent();
         gameLog = GameLog.getInstance();
-        initializeComponentsRelatedToActualPlayerCardsPane();
+        chest = new Chest(getPlayers(), getSettings());
+
         for (Player player: getPlayers()) {
             if (player instanceof PlayerActual) {
                 playerActual = player;
@@ -102,67 +89,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         endTurn(null);
     }
 
-    // this obnoxiously named function initializes the components related to the
-    // section where number of cards of the actual player is shown
-    private void initializeComponentsRelatedToActualPlayerCardsPane() {
-        ImgViewLumberDummy.setVisible(false);
-        lumberImages.add(ImgViewLumberDummy);
-        ImgViewBrickDummy.setVisible(false);
-        brickImages.add(ImgViewBrickDummy);
-        ImgViewGrainDummy.setVisible(false);
-        grainImages.add(ImgViewGrainDummy);
-        ImgViewOreDummy.setVisible(false);
-        oreImages.add(ImgViewOreDummy);
-        ImgViewWoolDummy.setVisible(false);
-        woolImages.add(ImgViewWoolDummy);
-
-        resourceCardPanes[0] = paneLumbers;
-        resourceCardPanes[1] = paneWools;
-        resourceCardPanes[2] = paneOres;
-        resourceCardPanes[3] = paneBricks;
-        resourceCardPanes[4] = paneGrains;
-
-        // these has to be in the order as in the FXML file
-        resourceCardsPaneLocations[0] = new double[] {paneLumbers.getLayoutX(), paneLumbers.getLayoutY()};
-        resourceCardsPaneLocations[1] = new double[] {paneWools.getLayoutX(), paneWools.getLayoutY()};
-        resourceCardsPaneLocations[2] = new double[] {paneBricks.getLayoutX(), paneBricks.getLayoutY()};
-        resourceCardsPaneLocations[3] = new double[] {paneOres.getLayoutX(), paneOres.getLayoutY()};
-        resourceCardsPaneLocations[4] = new double[] {paneGrains.getLayoutX(), paneGrains.getLayoutY()};
-
-
-        ImgViewInventionDummy.setVisible(false);
-        inventionImages.add(ImgViewInventionDummy);
-        ImgViewMonopolyDummy.setVisible(false);
-        monopolyImages.add(ImgViewMonopolyDummy);
-        ImgViewKnightDummy.setVisible(false);
-        knightImages.add(ImgViewKnightDummy);
-        ImgViewProfitDummy.setVisible(false);
-        profitImages.add(ImgViewProfitDummy);
-        ImgViewRoadDestructionDummy.setVisible(false);
-        roadDestructionImages.add(ImgViewRoadDestructionDummy);
-        ImgViewVictoryDummy.setVisible(false);
-        victoryImages.add(ImgViewVictoryDummy);
-
-        developmentCardPanes[0] = paneInvention;
-        developmentCardPanes[1] = paneKnight;
-        developmentCardPanes[2] = paneMonopoly;
-        developmentCardPanes[3] = paneProfit;
-        developmentCardPanes[4] = paneRoadDestruction;
-        developmentCardPanes[5] = paneVictory;
-
-        // these has to be in the order as in the FXML file
-        developmentCardsPaneLocations[0] = new double[] {paneInvention.getLayoutX(), paneInvention.getLayoutY()};
-        developmentCardsPaneLocations[1] = new double[] {paneKnight.getLayoutX(), paneKnight.getLayoutY()};
-        developmentCardsPaneLocations[2] = new double[] {paneMonopoly.getLayoutX(), paneMonopoly.getLayoutY()};
-        developmentCardsPaneLocations[3] = new double[] {paneProfit.getLayoutX(), paneProfit.getLayoutY()};
-        developmentCardsPaneLocations[4] = new double[] {paneRoadDestruction.getLayoutX(), paneRoadDestruction.getLayoutY()};
-        developmentCardsPaneLocations[5] = new double[] {paneVictory.getLayoutX(), paneVictory.getLayoutY()};
-        chest = new Chest(getPlayers(),getSettings());
-    }
-
     @FXML
     public void selectConstruction(MouseEvent mouseEvent) {
-        Rectangle rectangle = (Rectangle) mouseEvent.getSource();
+        Circle rectangle = (Circle) mouseEvent.getSource();
         if (isStepInitial) {
             selectConstructionInitial(rectangle);
         } else {
@@ -209,6 +138,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if (isStepActual) {
             openDialog(Constants.PATH_VIEW_TRADE_OFFER, "Trade" , null, null);
             updateCardsOfActualPlayerInView();
+            updateGameLogsInView();
         }
     }
 
@@ -272,7 +202,8 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             dialog.initOwner(root.getScene().getWindow());
             dialog.setTitle(title);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                    new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
             fxmlLoader.setLocation(getClass().getClassLoader().getResource(viewPath));
             fxmlLoader.setResources(bundle);
             dialog.getDialogPane().setContent(fxmlLoader.load());
@@ -338,6 +269,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             boolean hasEnoughResources = currentPlayer.hasEnoughResources(Constants.DEVELOPMENT_CARD);
             if (hasEnoughResources) {
                 currentPlayer.buyDevelopmentCard(chest);
+                updateGameLogsInView();
+                updateCardsOfActualPlayerInView();
+                if (currentPlayer instanceof PlayerActual) {
+                    displaySuccess("bought dev card");
+                }
             } else {
                 displayWarning("Poor to buy dev card");
             }
@@ -347,9 +283,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void rollDie() {
         if (isStepActual) {
             die.rollDie();
-            Image img = new Image("./com/catan/assets/die"+die.getDice1()+".png");
+            Image img = new Image(Constants.PATH_DIES().get(die.getDice1()));
             getImgDie1().setFill(new ImagePattern(img));
-            Image img2 = new Image("./com/catan/assets/die"+die.getDice2()+".png");
+            Image img2 = new Image(Constants.PATH_DIES().get(die.getDice2()));
             getImgDie2().setFill(new ImagePattern(img2));
         }
     }
@@ -358,7 +294,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     public void makeConstruction(MouseEvent mouseEvent) {
         Circle circle = (Circle) mouseEvent.getSource();
         if (isStepInitial) {
-            makeConstructionInitial(circle);
+            makeConstructionInitial(getCorrespondingVertex(circle));
         } else if (isStepActual) {
             makeConstructionActual(circle);
         }
@@ -380,6 +316,18 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void updateCardsOfActualPlayerInView() {
         updateNumbersOfCardsInPanes();
         updateOrderOfCardPanes();
+        Player longestRoadOwner = chest.getLongestRoadOwnerPlayer();
+        Player strongestArmyOwner = chest.getStrongestArmyOwnerPlayer();
+        if (longestRoadOwner != null) {
+            longestRoadOwnerLabel.setText("  " + StringUtils.capitalize(longestRoadOwner.getName()) + "  ");
+            longestRoadOwnerLabel.setStyle("-fx-background-color:" + longestRoadOwner.getColor() + ";" +
+                    "-fx-text-fill: white;" + "-fx-font-size: 18px;");
+        }
+        if (strongestArmyOwner != null) {
+            strongestArmyOwnerLabel.setText("  " + StringUtils.capitalize(strongestArmyOwner.getName()) + "  ");
+            strongestArmyOwnerLabel.setStyle("-fx-background-color:" + strongestArmyOwner.getColor() + ";" +
+                    "-fx-text-fill: white;" + "-fx-font-size: 18px;");
+        }
     }
 
     // updates the card numbers and the number of card images on the cards pane
@@ -388,11 +336,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         // reason of this map is to update all card panes in a loop
         HashMap<String, Object[]> resourceCardsMap = new HashMap<>();
 
-        resourceCardsMap.put(Constants.CARD_WOOL, new Object[] {woolLabel, woolImages, paneWools, Constants.PATH_RESOURCE_WOOL});
-        resourceCardsMap.put(Constants.CARD_ORE, new Object[] {oreLabel, oreImages, paneOres, Constants.PATH_RESOURCE_ORE});
-        resourceCardsMap.put(Constants.CARD_LUMBER, new Object[] {lumberLabel, lumberImages, paneLumbers, Constants.PATH_RESOURCE_LUMBER});
-        resourceCardsMap.put(Constants.CARD_BRICK, new Object[] {brickLabel, brickImages, paneBricks, Constants.PATH_RESOURCE_BRICK});
-        resourceCardsMap.put(Constants.CARD_GRAIN, new Object[] {grainLabel, grainImages, paneGrains, Constants.PATH_RESOURCE_GRAIN});
+        resourceCardsMap.put(Constants.CARD_WOOL, new Object[] {woolLabel, woolImages, paneWools, Constants.PATH_RESOURCE_WOOL()});
+        resourceCardsMap.put(Constants.CARD_ORE, new Object[] {oreLabel, oreImages, paneOres, Constants.PATH_RESOURCE_ORE()});
+        resourceCardsMap.put(Constants.CARD_LUMBER, new Object[] {lumberLabel, lumberImages, paneLumbers, Constants.PATH_RESOURCE_LUMBER()});
+        resourceCardsMap.put(Constants.CARD_BRICK, new Object[] {brickLabel, brickImages, paneBricks, Constants.PATH_RESOURCE_BRICK()});
+        resourceCardsMap.put(Constants.CARD_GRAIN, new Object[] {grainLabel, grainImages, paneGrains, Constants.PATH_RESOURCE_GRAIN()});
 
         HashMap<String, ArrayList<SourceCard>> sourceCards = playerActual.getSourceCards();
         Set<String> keys = sourceCards.keySet();
@@ -410,7 +358,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             while (sourceCards.get(key).size() > ((ArrayList<ImageView>)currentCardRelated[1]).size() - 1) {
                 ImageView imgToAdd = new ImageView(((String)currentCardRelated[3]));
                 // puts the image right next to its predecessor
-                imgToAdd.setLayoutX(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 1) {
+                    imgToAdd.setLayoutX(((ArrayList<ImageView>) currentCardRelated[1]).get(((ArrayList<ImageView>) currentCardRelated[1]).size() - 1).getLayoutX());
+                } else {
+                    imgToAdd.setLayoutX(((ArrayList<ImageView>) currentCardRelated[1]).get(((ArrayList<ImageView>) currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                }
                 imgToAdd.setLayoutY(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutY());
                 imgToAdd.setFitHeight(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitHeight());
                 imgToAdd.setFitWidth(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitWidth());
@@ -427,16 +379,22 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 // removes the image from its corresponding list
                 ((ArrayList<ImageView>)currentCardRelated[1]).remove(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1);
             }
+
+            if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 1) {
+                ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(true);
+            } else if (((ArrayList<ImageView>)currentCardRelated[1]).size() > 1) {
+                ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(false);
+            }
         }
-        
+
         HashMap<String, Object[]> developmentCardsMap = new HashMap<>();
 
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_INVENTION, new Object[] {inventionLabel, inventionImages, paneInvention, Constants.PATH_DEVELOPMENT_CARD_INVENTION});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_KNIGHT, new Object[] {knightLabel, knightImages, paneKnight, Constants.PATH_DEVELOPMENT_CARD_KNIGHT});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_MONOPOL, new Object[] {monopolyLabel, monopolyImages, paneMonopoly, Constants.PATH_DEVELOPMENT_CARD_MONOPOL});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE, new Object[] {profitLabel, profitImages, paneProfit, Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION, new Object[] {roadDestructionLabel, roadDestructionImages, paneRoadDestruction, Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION});
-        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_VICTORY_POINT, new Object[] {victoryLabel, victoryImages, paneVictory, Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_INVENTION, new Object[] {inventionLabel, inventionImages, paneInvention, Constants.PATH_DEVELOPMENT_CARD_INVENTION()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_KNIGHT, new Object[] {knightLabel, knightImages, paneKnight, Constants.PATH_DEVELOPMENT_CARD_KNIGHT()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_MONOPOL, new Object[] {monopolyLabel, monopolyImages, paneMonopoly, Constants.PATH_DEVELOPMENT_CARD_MONOPOL()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE, new Object[] {profitLabel, profitImages, paneProfit, Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_ROAD_DESTRUCTION, new Object[] {roadDestructionLabel, roadDestructionImages, paneRoadDestruction, Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION()});
+        developmentCardsMap.put(Constants.DEVELOPMENT_CARD_VICTORY_POINT, new Object[] {victoryLabel, victoryImages, paneVictory, Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT()});
 
         HashMap<String, Integer> developmentCards = playerActual.getDevelopmentCards();
         Set<String> developmentKeys = developmentCards.keySet();
@@ -453,7 +411,11 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             while (developmentCards.get(key) > ((ArrayList<ImageView>)currentCardRelated[1]).size() - 1) {
                 ImageView imgToAdd = new ImageView(((String)currentCardRelated[3]));
                 // puts the image right next to its predecessor
-                imgToAdd.setLayoutX(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 1) {
+                    imgToAdd.setLayoutX(((ArrayList<ImageView>) currentCardRelated[1]).get(((ArrayList<ImageView>) currentCardRelated[1]).size() - 1).getLayoutX());
+                } else {
+                    imgToAdd.setLayoutX(((ArrayList<ImageView>) currentCardRelated[1]).get(((ArrayList<ImageView>) currentCardRelated[1]).size() - 1).getLayoutX() + spaceBetweenImages);
+                }
                 imgToAdd.setLayoutY(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1).getLayoutY());
                 imgToAdd.setFitHeight(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitHeight());
                 imgToAdd.setFitWidth(((ArrayList<ImageView>)currentCardRelated[1]).get(0).getFitWidth());
@@ -469,6 +431,12 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 ((Pane)currentCardRelated[2]).getChildren().remove(((ArrayList<ImageView>)currentCardRelated[1]).get(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1));
                 // removes the image from its corresponding list
                 ((ArrayList<ImageView>)currentCardRelated[1]).remove(((ArrayList<ImageView>)currentCardRelated[1]).size() - 1);
+            }
+
+            if (((ArrayList<ImageView>)currentCardRelated[1]).size() == 1) {
+                ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(true);
+            } else if (((ArrayList<ImageView>)currentCardRelated[1]).size() > 1) {
+                ((ArrayList<ImageView>)currentCardRelated[1]).get(0).setVisible(false);
             }
         }
     }
@@ -498,7 +466,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             logLabel.setMinWidth(400);
             logLabel.setMinHeight(35);
             logLabel.setCursor(Cursor.DEFAULT);
-            String marginProperty = " -fx-padding: 2px;" + "-fx-border-insets: 2px;" + "-fx-background-insets: 2px;";
+            String marginProperty = "-fx-padding: 5px 2px 5px 2px;" + "-fx-border-insets: 2px;" + "-fx-background-insets: 2px;";
             logLabel.setStyle("-fx-background-color:" + logColor + ";" + "-fx-text-fill: white;" + marginProperty);
             gameLogsFlowPane.getChildren().add(0, logLabel);
         }
@@ -551,6 +519,27 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             default:
                 warning.setText(resources.getString("warning_defaultErrorMessage"));
                 warning.setOpacity(1);
+                break;
+        }
+        fadeTransition.play();
+    }
+
+    @Override
+    public void displaySuccess(String successType) {
+        Label success = getSuccessLabel();
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(4.0), success);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+
+        switch (successType) {
+            case "bought dev card":
+                success.setText(resources.getString("success_boughtDevCard"));
+                success.setOpacity(1);
+                break;
+            default:
+                success.setText(resources.getString("success_defaultMessage"));
+                success.setOpacity(1);
                 break;
         }
         fadeTransition.play();
@@ -711,7 +700,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         System.out.println(currentPlayer.getName() + " : " + currentPlayer.getColor() + " | Die Result: " +
                 die.getDieSum() + " | Victory Points: " + currentPlayer.getVictoryPoints());
         System.out.println("----------------------------------------------------------------------------------------------");
-        gameLog.addLog("Player " + playerTurn + ": has rolled " + die.getDieSum() + ".", currentPlayer.getColor());
+        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has rolled " + die.getDieSum() + ".", currentPlayer.getColor());
         playerTurn++;
 
         chest.refreshStrongestArmyOwner();
@@ -727,7 +716,10 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if(currentPlayer.getVictoryPoints() >= getSettings().getVictoryThreshold()) {
             openDialog(Constants.PATH_VIEW_ENDGAME, "The game end.", null, null);
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("../view/program.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
+                        new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+                Parent root = fxmlLoader.load(getClass().getResource("../view/program.fxml"),bundle);
                 Stage window = (Stage) getImgDie1().getScene().getWindow();
                 window.getScene().setRoot(root);
             } catch (IOException e) {
@@ -868,17 +860,20 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                     case Constants.CITY:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CITY);
                         settlement = new City(imagePath, vertex, currentPlayer);
-                        gameLog.addLog("Player " + playerTurn + ": has built a city.", getPlayers().get(playerTurn % 4).getColor());
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) +" has built a city.",
+                                getPlayers().get(playerTurn % 4).getColor());
                         break;
                     case Constants.VILLAGE:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
                         settlement = new Village(imagePath, vertex, currentPlayer);
-                        gameLog.addLog("Player " + playerTurn + ": has built a village.", getPlayers().get(playerTurn % 4).getColor());
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has built a village.",
+                                getPlayers().get(playerTurn % 4).getColor());
                         break;
                     default:
                         imagePath = currentPlayer.getSettlementImagePath(Constants.CIVILISATION);
                         settlement = new Civilisation(imagePath, vertex, currentPlayer);
-                        gameLog.addLog("Player " + playerTurn + ": has built civilisation.", getPlayers().get(playerTurn % 4).getColor());
+                        gameLog.addLog(StringUtils.capitalize(currentPlayer.getName()) + " has built civilisation.",
+                                getPlayers().get(playerTurn % 4).getColor());
                         break;
                 }
                 Image img = new Image(settlement.getImagePath());
@@ -936,7 +931,15 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             int index = (int) (Math.random() * vertices.size());
             Vertex vertex1 = vertices.get(index);
             // setting second vertex of road;
-            index = (int) (Math.random() * vertex1.getNeighbors().size());
+
+            ArrayList<Vertex> neighbours = new ArrayList<>();
+            for (Vertex vertex: vertex1.getNeighbors()) {
+                if (!vertex.hasConstruction()) {
+                    neighbours.add(vertex);
+                }
+            }
+
+            index = (int) (Math.random() * neighbours.size());
             Vertex vertex2 = vertex1.getNeighbors().get(index);
             Road road = getCorrespondingRoad(vertex1, vertex2);
 
@@ -976,12 +979,16 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    private void selectConstructionActual(Rectangle rectangle) {
+    private void selectConstructionActual(Circle rectangle) {
         // setting all of the pane as unselected
         imgRoad.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgRoad.setStrokeWidth(5);
         imgCity.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCity.setStrokeWidth(5);
         imgVillage.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgVillage.setStrokeWidth(5);
         imgCivilisation.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCivilisation.setStrokeWidth(5);
 
         // setting selected construction
         if (rectangle == imgRoad) {
@@ -1004,6 +1011,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
         // setting the color of selected construction.
         rectangle.setStroke(Constants.COLOR_CONSTRUCTION_SELECTED);
+        rectangle.setStrokeWidth(5);
 
         // disabling road selection
         refreshRoadSelectionVertices();
@@ -1053,8 +1061,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
     private void playAIInitialTurn() {
         tempRoad = null;
         tempSettlement = null;
-
-        while (tempSettlement == null || tempRoad == null) {
+        int count = 0;
+        while ((tempSettlement == null || tempRoad == null)&count<400) {
+            count++;
             if ((tempRoad != null)) {
                 tempRoad.getRoad().setStroke(Color.BLACK);
                 tempRoad.getRoad().setVisible(false);
@@ -1063,23 +1072,27 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             }
 
             ArrayList<Vertex> outerVertices = new ArrayList<>();
-            for(int i = 0; i < vertices.size(); i++)
-                if(vertices.get(i).getFields().size() < 3)
+            for (int i = 0; i < vertices.size(); i++)
+                if (vertices.get(i).getFields().size() < 3)
                     outerVertices.add(vertices.get(i));
 
             ArrayList<Vertex> thiefVertices = thief.getTerrainHex().getVertices();
-
             Set<Vertex> set = new HashSet<>(outerVertices);
-            set.addAll(thiefVertices);
+            if(count < 180)
+                set.addAll(thiefVertices);
             ArrayList<Vertex> undesiredVertices = new ArrayList<>(set);
-
             ArrayList<Vertex> desiredVertices = new ArrayList<>();
-            for(int i = 0; i < terrainHexes.size(); i++) {
+
+
+            for (int i = 0; i < terrainHexes.size(); i++) {
                 int number = terrainHexes.get(i).getNumberOnHex();
-                if (number == 5 || number == 6 || number == 7|| number == 8)
-                {
+                if (number == 5 || number == 6 || number == 7 || number == 8) {
                     desiredVertices.addAll(terrainHexes.get(i).getVertices());
                 }
+                if(count > 110) {
+                    desiredVertices.addAll(terrainHexes.get(i).getVertices());
+                }
+
             }
 
             Set<Vertex> vertexSet = new HashSet<>(desiredVertices);
@@ -1087,19 +1100,34 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             desiredVertices.addAll(vertexSet);
             desiredVertices.removeAll(new HashSet<>(undesiredVertices));
 
+            for (int i = 0; i < vertices.size(); i++){
+                for (int j = 0; j < desiredVertices.size(); j++) {
+                    if (vertices.get(i).hasConstruction() & vertices.get(i).getShape() == desiredVertices.get(j).getShape())
+                        desiredVertices.remove(desiredVertices.get(j));
+                }
+            }
             activateAllVertices();
             setSelectedConstruction(Constants.ROAD);
             // setting first vertex of road;
             //int index = (int) (Math.random() * getActivatedVertices().size());
             Vertex vertex = desiredVertices.get ((int)(Math.random() * desiredVertices.size()));
-            desiredVertices.remove(vertex);
-            makeConstructionInitial(vertex.getShape());
+            if(isVertexSuitableForConstruction(vertex))
+                desiredVertices.remove(vertex);
 
 
             // setting second vertex of road;
-            vertex = desiredVertices.get ((int)(Math.random() * desiredVertices.size()));
-            desiredVertices.remove(vertex);
-            makeConstructionInitial(vertex.getShape());
+            Vertex vertex2 = desiredVertices.get ((int)(Math.random() * desiredVertices.size()));
+            if(isVertexSuitableForConstruction(vertex2))
+                desiredVertices.remove(vertex2);
+
+            if(isVertexSuitableForConstruction(vertex) || isVertexSuitableForConstruction(vertex2)) {
+                makeConstructionInitial(vertex);
+                makeConstructionInitial(vertex2);
+                if(!isVertexSuitableForConstruction(vertex))
+                    desiredVertices.remove(vertex);
+                if(!isVertexSuitableForConstruction(vertex2))
+                    desiredVertices.remove(vertex2);
+            }
 
             setSelectedConstruction(Constants.VILLAGE);
             if (tempRoad != null) {
@@ -1108,20 +1136,19 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 twoVertex.add(tempRoad.getVertices().get(1));
 
                 if (isVertexSuitableForConstruction(twoVertex.get(0)) & !undesiredVertices.contains(twoVertex.get(0))) {
-                    makeConstructionInitial(twoVertex.get(0).getShape());
+                    makeConstructionInitial(twoVertex.get(0));
                 }
-                else if (isVertexSuitableForConstruction(twoVertex.get(1))){
-                    makeConstructionInitial(twoVertex.get(1).getShape());
+                else if (isVertexSuitableForConstruction(twoVertex.get(1)) & !undesiredVertices.contains(twoVertex.get(1))){
+                    makeConstructionInitial(twoVertex.get(1));
                 }
-                else
-                    makeConstructionInitial(twoVertex.get(0).getShape());
+
             }
         }
         tempRoad = null;
         tempSettlement = null;
     }
 
-    private void makeConstructionInitial(Circle circle) {
+    private void makeConstructionInitial(Vertex vertex) {
         if (selectedConstruction.equals(Constants.CITY)   ||
             selectedConstruction.equals(Constants.VILLAGE)||
             selectedConstruction.equals(Constants.CIVILISATION)) {
@@ -1130,7 +1157,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 selectConstructionInitial(imgVillage);
             }
 
-            Vertex vertex = getCorrespondingVertex(circle);
+            //Vertex vertex = getCorrespondingVertex(circle);
             if (vertex != null && isVertexSuitableForConstruction(vertex) && vertex.isActive()) {
                 isConstructionBuild = true;
                 String imagePath = currentPlayer.getSettlementImagePath(Constants.VILLAGE);
@@ -1147,7 +1174,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 vertex.setSettlement(settlement);
                 //harbour
                 String vertexID = vertex.getShape().getId();
-                addHarboursToPlayer(circle);
+                addHarboursToPlayer(vertex.getShape());
 
                 unselectConstructions(null);
                 activatePlayerVertices();
@@ -1165,7 +1192,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
                 }
 
                 constructionUnselect = false;
-                Vertex vertex = getCorrespondingVertex(circle);
+                //Vertex vertex = getCorrespondingVertex(circle);
                 if (vertex != null && !vertex.hasConstruction()) {
                     roadVertex1 = vertex;
                     Color color = Constants.COLOR_ROAD_SELECTION_VERTEX;
@@ -1174,7 +1201,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
             }
             else {
                 constructionUnselect = true;
-                Vertex vertex = getCorrespondingVertex(circle);
+                //Vertex vertex = getCorrespondingVertex(circle);
                 if (vertex != null && !vertex.hasConstruction()) {
                     roadVertex2 = vertex;
                     constructRoad();
@@ -1187,12 +1214,16 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    private void selectConstructionInitial(Rectangle rectangle) {
+    private void selectConstructionInitial(Circle rectangle) {
         // setting all of the pane as unselected
         imgRoad.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgRoad.setStrokeWidth(5);
         imgCity.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCity.setStrokeWidth(5);
         imgVillage.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgVillage.setStrokeWidth(5);
         imgCivilisation.setStroke(Constants.COLOR_CONSTRUCTION_UNSELECTED);
+        imgCivilisation.setStrokeWidth(5);
 
         // setting selected construction
         if (rectangle == imgRoad) {
@@ -1217,7 +1248,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
         // setting the color of selected construction.
         rectangle.setStroke(Constants.COLOR_CONSTRUCTION_SELECTED);
-
+        rectangle.setStrokeWidth(5);
         // disabling road selection
         refreshRoadSelectionVertices();
         constructionUnselect = false;

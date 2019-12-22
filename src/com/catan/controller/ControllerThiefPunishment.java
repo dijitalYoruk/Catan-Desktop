@@ -54,6 +54,7 @@ public class ControllerThiefPunishment {
     private HBox horizontalBox4;
     @FXML
     ResourceBundle resources;
+
     // properties
     private HashMap<String, Integer> resourcesOfPlayer;
     private HashMap<String, Integer> resourcesOfChosen;
@@ -63,11 +64,6 @@ public class ControllerThiefPunishment {
     private int totalChosenResources;
     private int requiredResources;
     private Player player;
-
-    private ArrayList<String> resourceNames = new ArrayList<>(
-            Arrays.asList(Constants.CARD_ORE, Constants.CARD_BRICK, Constants.CARD_LUMBER,
-                    Constants.CARD_GRAIN, Constants.CARD_WOOL)
-    );
 
     // methods
     public void setPlayer(Player player){
@@ -93,10 +89,13 @@ public class ControllerThiefPunishment {
 
         for (int i = 0; i < Constants.resourceNames.size(); i++) {
             String resourceName = Constants.resourceNames.get(i);
+            String resourcePath = Constants.getResourcePaths().get(i);
             int count =  player.getSourceCards().get(resourceName).size();
             resourcesOfPlayer.put(resourceName, count);
             resourcesOfChosen.put(resourceName, 0);
             labelsResources.get(i).setText("x " + count);
+            Image image = new Image(resourcePath);
+            imgResources.get(i).setImage(image);
         }
 
         labelInformation.setText(resources.getString("thiefCardPunishmentView_ExplanationPart1") +
@@ -116,7 +115,7 @@ public class ControllerThiefPunishment {
                 if(chosenResourcesCount != playerResourcesCount && totalChosenResources != requiredResources) {
                     resourcesOfChosen.put(resourceName, ++chosenResourcesCount);
                     labelsResources.get(i).setText("x" + (playerResourcesCount - chosenResourcesCount));
-                    addResourceToView(resourceName);
+                    addResourceToView(resourceName, i);
                 }
                 break;
             }
@@ -144,7 +143,7 @@ public class ControllerThiefPunishment {
     public void confirmPunish() {
         if (totalChosenResources == requiredResources) {
             // subtracting resources from player.
-            for (String resourceName: resourceNames) {
+            for (String resourceName: Constants.resourceNames) {
                 int count = resourcesOfChosen.get(resourceName);
                 player.removeResources(resourceName, count);
             }
@@ -161,12 +160,12 @@ public class ControllerThiefPunishment {
         }
     }
 
-    private void addResourceToView(String resource){
+    private void addResourceToView(String resource, int i){
         ImageView temp = new ImageView();
         temp.setId(resource);
         temp.setFitWidth(40);
         temp.setFitHeight(50);
-        temp.setImage(new Image(".\\com\\catan\\assets\\resource_"+resource+".jpg"));
+        temp.setImage(new Image(Constants.getResourcePaths().get(i)));
         temp.setOnMouseClicked(this::decreaseResource);
         horizontalBoxes.get(totalChosenResources/4).getChildren().add(temp);
         totalChosenResources++;

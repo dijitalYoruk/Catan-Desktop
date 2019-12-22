@@ -25,9 +25,11 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ControllerIntro {
+
     @FXML
     MediaView mediaView;
     private MediaPlayer videoPlayer;
+
     @FXML
     public void initialize() {
         try {
@@ -46,7 +48,6 @@ public class ControllerIntro {
         }
     }
 
-
     // user may want to skip intro
     @FXML
     public void skipIntroWithKeyboard(KeyEvent event){
@@ -62,6 +63,7 @@ public class ControllerIntro {
     public void goToGame(){
         try {
             mediaView.getMediaPlayer().stop();
+            Constants.THEME_FOLDER = Settings.getInstance().getCurrentTheme().toLowerCase();
             MusicPlayer.getMusicPlayer().playMusic(Settings.getInstance().getCurrentTheme());
             FXMLLoader fxmlLoader = new FXMLLoader();
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",

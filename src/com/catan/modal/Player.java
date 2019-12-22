@@ -1,6 +1,7 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
+import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.scene.paint.Color;
 
 import java.util.*;
@@ -142,30 +143,30 @@ public class Player {
         switch (construction) {
             case Constants.VILLAGE:
                 switch (color) {
-                    case Constants.COLOR_RED:    return Constants.PATH_VILLAGE_RED;
-                    case Constants.COLOR_PURPLE: return Constants.PATH_VILLAGE_PURPLE;
-                    case Constants.COLOR_GREEN:  return Constants.PATH_VILLAGE_GREEN;
-                    case Constants.COLOR_BLUE:   return Constants.PATH_VILLAGE_BLUE;
+                    case Constants.COLOR_RED:    return Constants.PATH_VILLAGE_RED();
+                    case Constants.COLOR_PURPLE: return Constants.PATH_VILLAGE_PURPLE();
+                    case Constants.COLOR_GREEN:  return Constants.PATH_VILLAGE_GREEN();
+                    case Constants.COLOR_BLUE:   return Constants.PATH_VILLAGE_BLUE();
                 }
                 break;
             case Constants.CITY:
                 switch (color) {
-                    case Constants.COLOR_RED:    return Constants.PATH_CITY_RED;
-                    case Constants.COLOR_PURPLE: return Constants.PATH_CITY_PURPLE;
-                    case Constants.COLOR_GREEN:  return Constants.PATH_CITY_GREEN;
-                    case Constants.COLOR_BLUE:   return Constants.PATH_CITY_BLUE;
+                    case Constants.COLOR_RED:    return Constants.PATH_CITY_RED();
+                    case Constants.COLOR_PURPLE: return Constants.PATH_CITY_PURPLE();
+                    case Constants.COLOR_GREEN:  return Constants.PATH_CITY_GREEN();
+                    case Constants.COLOR_BLUE:   return Constants.PATH_CITY_BLUE();
                 }
                 break;
             case Constants.CIVILISATION:
                 switch (color) {
-                    case Constants.COLOR_RED:    return Constants.PATH_CIVILISATION_RED;
-                    case Constants.COLOR_PURPLE: return Constants.PATH_CIVILISATION_PURPLE;
-                    case Constants.COLOR_GREEN:  return Constants.PATH_CIVILISATION_GREEN;
-                    case Constants.COLOR_BLUE:   return Constants.PATH_CIVILISATION_BLUE;
+                    case Constants.COLOR_RED:    return Constants.PATH_CIVILISATION_RED();
+                    case Constants.COLOR_PURPLE: return Constants.PATH_CIVILISATION_PURPLE();
+                    case Constants.COLOR_GREEN:  return Constants.PATH_CIVILISATION_GREEN();
+                    case Constants.COLOR_BLUE:   return Constants.PATH_CIVILISATION_BLUE();
                 }
                 break;
         }
-        return Constants.PATH_CIVILISATION_BLUE;
+        return Constants.PATH_CIVILISATION_BLUE();
     }
 
     public Color getRoadColor() {
@@ -286,14 +287,17 @@ public class Player {
     }
 
     public void buyDevelopmentCard(Chest chest) {
+        GameLog gameLog = GameLog.getInstance();
         boolean hasEnoughResources = hasEnoughResources(Constants.DEVELOPMENT_CARD);
         if (hasEnoughResources) {
             DevelopmentCard card = chest.getDevelopmentCard();
+            subtractPriceOfConstruction(Constants.DEVELOPMENT_CARD);
             if (card != null) {
                 addDevelopmentCard(card.getName());
                 System.out.println("==============================================================================================");
                 System.out.println(getName() + " bought " + card.getName());
                 System.out.println("==============================================================================================");
+                gameLog.addLog(StringUtils.capitalize(getName()) + " bought " + card.getName(), getColor());
             } else {
                 System.out.println("==============================================================================================");
                 System.out.println("No Development Cards are left in the chest.");

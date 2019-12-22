@@ -1,5 +1,11 @@
 Default
+<<<<<<< HEAD
 8
 6
 8
+=======
+9
+4
+4
+>>>>>>> b28d32a34cd3326a2dc970d0dee1e013cdf4c0d7
 tr

@@ -9,6 +9,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -316,13 +318,13 @@ public class ControllerBaseGame extends ControllerBase {
     @FXML
     protected Circle imgMovingThief;
     @FXML
-    protected Rectangle imgRoad;
+    protected Circle imgRoad;
     @FXML
-    protected Rectangle imgVillage;
+    protected Circle imgVillage;
     @FXML
-    protected Rectangle imgCity;
+    protected Circle imgCity;
     @FXML
-    protected Rectangle imgCivilisation;
+    protected Circle imgCivilisation;
     @FXML
     protected Rectangle imgPriceCard;
     @FXML
@@ -337,6 +339,8 @@ public class ControllerBaseGame extends ControllerBase {
     private Label labelLogs;
     @FXML
     private Label labelWarning;
+    @FXML
+    private Label labelSuccess;
     @FXML
     private Circle circleNumberOnHex1;
     @FXML
@@ -519,6 +523,23 @@ public class ControllerBaseGame extends ControllerBase {
     protected Pane paneRoadDestruction;
     @FXML
     protected Pane paneVictory;
+    @FXML
+    private ImageView cardHarbour1;
+    @FXML
+    private ImageView cardHarbour2;
+    @FXML
+    private ImageView cardHarbour3;
+    @FXML
+    private ImageView cardHarbour4;
+    @FXML
+    private ImageView cardHarbour5;
+    @FXML
+    protected Label strongestArmyOwnerLabel;
+    @FXML
+    protected Label longestRoadOwnerLabel;
+    @FXML
+    private HBox horonBox;
+
 
     // Properties
     protected ArrayList<TerrainHex> terrainHexes;
@@ -532,9 +553,25 @@ public class ControllerBaseGame extends ControllerBase {
     protected Thief thief;
     protected ArrayList<Harbour> harbours;
     protected Player currentPlayer;
+    protected ArrayList<ImageView> lumberImages = new ArrayList<>();
+    protected ArrayList<ImageView> brickImages = new ArrayList<>();
+    protected ArrayList<ImageView> grainImages = new ArrayList<>();
+    protected ArrayList<ImageView> oreImages = new ArrayList<>();
+    protected ArrayList<ImageView> woolImages = new ArrayList<>();
+    protected ArrayList<ImageView> inventionImages = new ArrayList<>();
+    protected ArrayList<ImageView> victoryImages = new ArrayList<>();
+    protected ArrayList<ImageView> profitImages = new ArrayList<>();
+    protected ArrayList<ImageView> monopolyImages = new ArrayList<>();
+    protected ArrayList<ImageView> knightImages = new ArrayList<>();
+    protected ArrayList<ImageView> roadDestructionImages = new ArrayList<>();
+    protected Pane[] resourceCardPanes = new Pane[5];
+    protected Pane[] developmentCardPanes = new Pane[6];
+    protected double[][] resourceCardsPaneLocations = new double[5][2];
+    protected double[][] developmentCardsPaneLocations = new double[6][2];
 
     @FXML
     public void initialize() {
+        super.initialize();
         terrainHexes = new ArrayList<>();
         vertices = new ArrayList<>();
         roads = new ArrayList<>();
@@ -549,13 +586,25 @@ public class ControllerBaseGame extends ControllerBase {
         assignNumbersToHexes();
         initializeConstructionBox();
         initializeHarbours();
+        initializeComponentsRelatedToActualPlayerCardsPane();
 
-        Image imgForDice1 = new Image("./com/catan/assets/die6.png");
+        Image imgForDice1 = new Image(Constants.PATH_DIES().get(6));
         imgDie1.setFill(new ImagePattern(imgForDice1));
-        Image img2ForDice2 = new Image("./com/catan/assets/die6.png");
+        Image img2ForDice2 = new Image(Constants.PATH_DIES().get(6));
         imgDie2.setFill(new ImagePattern(img2ForDice2));
-        Image img = new Image(Constants.PATH_CARD_PRICE);
+        Image img = new Image(Constants.PATH_CARD_PRICE());
         imgPriceCard.setFill(new ImagePattern(img));
+
+        if (!Settings.getInstance().getCurrentTheme().equals(Constants.THEME_KARADENIZ)) {
+            horonBox.setVisible(false);
+        }
+
+        root.setStyle(
+                "-fx-background-image: url("+ Constants.PATH_BG_GAME() +");\n" +
+                "-fx-background-size: cover;\n" +
+                "-fx-pref-width: 1920;\n" +
+                "-fx-pref-height: 1080;"
+        );
     }
 
     private void initializeHarbours() {
@@ -564,15 +613,13 @@ public class ControllerBaseGame extends ControllerBase {
         harbours.add( new Harbour(Constants.HARBOUR, harbour3, 3 , Constants.CARD_ORE));
         harbours.add( new Harbour(Constants.HARBOUR, harbour4, 2 , Constants.CARD_WOOL));
         harbours.add( new Harbour(Constants.HARBOUR, harbour5, 2 , Constants.CARD_GRAIN));
-
+        Image img = new Image(Constants.PATH_HARBOUR());
         for (Harbour harbour: harbours) {
-            Image img = new Image(Constants.PATH_HARBOUR);
             harbour.getShape().setFill(new ImagePattern(img));
             harbour.getShape().setStroke(Color.color(0,0.3,1));
             harbour.getShape().setStrokeWidth(1);
         }
 
-        Image img = new Image(Constants.PATH_HARBOUR);
         hexSea1.setFill(new ImagePattern(img));
         hexSea1.setStroke(Color.color(0,0.3,1));
         hexSea1.setStrokeWidth(1);
@@ -624,6 +671,17 @@ public class ControllerBaseGame extends ControllerBase {
         hexSea13.setFill(new ImagePattern(img));
         hexSea13.setStroke(Color.color(0,0.3,1));
         hexSea13.setStrokeWidth(1);
+
+        img = new Image(Constants.PATH_RESOURCE_BRICK());
+        cardHarbour1.setImage(img);
+        img = new Image(Constants.PATH_RESOURCE_LUMBER());
+        cardHarbour2.setImage(img);
+        img = new Image(Constants.PATH_RESOURCE_ORE());
+        cardHarbour3.setImage(img);
+        img = new Image(Constants.PATH_RESOURCE_WOOL());
+        cardHarbour4.setImage(img);
+        img = new Image(Constants.PATH_RESOURCE_GRAIN());
+        cardHarbour5.setImage(img);
     }
 
     private void assignNumbersToHexes() {
@@ -653,22 +711,22 @@ public class ControllerBaseGame extends ControllerBase {
     }
 
     private void initializeConstructionBox() {
-        Image img = new Image(Constants.PATH_ROAD);
+        Image img = new Image(Constants.PATH_ROAD());
         imgRoad.setFill(new ImagePattern(img));
         imgRoad.setStroke(Color.color(0.4,0.4,0.4));
         imgRoad.setStrokeWidth(1);
 
-        Image img2 = new Image(Constants.PATH_VILLAGE);
+        Image img2 = new Image(Constants.PATH_VILLAGE());
         imgVillage.setFill(new ImagePattern(img2));
         imgVillage.setStroke(Color.color(0.4,0.4,0.4));
         imgVillage.setStrokeWidth(1);
 
-        Image img3 = new Image(Constants.PATH_CITY);
+        Image img3 = new Image(Constants.PATH_CITY());
         imgCity.setFill(new ImagePattern(img3));
         imgCity.setStroke(Color.color(0.4,0.4,0.4));
         imgCity.setStrokeWidth(1);
 
-        Image img4 = new Image(Constants.PATH_CIVILISATION);
+        Image img4 = new Image(Constants.PATH_CIVILIZATION());
         imgCivilisation.setFill(new ImagePattern(img4));
         imgCivilisation.setStroke(Color.color(0.4,0.4,0.4));
         imgCivilisation.setStrokeWidth(1);
@@ -1264,37 +1322,37 @@ public class ControllerBaseGame extends ControllerBase {
 
             if (tmp == 1 && countOfPasture > 0) {
                 countOfPasture--;
-                img = new Image(Constants.PATH_HEX_PASTURE);
+                img = new Image(Constants.PATH_HEX_PASTURE());
                 color = Color.color(0.2,1,0.2);
                 hex.setSourceCardName(Constants.CARD_WOOL);
             }
             else if (tmp == 2 && countOfForest > 0) {
                 countOfForest--;
-                img = new Image(Constants.PATH_HEX_FOREST);
+                img = new Image(Constants.PATH_HEX_FOREST());
                 color = Color.color(0.3,1,0.2);
                 hex.setSourceCardName(Constants.CARD_LUMBER);
             }
             else if (tmp == 3 && countOfDesert > 0) {
                 countOfDesert--;
-                img = new Image(Constants.PATH_HEX_DESERT);
+                img = new Image(Constants.PATH_HEX_DESERT());
                 color = Color.color(0.4,0.3,0.2);
                 thief = new Thief(hex, imgMovingThief);
             }
             else if (tmp == 4 && countOfMountain > 0) {
                 countOfMountain--;
-                img = new Image(Constants.PATH_HEX_MOUNTAINS);
+                img = new Image(Constants.PATH_HEX_MOUNTAINS());
                 color = Color.color(0.4,0.4,0.4);
                 hex.setSourceCardName(Constants.CARD_ORE);
             }
             else if (tmp == 5 && countOfFields > 0) {
                 countOfFields--;
-                img = new Image(Constants.PATH_HEX_FIELDS);
+                img = new Image(Constants.PATH_HEX_FIELDS());
                 color = Color.color(1,0.5,0);
                 hex.setSourceCardName(Constants.CARD_GRAIN);
             }
             else if (tmp == 6 && countOfHill > 0) {
                 countOfHill--;
-                img = new Image(Constants.PATH_HEX_HILL);
+                img = new Image(Constants.PATH_HEX_HILL());
                 color = Color.color(1,0,0);
                 hex.setSourceCardName(Constants.CARD_BRICK);
             }
@@ -1305,6 +1363,112 @@ public class ControllerBaseGame extends ControllerBase {
                 hex.getShape().setStrokeWidth(1);
             }
         }
+    }
+
+    // this obnoxiously named function initializes the components related to the
+    // section where number of cards of the actual player is shown
+    private void initializeComponentsRelatedToActualPlayerCardsPane() {
+        int resourceHeight = 87;
+        int resourceWidth = 60;
+        ImgViewLumberDummy.setImage(new Image(Constants.PATH_RESOURCE_LUMBER_GRAYSCALE()));
+        ImgViewLumberDummy.setFitHeight(resourceHeight);
+        ImgViewLumberDummy.setFitWidth(resourceWidth);
+
+        ImgViewWoolDummy.setImage(new Image(Constants.PATH_RESOURCE_WOOL_GRAYSCALE()));
+        ImgViewWoolDummy.setFitHeight(resourceHeight);
+        ImgViewWoolDummy.setFitWidth(resourceWidth);
+
+        ImgViewBrickDummy.setImage(new Image(Constants.PATH_RESOURCE_BRICK_GRAYSCALE()));
+        ImgViewBrickDummy.setFitHeight(resourceHeight);
+        ImgViewBrickDummy.setFitWidth(resourceWidth);
+
+        ImgViewOreDummy.setImage(new Image(Constants.PATH_RESOURCE_ORE_GRAYSCALE()));
+        ImgViewOreDummy.setFitHeight(resourceHeight);
+        ImgViewOreDummy.setFitWidth(resourceWidth);
+
+        ImgViewGrainDummy.setImage(new Image(Constants.PATH_RESOURCE_GRAIN_GRAYSCALE()));
+        ImgViewGrainDummy.setFitHeight(resourceHeight);
+        ImgViewGrainDummy.setFitWidth(resourceWidth);
+
+        //ImgViewLumberDummy.setVisible(false);
+        lumberImages.add(ImgViewLumberDummy);
+        //ImgViewBrickDummy.setVisible(false);
+        brickImages.add(ImgViewBrickDummy);
+        //ImgViewGrainDummy.setVisible(false);
+        grainImages.add(ImgViewGrainDummy);
+        //ImgViewOreDummy.setVisible(false);
+        oreImages.add(ImgViewOreDummy);
+        //ImgViewWoolDummy.setVisible(false);
+        woolImages.add(ImgViewWoolDummy);
+
+        resourceCardPanes[0] = paneLumbers;
+        resourceCardPanes[1] = paneWools;
+        resourceCardPanes[2] = paneOres;
+        resourceCardPanes[3] = paneBricks;
+        resourceCardPanes[4] = paneGrains;
+
+        // these has to be in the order as in the FXML file
+        resourceCardsPaneLocations[0] = new double[] {paneLumbers.getLayoutX(), paneLumbers.getLayoutY()};
+        resourceCardsPaneLocations[1] = new double[] {paneWools.getLayoutX(), paneWools.getLayoutY()};
+        resourceCardsPaneLocations[2] = new double[] {paneBricks.getLayoutX(), paneBricks.getLayoutY()};
+        resourceCardsPaneLocations[3] = new double[] {paneOres.getLayoutX(), paneOres.getLayoutY()};
+        resourceCardsPaneLocations[4] = new double[] {paneGrains.getLayoutX(), paneGrains.getLayoutY()};
+
+        // same initilizations but for the development cards
+
+        int devHeight = 60;
+        int devWidth = 60;
+        ImgViewInventionDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_INVENTION_GRAYSCALE()));
+        ImgViewInventionDummy.setFitHeight(devHeight);
+        ImgViewInventionDummy.setFitWidth(devWidth);
+
+        ImgViewKnightDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_KNIGHT_GRAYSCALE()));
+        ImgViewKnightDummy.setFitHeight(devHeight);
+        ImgViewKnightDummy.setFitWidth(devWidth);
+
+        ImgViewVictoryDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_VICTORY_POINT_GRAYSCALE()));
+        ImgViewVictoryDummy.setFitHeight(devHeight);
+        ImgViewVictoryDummy.setFitWidth(devWidth);
+
+        ImgViewProfitDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE_GRAYSCALE()));
+        ImgViewProfitDummy.setFitHeight(devHeight);
+        ImgViewProfitDummy.setFitWidth(devWidth);
+
+        ImgViewRoadDestructionDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_ROAD_DESTRUCTION_GRAYSCALE()));
+        ImgViewRoadDestructionDummy.setFitHeight(devHeight);
+        ImgViewRoadDestructionDummy.setFitWidth(devWidth);
+
+        ImgViewMonopolyDummy.setImage(new Image(Constants.PATH_DEVELOPMENT_CARD_MONOPOL_GRAYSCALE()));
+        ImgViewMonopolyDummy.setFitHeight(devHeight);
+        ImgViewMonopolyDummy.setFitWidth(devWidth);
+
+        //ImgViewInventionDummy.setVisible(false);
+        inventionImages.add(ImgViewInventionDummy);
+        //ImgViewMonopolyDummy.setVisible(false);
+        monopolyImages.add(ImgViewMonopolyDummy);
+        //ImgViewKnightDummy.setVisible(false);
+        knightImages.add(ImgViewKnightDummy);
+        //ImgViewProfitDummy.setVisible(false);
+        profitImages.add(ImgViewProfitDummy);
+        //ImgViewRoadDestructionDummy.setVisible(false);
+        roadDestructionImages.add(ImgViewRoadDestructionDummy);
+        //ImgViewVictoryDummy.setVisible(false);
+        victoryImages.add(ImgViewVictoryDummy);
+
+        developmentCardPanes[0] = paneInvention;
+        developmentCardPanes[1] = paneKnight;
+        developmentCardPanes[2] = paneMonopoly;
+        developmentCardPanes[3] = paneProfit;
+        developmentCardPanes[4] = paneRoadDestruction;
+        developmentCardPanes[5] = paneVictory;
+
+        // these has to be in the order as in the FXML file
+        developmentCardsPaneLocations[0] = new double[] {paneInvention.getLayoutX(), paneInvention.getLayoutY()};
+        developmentCardsPaneLocations[1] = new double[] {paneKnight.getLayoutX(), paneKnight.getLayoutY()};
+        developmentCardsPaneLocations[2] = new double[] {paneMonopoly.getLayoutX(), paneMonopoly.getLayoutY()};
+        developmentCardsPaneLocations[3] = new double[] {paneProfit.getLayoutX(), paneProfit.getLayoutY()};
+        developmentCardsPaneLocations[4] = new double[] {paneRoadDestruction.getLayoutX(), paneRoadDestruction.getLayoutY()};
+        developmentCardsPaneLocations[5] = new double[] {paneVictory.getLayoutX(), paneVictory.getLayoutY()};
     }
 
     private void constructHexesArray() {
@@ -1332,6 +1496,11 @@ public class ControllerBaseGame extends ControllerBase {
     public Label getWarningLabel(){
         return labelWarning;
     }
+
+    public Label getSuccessLabel(){
+        return labelSuccess;
+    }
+
     public ArrayList<Vertex> getVertices() {
         return vertices;
     }

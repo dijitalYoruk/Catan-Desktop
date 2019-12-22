@@ -9,5 +9,6 @@ public interface InterfaceDevelopmentCard {
     void setDevelopmentCardInvention(DevelopmentCard developmentCardInvention);
     void playDevelopmentCard(DevelopmentCard developmentCard);
     void displayWarning(String warningType);
+    void displaySuccess(String successType);
     void buyDevelopmentCard(ActionEvent event);
 }

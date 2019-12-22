@@ -1,22 +1,36 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.modal.GameLog;
 import com.catan.modal.Trade;
+import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ControllerTradeRequest {
 
     // view components
     @FXML
-    private Label labelTitleOfTradeRequest;
+    private ImageView imgOfferBrick;
+    @FXML
+    private ImageView imgOfferGrain;
+    @FXML
+    private ImageView imgOfferOre;
+    @FXML
+    private ImageView imgOfferWool;
+    @FXML
+    private ImageView imgOfferLumber;
     @FXML
     private Label labelOfferedBrick;
     @FXML
@@ -28,6 +42,18 @@ public class ControllerTradeRequest {
     @FXML
     private Label labelOfferedOre;
     @FXML
+    private Label labelTitleOfTradeRequest;
+    @FXML
+    private ImageView imgRequestBrick;
+    @FXML
+    private ImageView imgRequestGrain;
+    @FXML
+    private ImageView imgRequestOre;
+    @FXML
+    private ImageView imgRequestWool;
+    @FXML
+    private ImageView imgRequestLumber;
+    @FXML
     private Label labelRequestedBrick;
     @FXML
     private Label labelRequestedWheat;
@@ -38,10 +64,33 @@ public class ControllerTradeRequest {
     @FXML
     private Label labelRequestedOre;
     @FXML
+    private AnchorPane root;
+    @FXML
     ResourceBundle resources;
 
     // properties
     private Trade trade;
+
+    @FXML
+    public void initialize() {
+        root.setStyle("-fx-background-image: url("+ Constants.PATH_BG_INVENTION() +");\n" +
+                "-fx-background-size: cover;\n");
+
+        ArrayList<ImageView> imgOffers = new ArrayList<>(Arrays.asList(
+                imgOfferOre, imgOfferBrick,
+                imgOfferLumber, imgOfferGrain,
+                imgOfferWool));
+        ArrayList<ImageView> imgRequests = new ArrayList<>(Arrays.asList(
+                imgRequestOre, imgRequestBrick,
+                imgRequestLumber, imgRequestGrain,
+                imgRequestWool));
+        for (int i = 0; i < Constants.getResourcePaths().size(); i++) {
+            String resourcePath = Constants.getResourcePaths().get(i);
+            Image image = new Image(resourcePath);
+            imgOffers.get(i).setImage(image);
+            imgRequests.get(i).setImage(image);
+        }
+    }
 
     // methods
 
@@ -50,6 +99,8 @@ public class ControllerTradeRequest {
         trade.completeTrade();
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
+        GameLog gameLog = GameLog.getInstance();
+        gameLog.addLog(StringUtils.capitalize(trade.getPlayerTrader().getName()) + " has traded with " + StringUtils.capitalize(trade.getPlayerToBeTraded().getName()), trade.getPlayerTrader().getColor());
     }
 
     @FXML
@@ -60,6 +111,8 @@ public class ControllerTradeRequest {
         trade.printTradeDetails();
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.close();
+        GameLog gameLog = GameLog.getInstance();
+        gameLog.addLog(StringUtils.capitalize(trade.getPlayerToBeTraded().getName()) + " has declined the trade with " + StringUtils.capitalize(trade.getPlayerTrader().getName()), trade.getPlayerToBeTraded().getColor());
     }
 
     public void setProperties(Trade trade) {

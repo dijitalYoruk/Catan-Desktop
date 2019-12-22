@@ -1,26 +1,25 @@
 #program-pane {
-    -fx-background-image: url("../assets/background.jpg");
     -fx-background-size: cover;
     -fx-pref-width: 1920;
     -fx-pref-height: 1080;
 }
 
 #game-entrance-pane {
-    -fx-background-image: url("../assets/background_game_entrance.jpg");
+    -fx-background-image: url("../assets/default/background_game_entrance.jpg");
     -fx-background-size: cover;
     -fx-pref-width: 1920;
     -fx-pref-height: 1080;
 }
 
 #settings-pane {
-    -fx-background-image: url("../assets/background.jpg");
+    -fx-background-image: url("../assets/default/background.jpg");
     -fx-background-size: cover;
     -fx-pref-width: 1920;
     -fx-pref-height: 1080;
 }
 
 #game-pane {
-    -fx-background-image: url("../assets/background_game.jpg");
+    -fx-background-image: url("../assets/default/background_game.jpg");
     -fx-background-size: cover;
     -fx-pref-width: 1920;
     -fx-pref-height: 1080;
@@ -38,7 +37,7 @@
 }
 
 .settings{
-    -fx-background-image: url("../assets/background.jpg");
+    -fx-background-image: url("../assets/default/background.jpg");
     -fx-background-size: cover;
     -fx-pref-width: 1920;
     -fx-pref-height: 1080;
@@ -52,6 +51,7 @@
     -fx-pref-height: 50;
     -fx-font-size: 20;
 }
+
 .thresholds_numbers{
     -fx-text-alignment: center;
     -fx-background-color: yellow;
@@ -60,6 +60,7 @@
     -fx-background-radius: 30;
     -fx-font-size: 20;
 }
+
 .settings-button {
     -fx-background-color: orange;
     -fx-margin:50px;
@@ -118,10 +119,23 @@
     -fx-pref-height: 50;
     -fx-font-size: 20;
 }
+
 .warning-label{
     -fx-padding: 20px;
     -fx-background-color: red;
+    -fx-text-fill: white;
     -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-font-color:orange;
+    -fx-background-radius: 40;
+    -fx-pref-width: 340;
+    -fx-pref-height: 100;
+    -fx-font-size: 20;
+}
+
+.success-label{
+    -fx-padding: 20px;
+    -fx-background-color: orange;
     -fx-font-family: "Book Antiqua";
     -fx-font-color:orange;
     -fx-background-radius: 40;
@@ -166,7 +180,7 @@
 }
 
 .game-back-button {
-    -fx-background-image: url("../assets/icon_back.jpg");
+    -fx-background-image: url("../assets/default/icon_back.jpg");
     -fx-background-size: 50px;
 }
 
@@ -179,14 +193,25 @@
     -fx-pref-height: 70;
     -fx-font-size: 20;
 }
-.instructions-back-button {
+
+.back-button {
     -fx-background-color: orange;
     -fx-font-family: "Book Antiqua";
-    -fx-background-radius: 30;
+    -fx-background-radius: 100;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-image: url("../assets/icon_back.jpg");
+    -fx-background-image: url("../assets/backbutton.png");
+    -fx-pref-height: 60px;
+    -fx-pref-width: 60px;
     -fx-background-size: 50px;
+}
+
+.page-header {
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+    -fx-text-fill: orange;
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
 }
 
 #selector-bg {
@@ -223,17 +248,17 @@ trade-pane-bg {
 }
 
 #okey-button {
-    -fx-background-image: url("../assets/icon_okey.png");
+    -fx-background-image: url("../assets/default/icon_okey.png");
     -fx-background-size: 50px;
 }
 
 #invention-pane {
-    -fx-background-image: url("../assets/invention_ng.jpg");
+    -fx-background-image: url("../assets/default/invention_ng.jpg");
     -fx-background-size: cover;
 }
 
 #development-card-pane {
-    -fx-background-image: url("../assets/invention_ng.jpg");
+    -fx-background-image: url("../assets/default/invention_ng.jpg");
     -fx-background-size: cover;
 }
 
@@ -281,9 +306,10 @@ trade-pane-bg {
     -fx-margin:50px;
     -fx-font-family: "Book Antiqua";
     -fx-background-radius: 40;
-    -fx-pref-width: 200;
+    -fx-pref-width: 250;
     -fx-pref-height: 50;
     -fx-font-size: 20;
+    -fx-alignment: center;
 }
 
 #selector-bg-setings {
@@ -298,10 +324,22 @@ trade-pane-bg {
     -fx-font-family: "Book Antiqua";
     -fx-font-size: 20;
 }
+
+.trade-request-label {
+    -fx-background-color: orange;
+    -fx-margin:50px;
+    -fx-font-family: "Book Antiqua";
+    -fx-background-radius: 30;
+    -fx-pref-width: 400;
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
+
 .endGame-pane{
     -fx-background-image: url("../assets/endGameBackground.gif");
     -fx-background-size: cover;
 }
+
 .endGame-Title-label{
     -fx-background-color: #F57C00;
     -fx-alignment: center;
@@ -313,6 +351,7 @@ trade-pane-bg {
     -fx-font-size: 48;
     -fx-padding: 20;
 }
+
 .endGame-Nontitle-label{
     -fx-background-color: #F57C00;
     -fx-margin:50px;
@@ -343,4 +382,7 @@ trade-pane-bg {
     -fx-background-position: center;
     -fx-background-image: url("../assets/icon_back.jpg");
     -fx-background-size: 50px;
+
+.text-area .scroll-bar:vertical:disabled {
+    -fx-opacity: 0;
 }
