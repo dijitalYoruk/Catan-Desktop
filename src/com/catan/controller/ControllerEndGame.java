@@ -1,29 +1,19 @@
 package com.catan.controller;
 
-
-import com.catan.Util.Constants;
-import com.catan.modal.Player;
-import com.catan.modal.Settings;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 public class ControllerEndGame{
 
-<<<<<<< HEAD
     @FXML
     private AnchorPane root;
-=======
->>>>>>> origin/ibrahimm-development
     @FXML
     ResourceBundle resources;
     @FXML
