@@ -331,8 +331,8 @@
       <Rectangle fx:id="imgPriceCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="187.0" layoutX="144.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="292.0" />
       <VBox layoutX="1571.0" layoutY="106.0" prefHeight="170.0" prefWidth="300.0">
          <children>
-            <JFXButton onAction="#playDevelopmentCard" styleClass="game-button" text="%gameView_playDevelopmentCard" />
-            <JFXButton onAction="#buyDevelopmentCard" styleClass="game-button" text="%gameView_buyDevelopmentCard">
+            <JFXButton onAction="#playDevelopmentCard" styleClass="trade-button" text="%gameView_playDevelopmentCard" />
+            <JFXButton onAction="#buyDevelopmentCard" styleClass="trade-button" text="%gameView_buyDevelopmentCard">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
