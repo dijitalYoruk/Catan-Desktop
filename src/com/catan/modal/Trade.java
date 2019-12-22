@@ -58,7 +58,7 @@ public class Trade {
             HashMap<String, ArrayList<SourceCard>> resourceCards = playerToBeTraded.getSourceCards();
             for (String resourceName: Constants.resourceNames) {
                 if (resourceCards.get(resourceName).size() < requestedResourceCards.get(resourceName)) {
-                    errorMessage = "The trade request from " + playerTrader.getName() +
+                    errorMessage = "The trade request from \n" + playerTrader.getName() +
                             " was denied by " + playerToBeTraded.getName() + ".";
                     isTradePossible = false;
                     break;
@@ -80,7 +80,7 @@ public class Trade {
                     gameLog.addLog(StringUtils.capitalize(playerTrader.getName()) + " " + bundle.getString("gamelogs_hasTradedWith") + " " + StringUtils.capitalize(playerToBeTraded.getName()) + ".", playerTrader.getColor());
                 }
                 else {
-                    errorMessage = "The trade request from " + playerTrader.getName() +
+                    errorMessage = "The trade request from \n" + playerTrader.getName() +
                             " was denied by " + playerToBeTraded.getName() + ".";
 
                 }
