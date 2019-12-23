@@ -11,10 +11,9 @@ public class Constants {
 
     public static String THEME_FOLDER = "default";
 
-    public static final String VIEW_THIEF = "../view/thiefCardPunishment.fxml";
     public static final String CONSTRUCTION_STRING = "Construction";
     public static final String THIEF_STRING = "Thief";
-    public static final String INTRO = "src/com/catan/assets/CatanIntro.mp4";
+    public static final String INTRO = "CatanIntro.mp4";
 
     public static final String ROAD = "road";
     public static final String VILLAGE = "village";
@@ -23,7 +22,7 @@ public class Constants {
     public static final String HARBOUR = "harbour";
     public static final String DEVELOPMENT_CARD = "development_card";
     public static final int CONSTRUCTION_RADIUS = 22;
-    public static final String PATH_DIE_GIF  = "./com/catan/assets/" + THEME_FOLDER + "/gif_die.gif";
+    public static final String PATH_DIE_GIF  = "com/catan/assets/" + THEME_FOLDER + "/gif_die.gif";
     public static final Color COLOR_CONSTRUCTION_UNSELECTED = Color.color(0.4,0.4,0.4);
     public static final Color COLOR_CONSTRUCTION_SELECTED = Color.color(1,0,0);
     public static final Color COLOR_BLUR_VERTEX = Color.valueOf("#ffde2173");
@@ -39,7 +38,7 @@ public class Constants {
     public static final Color COLOR_RGB_GREEN = Color.valueOf("#00ff00");
     public static final Color COLOR_RGB_PURPLE = Color.valueOf("#9013FE");
     public static final Color COLOR_RGB_BLUE = Color.valueOf("#0000ff");
-    public static final String ICON_THIEF =  "./com/catan/assets/" + THEME_FOLDER + "/icon_thief.gif";
+    public static final String ICON_THIEF =  "com/catan/assets/" + THEME_FOLDER + "/icon_thief.gif";
 
     public static final String CARD_GRAIN = "grain";
     public static final String CARD_WOOL = "wool";
@@ -62,7 +61,7 @@ public class Constants {
     public static final String DEVELOPMENT_CARD_KNIGHT  = "Knight Development Card";
     public static final String DEVELOPMENT_CARD_MONOPOL = "Monopoly Development Card";
 
-    public static final String DEVELOPMENT_CARD_VIEW_CLOSE_ICON = "./com/catan/assets/closeIcon.png";
+    public static final String DEVELOPMENT_CARD_VIEW_CLOSE_ICON = "com/catan/assets/closeIcon.png";
 
     public static final ArrayList<String> developmentCardNames = new ArrayList<>(
             Arrays.asList(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE,
@@ -75,13 +74,20 @@ public class Constants {
     public static final int PANE_WIDTH = 1920;
     public static final int PANE_HEIGHT = 1080;
 
-    public static String PATH_VIEW_TRADE_REQUEST = "com/catan/view/tradeRequest.fxml";
-    public static String PATH_VIEW_PLAY_DEVELOPMENT_CARD = "com/catan/view/playDevelopmentCard.fxml";
-    public static String PATH_VIEW_DEV_MONOPOL_CARD = "com/catan/view/monopolDevCard.fxml";
-    public static String PATH_VIEW_DEV_INVENTION_CARD = "com/catan/view/inventionDevCard.fxml";
-    public static String PATH_VIEW_TRADE_OFFER = "com/catan/view/tradeOffer.fxml";
-    public static String PATH_VIEW_PUNISHMENT = "com/catan/view/thiefCardPunishment.fxml";
-    public static String PATH_VIEW_ENDGAME = "com/catan/view/endGame.fxml";
+    public static final String PATH_VIEW_TRADE_REQUEST = "com/catan/view/tradeRequest.fxml";
+    public static final String PATH_VIEW_PLAY_DEVELOPMENT_CARD = "com/catan/view/playDevelopmentCard.fxml";
+    public static final String PATH_VIEW_DEV_MONOPOL_CARD = "com/catan/view/monopolDevCard.fxml";
+    public static final String PATH_VIEW_DEV_INVENTION_CARD = "com/catan/view/inventionDevCard.fxml";
+    public static final String PATH_VIEW_TRADE_OFFER = "com/catan/view/tradeOffer.fxml";
+    public static final String PATH_VIEW_PUNISHMENT = "com/catan/view/thiefCardPunishment.fxml";
+    public static final String PATH_VIEW_ENDGAME = "com/catan/view/endGame.fxml";
+    public static final String PATH_VIEW_PROGRAM = "com/catan/view/program.fxml";
+    public static final String PATH_VIEW_SETTINGS = "com/catan/view/settings.fxml";
+    public static final String PATH_VIEW_GAME_ENTRANCE= "com/catan/view/gameEntrance.fxml";
+    public static final String PATH_VIEW_INSTRUCTIONS = "com/catan/view/instructions.fxml";
+    public static final String PATH_VIEW_CREDENTIALS = "com/catan/view/credentials.fxml";
+    public static final String PATH_VIEW_GAME = "com/catan/view/game.fxml";
+
     public static final double HARBOUR_NO_RATIO = -1;
 
     public static final ArrayList<String> resourceNames = new ArrayList<>(
@@ -104,156 +110,156 @@ public class Constants {
                           Constants.CIVILISATION)
     );
 
-    public static final String PATH_DIRECTORY = Paths.get(".").toAbsolutePath().normalize().toString();
+//    public static final String PATH_DIRECTORY = Paths.get(".").toAbsolutePath().normalize().toString();
     public static final String THEME_DEFAULT = "Default";
     public static final String THEME_SPACE = "Space";
     public static final String THEME_KARADENIZ = "Karadeniz";
-    public static final String PATH_SETTINGS_TEXT_FILE = PATH_DIRECTORY + "/src/com/catan/persistentData/settings.txt";
+    public static final String PATH_SETTINGS_TEXT_FILE = "persistentData/settings.txt";
     public static final String CURRENT_THEME = "CURRENT_THEME";
     public static final String CURRENT_LANGUAGE = "CURRENT_LANGUAGE";
     public static final String THRESHOLD_VICTORY = "THRESHOLD_VICTORY";
     public static final String THRESHOLD_ROAD = "THRESHOLD_ROAD";
     public static final String THRESHOLD_ARMY = "THRESHOLD_ARMY";
-    public static final String AUDIO_DEFAULT = PATH_DIRECTORY +  "\\src\\com\\catan\\music\\catan_theme.mp3";
-    public static final String AUDIO_SPACE = PATH_DIRECTORY + "\\src\\com\\catan\\music\\space_theme.mp3";
-    public static final String AUDIO_KARADENIZ = PATH_DIRECTORY + "\\src\\com\\catan\\music\\karadeniz_theme.mp3";
+    public static final String AUDIO_DEFAULT = "music/catan_theme.mp3";
+    public static final String AUDIO_SPACE = "music/space_theme.mp3";
+    public static final String AUDIO_KARADENIZ = "music/karadeniz_theme.mp3";
     public static final String IMG_SOUND_MUTE = "com/catan/assets/" + THEME_FOLDER + "/music-button.jpg";
     public static final String IMG_SOUND_UNMUTED = "com/catan/assets/" + THEME_FOLDER + "/music-button-muted.jpg";
 
     public static String PATH_ROAD() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/road.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/road.png";
     }
 
     public static String PATH_VILLAGE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/village.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/village.png";
     }
 
     public static String PATH_CITY() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/city.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/city.png";
     }
 
     public static String PATH_CIVILIZATION() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/civilisation.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/civilisation.png";
     }
 
     public static String PATH_CARD_PRICE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/price_card.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/price_card.png";
     }
 
     public static String PATH_HARBOUR() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/harbour.gif";
+        return "com/catan/assets/" + THEME_FOLDER + "/harbour.gif";
     }
 
     public static String PATH_CITY_RED() {
-        return  "./com/catan/assets/" + THEME_FOLDER + "/city_red.png";
+        return  "com/catan/assets/" + THEME_FOLDER + "/city_red.png";
     }
 
     public static String PATH_CITY_BLUE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/city_blue.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/city_blue.png";
     }
 
     public static String PATH_CITY_PURPLE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/city_purple.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/city_purple.png";
     }
 
     public static String PATH_CITY_GREEN() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/city_green.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/city_green.png";
     }
 
     public static String PATH_VILLAGE_RED() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/village_red.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/village_red.png";
     }
 
     public static String PATH_VILLAGE_BLUE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/village_blue.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/village_blue.png";
     }
 
     public static String PATH_VILLAGE_PURPLE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/village_purple.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/village_purple.png";
     }
 
     public static String PATH_VILLAGE_GREEN() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/village_green.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/village_green.png";
     }
 
     public static String PATH_CIVILISATION_RED() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/civilisation_red.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/civilisation_red.png";
     }
 
     public static String PATH_CIVILISATION_BLUE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/civilisation_blue.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/civilisation_blue.png";
     }
 
     public static String PATH_CIVILISATION_PURPLE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/civilisation_purple.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/civilisation_purple.png";
     }
 
     public static String PATH_CIVILISATION_GREEN() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/civilisation_green.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/civilisation_green.png";
     }
 
     public static String PATH_RESOURCE_LUMBER() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/resource_lumber.jpg";
+        return "com/catan/assets/" + THEME_FOLDER + "/resource_lumber.jpg";
     }
 
     public static String PATH_RESOURCE_BRICK() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/resource_brick.jpg";
+        return "com/catan/assets/" + THEME_FOLDER + "/resource_brick.jpg";
     }
 
     public static String PATH_RESOURCE_GRAIN() {
-        return  "./com/catan/assets/" + THEME_FOLDER + "/resource_grain.jpg";
+        return  "com/catan/assets/" + THEME_FOLDER + "/resource_grain.jpg";
     }
 
     public static String PATH_RESOURCE_ORE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/resource_ore.jpg";
+        return "com/catan/assets/" + THEME_FOLDER + "/resource_ore.jpg";
     }
 
     public static String PATH_RESOURCE_WOOL() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/resource_wool.jpg";
+        return "com/catan/assets/" + THEME_FOLDER + "/resource_wool.jpg";
     }
 
     public static String PATH_RESOURCE_LUMBER_GRAYSCALE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/resource_lumber_grayscale.jpg";
+        return "com/catan/assets/" + THEME_FOLDER + "/resource_lumber_grayscale.jpg";
     }
 
     public static String PATH_RESOURCE_BRICK_GRAYSCALE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/resource_brick_grayscale.jpg";
+        return "com/catan/assets/" + THEME_FOLDER + "/resource_brick_grayscale.jpg";
     }
 
     public static String PATH_RESOURCE_GRAIN_GRAYSCALE() {
-        return  "./com/catan/assets/" + THEME_FOLDER + "/resource_grain_grayscale.jpg";
+        return  "com/catan/assets/" + THEME_FOLDER + "/resource_grain_grayscale.jpg";
     }
 
     public static String PATH_RESOURCE_ORE_GRAYSCALE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/resource_ore_grayscale.jpg";
+        return "com/catan/assets/" + THEME_FOLDER + "/resource_ore_grayscale.jpg";
     }
 
     public static String PATH_RESOURCE_WOOL_GRAYSCALE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/resource_wool_grayscale.jpg";
+        return "com/catan/assets/" + THEME_FOLDER + "/resource_wool_grayscale.jpg";
     }
 
     public static String PATH_HEX_PASTURE() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/pasture.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/pasture.png";
     }
 
     public static String PATH_HEX_FOREST() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/forest.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/forest.png";
     }
 
     public static String PATH_HEX_DESERT() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/desert.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/desert.png";
     }
 
     public static String PATH_HEX_MOUNTAINS() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/mountains.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/mountains.png";
     }
 
     public static String PATH_HEX_FIELDS() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/fields.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/fields.png";
     }
 
     public static String PATH_HEX_HILL() {
-        return "./com/catan/assets/" + THEME_FOLDER + "/hill.png";
+        return "com/catan/assets/" + THEME_FOLDER + "/hill.png";
     }
 
     public static String PATH_DEVELOPMENT_CARD_PROFIT_EXCHANGE() {

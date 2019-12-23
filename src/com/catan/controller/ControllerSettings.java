@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ControllerSettings extends ControllerBase {
@@ -138,7 +139,7 @@ public class ControllerSettings extends ControllerBase {
         try {
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
                     new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-            Parent root = FXMLLoader.load(getClass().getResource("../view/settings.fxml"), bundle);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(Constants.PATH_VIEW_SETTINGS)), bundle);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
         } catch (IOException e) {

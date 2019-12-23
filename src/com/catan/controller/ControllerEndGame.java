@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.util.ResourceBundle;
 
-public class ControllerEndGame{
+public class ControllerEndGame {
 
     @FXML
     private AnchorPane root;

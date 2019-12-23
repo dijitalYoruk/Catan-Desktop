@@ -44,11 +44,11 @@ public class ControllerInstructions extends ControllerBase {
         arrow_right_page.setImage(imageRight);
 
         updateSoundImg();
-        leftRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+        leftRulesPage.setImage(new Image("com/catan/assets/catan_rules_"+
                 Settings.getInstance().getCurrentLanguage() +"/catan_rules_page_"+(currentPageNumber-1)+".jpg"));
-        currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+        currentRulesPage.setImage(new Image("com/catan/assets/catan_rules_"+
                 Settings.getInstance().getCurrentLanguage() +"/catan_rules_page_"+currentPageNumber+".jpg"));
-        rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+        rightRulesPage.setImage(new Image("com/catan/assets/catan_rules_"+
                 Settings.getInstance().getCurrentLanguage() +"/catan_rules_page_"+(currentPageNumber+1)+".jpg"));
         // the adjustment of perspective of right page
         rightPerspectiveTransform.setUlx(0.0); //10
@@ -83,7 +83,7 @@ public class ControllerInstructions extends ControllerBase {
         if(currentPageNumber == 2)
             leftRulesPage.setVisible(false);
         else
-            leftRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+ Settings.getInstance().getCurrentLanguage()
+            leftRulesPage.setImage(new Image("com/catan/assets/catan_rules_"+ Settings.getInstance().getCurrentLanguage()
                     +"/catan_rules_page_"+(currentPageNumber-2)+".jpg"));
 
         // if current page is 16, and user wants to 15'th page, there will be 16'th page on right
@@ -91,9 +91,9 @@ public class ControllerInstructions extends ControllerBase {
         if((Settings.getInstance().getCurrentLanguage().equals("en") && currentPageNumber == 16) ||
                 (Settings.getInstance().getCurrentLanguage().equals("tr") && currentPageNumber == 11))
             rightRulesPage.setVisible(true);
-        currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_" +
+        currentRulesPage.setImage(new Image("com/catan/assets/catan_rules_" +
                 Settings.getInstance().getCurrentLanguage() + "/catan_rules_page_"+(currentPageNumber-1)+".jpg"));
-        rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_" +
+        rightRulesPage.setImage(new Image("com/catan/assets/catan_rules_" +
                 Settings.getInstance().getCurrentLanguage() + "/catan_rules_page_"+currentPageNumber+".jpg"));
         currentPageNumber--;
 
@@ -110,7 +110,7 @@ public class ControllerInstructions extends ControllerBase {
                 (Settings.getInstance().getCurrentLanguage().equals("tr") && currentPageNumber == 10))
             rightRulesPage.setVisible(false);
         else{
-            rightRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+            rightRulesPage.setImage(new Image("com/catan/assets/catan_rules_"+
                     Settings.getInstance().getCurrentLanguage()+"/catan_rules_page_"+(currentPageNumber+2)+".jpg"));
         }
         // current page number is not incremented yet, if it is 1 now, user wants to go 2'nd page,
@@ -118,9 +118,9 @@ public class ControllerInstructions extends ControllerBase {
         if(currentPageNumber == 1)
             leftRulesPage.setVisible(true);
 
-        leftRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+        leftRulesPage.setImage(new Image("com/catan/assets/catan_rules_"+
                 Settings.getInstance().getCurrentLanguage()+"/catan_rules_page_"+currentPageNumber+".jpg"));
-        currentRulesPage.setImage(new Image("./com/catan/assets/catan_rules_"+
+        currentRulesPage.setImage(new Image("com/catan/assets/catan_rules_"+
                 Settings.getInstance().getCurrentLanguage()+"/catan_rules_page_"+(currentPageNumber+1)+".jpg"));
         currentPageNumber++;
     }

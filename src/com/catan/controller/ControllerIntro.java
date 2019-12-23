@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ControllerIntro {
@@ -65,11 +66,9 @@ public class ControllerIntro {
             mediaView.getMediaPlayer().stop();
             Constants.THEME_FOLDER = Settings.getInstance().getCurrentTheme().toLowerCase();
             MusicPlayer.getMusicPlayer().playMusic(Settings.getInstance().getCurrentTheme());
-            FXMLLoader fxmlLoader = new FXMLLoader();
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
                     new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-            Parent root = null;
-            root = fxmlLoader.load(getClass().getResource("../view/program.fxml"), bundle);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(Constants.PATH_VIEW_PROGRAM)), bundle);
             Stage window = (Stage)mediaView.getScene().getWindow();
             window.getScene().setRoot(root);
         } catch (IOException e) {

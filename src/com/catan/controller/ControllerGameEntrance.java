@@ -21,10 +21,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ControllerGameEntrance extends ControllerBase {
 
@@ -215,14 +212,17 @@ public class ControllerGameEntrance extends ControllerBase {
     }
 
     private void initGame(ActionEvent event) {
+
+
         try {
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
                     new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/game.fxml"),bundle);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(Constants.PATH_VIEW_GAME),bundle);
             Parent root = fxmlLoader.load();
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
             window.show();
+
             ControllerGame controller = fxmlLoader.getController();
             fxmlLoader.setController(controller);
             controller.init(players);
