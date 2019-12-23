@@ -1,80 +1,112 @@
 package com.catan.modal;
 
 import com.catan.Util.Constants;
-import com.catan.interfaces.InterfaceMakeConstruction;
+import com.catan.controller.ControllerGame;
+import com.catan.interfaces.*;
+import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.*;
 
 public class PlayerAI extends Player {
+
+    // properties
+    private AI ai;
+
+    // constructor
     public PlayerAI(String color, String name) {
         super(color, name);
+        this.ai = new AI();
     }
 
-    private ArrayList<Settlement> getSettlementTypes(String type) {
-        ArrayList<Settlement> settlements = new ArrayList<>();
-        for (Settlement settlement: getSettlements()) {
-            if (settlement.getType().equals(type)) {
-                settlements.add(settlement);
-            }
-        }
-        return settlements;
-    }
-
-    public void getActualAIDecision(InterfaceMakeConstruction makeConstruction) {
-        // Civilisation
-        if (hasEnoughResources(Constants.CIVILISATION)) {
-            if (Math.random() > 0.1) {
-                ArrayList<Settlement> cities = getSettlementTypes(Constants.CITY);
-                if (cities.size() > 0) {
-                    makeConstruction.selectActualConstructionForAI(Constants.CIVILISATION);
-                    makeSettlement(cities, makeConstruction);
-                }
-            }
-        }
-
-        // City
-        if (hasEnoughResources(Constants.CITY)) {
-            if (Math.random() > 0.15) {
-                ArrayList<Settlement> villages = getSettlementTypes(Constants.VILLAGE);
-                if (villages.size() > 0) {
-                    makeConstruction.selectActualConstructionForAI(Constants.CITY);
-                    makeSettlement(villages, makeConstruction);
-                }
-            }
-        }
-
-        // Village
-        if (hasEnoughResources(Constants.VILLAGE)) {
-            ArrayList<Settlement> settlements = getSettlementTypes(Constants.VILLAGE);
-            int villageCount = settlements.size();
-            if ((villageCount == 0 && Math.random() > 0.40) ||
-                (villageCount == 1 && Math.random() > 0.80) ||
-                (villageCount == 2 && Math.random() > 0.90) ||
-                (villageCount == 3 && Math.random() > 0.95) ||
-                (villageCount == 4 && Math.random() > 0.99)) {
-                makeConstruction.selectActualConstructionForAI(Constants.VILLAGE);
-                makeConstruction.makeVillageActualForAI();
-            }
-        }
-
-        // Road
-        if (hasEnoughResources(Constants.ROAD)) {
-            if ((roads.size() < 5 && Math.random() > 0.2) ||
-                (roads.size() < 6 && Math.random() > 0.5) ||
-                (roads.size() < 7 && Math.random() > 0.6) ||
-                (roads.size() >= 7 && Math.random() > 0.8)) {
-                makeConstruction.selectActualConstructionForAI(Constants.ROAD);
-                makeConstruction.makeRoadActualForAI();
-            }
+    // methods
+    public void punish(){
+        int punish = getTotalCards()/2;
+        for(int i = 0; i < punish; i++){
+            int randomRes = (int) (Math.random() * 5 + 1);
+            punishHelper(randomRes);
+            // 1 = wool; 2 = grain; 3 = ore; 4 = lumber; 5 = brick.
         }
     }
 
-    private void makeSettlement(ArrayList<Settlement> settlements, InterfaceMakeConstruction makeConstruction) {
-        int index = (int) (Math.random() * settlements.size());
-        Settlement civilisation = settlements.get(index);
-        if (civilisation != null) {
-            Vertex vertex = civilisation.getVertex();
-            makeConstruction.makeConstructionActual(vertex.getShape());
+    private void punishHelper(int i){
+        String res = "";
+        if(i == 1)
+            res = Constants.CARD_WOOL;
+        else if ( i == 2)
+            res = Constants.CARD_GRAIN;
+        else if ( i == 3)
+            res = Constants.CARD_ORE;
+        else if ( i == 4)
+            res = Constants.CARD_LUMBER;
+        else
+            res = Constants.CARD_BRICK;
+
+        if( getSourceCards().get(res).size() == 0) {
+            int another = (i == 1) ? 5 : (i-1);
+            punishHelper(another);
+        } else {
+            getSourceCards().get(res).remove(0);
         }
+    }
+
+    public void makeSettlement(ArrayList<Settlement> settlements, InterfaceMakeConstruction makeConstruction) {
+        ai.makeSettlement(settlements, makeConstruction);
+    }
+
+    public void decideToMakeConstruction(InterfaceMakeConstruction makeConstruction) {
+        ai.decideToMakeConstruction(makeConstruction, this);
+    }
+
+    public  HashMap<String, Integer> getRequestedResourceCards(Player playerToBeTraded) {
+        return ai.getRequestedResourceCards(playerToBeTraded, getSourceCards());
+    }
+
+    public  HashMap<String, Integer> getRequestedResourceCardForChest() {
+        return ai.getRequestedResourceCardForChest(getSourceCards());
+    }
+
+    public  HashMap<String, Integer> getOfferedResourceCardForChest(HashMap<String, Integer> requestedRC) {
+        return ai.getOfferedResourceCardForChest(requestedRC, getSourceCards());
+    }
+
+    public  HashMap<String, Integer> getOfferedResourceCards(Map<String, Integer> requestedResources) {
+        return ai.getOfferedResourceCards(requestedResources, getSourceCards());
+    }
+
+    public boolean respondToTradeRequest(HashMap<String, Integer> requestedResources, HashMap<String, Integer> offeredRequests) {
+        return ai.respondToTradeRequest(requestedResources, offeredRequests);
+    }
+
+    public void decideToMakeTrade(InterfaceMakeTrade makeTrade) {
+        ai.decideToMakeTrade(makeTrade, getSourceCards());
+    }
+
+    public HashMap<String, Integer> getInventionResourceCardSelection() {
+        return ai.getInventionResourceCardSelection(getSourceCards());
+    }
+
+    public void decideToPlayDevelopmentCard(InterfaceDevelopmentCard interfaceDevelopmentCard) {
+        ai.decideToPlayDevelopmentCard(interfaceDevelopmentCard, this);
+    }
+
+    public String getMonopolResourceCardDecision() {
+        return ai.getMonopolResourceCardDecision(getSourceCards());
+    }
+
+    public void decideForHexesToExchangeProfit(ArrayList<TerrainHex> terrainHexes, InterfaceExchangeTurnProfit exchangeTurnProfit) {
+        ai.decideForHexesToExchangeProfit(terrainHexes, exchangeTurnProfit, this);
+    }
+
+    public void decideForDestroyingRoad(ArrayList<Player> players, InterfaceDestroyRoad destroyRoad) {
+        ai.decideForDestroyingRoad(players, destroyRoad, this);
+    }
+
+    public void decideToBuyDevelopmentCard(InterfaceDevelopmentCard interfaceDevelopmentCard) {
+        ai.decideToBuyDevelopmentCard(interfaceDevelopmentCard, this);
     }
 }

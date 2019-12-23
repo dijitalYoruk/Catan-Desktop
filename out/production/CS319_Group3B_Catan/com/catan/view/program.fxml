@@ -2,30 +2,58 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 
-<AnchorPane id="program-pane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerProgram">
+<AnchorPane id="program-pane" fx:id="root" prefHeight="800.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerProgram">
    <children>
-      <VBox layoutX="34.0" layoutY="34.0" prefHeight="300.0" prefWidth="250.0">
+      <ImageView fitHeight="476.0" fitWidth="582.0" layoutX="14.0" layoutY="-133.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/default/icon_catan.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="35.0" layoutY="211.0" prefHeight="300.0" prefWidth="250.0">
          <children>
-            <JFXButton id="btnPlayGame" onAction="#gotoPlayGame" styleClass="program-button" text="PLAY GAME" />
-            <JFXButton id="btnInstructions" onAction="#gotoInstructions" styleClass="program-button" text="INSTRUCTIONS">
+            <JFXButton id="btnPlayGame" onAction="#gotoPlayGame" styleClass="program-button" text="%programView_PlayGame" />
+            <JFXButton id="btnInstructions" onAction="#gotoInstructions" styleClass="program-button" text="%programView_Instructions">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton id="btnSettings" onAction="#goToSettings" styleClass="program-button" text="SETTINGS">
+            <JFXButton id="btnSettings" onAction="#goToSettings" styleClass="program-button" text="%programView_Settings">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton id="btnExit" cache="true" styleClass="program-button" text="EXIT">
+            <JFXButton id="btnSettings" onAction="#goToCredentials" styleClass="program-button" text="%programView_Credentials">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton id="btnExit" cache="true" onAction="#exitGame" styleClass="program-button" text="%programView_EXIT">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </JFXButton>
          </children>
       </VBox>
+      <ImageView fitHeight="476.0" fitWidth="582.0" layoutX="1265.0" layoutY="-64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icon_catan.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="1815.0" layoutY="14.0" prefHeight="70.0" prefWidth="70.0">
+         <children>
+            <Circle fill="#ffca1f" layoutX="35.0" layoutY="36.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fx:id="imgSound" fitHeight="38.0" fitWidth="52.0" layoutX="16.0" layoutY="17.0" onMouseClicked="#arrangeSound" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/music-button.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

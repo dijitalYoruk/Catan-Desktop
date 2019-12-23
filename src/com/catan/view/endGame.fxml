@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="837.0" styleClass="endGame-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerEndGame">
+   <children>
+      <Label fx:id="labelWon" layoutX="152.0" layoutY="239.0" styleClass="endGame-Nontitle-label" stylesheets="@style.css" text="Player X has reached to 10 victory points.">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label graphicTextGap="5.0" layoutX="202.0" layoutY="58.0" prefHeight="62.0" prefWidth="437.0" styleClass="endGame-Title-label" stylesheets="@style.css" text="%endGameView_Congrats">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnExit" layoutX="269.0" layoutY="407.0" onAction="#returnMain" prefHeight="77.0" prefWidth="315.0" styleClass="settings-button" stylesheets="@style.css" text="%endGameView_ReturnMenu" />
+   </children>
+</AnchorPane>

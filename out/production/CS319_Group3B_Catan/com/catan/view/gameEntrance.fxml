@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="game-entrance-pane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="1088.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catan.controller.ControllerGameEntrance">
+   <children>
+      <Rectangle fx:id="resultShape" arcHeight="30.0" arcWidth="30.0" fill="#ffc200" height="270.0" layoutX="871.0" layoutY="606.0" stroke="#ff6200" strokeType="INSIDE" strokeWidth="4.0" width="190.0" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc200" height="433.0" layoutX="786.0" layoutY="92.0" stroke="#ff6200" strokeType="INSIDE" strokeWidth="4.0" width="358.0" />
+      <Label layoutX="801.0" layoutY="157.0" styleClass="labelEntrance" />
+      <VBox layoutX="801.0" layoutY="151.0" prefHeight="362.0" prefWidth="329.0">
+         <children>
+            <HBox prefHeight="71.0" prefWidth="345.0">
+               <children>
+                  <JFXTextField fx:id="labelActualPlayerName" focusColor="#ff7700" prefHeight="40.0" prefWidth="106.0" unFocusColor="#ffc82e">
+                     <HBox.margin>
+                        <Insets left="20.0" right="45.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Book Antiqua" size="20.0" />
+                     </font>
+                  </JFXTextField>
+                  <HBox prefHeight="70.0" prefWidth="143.0">
+                     <children>
+                        <Rectangle fx:id="imgDie1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="70.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Rectangle>
+                        <Rectangle fx:id="imgDie2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="70.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Rectangle>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Rectangle>
+            <HBox prefHeight="75.0" prefWidth="380.0">
+               <children>
+                  <Label fx:id="labelNamePlayer1" prefHeight="17.0" prefWidth="250.0" styleClass="labelEntrance">
+                     <HBox.margin>
+                        <Insets right="20.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Rectangle fx:id="imgDie3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="70.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="imgDie4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="70.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Rectangle>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Rectangle>
+            <HBox prefHeight="75.0" prefWidth="420.0">
+               <children>
+                  <Label fx:id="labelNamePlayer2" prefHeight="17.0" prefWidth="250.0" styleClass="labelEntrance">
+                     <HBox.margin>
+                        <Insets right="20.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Rectangle fx:id="imgDie5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="70.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="imgDie6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="70.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Rectangle>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff511f" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Rectangle>
+            <HBox prefHeight="75.0" prefWidth="420.0">
+               <children>
+                  <Label fx:id="labelNamePlayer3" prefHeight="17.0" prefWidth="250.0" styleClass="labelEntrance">
+                     <HBox.margin>
+                        <Insets right="20.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Rectangle fx:id="imgDie7" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="70.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="imgDie8" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="70.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Rectangle>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <JFXButton layoutX="866.0" layoutY="540.0" onAction="#rollDie" styleClass="game-entrance-button" text="%game_entrance_view_roll_dice" />
+      <HBox layoutX="816.0" layoutY="112.0" prefHeight="22.0" prefWidth="300.0">
+         <children>
+            <Rectangle fx:id="colorRed" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#chooseColor" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="75.0" />
+            <Rectangle fx:id="colorGreen" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#chooseColor" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="75.0" />
+            <Rectangle fx:id="colorBlue" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#chooseColor" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="75.0" />
+            <Rectangle fx:id="colorPurple" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#chooseColor" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="75.0" />
+         </children>
+      </HBox>
+      <VBox fx:id="resultBox" layoutX="891.0" layoutY="618.0" prefHeight="245.0" prefWidth="150.0">
+         <children>
+            <Label alignment="CENTER" style="-fx-background-radius: 0;" styleClass="labelEntrance" text="%game_entrance_view_turn_order" />
+            <Label fx:id="resultPlayer1" alignment="CENTER" styleClass="labelEntrance">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="resultPlayer2" alignment="CENTER" styleClass="labelEntrance">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="resultPlayer3" alignment="CENTER" styleClass="labelEntrance">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="resultPlayer4" alignment="CENTER" styleClass="labelEntrance">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="1815.0" layoutY="14.0" prefHeight="70.0" prefWidth="70.0">
+         <children>
+            <Circle fill="#ffca1f" layoutX="35.0" layoutY="36.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fx:id="imgSound" fitHeight="38.0" fitWidth="52.0" layoutX="16.0" layoutY="17.0" onMouseClicked="#arrangeSound" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/music-button.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <JFXButton layoutX="34.0" layoutY="34.0" onAction="#returnToProgram" prefHeight="42.0" prefWidth="50.0" styleClass="back-button" text=" " />
+   </children>
+</AnchorPane>
