@@ -20,12 +20,13 @@ import java.net.URL;
 import java.util.*;
 
 
-public class ControllerCredentials {
+public class ControllerCredentials extends ControllerBase{
     @FXML
     AnchorPane root;
 
     @FXML
     public void initialize(){
+        updateSoundImg();
         root.setStyle(
                 "-fx-background-image: url("+ Constants.PATH_BG_CREDENTIALS() +");\n" +
                 "-fx-background-size: cover;\n" +
