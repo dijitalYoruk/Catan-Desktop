@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="CS319_Group3B_Catan.jnlp">
+  <information>
+    <title>CS319_Group3B_Catan</title>
+    <vendor>Unknown</vendor>
+    <description>CS319_Group3B_Catan</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="CS319_Group3B_Catan.jar" size="58296197" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="com.catan.Main"  name="CS319_Group3B_Catan" />
+  <update check="background"/>
+</jnlp>

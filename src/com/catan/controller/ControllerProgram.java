@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ControllerProgram extends ControllerBase {
@@ -35,10 +36,9 @@ public class ControllerProgram extends ControllerBase {
     @FXML
     public void gotoPlayGame(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
                     new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-            Parent root = fxmlLoader.load(getClass().getResource("../view/gameEntrance.fxml"), bundle);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(Constants.PATH_VIEW_GAME_ENTRANCE)), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
         } catch (IOException e) {
@@ -49,10 +49,9 @@ public class ControllerProgram extends ControllerBase {
     @FXML
     public void goToSettings(ActionEvent actionEvent){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
                     new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-            Parent root = fxmlLoader.load(getClass().getResource("../view/settings.fxml"), bundle);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(Constants.PATH_VIEW_SETTINGS)), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
         } catch (IOException e) {
@@ -63,10 +62,9 @@ public class ControllerProgram extends ControllerBase {
     @FXML
     public void gotoInstructions(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
                     new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-            Parent root = fxmlLoader.load(getClass().getResource("../view/instructions.fxml"), bundle);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(Constants.PATH_VIEW_INSTRUCTIONS)), bundle);
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
         } catch (IOException e) {
@@ -76,10 +74,9 @@ public class ControllerProgram extends ControllerBase {
     @FXML
     public void goToCredentials(ActionEvent event){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
             ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
                     new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-            Parent root = fxmlLoader.load(getClass().getResource("../view/credentials.fxml"), bundle);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(Constants.PATH_VIEW_CREDENTIALS)), bundle);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.getScene().setRoot(root);
         } catch (IOException e) {

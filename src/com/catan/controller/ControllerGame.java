@@ -717,10 +717,9 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         if(currentPlayer.getVictoryPoints() >= getSettings().getVictoryThreshold()) {
             openDialog(Constants.PATH_VIEW_ENDGAME, "The game end.", null, null);
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
                 ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language",
                         new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
-                Parent root = fxmlLoader.load(getClass().getResource("../view/program.fxml"),bundle);
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(Constants.PATH_VIEW_PROGRAM)), bundle);
                 Stage window = (Stage) getImgDie1().getScene().getWindow();
                 window.getScene().setRoot(root);
             } catch (IOException e) {
