@@ -7,45 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84fac676-6633-4064-8006-7cc76f71232c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/CS319_Group3B_Catan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/Util/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/assets/CatanIntro.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerCredentials.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerCredentials.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGameEntrance.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerGameEntrance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerInstructions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerInstructions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerIntro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerIntro.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerProgram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/controller/ControllerSettings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/CustomFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/CustomFileReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/DevelopmentCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/DevelopmentCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/MusicPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/MusicPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PriceCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/PriceCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Settings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/modal/Settings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/music/catan_theme.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/music/karadeniz_theme.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/music/space_theme.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/persistentData/instructions.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/persistentData/settings.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS319_Group3B_Catan/com/catan/persistent_data/settings.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/Util/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/assets/CatanIntro.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/CatanIntro.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerCredentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerCredentials.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerEndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerEndGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistentData/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/persistentData/settings.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerGameEntrance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerGameEntrance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerIntro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerIntro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/music/catan_theme.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/music/catan_theme.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/music/karadeniz_theme.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/music/karadeniz_theme.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/music/space_theme.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/music/space_theme.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/persistentData/instructions.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/catan/persistentData/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/persistentData/settings.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +96,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="24" />
-          <entry key="java" value="3867" />
+          <entry key="java" value="3939" />
           <entry key="properties" value="2" />
           <entry key="txt" value="22" />
         </counts>
@@ -139,7 +104,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="24" />
-          <entry key="JAVA" value="3867" />
+          <entry key="JAVA" value="3939" />
           <entry key="PLAIN_TEXT" value="22" />
           <entry key="Properties" value="2" />
         </counts>
@@ -148,22 +113,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/catan/Util/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="925">
-              <caret line="225" column="78" selection-start-line="225" selection-start-column="78" selection-end-line="225" selection-end-column="78" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#7743#7744#0" expanded="true" />
-                <element signature="e#7819#7820#0" expanded="true" />
-                <element signature="e#9438#9439#0" expanded="true" />
-                <element signature="e#9521#9522#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerPlayDevelopmentCard.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -176,7 +125,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerTradeOffer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="791">
+            <state relative-caret-position="4340">
               <caret line="235" column="22" selection-start-line="235" selection-start-column="22" selection-end-line="235" selection-end-column="22" />
             </state>
           </provider>
@@ -185,26 +134,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
+            <state relative-caret-position="560">
               <caret line="47" column="43" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerGameEntrance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="118" column="50" selection-start-line="118" selection-start-column="50" selection-end-line="118" selection-end-column="50" />
+            <state relative-caret-position="56">
+              <caret line="135" column="62" selection-start-line="135" selection-start-column="62" selection-end-line="135" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
+            <state relative-caret-position="240">
+              <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/catan/modal/PriceCard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="562">
+              <caret line="47" column="77" selection-start-line="47" selection-start-column="77" selection-end-line="47" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -212,7 +170,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="740">
               <caret line="70" column="16" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
             </state>
           </provider>
@@ -221,7 +179,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
+            <state relative-caret-position="700">
               <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="58" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -233,7 +191,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
+            <state relative-caret-position="2520">
               <caret line="146" column="9" selection-start-line="146" selection-start-column="9" selection-end-line="146" selection-end-column="9" />
             </state>
           </provider>
@@ -242,7 +200,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1691">
+            <state relative-caret-position="3000">
               <caret line="167" column="60" selection-start-line="167" selection-start-column="60" selection-end-line="167" selection-end-column="60" />
             </state>
           </provider>
@@ -314,9 +272,9 @@
         <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java" />
         <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerIntro.java" />
         <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java" />
-        <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerGameEntrance.java" />
         <option value="$PROJECT_DIR$/src/com/catan/Util/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java" />
+        <option value="$PROJECT_DIR$/src/com/catan/controller/ControllerGameEntrance.java" />
       </list>
     </option>
   </component>
@@ -327,7 +285,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="961" />
+    <option name="x" value="2432" />
+    <option name="y" value="-8" />
     <option name="width" value="974" />
     <option name="height" value="532" />
   </component>
@@ -363,7 +322,28 @@
               <item name="CS319_Group3B_Catan" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="catan" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS319_Group3B_Catan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS319_Group3B_Catan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="catan" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS319_Group3B_Catan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS319_Group3B_Catan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="catan" type="462c0819:PsiDirectoryNode" />
+              <item name="modal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS319_Group3B_Catan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS319_Group3B_Catan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="catan" type="462c0819:PsiDirectoryNode" />
+              <item name="Util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CS319_Group3B_Catan" type="b2602c69:ProjectViewProjectNode" />
@@ -540,13 +520,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93106000" />
+    <option name="totallyTimeSpent" value="93310000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="961" y="0" width="974" height="532" extended-state="0" />
+    <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.54485774" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2707889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -555,7 +535,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.48120302" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4801715" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -691,8 +671,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/modal/PriceCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="50" column="72" lean-forward="true" selection-start-line="50" selection-start-column="72" selection-end-line="50" selection-end-column="72" />
+        <state relative-caret-position="562">
+          <caret line="47" column="77" selection-start-line="47" selection-start-column="77" selection-end-line="47" selection-end-column="77" />
         </state>
       </provider>
     </entry>
@@ -790,9 +770,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/persistentData/instructions.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/persistentData/instructions.txt" />
     <entry file="file://$PROJECT_DIR$/src/com/catan/modal/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
@@ -901,35 +879,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerSettings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
+        <state relative-caret-position="2520">
           <caret line="146" column="9" selection-start-line="146" selection-start-column="9" selection-end-line="146" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerThiefPunishment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1691">
+        <state relative-caret-position="3000">
           <caret line="167" column="60" selection-start-line="167" selection-start-column="60" selection-end-line="167" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerTradeOffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
+        <state relative-caret-position="4340">
           <caret line="235" column="22" selection-start-line="235" selection-start-column="22" selection-end-line="235" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerTradeRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
+        <state relative-caret-position="560">
           <caret line="47" column="43" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerProgram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
+        <state relative-caret-position="700">
           <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="58" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -939,15 +917,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="740">
           <caret line="70" column="16" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerGameEntrance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="118" column="50" selection-start-line="118" selection-start-column="50" selection-end-line="118" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -967,8 +938,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerInstructions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
+        <state relative-caret-position="240">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/catan/controller/ControllerGameEntrance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="135" column="62" selection-start-line="135" selection-start-column="62" selection-end-line="135" selection-end-column="62" />
         </state>
       </provider>
     </entry>

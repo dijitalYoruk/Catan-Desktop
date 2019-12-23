@@ -128,16 +128,28 @@ public class ControllerGameEntrance extends ControllerBase {
         chosenColor.setStroke(Color.BLACK);
         chosenColor.setStrokeWidth(3);
 
+
         die = new Die();
         players = new ArrayList<>();
         PlayerActual playerActual = new PlayerActual(Constants.COLOR_RED, "");
         players.add(playerActual);
-        players.add(new PlayerAI(Constants.COLOR_BLUE, "Tom"));
-        players.add(new PlayerAI(Constants.COLOR_PURPLE, "Harry"));
-        players.add(new PlayerAI(Constants.COLOR_GREEN, "John"));
-        labelNamePlayer1.setText("Tom");
-        labelNamePlayer2.setText("Harry");
-        labelNamePlayer3.setText("John");
+        if (Settings.getInstance().getCurrentTheme().equals("Karadeniz")) {
+            players.add(new PlayerAI(Constants.COLOR_BLUE, "Dursun"));
+            players.add(new PlayerAI(Constants.COLOR_PURPLE, "Temel"));
+            players.add(new PlayerAI(Constants.COLOR_GREEN, "Fadime"));
+            labelNamePlayer1.setText("Dursun");
+            labelNamePlayer2.setText("Temel");
+            labelNamePlayer3.setText("Fadime");
+        } else {
+            players.add(new PlayerAI(Constants.COLOR_BLUE, "Tom"));
+            players.add(new PlayerAI(Constants.COLOR_PURPLE, "Harry"));
+            players.add(new PlayerAI(Constants.COLOR_GREEN, "John"));
+            labelNamePlayer1.setText("Tom");
+            labelNamePlayer2.setText("Harry");
+            labelNamePlayer3.setText("John");
+        }
+
+
         resultBox.setVisible(false);
         resultShape.setVisible(false);
     }
