@@ -4,6 +4,7 @@ import com.catan.Util.Constants;
 import com.catan.interfaces.InterfaceDestroyRoad;
 import com.catan.interfaces.InterfaceDevelopmentCard;
 import com.catan.interfaces.InterfaceExchangeTurnProfit;
+import com.catan.interfaces.InterfacePlayThief;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -155,7 +156,7 @@ public class DevelopmentCard extends Card implements InterfaceExchangeTurnProfit
 
     public void performDevelopmentCardFeatures(Player currentPlayer, ArrayList<Player> allPlayers,
                                                ArrayList<TerrainHex> terrainHexes,
-                                               InterfaceDevelopmentCard interfaceDevelopmentCard) {
+                                               InterfaceDevelopmentCard interfaceDevelopmentCard, InterfacePlayThief interfacePlayThief) {
 
         System.out.println("==============================================================================================");
         System.out.println("Development Card Name: " + getName() + " | Player Name: " + currentPlayer.getName());
@@ -180,7 +181,10 @@ public class DevelopmentCard extends Card implements InterfaceExchangeTurnProfit
             } break;
 
             // Knight Development Card
-            case Constants.DEVELOPMENT_CARD_KNIGHT: { performKnightCardFeatures(currentPlayer); } break;
+            case Constants.DEVELOPMENT_CARD_KNIGHT: {
+                performKnightCardFeatures(currentPlayer);
+                interfacePlayThief.playThief(currentPlayer);
+            } break;
 
             // Monopol Development Card
             case Constants.DEVELOPMENT_CARD_MONOPOL: {

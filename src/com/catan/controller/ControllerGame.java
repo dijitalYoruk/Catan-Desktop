@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceDevelopmentCard, InterfaceMakeTrade {
+public class ControllerGame extends ControllerBaseGame implements InterfaceMakeConstruction, InterfaceDevelopmentCard, InterfaceMakeTrade, InterfacePlayThief {
 
     // properties
     private DevelopmentCard developmentCardExchangeProfit;
@@ -165,7 +165,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
 
         if (developmentCard != null) {
             developmentCard.performDevelopmentCardFeatures(currentPlayer,
-                    getPlayers(), terrainHexes, this);
+                    getPlayers(), terrainHexes, this, this);
             if (currentPlayer == playerActual) {
                 if (developmentCard.getName().equals(Constants.DEVELOPMENT_CARD_PROFIT_EXCHANGE)) {
                     developmentCardExchangeProfit = developmentCard;
@@ -802,7 +802,7 @@ public class ControllerGame extends ControllerBaseGame implements InterfaceMakeC
         }
     }
 
-    private void playThief(Player currentPlayer){
+    public void playThief(Player currentPlayer){
         if (currentPlayer instanceof PlayerAI) {
             int randomHexIndex = (int)(Math.random() * 19);
             thief.setTerrainHex(terrainHexes.get(randomHexIndex));
