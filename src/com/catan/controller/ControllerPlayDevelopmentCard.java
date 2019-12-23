@@ -1,9 +1,12 @@
 package com.catan.controller;
 
 import com.catan.Util.Constants;
+import com.catan.Util.UTF8Control;
 import com.catan.interfaces.InterfaceDevelopmentCard;
 import com.catan.modal.DevelopmentCard;
+import com.catan.modal.GameLog;
 import com.catan.modal.Player;
+import com.catan.modal.Settings;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +19,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class ControllerPlayDevelopmentCard {
 
@@ -110,6 +116,9 @@ public class ControllerPlayDevelopmentCard {
         // close window
         if (card != null && player.hasDevelopmentCard(card)) {
             player.removeDevelopmentCard(card.getName());
+            ResourceBundle bundle = ResourceBundle.getBundle("com.catan.resources.language", new Locale(Settings.getInstance().getCurrentLanguage()),  new UTF8Control());
+            GameLog gameLog = GameLog.getInstance();
+            gameLog.addLog(player.getName() + " " + bundle.getString("gamelogs_hasPlayed") + " " + card.getName() + "." , player.getColor());
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.close();
             interfaceCard.setDevelopmentCardInvention(card);
