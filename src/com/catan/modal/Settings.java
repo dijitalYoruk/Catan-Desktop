@@ -59,6 +59,7 @@ public class Settings {
 
     public void setCurrentLanguage(String currentLanguage) {
         this.currentLanguage = currentLanguage;
+        saveRecords();
     }
 
     public String getCurrentTheme(){
