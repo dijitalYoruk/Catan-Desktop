@@ -24,7 +24,13 @@ The Settlers of the Catan is a strategy game played by 3-4 people where everyone
 
 ##### Deliverables
 * Project Description: https://drive.google.com/open?id=1qDBKLSJQgEYklPiQPgzlJN_VtzzZ7RhyDif06Y4Ko18
-* Project Analysis Report: https://drive.google.com/file/d/1W4oLa6yVZgze6qfU53mXjDrdikMQunuV/view?usp=sharing 
 * Project Folder: https://drive.google.com/drive/folders/1uw-9O1qddPT4fZCylRe-Tc6EQ1CXpc9p?usp=sharing
- 
+
+* Project Analysis Report Iteration1: https://drive.google.com/file/d/1W4oLa6yVZgze6qfU53mXjDrdikMQunuV/view?usp=sharing
+* Project Design Report Iteration1: https://drive.google.com/open?id=1_f3uDckOkCGksUMWVHrexbDIAIS2LcV4QwPZ0e9YY6M
+* Project Final Report Iteration1: https://drive.google.com/open?id=1cNqwkxD68BOQzc8I6Pk9QddL6k50cgufVbRV2X-sF2w
+
+* Project Analysis Report Iteration2: https://drive.google.com/file/d/1tfMI3IB9PxpzkKGvdc_FdzweFXWQ0mHX/view?usp=sharing
+* Project Design Report Iteration2: https://drive.google.com/open?id=1bTUEBLPl0sgPzXbs8_ZTKrFkVpzqHFYDuWCg4l3skso
+* Project Final Report Iteration2: https://drive.google.com/open?id=1-1zkHJYiPx5RM0oRfmBV3ALZDsHoxeQfEs0G2OqNGTA
 
